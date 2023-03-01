@@ -42,5 +42,40 @@ Read data files from: /usr/bin/../share/nmap
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 # Nmap done at Thu Feb  2 08:45:28 2023 -- 1 IP address (1 host up) scanned in 39.09 seconds
 ```
+We have 2 ports opened here, port 22 which runs ssh and port 80 which runs http. So, our enumeration will be focused more on port 80.
+
+
+<h2>Enumeration</h2>
+
+Going to the webpage should get you this
+
+![image](https://user-images.githubusercontent.com/67879936/222130410-04fcecfc-fcf6-43dc-a46e-1b1b50a3b401.png)
+
+This web page runs a Wheels CarService, lets try to register an account to see if we can login to the web application
+
+![image](https://user-images.githubusercontent.com/67879936/222131549-907be999-ab3c-4b0a-95fc-25c56765e67c.png)
+
+Now, lets try to login after creating our account
+
+![image](https://user-images.githubusercontent.com/67879936/222132098-077cb8a7-d253-48eb-b64c-cdad86ec3b1c.png)
+
+But clicking on the login button takes us back to this
+
+![image](https://user-images.githubusercontent.com/67879936/222132237-52fd9ca8-e35c-471d-8298-40eb326bc6ec.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
