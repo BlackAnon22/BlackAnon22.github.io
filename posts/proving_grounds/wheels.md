@@ -172,9 +172,9 @@ The file is an executable, lets go ahead and check what it does
 
 So, this executable gives us an option to choose the file to open, either the "customers" list or the "employees" list. If you input something different you get the "oops something went wrong" error
 
-Another thing this program does is that it filters out _&_ _;_ _|_ if these symbols are present the program immediately terminates. If they aren't present the program checks if the "employee" and "customers" options are available, if they aren't the program returns the "oops something went wrong" error
+Another thing this program does is that it filters out ```&``` ```|``` ```;``` if these symbols are present the program immediately terminates. If they aren't present the program checks if the "employee" and "customers" options are available, if they aren't the program returns the "oops something went wrong" error
 
-To exploit this we'll be using the _#_ symbol to comment out the file employee so that during the file read the program won't read the employee file
+To exploit this we'll be using the ```#``` symbol to comment out the file employee so that during the file read the program won't read the employee file
 
 ![image](https://user-images.githubusercontent.com/67879936/222168410-4e7ed1da-4a3e-4885-a6d6-fc4e67351a76.png)
 
