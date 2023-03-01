@@ -182,7 +182,7 @@ cool, so now we can read the _/etc/passwd_ file. Lets try to read the  _/etc/sha
 
 ![image](https://user-images.githubusercontent.com/67879936/222169171-386efe12-f3da-4665-9776-fd49b20163d1.png)
 
-Now, that we can view the  _/etc/shadow_ file, we can go ahead to crack the hash. We'll be using John (my best buddy :)) to do crack this
+Now, that we can view the  _/etc/shadow_ file, we can go ahead to crack the hash. We'll be using John (my best buddy xD) to do crack this
 
 >command:john hash --wordlist=/home/bl4ck4non/Documents/rockyou.txt
 
