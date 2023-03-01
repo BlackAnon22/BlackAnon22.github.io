@@ -81,7 +81,30 @@ Now, lets try to login
 
 Now lets click on "Employee Portal" to see if we have access to view it
 
-![image](https://user-images.githubusercontent.com/67879936/222143374-8c481a2a-76cc-4404-8927-cd48c7651841.png)
+![image](https://user-images.githubusercontent.com/67879936/222145406-4c119937-7c6a-4d26-997d-6fc041bdacaa.png)
+
+Alright we now have access to view the _/portal.php_ page
+
+Lets capture the search request on burpsuite
+
+![image](https://user-images.githubusercontent.com/67879936/222146261-05e4741f-734f-42ae-ae3d-96859b3d12ae.png)
+
+![image](https://user-images.githubusercontent.com/67879936/222146616-e52c83fe-3bfd-451d-aa7b-e30976e926e0.png)
+
+Sending this request to burp repeater
+
+![image](https://user-images.githubusercontent.com/67879936/222147321-fa4f107a-bc8b-4dbf-a4be-11adf498c49a.png)
+
+We'll be replacing the word "car" to another word, lets say "lorry"
+
+![image](https://user-images.githubusercontent.com/67879936/222147806-d861929e-e282-48e8-bb79-7fcd923bb537.png)
+
+Now, we got an XML error. This looks like a potential XPATH injection
+
+
+<h2>Exploitation</h2>
+
+<font color="red">XPath injection is a type of cyber attack where an attacker inserts malicious code into a web application's XPath query. This can lead to unauthorized access, data theft, and other security breaches. The attacker can manipulate the query to access sensitive information or execute arbitrary commands. It is similar to SQL injection but targets XPath queries instead of SQL queries.</font>
 
 
 
