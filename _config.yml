@@ -1,0 +1,11 @@
+theme: jekyll-theme-hacker
+title: root💀Bl4ck4non-sec:~#
+description: Hack. Eat. Sleep. Repeat!!!
+show_downloads: false
+show_repo: false
+
+gems:
+- jekyll-sitemap
+
+whitelist:
+- jekyll-sitemap
