@@ -112,7 +112,7 @@ Nmap done: 1 IP address (1 host up) scanned in 297.78 seconds
            Raw packets sent: 131317 (5.782MB) | Rcvd: 206 (9.112KB)
 
 ```
-From the above scan we have 3 ports opened, port 22 which runs ssh, port 25 which runs smtp and port 80 which runs http. Our enumeration today will be focused more on port 25 and port 80
+From the above scan we have 3 ports opened, port 22 which runs ssh, port 25 which runs smtp, port 80 which runs http and port 445 which runs netbios-ssn. Our enumeration today will be focused more on port 25, port 80 and port 445.
 
 
 <h2>Enumeration Port 25</h2>
