@@ -59,9 +59,11 @@ Now, lets try to login after creating our account
 
 ![image](https://user-images.githubusercontent.com/67879936/222132098-077cb8a7-d253-48eb-b64c-cdad86ec3b1c.png)
 
-But clicking on the login button doesn't log us is but redirects us to the home page
+But clicking on the login button and clicking on "Employee Portal" we get the _Access Denied_ error
 
 ![image](https://user-images.githubusercontent.com/67879936/222132237-52fd9ca8-e35c-471d-8298-40eb326bc6ec.png)
+
+![image](https://user-images.githubusercontent.com/67879936/222145030-8971a88e-f46d-4282-a39b-50c55ff8564f.png)
 
 Looking at the footer of the webpage
 
@@ -73,7 +75,15 @@ The email here is _info@wheels.service_ lets go ahead and copy this same format 
 
 Now, lets try to login
 
-![image](https://user-images.githubusercontent.com/67879936/222133973-0e55cdf8-571a-41f8-9d37-6b7d3355ff08.png)
+![image](https://user-images.githubusercontent.com/67879936/222143739-4cba672c-3848-450d-9f5f-d9170d0a4a53.png)
+
+![image](https://user-images.githubusercontent.com/67879936/222143902-1353b56f-2a8a-424c-9525-08964d8f859b.png)
+
+Now lets click on "Employee Portal" to see if we have access to view it
+
+![image](https://user-images.githubusercontent.com/67879936/222143374-8c481a2a-76cc-4404-8927-cd48c7651841.png)
+
+
 
 
 
