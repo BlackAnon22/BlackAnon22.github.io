@@ -62,7 +62,7 @@ Going to the webpage you should see something like this
 
 I went ahead to test the search button for xss by using a simple payload
 
->payload:<img src=x onerror=alert(1)>
+payload:```<img src=x onerror=alert(1)>```
 
 ![image](https://user-images.githubusercontent.com/67879936/222255982-60c0769f-1e21-4120-b7a4-e704f342f405.png)
 
@@ -150,7 +150,7 @@ As usual we'll be using 2 different terminals
 
 Boom!!! We got a shell as root user
 
-That will be all for todat
+That will be all for today
 
 
 
