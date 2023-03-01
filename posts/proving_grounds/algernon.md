@@ -243,7 +243,7 @@ aspnet_client           [Status: 301, Size: 158, Words: 9, Lines: 2, Duration: 5
 Alright, we found just one directory. Trust me there's nothing in that directory lool. Moving on to the next port
 
 
-<h2>Exploitation Port 139&445</h3>
+<h2>Exploitation Port 139&445</h2>
 
 First, lets check the available shares on this smb server
 
