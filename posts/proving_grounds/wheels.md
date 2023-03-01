@@ -59,9 +59,25 @@ Now, lets try to login after creating our account
 
 ![image](https://user-images.githubusercontent.com/67879936/222132098-077cb8a7-d253-48eb-b64c-cdad86ec3b1c.png)
 
-But clicking on the login button takes us back to this
+But clicking on the login button doesn't log us is but redirects us to the home page
 
 ![image](https://user-images.githubusercontent.com/67879936/222132237-52fd9ca8-e35c-471d-8298-40eb326bc6ec.png)
+
+Looking at the footer of the webpage
+
+![image](https://user-images.githubusercontent.com/67879936/222133059-69501d18-14e5-4254-9c96-306c83d696e0.png)
+
+The email here is _info@wheels.service_ lets go ahead and copy this same format for our mail since the mail won't get any verification code or link
+
+![image](https://user-images.githubusercontent.com/67879936/222133634-42b4ff0c-021a-4f1e-90de-dbbaa3a20071.png)
+
+Now, lets try to login
+
+![image](https://user-images.githubusercontent.com/67879936/222133973-0e55cdf8-571a-41f8-9d37-6b7d3355ff08.png)
+
+
+
+
 
 
 
