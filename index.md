@@ -35,5 +35,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon, I Post Different Hacki
 
 -[[March 01 2023]] [Proving Grounds--twiggy](https://Blackanon22.github.io/posts/proving_grounds/twiggy.html) `salt-api RCE`
 
+-[[March 01 2023]] [Proving Grounds--Algernon](https://Blackanon22.github.io/posts/proving_grounds/algernon.html) `SmarterMail`
+
 * * *
 
