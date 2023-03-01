@@ -315,6 +315,13 @@ We are going to need 2 terminals as usual, the first will be for running the exp
 
 >command terminal 2:rlwrap nc -nvlp 80
 
+![image](https://user-images.githubusercontent.com/67879936/222280099-8611ee4b-e202-4770-86dc-b6b327a77a82.png)
+
+![image](https://user-images.githubusercontent.com/67879936/222280442-711de4a1-f97b-4ec4-96a1-c9476db80f47.png)
+
+Boom!!! We got a shell as user nt authority\system which is the highest level of privilege on a windows box.
+
+That'll be all for today
 
 
 
