@@ -43,7 +43,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon, I Post Different Hacki
 
 -[[October 05 2022]] [ABCCTF 2022](https://Blackanon22.github.io/posts/CTF Competitions/ABCCTF 2022.html)
 
--[[October 09 2022]] [CyberTalents 2022](https://Blackanon22.github.io/posts/CTF Competitions/CyberTalents 2022.html
+-[[October 09 2022]] [CyberTalents 2022](https://Blackanon22.github.io/posts/CTF Competitions/CyberTalents 2022.html)
 
 * * *
 
