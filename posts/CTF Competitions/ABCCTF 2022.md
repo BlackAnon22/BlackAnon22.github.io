@@ -238,7 +238,8 @@ cool, we got ourselves a shell as user “www-data”
 
 We can stabilize this shell using the following command
 
-```python3 -c “import pty;pty.spawn(‘/bin/bash’)”
+```
+python3 -c “import pty;pty.spawn(‘/bin/bash’)”
 ctrl + z (to background)
 stty raw -echo && fg
 export TERM=xterm
