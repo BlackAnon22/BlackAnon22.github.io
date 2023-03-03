@@ -221,7 +221,8 @@ Before navigating ensure your netcat listener is active
 Boom!!! We got a shell as ```nt authority\system``` the highest level of privilege on a windows machine.
 
 That will be all for today
-
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
