@@ -217,7 +217,8 @@ Ensure you change the $IP to your own IP address
 Boom!!! We got a shell as root. This means we don't need to go through the stress of checking other ports xD
 
 That will be all for today
-
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
