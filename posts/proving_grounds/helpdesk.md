@@ -254,7 +254,18 @@ Ensure you set your netcat listener before running the command above
 
 ![image](https://user-images.githubusercontent.com/67879936/222647017-a6872200-4dde-499b-ac90-70e2430e0355.png)
 
-oops, I'm having issues here with my pc (not the exploit), so I asked another person to help run on his pc and he got root shell
+oops, I'm having issues here with my pc (not the exploit), so I asked another person to help run the exploit on his pc and he got a shell
+
+![image](https://user-images.githubusercontent.com/67879936/222699807-d5cf8df2-90e6-4fb2-9acd-a4d20a991b75.png)
+
+![image](https://user-images.githubusercontent.com/67879936/222699964-4307709d-f899-43f3-8f15-91f6c03a83a7.png)
+
+
+So, when you try this from your end, you should get a reverse shell back to your netcat listner as ```nt authority\system```
+
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
