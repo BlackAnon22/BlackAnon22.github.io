@@ -662,7 +662,8 @@ nice, it worked hehe. Now lets try to get a shell as the root user
 Boom!!! We got a shell as root
 
 That will be all for today
-
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
