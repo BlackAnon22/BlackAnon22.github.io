@@ -62,8 +62,8 @@ Boom, we got the flag in the column name “password”
 
 Flag:```FLAG{!nj3ct!0n_5l4y3r_XD}```
 
-
-
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
