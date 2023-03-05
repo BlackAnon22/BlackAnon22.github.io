@@ -49,6 +49,12 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon, I Post Different Hacki
 - [[March 05 2023]] [PwnTillDawn--Vega](https://Blackanon22.github.io/posts/pwntilldawn/vega.html) `Unsecured Credentials` `Heap Overflow Vulnerability`
 
 * * *
+### **HackTheBox:~#**
+* * *
+
+-[[March 05 2023]] [HackTheBox--Jerry](https://Blackanon22.github.io/posts/hackthebox/jerry.html) `Tomcat` `Arbitrary File Upload` `Default Credentials`
+
+* * *
 ### **CTF Competitions:~#**
 * * *
 
