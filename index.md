@@ -38,6 +38,9 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon, I Post Different Hacki
 - [[March 03 2023]] [Proving Grounds--Readys](https://Blackanon22.github.io/posts/proving_grounds/readys.html) `Wordpress` `LFI` `Redis` `CronJob`
 - [[March 03 2023]] [Proving Grounds--Squid](https://Blackanon22.github.io/posts/proving_grounds/squid.html) `Squid Proxy` `PHPMYADMIN`
 - [[March 03 2023]] [Proving Grounds--Nibbles](https://Blackanon22.github.io/posts/proving_grounds/nibbles.html) `Postgresql RCE` `SUID Binaries`
+- [[March 04 2023]] [Proving Grounds--Exfiltrated](https://Blackanon22.github.io/posts/proving_grounds/exfiltrated.html) `Subrion RCE` `CronJob` `Exiftool Vulnerability`
+- [[March 05 2023]] [Proving Grounds--Flimsy](https://Blackanon22.github.io/posts/proving_grounds/flimsy.html) `APISIX RCE` `CronJob` `APT-GET Exploitation`
+- [[March 02 2023]] [Proving Grounds--Snookums](https://Blackanon22.github.io/posts/proving_grounds/snookums.html) `RFI` `MySql`
 
 * * *
 ### **CTF Competitions:~#**
