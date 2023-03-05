@@ -170,7 +170,7 @@ Clicking on phpmyadmin should get us this login page
 
 I went ahead to look for default creds and I found one
 
-```username:root```         ```password:(will blank)```
+```username:root```         ```password:(will be blank)```
 
 ![image](https://user-images.githubusercontent.com/67879936/222624155-bdad871d-033a-4df1-bd7f-e9b4107ef8de.png)
 
