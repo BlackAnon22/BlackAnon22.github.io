@@ -52,7 +52,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon, I Post Different Hacki
 ### **HackTheBox:~#**
 * * *
 
--[[March 05 2023]] [HackTheBox--Jerry](https://Blackanon22.github.io/posts/hackthebox/jerry.html) `Tomcat` `Arbitrary File Upload` `Default Credentials`
+- [[March 05 2023]] [HackTheBox--Jerry](https://Blackanon22.github.io/posts/hackthebox/jerry.html) `Tomcat` `Arbitrary File Upload` `Default Credentials`
 
 * * *
 ### **CTF Competitions:~#**
