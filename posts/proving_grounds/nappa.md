@@ -253,10 +253,49 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 499.51 seconds
            Raw packets sent: 72663 (3.202MB) | Rcvd: 71407 (2.860MB)
 ```
-We 
+We have 5 ports opened. Port 21 which runs ftp, port 8080&28080 which runs http, port 3306 which runs mysql and port 60022 which runs ssh. Our enumeration will be focused on port 21, port 80 and port 28080.
 
 
 
+<h2>Enumeration Port 21</h2>
+
+since anonymous login is allowed, this means we can login with default creds
+
+```username:anonymous```                  ```password:anonymous```
+
+>command: ftp 192.168.53.114
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/nappa]
+└─$ ftp 192.168.53.114
+Connected to 192.168.53.114.
+220 (vsFTPd 3.0.3)
+Name (192.168.53.114:bl4ck4non): anonymous
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls -la
+229 Entering Extended Passive Mode (|||10903|)
+150 Here comes the directory listing.
+dr-xr-xr-x    3 0        11           4096 Nov 06  2020 .
+dr-xr-xr-x    3 0        11           4096 Nov 06  2020 ..
+drwxr-xr-x   14 14       11           4096 Nov 06  2020 forum
+```
+I didn't find anything that's going to help us gain access on this server. Moving on with our enumeration
+
+
+
+<h2>Enumeration Port 8080</h2>
+
+Going to the webpage, you get this
+
+![image](https://user-images.githubusercontent.com/67879936/222941305-656cbd77-fc21-4c0b-afcf-3ec725c4e471.png)
+
+Lets go ahead and fuzz for directories using ffuf
+
+>command: 
 
 
 
