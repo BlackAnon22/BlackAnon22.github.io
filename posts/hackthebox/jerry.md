@@ -97,7 +97,7 @@ cool, we are logged in. Also, we can see we are provided with a username and pas
 
 ```username:tomcat```     ```password:s3cret```
 
-To log in again I'll advice you either our browser's history or you use another browser
+To log in again I'll advice you either clear your browser's history or you use another browser
 
 ![image](https://user-images.githubusercontent.com/67879936/222948885-30f62486-ab6b-4cea-ab47-e8734a5a66b5.png)
 
