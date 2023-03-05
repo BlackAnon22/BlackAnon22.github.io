@@ -311,7 +311,7 @@ vendor                  [Status: 301, Size: 339, Words: 22, Lines: 10, Duration:
 webalizer               [Status: 403, Size: 1045, Words: 102, Lines: 43, Duration: 502ms]
 :: Progress: [32298/32298] :: Job [1/1] :: 48 req/sec :: Duration: [0:10:11] :: Errors: 1 ::
 ```
-woah, lots of directories. Lets navigate to the ```/login``` directory. We'll try to login with default creds
+woah, lots of directories. Lets navigate to the ```/login.php``` directory. We'll try to login with default creds
 
 ```username:admin```      ```password:admin```
 
