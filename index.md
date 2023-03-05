@@ -43,6 +43,12 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon, I Post Different Hacki
 - [[March 05 2023]] [Proving Grounds--Snookums](https://Blackanon22.github.io/posts/proving_grounds/snookums.html) `RFI` `MySql`
 
 * * *
+### **PwnTillDawn:~#**
+* * *
+
+- [[March 05 2023]] [PwnTillDawn--Vega](https://Blackanon22.github.io/posts/pwntilldawn/vega.html) `Unsecured Credentials` `Heap Overflow Vulnerability`
+
+* * *
 ### **CTF Competitions:~#**
 * * *
 
