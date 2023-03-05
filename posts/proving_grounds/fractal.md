@@ -102,7 +102,72 @@ Nmap done: 1 IP address (1 host up) scanned in 729.77 seconds
            Raw packets sent: 78217 (3.445MB) | Rcvd: 70971 (2.840MB)
 
 ```
-From our scan we can see 3 opened ports, port 21 which runs ftp, port 22 which runs ssh and port 80 which runs http. Our enumeration will be focused on 
+From our scan we can see 3 opened ports, port 21 which runs ftp, port 22 which runs ssh and port 80 which runs http. Our enumeration will be focused on port 21 and port 80.
+
+
+
+
+<h2>Enumeration Port 21</h2>
+
+The version of this ftp service is proftpd, we didn't get the version so we can't look for available exploits. Also, anonymous login isn't allowed so we really can't do much. Lets move on to the next port.
+
+
+
+
+<h2>Enumeration Port 80</h2>
+
+Going to the webpage you should get this
+
+![image](https://user-images.githubusercontent.com/67879936/222935655-0624f8ed-c040-45b1-9e04-6cb0e7b7c887.png)
+
+Lets  search for hidden directories using ffuf
+
+>command: ffuf -u "http://192.168.53.233/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PG/pg_practice/Fractal]
+└─$ ffuf -u "http://192.168.53.233/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://192.168.53.233/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Extensions       : .zip .sql .php .phtml .bak .backup 
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+app.php                 [Status: 301, Size: 310, Words: 20, Lines: 10, Duration: 327ms]
+config.php              [Status: 403, Size: 46, Words: 7, Lines: 1, Duration: 207ms]
+css                     [Status: 301, Size: 314, Words: 20, Lines: 10, Duration: 133ms]
+favicon.ico             [Status: 200, Size: 6518, Words: 36, Lines: 18, Duration: 199ms]
+img                     [Status: 301, Size: 314, Words: 20, Lines: 10, Duration: 245ms]
+javascript              [Status: 301, Size: 321, Words: 20, Lines: 10, Duration: 216ms]
+js                      [Status: 301, Size: 313, Words: 20, Lines: 10, Duration: 143ms]
+phpmyadmin              [Status: 301, Size: 321, Words: 20, Lines: 10, Duration: 145ms]
+robots.txt              [Status: 200, Size: 86, Words: 7, Lines: 4, Duration: 168ms]
+server-status           [Status: 403, Size: 279, Words: 20, Lines: 10, Duration: 148ms]
+:: Progress: [32298/32298] :: Job [1/1] :: 283 req/sec :: Duration: [0:02:35] :: Errors: 0 ::
+```
+cool, we got some directories to check. Going to _/robots.txt_ we find another directory there
+
+![image](https://user-images.githubusercontent.com/67879936/222936078-d0d3db42-f6ac-4be1-a737-ca211f2d13c3.png)
+
+Lets navigate to the _/app_dev.php_ directory
+
+![image](https://user-images.githubusercontent.com/67879936/222936139-43526fae-60f9-4b08-b9b6-7beee719ea0d.png)
+
 
 
 
