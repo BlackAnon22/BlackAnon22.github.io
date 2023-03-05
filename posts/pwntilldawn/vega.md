@@ -183,17 +183,66 @@ so we got lots of directories, but the one that interests me the most is the ".b
 
 ><font color="green">In Linux, the `.bash_history` file is a hidden file that stores a history of the commands that have been executed in the Bash shell, it is always located in the user's home directory</font>
 
+So, lets see if we can find anything interesting in that directory
+
+![image](https://user-images.githubusercontent.com/67879936/222944553-8929017d-ea44-44cc-8ec7-24dcc4e856cc.png)
+![image](https://user-images.githubusercontent.com/67879936/222944618-60472785-f4f6-4f9b-89f5-c91f2c590654.png)
+
+So, we found our first flag. If you take a look at the screenshot above you find out that we have a username and a password. Since we have ssh opened on this machine we can go ahead and test those credentials for ssh access
+
+```username:vega```          ```password:puplfiction1994```
+
+>command: ssh vega@10.150.150.222
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~]
+└─$ ssh vega@10.150.150.222       
+vega@10.150.150.222's password: 
+Permission denied, please try again.
+vega@10.150.150.222's password: 
+Permission denied, please try again.
+vega@10.150.150.222's password: 
+vega@10.150.150.222: Permission denied (publickey,password).
+```
+Alright so for some reasons the password is not working, I looked around the webpage and I found this
+
+![image](https://user-images.githubusercontent.com/67879936/222944748-4892216e-f53c-403c-9233-f4b5e29519a5.png)
+
+So the first password we saw "puplifiction1994" has the wrong spelling, it should be "pulpfiction1994". Lets  go ahead and try again
+
+```username:vega```               ```password:pulpfiction1994```
+
+![image](https://user-images.githubusercontent.com/67879936/222944769-9b788827-31ca-4b6b-baad-eabbc45aeb12.png)
+
+We got the user shell already, A flag was found in the user's directory _/home/vega_
+
+![image](https://user-images.githubusercontent.com/67879936/222945099-d32aa3f0-f8f1-4d9a-93dc-f15a057f3a7c.png)
+
+Lets go ahead and escalate our privileges
 
 
 
+<h2>Privilege Escalation</h2>
 
+checking sudo's right
 
+>command: sudo -l
 
+![image](https://user-images.githubusercontent.com/67879936/222944881-15e6a30f-3338-41d1-ac06-b00cc6a9ac47.png)
 
+We can see that user "vega" can run all commands as root. Lets go ahead and become the root user
 
+>command: sudo /bin/bash
 
+![image](https://user-images.githubusercontent.com/67879936/222944893-c1aa1400-bd00-452e-a3cf-bb909c8be4e2.png)
 
+Boom!!! We got a shell as the root user. A flag was found in the _/root_ directory
 
+![image](https://user-images.githubusercontent.com/67879936/222945071-85ee2d8d-1bad-4eb1-a6d7-3c8df82a3b91.png)
+
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
