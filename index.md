@@ -48,7 +48,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon, I Post Different Hacki
 
 - [[March 05 2023]] [PwnTillDawn--Vega](https://Blackanon22.github.io/posts/pwntilldawn/vega.html) `Unsecured Credentials` `Heap Overflow Vulnerability`
 -  [[March 05 2023]] [PwnTillDawn--Portal](https://Blackanon22.github.io/posts/pwntilldawn/portal.html) `FTP`
--  [[March 05 2023]] [PwnTillDawn--Pwndrive Academy](https://Blackanon22.github.io/posts/pwntilldawn/Pwndrive_Academy.html) `Weak Authentication `Arbitrary File Upload`
+-  [[March 05 2023]] [PwnTillDawn--Pwndrive Academy](https://Blackanon22.github.io/posts/pwntilldawn/Pwndrive_Academy.html) `Weak Authentication` `Arbitrary File Upload`
 -  [[March 05 2023]] [PwnTillDawn--Snare](https://Blackanon22.github.io/posts/pwntilldawn/snare.html) `RFI` `Weak File Permissions`
 
 * * *
