@@ -264,8 +264,6 @@ cool, we found one. Lets go ahead and exploit this vulnerability.
 
 <h2>Exploitation</h2>
 
-Link to Exploit:https://www.rapid7.com/db/modules/exploit/windows/smb/ms17_010_eternalblue/
-
 We'll be using metasploit in this case, I actually tried the manual exploits, I haven't gotten it yet. As soon as I get it I'll post it here. But for now lets use metasploit
 
 >command: msfconsole
@@ -322,7 +320,9 @@ run
 
 ![image](https://user-images.githubusercontent.com/67879936/223119019-6bd73763-c306-4012-b412-849a689360ba.png)
 
-Boom!!! We got a shell as ```nt Authority\System```
+Boom!!! We got a shell as ```nt Authority\System```. Found the flag in ```C:\Users\Administrator.GNBUSCA-W054\Desktop```.
+
+![image](https://user-images.githubusercontent.com/67879936/223119865-417dab1f-c803-48fc-ab8a-d0b79275cb9f.png)
 
 That will be all for today
 <br> <br>
