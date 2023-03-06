@@ -7,7 +7,7 @@ title: Home
 ### Welcome To My Cyber Security Blog, H4X0R
 * * *
 
-Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon, I Post Different Hacking Tricks, Writeups, Articles, Any Stuffs Related To Hacking That I Learn 😉. 
+Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacking Tricks, Writeups, Articles, Any Stuffs Related To Hacking That I Learn 😉. 
 
 * * *
 ### Whoami:~#
@@ -50,6 +50,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon, I Post Different Hacki
 -  [[March 05 2023]] [PwnTillDawn--Portal](https://Blackanon22.github.io/posts/pwntilldawn/portal.html) `FTP`
 -  [[March 05 2023]] [PwnTillDawn--Pwndrive Academy](https://Blackanon22.github.io/posts/pwntilldawn/Pwndrive_Academy.html) `Weak Authentication` `Arbitrary File Upload`
 -  [[March 05 2023]] [PwnTillDawn--Snare](https://Blackanon22.github.io/posts/pwntilldawn/snare.html) `RFI` `Weak File Permissions`
+-  [[March 06 2023]] [PwnTillDawn--Mr Blue](https://Blackanon22.github.io/posts/pwntilldawn/mr_blue.html) `Eternal Blue MS17-010`
 
 * * *
 ### **HackTheBox:~#**
