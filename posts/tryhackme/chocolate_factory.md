@@ -893,7 +893,7 @@ Link to cyberchef: https://gchq.github.io/CyberChef/
 
 After decrypting we will see something that looks like the content of ```/etc/passwd```, we will find the hashed password for a user ```charlie```. From this enumeration it looks like we are about to answer the second question lool.
 
-```charlie:$6$CZJnCPeQWp9/jpNx$khGlFdICJnr8R3JC/jTR2r7DrbFLp8zq8469d3c0.zuKN4se61FObwWGxcHZqO2RJHkkL1jjPYeeGyIJWE82X/```
+charlie:```$6$CZJnCPeQWp9/jpNx$khGlFdICJnr8R3JC/jTR2r7DrbFLp8zq8469d3c0.zuKN4se61FObwWGxcHZqO2RJHkkL1jjPYeeGyIJWE82X/```
 
 We will be using john to crack the password hash. Go ahead and save the hash in a file, then use the command below to crack the hash
 
