@@ -768,8 +768,7 @@ Since Anonymous login is allowed for port 21, we can use default credentials to 
 
 >command: ftp 10.10.250.54
 
-```
-                                                                                                                                                                                                                                
+```                                                                      
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/chocolate_factory]
 └─$ ftp 10.10.250.54
 Connected to 10.10.250.54.
