@@ -231,7 +231,7 @@ Flag2:```thm{explo1t1ng_lf1}```
 
 5. Get a shell and find the user flag
 
-Now, since we got ourselves an LFI(Local File Inclusion), let’s try to read the /etc/passwd file
+Now, since we got ourselves an LFI(Local File Inclusion), let’s try to read the /etc/passwd file. I want you to note that there's a filter that filters out ```../../../``` so it shouldn't contain that, so to bypass that we'll be using 2 dots and a dot, something like this ```.././.././```
 
 url:http://mafialive.thm/test.php?view=/var/www/html/development_testing/.././.././.././.././../etc/passwd
 
