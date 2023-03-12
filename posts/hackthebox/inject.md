@@ -277,9 +277,56 @@ cool, we got a user shell as Frank. Lets go ahead and escalate our privileges.
 
 <h2>Privilege Escalation</h2>
 
+Checking the ```/home/frank/.m2``` directory, I found a ```settings.xml``` file which contains user ```phil``` creds
 
+![image](https://user-images.githubusercontent.com/67879936/224532242-f11aa518-104a-4253-a4e8-3579d1327d6f.png)
 
+Now, lets go ahead and switch user
 
+```username:phil```             ```password:DocPhillovestoInject123```
+
+![image](https://user-images.githubusercontent.com/67879936/224532273-3277c2fe-f01a-490a-b084-687a162ac122.png)
+
+nice, lets further escalate our privileges
+
+Running Linpeas on the target's machine I found this
+
+![image](https://user-images.githubusercontent.com/67879936/224532432-f5e39701-7f60-40ee-b0d1-0215dc29ff2c.png)
+
+![image](https://user-images.githubusercontent.com/67879936/224532488-4c195364-67ba-4296-a0ab-245e3e8c059d.png)
+
+><font color="Green">This is an Ansible playbook that has a single task called "Checking webapp service". The task uses the `systemd` module provided by Ansible to manage the state of the `webapp` service.
+
+The `systemd` module takes three parameters:
+
+-   `name`: The name of the service to manage. In this case, it's `webapp`.
+-   `enabled`: Whether the service should be enabled or not. Here, it's set to `yes`.
+-   `state`: The desired state of the service. In this case, it should be `started`.
+
+So this playbook is checking whether the `webapp` service is enabled and started on the `localhost`. If it's not enabled or not started, the playbook will enable and start it.</font>
+
+This file is actuallly owned by root, so we don't have write access
+
+![image](https://user-images.githubusercontent.com/67879936/224532681-910ad8a6-b6fa-4cf2-bb6d-330edfb6acaa.png)
+
+Reading this article https://www.digitalocean.com/community/tutorials/understanding-privilege-escalation-in-ansible-playbooks, I found out that we could create our own playbook. Lets go ahead and do that, we'll be using something simple
+
+This is my playbook
+
+```
+- hosts: all
+  tasks:
+    - name: SUID
+      ansible.builtin.shell: |
+        chmod +s /bin/bash
+      become: true
+```
+
+![image](https://user-images.githubusercontent.com/67879936/224533428-e0f966ae-ad49-4a10-b1cb-7a3153a5d8a1.png)
+
+![image](https://user-images.githubusercontent.com/67879936/224533512-6a4b902a-6f15-489b-9859-5345202816ed.png)
+
+To g
 
 
 
