@@ -183,14 +183,24 @@ phil:x:1001:1001::/home/phil:/bin/bash
 fwupd-refresh:x:112:118:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
 _laurel:x:997:996::/var/log/laurel:/bin/false
 ```
-cool, we can read the ```/etc/passwd``` file.
+cool, we can read the ```/etc/passwd``` file. I went ahead to check the ```/var/www``` directory and found the directory ```WebApp```
+
+![image](https://user-images.githubusercontent.com/67879936/224529352-e7f6af30-15fb-415c-ac9a-9fa21f186cba.png)
+
+Checking the contents of this directory I found a ```pom.xml``` file which contains a vulnerable dependency for the springframework
+
+![image](https://user-images.githubusercontent.com/67879936/224529421-593d88e8-6c4c-437e-962c-3c449907a24b.png)
+![image](https://user-images.githubusercontent.com/67879936/224529460-c9b842fe-37bf-4475-9820-a1b851d797cc.png)
+
+```spring-cloud-function-web 3.2.2```, I went online to look for available exploits and found this
+
+Link: https://github.com/me2nuk/CVE-2022-22963
+
+Lets go ahead and exploit this
 
 
 
-
-
-
-
+<h2>Exploitation</h2>
 
 
 
