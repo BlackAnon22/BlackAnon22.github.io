@@ -324,9 +324,19 @@ This is my playbook
 
 ![image](https://user-images.githubusercontent.com/67879936/224533428-e0f966ae-ad49-4a10-b1cb-7a3153a5d8a1.png)
 
-![image](https://user-images.githubusercontent.com/67879936/224533512-6a4b902a-6f15-489b-9859-5345202816ed.png)
+![image](https://user-images.githubusercontent.com/67879936/224602215-31e22b24-5f02-4d9c-8010-90a5813f8a1a.png)
 
-To g
+To get root shell, 
+
+>command: /bin/bash -p
+
+![image](https://user-images.githubusercontent.com/67879936/224602318-eedcabf5-1b71-4e37-8c22-bd2fdaca6899.png)
+
+Boom!!! We got a root shell.
+
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
