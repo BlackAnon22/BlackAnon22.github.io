@@ -134,7 +134,7 @@ Now les click on the "view your imaage", you should have this
 
 ![image](https://user-images.githubusercontent.com/67879936/224517346-9755de93-5714-443f-8d1d-9309b3ed2ee0.png)
 
-Observer the url there, lets try path transversal here
+Observer the url there, lets try directory transversal here
 
 Link:http://10.129.178.127:8080/show_image?img=../../../../../../etc/passwd
 
