@@ -157,11 +157,7 @@ Lets view the source page
 
 We found this commented error code, what does this code says??
 
-><font color="Green">The error message "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/None'" suggests that the file that the program is trying to open does not exist.
-
-The file path is '/tmp/None', which implies that the filename variable 'fn' might be None or empty. Therefore, when the program tries to open the file with the open() function, it cannot find the file and raises the FileNotFoundError.
-
-You can check whether the variable 'fn' is None or empty and ensure that the file exists at the specified location before opening it. Alternatively, you can use a try-except block to handle the FileNotFoundError and provide a more informative error message for the user.</font>
+><font color="Green">The error message "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/None'" suggests that the file that the program is trying to open does not exist. The file path is '/tmp/None', which implies that the filename variable 'fn' might be None or empty. Therefore, when the program tries to open the file with the open() function, it cannot find the file and raises the FileNotFoundError. You can check whether the variable 'fn' is None or empty and ensure that the file exists at the specified location before opening it. Alternatively, you can use a try-except block to handle the FileNotFoundError and provide a more informative error message for the user.</font>
 
 Now, lets check for the variable ```fn```,
 
@@ -270,9 +266,7 @@ Link:http://superpass.htb/vault/row/4
 
 We found another credentials. At this point I knew we were dealing with a vulnerability called ``IDOR```
 
-> <font color="Green">IDOR, or Insecure Direct Object Reference, is a type of security vulnerability that arises when an application allows a user to access or manipulate resources by directly referencing them using an identifier, such as a file name, record ID, or user account number.
-
-If the application fails to properly authenticate and authorize user access to those resources, an attacker may be able to bypass those checks by manipulating the identifier, and gain unauthorized access to data or functionality that should be restricted.</font>
+> <font color="Green">IDOR, or Insecure Direct Object Reference, is a type of security vulnerability that arises when an application allows a user to access or manipulate resources by directly referencing them using an identifier, such as a file name, record ID, or user account number.If the application fails to properly authenticate and authorize user access to those resources, an attacker may be able to bypass those checks by manipulating the identifier, and gain unauthorized access to data or functionality that should be restricted.</font>
 
 To exploit this we'll be using burp intruder to fuzz 
 
