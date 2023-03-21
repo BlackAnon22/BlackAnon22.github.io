@@ -10,7 +10,7 @@ Starting the instance we were given ssh credentials to connect to, now lets conn
 
 cool, we are logged in. Looking at the description of the challenge it says "**_How to automate tasks to run at interval on linux servers?_**". What came to mind when I saw this was a cronjob.
 
-><font color="Green">A cronjob is a task or command that is scheduled to run automatically at specific intervals on a Unix or Linux system. Cron is a time-based job scheduler in Unix and Linux operating systems, which allows users to schedule jobs or scripts to run automatically at specified times or intervals. A cronjob consists of a set of instructions or a script that tells the system what to do and when to do it. For example, a cronjob could be set up to run a backup script every night at midnight or to update a database every hour.</font>
+<font color="Green">A cronjob is a task or command that is scheduled to run automatically at specific intervals on a Unix or Linux system. Cron is a time-based job scheduler in Unix and Linux operating systems, which allows users to schedule jobs or scripts to run automatically at specified times or intervals. A cronjob consists of a set of instructions or a script that tells the system what to do and when to do it. For example, a cronjob could be set up to run a backup script every night at midnight or to update a database every hour.</font>
 
 Now we can view a cronjob running when we reapicoCTF{Sch3DUL7NG_T45K3_L1NUX_1b4d8744}d the contents of the ```crontab``` file in the ```/etc``` directory.
 
@@ -99,7 +99,7 @@ FLAG:- ```picoCTF{h34rd_und3r5700d_4ck_cba1c711}```
 
 ![image](https://user-images.githubusercontent.com/67879936/226699237-4491b5bd-f08f-405f-98bd-8e38e528f9d9.png)
 
-We were given an ssh instance to connect to. Lets connect to the instance
+We were given a ssh instance to connect to. Lets connect to the instance
 
 ![image](https://user-images.githubusercontent.com/67879936/226699535-f5549f44-3a28-4720-a60d-a00796a667c7.png)
 
@@ -158,7 +158,7 @@ Running this program
 
 I was almost stuck here lool, but then I checked the challenge tags again and saw ```man```.
 
-><font color="Green">On a Linux system, the man command is used to display the manual pages (or "man pages") for a given command or topic. To use the man command, you simply type "man" followed by the name of the command or topic you want to learn about</font>
+<font color="Green">On a Linux system, the man command is used to display the manual pages (or "man pages") for a given command or topic. To use the man command, you simply type "man" followed by the name of the command or topic you want to learn about</font>
 
 running the command ```man useless```
 
@@ -168,6 +168,31 @@ We got the flag hehe
 
 FLAG:- ```picoCTF{us3l3ss_ch4ll3ng3_3xpl0it3d_3555}```
 
+
+
+<h2>Special General Skills -- 300 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/226752355-407ff1c5-3913-42f0-bf49-78b5acdd35e8.png)
+
+We were given a ssh instance to connect to. lets go ahead and connect
+
+>command: ssh ctf-player@saturn.picoctf.net -p 58250
+
+![image](https://user-images.githubusercontent.com/67879936/226752947-6607c591-4802-47de-bc11-59af3658dbea.png)
+
+Now that we are logged in, I tried running common linux commands like ```cd```,```ls```,```pwd``` but I was getting some errors
+
+![image](https://user-images.githubusercontent.com/67879936/226753673-e768a547-7795-4a5c-8537-63301d9248a2.png)
+
+Going back to the challenge descriptionn, this is a Spell Check Interface for affecting Linux, with this every word is properly spelled and capitalized, this is why when we ran the ```pwd``` command we got the ```Pod``` not found this is because there was automatic correction anc capitalization of the first word.
+
+Checking the hints we have "**_Experiment with different shell syntax_**". After lots of research I found something similar to a command execution. What this means is that we get to use the double underscore (__).
+
+<font color="Green">In a Linux shell, the double underscore (__) is not a command, but rather a convention used to indicate special variables or functions.</font>
+
+>command: __|whoami
+
+![image](https://user-images.githubusercontent.com/67879936/226758471-3849129e-b6cb-4cc7-9719-5a3a42b2eb63.png)
 
 
 
