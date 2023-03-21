@@ -1,4 +1,4 @@
-<h2>chrono GENERAL SKILLS -- 100 points</h2>
+<h2>chrono Gneral Skills -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226687719-42b2846c-c3fc-41d5-81fd-2ba56610a025.png)
 
@@ -8,4 +8,116 @@ Starting the instance we were given ssh credentials to connect to, now lets conn
 
 ![image](https://user-images.githubusercontent.com/67879936/226688073-bc027985-c22f-45a5-8fc7-ce2fe56218db.png)
 
-cool, we are logged in. Looking at the description of the challenge it says "**_How to automate tasks to run at interval on linux servers?_**". What comes to
+cool, we are logged in. Looking at the description of the challenge it says "**_How to automate tasks to run at interval on linux servers?_**". What came to mind when I saw this was a cronjob.
+
+><font color="Green">A cronjob is a task or command that is scheduled to run automatically at specific intervals on a Unix or Linux system. Cron is a time-based job scheduler in Unix and Linux operating systems, which allows users to schedule jobs or scripts to run automatically at specified times or intervals. A cronjob consists of a set of instructions or a script that tells the system what to do and when to do it. For example, a cronjob could be set up to run a backup script every night at midnight or to update a database every hour.</font>
+
+Now we can view a cronjob running when we reapicoCTF{Sch3DUL7NG_T45K3_L1NUX_1b4d8744}d the contents of the ```crontab``` file in the ```/etc``` directory.
+
+![image](https://user-images.githubusercontent.com/67879936/226690638-c0eecc92-77c6-4011-88f8-041ac988e5b7.png)
+
+cool, we got the flag
+
+FLAG:- ```picoCTF{Sch3DUL7NG_T45K3_L1NUX_1b4d8744}```
+
+
+
+<h2>permissions General Skills -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/226691382-6c1aa280-d329-4cbc-a579-fec959c68c2e.png)
+
+We also got another ssh instance to connect to, lets go ahead and connect 
+
+>command: ssh picoplayer@saturn.picoctf.net -p 60852
+
+![image](https://user-images.githubusercontent.com/67879936/226691689-645ceb2d-d6c8-4d90-9217-a6bae9f5e321.png)
+
+Checking the description of the challenge, it says "**_can you read files in the root file?_**". 
+
+To read root files means we have to escalate our privileges to that of the root user. Running the command ```sudo -l``` I found something interesting
+
+![image](https://user-images.githubusercontent.com/67879936/226692873-fe1c6200-3eec-472a-b07c-c5219739b736.png)
+
+This means we can run the binary ```vi``` as root on the system using sudo. Going to GTFOBins I found the right payload to use
+
+payload:```sudo vi -c ':!/bin/sh' /dev/null```
+
+![image](https://user-images.githubusercontent.com/67879936/226693886-1777095f-1c1f-4a4e-8f1f-96fe1cde9d92.png)
+
+boom!!! we got a shell as root and also got our flag which was in the ```/root``` directory.
+
+FLAG:- ```picoCTF{uS1ng_v1m_3dit0r_1cee9dcb}```
+
+
+
+<h2>repititions General Skills</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/226695184-f17295d6-988e-40c3-a68e-4a546d58e1ee.png)
+
+We were given a file to download, lets go ahead and download it to our machine
+
+```┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/general]
+└─$ ls
+enc_flag
+                                                                                                                                                                       
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/general]
+└─$ file enc_flag           
+enc_flag: ASCII text
+                                                                                                                                                                       
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/general]
+└─$ cat enc_flag            
+VmpGU1EyRXlUWGxTYmxKVVYwZFNWbGxyV21GV1JteDBUbFpPYWxKdFVsaFpWVlUxWVZaS1ZWWnVh
+RmRXZWtab1dWWmtSMk5yTlZWWApiVVpUVm10d1VWZFdVa2RpYlZaWFZtNVdVZ3BpU0VKeldWUkNk
+MlZXVlhoWGJYQk9VbFJXU0ZkcVRuTldaM0JZVWpGS2VWWkdaSGRXCk1sWnpWV3hhVm1KRk5XOVVW
+VkpEVGxaYVdFMVhSbHBWV0VKVVZGWm9RMlZzV2tWUmJFNVNDbUpXV25wWmExSmhWMGRHZEdWRlZs
+aGkKYlRrelZERldUMkpzUWxWTlJYTkxDZz09Cg==
+```
+ohh nice hehe, we were given a base64 encoding. Lets go ahead and decode this. We'll be using cyberchef for this
+
+Link to CyberChef: https://gchq.github.io/CyberChef/
+
+![image](https://user-images.githubusercontent.com/67879936/226696867-9fb5104c-f416-4bb0-82b4-7ee07ebd2962.png)
+
+We had to decode with base64 six times to get the flag 😂 
+
+FLAG:- ```picoCTF{base64_n3st3d_dic0d!n8_d0wnl04d3d_dfe803c6}```
+
+
+<h2>Rule-2023 General Skills -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/226698018-0673dd13-8c37-4557-b5ce-ae5e1ae2c5b8.png)
+
+They provided a link, navigatung to the link we saw the rules, and checking the hints we saw that ```Ctrl+F``` won't work. I found the flag anyways by reading through though lool
+
+![image](https://user-images.githubusercontent.com/67879936/226698636-ce4b63d6-be21-4db5-bb03-a7f0ace70f57.png)
+
+FLAG:- ```picoCTF{h34rd_und3r5700d_4ck_cba1c711}```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
