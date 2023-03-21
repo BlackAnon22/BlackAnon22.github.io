@@ -50,7 +50,7 @@ FLAG:- ```picoCTF{uS1ng_v1m_3dit0r_1cee9dcb}```
 
 
 
-<h2>repititions General Skills</h2>
+<h2>repititions General Skills -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226695184-f17295d6-988e-40c3-a68e-4a546d58e1ee.png)
 
@@ -92,6 +92,81 @@ They provided a link, navigatung to the link we saw the rules, and checking the 
 ![image](https://user-images.githubusercontent.com/67879936/226698636-ce4b63d6-be21-4db5-bb03-a7f0ace70f57.png)
 
 FLAG:- ```picoCTF{h34rd_und3r5700d_4ck_cba1c711}```
+
+
+
+<h2>useless General Skills -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/226699237-4491b5bd-f08f-405f-98bd-8e38e528f9d9.png)
+
+We were given an ssh instance to connect to. Lets connect to the instance
+
+![image](https://user-images.githubusercontent.com/67879936/226699535-f5549f44-3a28-4720-a60d-a00796a667c7.png)
+
+From the description of this challenge we know we have a script sitting in the user's directory and the script is able to make basic mathematical calculations
+
+```picoplayer@challenge:~$ pwd
+/home/picoplayer
+picoplayer@challenge:~$ ls -la
+total 16
+drwxr-xr-x 1 picoplayer picoplayer   20 Mar 21 17:57 .
+drwxr-xr-x 1 root       root         24 Mar 16 02:30 ..
+-rw-r--r-- 1 picoplayer picoplayer  220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 picoplayer picoplayer 3771 Feb 25  2020 .bashrc
+drwx------ 2 picoplayer picoplayer   34 Mar 21 17:57 .cache
+-rw-r--r-- 1 picoplayer picoplayer  807 Feb 25  2020 .profile
+-rwxr-xr-x 1 root       root        517 Mar 16 01:30 useless
+picoplayer@challenge:~$ file useless 
+useless: Bourne-Again shell script, ASCII text executable
+picoplayer@challenge:~$ cat useless 
+#!/bin/bash
+# Basic mathematical operations via command-line arguments
+
+if [ $# != 3 ]
+then
+  echo "Read the code first"
+else
+        if [[ "$1" == "add" ]]
+        then 
+          sum=$(( $2 + $3 ))
+          echo "The Sum is: $sum"  
+
+        elif [[ "$1" == "sub" ]]
+        then 
+          sub=$(( $2 - $3 ))
+          echo "The Substract is: $sub" 
+
+        elif [[ "$1" == "div" ]]
+        then 
+          div=$(( $2 / $3 ))
+          echo "The quotient is: $div" 
+
+        elif [[ "$1" == "mul" ]]
+        then
+          mul=$(( $2 * $3 ))
+          echo "The product is: $mul" 
+
+        else
+          echo "Read the manual"
+         
+        fi
+fi
+```
+Running this program
+
+![image](https://user-images.githubusercontent.com/67879936/226700524-47f8fc80-3dd8-4f8f-942f-392c9fb53e24.png)
+
+I was almost stuck here lool, but then I checked the challenge tags again and saw ```man```.
+
+><font color="Green">On a Linux system, the man command is used to display the manual pages (or "man pages") for a given command or topic. To use the man command, you simply type "man" followed by the name of the command or topic you want to learn about</font>
+
+running the command ```man useless```
+
+![image](https://user-images.githubusercontent.com/67879936/226701284-9b2662e7-88ba-4979-bedd-72bcc0392347.png)
+
+We got the flag hehe
+
+FLAG:- ```picoCTF{us3l3ss_ch4ll3ng3_3xpl0it3d_3555}```
 
 
 
