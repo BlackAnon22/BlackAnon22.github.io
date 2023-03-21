@@ -78,7 +78,7 @@ Link to CyberChef: https://gchq.github.io/CyberChef/
 
 ![image](https://user-images.githubusercontent.com/67879936/226696867-9fb5104c-f416-4bb0-82b4-7ee07ebd2962.png)
 
-We had to decode with base64 six times to get the flag 😂 
+I had to decode with base64 six times to get the flag 😂 
 
 FLAG:- ```picoCTF{base64_n3st3d_dic0d!n8_d0wnl04d3d_dfe803c6}```
 
