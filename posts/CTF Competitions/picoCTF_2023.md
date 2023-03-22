@@ -279,10 +279,44 @@ FLAG:- ```picoCTF{y0u_d0n7_4ppr3c1473_wh47_w3r3_d01ng_h3r3_811ae7e9}```
 
 
 
+<h2>findme Web -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/226775277-6e9a25bf-d668-4084-9536-8a2fc3b10f97.png)
+
+okay, so we have been given a link here and some user creds ```username:test``` ```password:test!```. Navigating to that url
+
+![image](https://user-images.githubusercontent.com/67879936/226775541-045dbd01-fea5-4c53-af2e-dea9d4133571.png)
+
+cool, we got a login page. Now, while inputting the username and password we'll capture this request on burpsuite.
+
+![image](https://user-images.githubusercontent.com/67879936/226777179-a20d1b61-f70c-4268-a19c-479a37631f89.png)
+![image](https://user-images.githubusercontent.com/67879936/226777198-7f2fc0b2-f1f5-4779-afb3-dda8fb9a0b89.png)
+
+Lets forward this request we get this
+
+![image](https://user-images.githubusercontent.com/67879936/226776504-9412087f-8cd7-4117-879e-17b57403b323.png)
+
+so I sent this to burp repeater
+
+![image](https://user-images.githubusercontent.com/67879936/226776850-1ee23abc-904c-49dc-87f8-ca6f0d8bb9fe.png)
+
+I think we  got something encoded in base64, putting them together you have ```cGljb0NURntwcm94aWVzX2FsbF90aGVfd2F5X2QxYzBiMTEyfQ==``` Lets decode this using cyberchef
+
+Link: https://gchq.github.io/CyberChef/
+
+![image](https://user-images.githubusercontent.com/67879936/226777095-c8c99c4f-bc56-42c7-9aa7-635f8e72550d.png)
+
+cool, we got the flag
+
+FLAG:- ```picoCTF{proxies_all_the_way_d1c0b112}```
 
 
 
+<h2>MatchTheRegex Web -- 100 points</h2>
 
+![image](https://user-images.githubusercontent.com/67879936/226777518-f7e31894-0062-4d7f-bbba-ad10f17c7262.png)
+
+we were provided with a link, navigating to that link
 
 
 
