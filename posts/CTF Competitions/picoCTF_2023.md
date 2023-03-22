@@ -22,6 +22,36 @@ FLAG:- ```picoCTF{Sch3DUL7NG_T45K3_L1NUX_1b4d8744}```
 
 
 
+
+<h2>money-ware General Skills -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/226774556-d8b41c6f-53a1-4bc0-b0b1-5c111e50a8c3.png)
+
+We got a hint that said "**_Some crypto-currencies abuse databases exist; check them out!_**"
+
+Then I went to google and got this url https://www.bitcoinabuse.com/
+
+Lets paste the bitcoin address in here
+
+![image](https://user-images.githubusercontent.com/67879936/226773534-3900dabd-ab93-40a3-8c0e-f7a40eddec6d.png)
+
+At the bottom of this page we find the link that says more information here: https://blog.avira.com/petya-strikes-back/ 
+
+Navigating to that link
+
+![image](https://user-images.githubusercontent.com/67879936/226774117-b51feb08-86d9-4317-970d-fe683d8e0734.png)
+
+Reading more about petya
+
+<font color="Green">Petya is a type of malware that was first discovered in 2016. It is a ransomware that encrypts the entire hard drive of an infected computer, making it impossible for the user to access any files or data stored on it. The malware demands a ransom payment in exchange for a decryption key to restore access to the encrypted files.</font>
+
+I think we found our flag
+
+FLAG:- ```picoCTF{Petya}```
+
+
+
+
 <h2>permissions General Skills -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226691382-6c1aa280-d329-4cbc-a579-fec959c68c2e.png)
