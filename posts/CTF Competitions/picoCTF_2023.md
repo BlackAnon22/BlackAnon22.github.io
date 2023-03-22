@@ -589,7 +589,7 @@ You'll get this page when click on the flag pdf, so we don't have the permission
 
 Sent the request to burp repeater
 
-![image](https://user-images.githubusercontent.com/67879936/227001894-9a0d577f-e787-4ae5-8428-c2e134c1ce3c.png
+![image](https://user-images.githubusercontent.com/67879936/227001894-9a0d577f-e787-4ae5-8428-c2e134c1ce3c.png)
 
 So I changed the directory. You can also see that we have a jwt token, lets try to read the pdf file called flag, as you can see it has an ```id``` of ```5```. So, navigating to this directory ```/base/books/pdf/5``` we'll try to read the file. 
 
@@ -623,7 +623,7 @@ cool, we found the secret key which is ```1234```, now lets apply this as we cha
 
 ![image](https://user-images.githubusercontent.com/67879936/226999491-ac22249c-4792-4555-a9e9-f5d276b4ead8.png)
 
-cool, if you observer the signature is now verified. Lets copy this new token and replace it with the former one that was there
+cool, if you observe the signature is now verified. Lets copy this new token and replace it with the former one that was there
 
 ![image](https://user-images.githubusercontent.com/67879936/226999770-4ae36d7d-3eb4-46f0-87d8-82982a2c7e89.png)
 
@@ -642,21 +642,311 @@ FLAG:- ```picoCTF{w34k_jwt_n0t_g00d_d72df65e}```
 
 
 
+<h2>hideme Forensics -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/227004778-3dff76ce-32ef-416d-9a44-a120667fe186.png)
+
+Downloading the file to my machine
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ ls
+flag.png
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ file flag.png        
+flag.png: PNG image data, 512 x 504, 8-bit/color RGBA, non-interlaced
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ exiftool flag.png        
+ExifTool Version Number         : 12.57
+File Name                       : flag.png
+Directory                       : .
+File Size                       : 43 kB
+File Modification Date/Time     : 2023:03:22 19:38:37+01:00
+File Access Date/Time           : 2023:03:22 19:38:53+01:00
+File Inode Change Date/Time     : 2023:03:22 19:38:48+01:00
+File Permissions                : -rw-r--r--
+File Type                       : PNG
+File Type Extension             : png
+MIME Type                       : image/png
+Image Width                     : 512
+Image Height                    : 504
+Bit Depth                       : 8
+Color Type                      : RGB with Alpha
+Compression                     : Deflate/Inflate
+Filter                          : Adaptive
+Interlace                       : Noninterlaced
+Warning                         : [minor] Trailer data after PNG IEND chunk
+Image Size                      : 512x504
+Megapixels                      : 0.258
+```
+So this is a png image. So I went ahead to use  a tool called ```zsteg``` to check if I can extract informations from the file
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ zsteg flag.png 
+[?] 3206 bytes of extra data after image end (IEND), offset = 0x9b3b
+extradata:0         .. file: Zip archive data, at least v1.0 to extract, compression method=store
+    00000000: 50 4b 03 04 0a 00 00 00  00 00 3d 10 70 56 00 00  |PK........=.pV..|
+    00000010: 00 00 00 00 00 00 00 00  00 00 07 00 1c 00 73 65  |..............se|
+    00000020: 63 72 65 74 2f 55 54 09  00 03 95 78 12 64 95 78  |cret/UT....x.d.x|
+    00000030: 12 64 75 78 0b 00 01 04  00 00 00 00 04 00 00 00  |.dux............|
+    00000040: 00 50 4b 03 04 14 00 00  00 08 00 3d 10 70 56 5b  |.PK........=.pV[|
+    00000050: 9b f6 a9 44 0b 00 00 de  0b 00 00 0f 00 1c 00 73  |...D...........s|
+    00000060: 65 63 72 65 74 2f 66 6c  61 67 2e 70 6e 67 55 54  |ecret/flag.pngUT|
+    00000070: 09 00 03 95 78 12 64 95  78 12 64 75 78 0b 00 01  |....x.d.x.dux...|
+    00000080: 04 00 00 00 00 04 00 00  00 00 cd 56 67 3c db 8d  |...........Vg<..|
+    00000090: 16 fe 53 ab 5a 1a 7b ef  52 d7 a8 4d 25 66 5e a3  |..S.Z.{.R..M%f^.|
+    000000a0: 66 89 91 88 8a 4d 6d 45  8c d8 1a 6f 75 d0 d7 6a  |f....MmE...ou..j|
+    000000b0: ec d0 9a 55 14 af 95 a0  3a d4 2a 6a 94 a6 56 07  |...U....:.*j..V.|
+    000000c0: 62 f3 da 23 e2 e6 7e bc  1f ee f7 7b 3e 9c e7 ec  |b..#..~....{>...|
+    000000d0: f3 e5 f9 fd ce 79 64 63  6d ca c6 2a c8 0a 00 00  |.....ydcm..*....|
+    000000e0: 9b d9 6d 23 18 00 d0 23  68 b6 2a 88 a6 80 83 20  |..m#...#h.*.... |
+    000000f0: 19 47 1a 30 f8 1a 5a 19  02 40 e3 b3 2b 14 77 46  |.G.0..Z..@..+.wF|
+```
+As you can see this png image has the header of a zip file. Interesting 😎. So, I went ahead to unzip
+
+>command: unzip flag.png
+
+```             
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ unzip flag.png                          
+Archive:  flag.png
+warning [flag.png]:  39739 extra bytes at beginning or within zipfile
+  (attempting to process anyway)
+   creating: secret/
+  inflating: secret/flag.png         
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ ls
+flag.png  secret
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ cd secret   
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/…/CTF/picoCTF_2023/forensics/secret]
+└─$ ls
+flag.png
+```
+cool, we got another ```flag.png``` image. Taking a look at this image in my file manager I found this
+
+![image](https://user-images.githubusercontent.com/67879936/227006798-7ac59ac6-de8a-4506-bd6a-0a07a1c70eee.png)
+
+Yeah, we got the flag
+
+FLAG:- ```picoCTF{Hiddinng_An_imag3_within_@n_ima9e_82101824}```
+
+
+<h2>PcapPoisoning Forensics -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/227007350-f6b63c12-da6a-4734-be02-0bbe6407f6b1.png)
+
+This one was quite easy. Downloading the file to our machine
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ ls
+flag.png  secret  trace.pcap
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ file trace.pcap 
+trace.pcap: pcap capture file, microsecond ts (little-endian) - version 2.4 (Raw IPv4, capture length 65535)
+```
+So, this is a pcap file. I didn't want to go through the stress of using wireshark so I grepped the flag out
+
+>command: strings trace.pcap| grep -i "pico"
+
+![image](https://user-images.githubusercontent.com/67879936/227007868-3bda3353-4c32-45fe-8136-f78e1da6af10.png)
+
+cool, we got our flag. As I said it was quite easy lool
+
+FLAG:- ```picoCTF{P64P_4N4L7S1S_SU55355FUL_0f2d7dc9}```
+
+
+<h2>who is it Forensics -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/227008613-63578643-58cc-47f7-a30d-6f4cf5c288c2.png)
+
+Lets download the email file to our machine
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ ls
+email-export.eml  flag.png  secret  trace.pcap
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ file email-export.eml 
+email-export.eml: SMTP mail, ASCII text, with CRLF line terminators
+```
+So, I opened the file with ```gedit```, 
+
+![image](https://user-images.githubusercontent.com/67879936/227009983-ac12165b-0f9b-4304-bf19-1c816ab881d8.png)
+
+Going through the mail, I found an IP address
+
+![image](https://user-images.githubusercontent.com/67879936/227010305-00d15823-c035-4bae-8ffa-88c42185031c.png)
+
+From the hint provided "**_whois can be helpful on IP addresses also, not only domain names._**". This means we can run the ```whois``` command on this ip address
+
+>command: whois 173.249.33.206
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ whois 173.249.33.206
+
+#
+# ARIN WHOIS data and services are subject to the Terms of Use
+# available at: https://www.arin.net/resources/registry/whois/tou/
+#
+# If you see inaccuracies in the results, please report at
+# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/
+#
+# Copyright 1997-2023, American Registry for Internet Numbers, Ltd.
+#
+
+
+NetRange:       173.249.0.0 - 173.249.63.255
+CIDR:           173.249.0.0/18
+NetName:        RIPE
+NetHandle:      NET-173-249-0-0-1
+Parent:         NET173 (NET-173-0-0-0-0)
+NetType:        Early Registrations, Transferred to RIPE NCC
+OriginAS:       
+Organization:   RIPE Network Coordination Centre (RIPE)
+RegDate:        2017-09-14
+Updated:        2017-09-14
+Ref:            https://rdap.arin.net/registry/ip/173.249.0.0
+
+ResourceLink:  https://apps.db.ripe.net/search/query.html
+ResourceLink:  whois://whois.ripe.net
+
+
+OrgName:        RIPE Network Coordination Centre
+OrgId:          RIPE
+Address:        P.O. Box 10096
+City:           Amsterdam
+StateProv:      
+PostalCode:     1001EB
+Country:        NL
+RegDate:        
+Updated:        2013-07-29
+Ref:            https://rdap.arin.net/registry/entity/RIPE
+
+ReferralServer:  whois://whois.ripe.net
+ResourceLink:  https://apps.db.ripe.net/search/query.html
+
+OrgTechHandle: RNO29-ARIN
+OrgTechName:   RIPE NCC Operations
+OrgTechPhone:  +31 20 535 4444 
+OrgTechEmail:  hostmaster@ripe.net
+OrgTechRef:    https://rdap.arin.net/registry/entity/RNO29-ARIN
+
+OrgAbuseHandle: ABUSE3850-ARIN
+OrgAbuseName:   Abuse Contact
+OrgAbusePhone:  +31205354444 
+OrgAbuseEmail:  abuse@ripe.net
+OrgAbuseRef:    https://rdap.arin.net/registry/entity/ABUSE3850-ARIN
+
+
+#
+# ARIN WHOIS data and services are subject to the Terms of Use
+# available at: https://www.arin.net/resources/registry/whois/tou/
+#
+# If you see inaccuracies in the results, please report at
+# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/
+#
+# Copyright 1997-2023, American Registry for Internet Numbers, Ltd.
+#
 
 
 
+Found a referral to whois.ripe.net.
+
+% This is the RIPE Database query service.
+% The objects are in RPSL format.
+%
+% The RIPE Database is subject to Terms and Conditions.
+% See http://www.ripe.net/db/support/db-terms-conditions.pdf
+
+% Note: this output has been filtered.
+%       To receive output for a database update, use the "-B" flag.
+
+% Information related to '173.249.32.0 - 173.249.63.255'
+
+% Abuse contact for '173.249.32.0 - 173.249.63.255' is 'abuse@contabo.de'
+
+inetnum:        173.249.32.0 - 173.249.63.255
+netname:        CONTABO
+descr:          Contabo GmbH
+country:        DE
+org:            ORG-GG22-RIPE
+admin-c:        MH7476-RIPE
+tech-c:         MH7476-RIPE
+status:         ASSIGNED PA
+mnt-by:         MNT-CONTABO
+created:        2018-08-22T07:28:02Z
+last-modified:  2018-08-22T07:28:02Z
+source:         RIPE
+
+organisation:   ORG-GG22-RIPE
+org-name:       Contabo GmbH
+country:        DE
+org-type:       LIR
+remarks:        * Please direct all complaints about Internet abuse like Spam, hacking or scans *
+remarks:        * to abuse@contabo.de . This will guarantee fastest processing possible. *
+address:        Aschauer Strasse 32a
+address:        81549
+address:        Munchen
+address:        GERMANY
+phone:          +498921268372
+fax-no:         +498921665862
+abuse-c:        MH12453-RIPE
+mnt-ref:        RIPE-NCC-HM-MNT
+mnt-ref:        MNT-CONTABO
+mnt-ref:        MNT-OCIRIS
+mnt-by:         RIPE-NCC-HM-MNT
+mnt-by:         MNT-CONTABO
+created:        2009-12-09T13:41:08Z
+last-modified:  2021-09-14T10:49:04Z
+source:         RIPE # Filtered
+
+person:         Wilhelm Zwalina
+address:        Contabo GmbH
+address:        Aschauer Str. 32a
+address:        81549 Muenchen
+phone:          +49 89 21268372
+fax-no:         +49 89 21665862
+nic-hdl:        MH7476-RIPE
+mnt-by:         MNT-CONTABO
+mnt-by:         MNT-GIGA-HOSTING
+created:        2010-01-04T10:41:37Z
+last-modified:  2020-04-24T16:09:30Z
+source:         RIPE
+
+% Information related to '173.249.32.0/23AS51167'
+
+route:          173.249.32.0/23
+descr:          CONTABO
+origin:         AS51167
+mnt-by:         MNT-CONTABO
+created:        2018-02-01T09:50:10Z
+last-modified:  2018-02-01T09:50:10Z
+source:         RIPE
+
+% This query was served by the RIPE Database Query Service version 1.106 (ABERDEEN)
+```
+The task was to look for the owner of the mail server, and from our ```whois``` scan we find the name ```Wilhelm Zwalina```. I think we found our flag already.
+
+FLAG:- ```picoCTF{WilhelmZwalina}```
 
 
 
+<h2>FindAndOpen Forensics -- 200 points</h2>
 
+![image](https://user-images.githubusercontent.com/67879936/227011475-4edf9061-8f63-4769-821b-edb25ddf0182.png)
 
-
-
-
-
-
-
-
+Downloading the 2 files to our machine
 
 
 
