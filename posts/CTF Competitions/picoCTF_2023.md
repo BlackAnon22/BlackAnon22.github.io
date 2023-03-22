@@ -194,7 +194,57 @@ Checking the hints we have "**_Experiment with different shell syntax_**". After
 
 ![image](https://user-images.githubusercontent.com/67879936/226758471-3849129e-b6cb-4cc7-9719-5a3a42b2eb63.png)
 
+We got ourselves a command injection. This means we can now run linux commands. But there is still an issue, we can only run single commands like ```ls```,```pwd```,```id```,```whoami```, when we try to run ```cd /home``` we get an error
 
+![image](https://user-images.githubusercontent.com/67879936/226760641-8bf878f9-4217-43a4-a3e8-e1a76e4f3ce7.png)
+
+After googling stuffs, I found out that if i run ```__|ls "-la"``` I won't get an error
+
+![image](https://user-images.githubusercontent.com/67879936/226761409-0ff7db7c-0032-49cb-9197-e1cdf9703222.png)
+
+cool, from the above screenshot we can see that ```blargh``` is a directory now lets go ahead and read the flag file. Since this is a CTF competition I assumed the flag name to be "flag.txt"
+
+>command: __|cat "blargh/flag.txt"
+
+![image](https://user-images.githubusercontent.com/67879936/226761957-87700ef5-b64e-4b12-a7f7-9d4122daed4e.png)
+
+cool we got the flag
+
+FLAG:- ```picoCTF{5p311ch3ck_15_7h3_w0r57_a60bdf40}```
+
+
+
+<h2>Specialer General Skills -- 400 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/226762586-51626a16-bbfb-444b-b5a9-e5ec7cab5509.png)
+
+We got another ssh instance to connect to
+
+![image](https://user-images.githubusercontent.com/67879936/226762812-acce109d-3e12-4a4a-ab0f-8c8f0296c4e3.png)
+
+cool, we are logged in. 
+
+You should have noticed by now that what we tried for the special challenge won't work here xD. 
+
+![image](https://user-images.githubusercontent.com/67879936/226765626-841afe4a-433b-46f5-b933-99e6a0caa7a1.png)
+
+Exactly, we get an error. After looking around for a while and yeah doing research I found out that the echo command works
+
+![image](https://user-images.githubusercontent.com/67879936/226765721-494259e3-c336-4c3d-b71b-7a7c4bfbf971.png)
+
+Nice. We are on the right track
+
+We can use the ```echo *``` to list directories and use ```echo */*``` to list files under the directories
+
+![image](https://user-images.githubusercontent.com/67879936/226766063-6d9f4771-9f07-4926-852a-69e6f357dc75.png)
+
+Our flag is in one of these files, to read the contents of the files we can use the command ```echo "$(<filename)"```
+
+![image](https://user-images.githubusercontent.com/67879936/226766838-ec2971cd-23d1-4fde-9e62-f5c9c1ceb0ca.png)
+
+we found our flag 
+
+FLAG:- ```picoCTF{y0u_d0n7_4ppr3c1473_wh47_w3r3_d01ng_h3r3_811ae7e9}```
 
 
 
