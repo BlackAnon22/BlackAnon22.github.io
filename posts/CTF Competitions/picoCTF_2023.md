@@ -56,7 +56,8 @@ FLAG:- ```picoCTF{uS1ng_v1m_3dit0r_1cee9dcb}```
 
 We were given a file to download, lets go ahead and download it to our machine
 
-```┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/general]
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/general]
 └─$ ls
 enc_flag
                                                                                                                                                                        
