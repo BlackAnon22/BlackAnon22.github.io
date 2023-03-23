@@ -948,12 +948,180 @@ FLAG:- ```picoCTF{WilhelmZwalina}```
 
 Downloading the 2 files to our machine
 
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ ls
+dump.pcap  email-export.eml  flag.png  flag.zip  secret  trace.pcap
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ file dump.pcap
+dump.pcap: pcap capture file, microsecond ts (little-endian) - version 2.4 (Ethernet, capture length 262144)
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ file flag.zip 
+flag.zip: Zip archive data, at least v1.0 to extract, compression method=store
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ unzip flag.zip 
+Archive:  flag.zip
+[flag.zip] flag password: 
+   skipping: flag                    incorrect password
+```
+We have a pcap file and also a zip file. To unzip the flag.zip file we need to provide a password. Checking the hints "**_Download the pcap and look for the password or flag._**"
+
+Lets analyze the pcap file using wireshark
+
+![image](https://user-images.githubusercontent.com/67879936/227106598-b666babf-4b9a-43bb-98cc-6364c5ac1a8b.png)
+![image](https://user-images.githubusercontent.com/67879936/227107398-3ebc1bc0-6acd-442d-b1ed-390909426536.png)
+
+Now. this looks like base64, copying it as printable text you have this ```BBHHPJGTFRLKVGhpcyBpcyB0aGUgc2VjcmV0OiBwaWNvQ1RGe1IzNERJTkdfTE9LZF8=```
+
+Lets decrypt this with cyberchef
+
+![image](https://user-images.githubusercontent.com/67879936/227107620-b706748e-1577-4411-b30d-7c2a8108bece.png)
+
+cool, we got the half part of the flag. ```picoCTF{R34DING_LOKd_```. I went on looking for a password in this pcap file lool. It took ne a while to know that this half part of the flag is actually the password needed to unzip the zip file.
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ unzip flag.zip
+Archive:  flag.zip
+[flag.zip] flag password: 
+ extracting: flag
+```
+cool, lets read the content of the flag file
+
+![image](https://user-images.githubusercontent.com/67879936/227108021-8929e85d-2d7c-4c0f-ac39-49647ee2f698.png)
+
+we got our flag
+
+FLAG:- ```picoCTF{R34DING_LOKd_fil56_succ3ss_0f2afb1a}```
+
+
+<h2>MSB Forensics -- 200 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/227108243-96a19e7e-0169-4276-a8a3-bf94b917a83b.png)
+
+Downloading the file to our machine
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ ls
+dump.pcap  email-export.eml  flag  flag.png  flag.zip  Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png  secret  trace.pcap
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ file Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png 
+Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png: PNG image data, 1074 x 1500, 8-bit/color RGB, non-interlaced
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ exiftool Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png 
+ExifTool Version Number         : 12.57
+File Name                       : Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png
+Directory                       : .
+File Size                       : 3.4 MB
+File Modification Date/Time     : 2023:03:23 06:04:52+01:00
+File Access Date/Time           : 2023:03:23 06:04:58+01:00
+File Inode Change Date/Time     : 2023:03:23 06:04:52+01:00
+File Permissions                : -rw-r--r--
+File Type                       : PNG
+File Type Extension             : png
+MIME Type                       : image/png
+Image Width                     : 1074
+Image Height                    : 1500
+Bit Depth                       : 8
+Color Type                      : RGB
+Compression                     : Deflate/Inflate
+Filter                          : Adaptive
+Interlace                       : Noninterlaced
+Image Size                      : 1074x1500
+Megapixels                      : 1.6
+```
+we got a png file. Lets make use of the zsteg tool to see if we can extract any information
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ zsteg Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png 
+imagedata           .. text: "~~~|||}}}"
+b1,g,lsb,xy         .. file: Common Data Format (Version 2.5 or earlier) data
+b1,g,msb,xy         .. file: Common Data Format (Version 2.5 or earlier) data
+b2,r,lsb,xy         .. text: ["U" repeated 8 times]
+b2,g,lsb,xy         .. file: Matlab v4 mat-file (little endian) \252\252\252\252\252\252\252\252, numeric, rows 4294967295, columns 4294967295
+b2,g,msb,xy         .. file: Matlab v4 mat-file (little endian) UUUUUUUU, numeric, rows 4294967295, columns 4294967295
+b2,b,lsb,xy         .. text: ["U" repeated 8 times]
+b4,r,lsb,xy         .. text: ["w" repeated 8 times]
+b4,r,msb,xy         .. text: ["U" repeated 12 times]
+b4,g,msb,xy         .. text: ["w" repeated 16 times]
+b4,b,lsb,xy         .. text: "\"\"\"\"\"\"\"\"4DC\""
+b4,b,msb,xy         .. text: "wwwwwwww3333"`
+```
+oops, nothing 🙃
+
+After researching for a while, I got to know about a tool called ```stegoveritas```. This is a tool that extract data from image files including LSB images.
+
+To install this tool: ```pip3 install stegoveritas```
+
+>command: stegoveritas -extractLSB -steghide -bruteLSB Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ stegoveritas -extractLSB -steghide -bruteLSB Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png 
+Running Module: SVImage
++---------------------------+------+
+|        Image Format       | Mode |
++---------------------------+------+
+| Portable network graphics | RGB  |
++---------------------------+------+
+Extracting ([],[],[],[])
+Extracted to /home/bl4ck4non/Downloads/CTF/picoCTF_2023/forensics/results/LSBExtracted.bin
+Found something worth keeping!
+ASCII text
++--------+------------------+-----------------------------------------------------------------------------------------------+-----------+
+| Offset | Carved/Extracted | Description                                                                                   | File Name |
++--------+------------------+-----------------------------------------------------------------------------------------------+-----------+
+| 0x460d | Carved           | LZMA compressed data, properties: 0xBE, dictionary size: 0 bytes, uncompressed size: 64 bytes | 460D.7z   |
+| 0x460d | Extracted        | LZMA compressed data, properties: 0xBE, dictionary size: 0 bytes, uncompressed size: 64 bytes | 460D      |
++--------+------------------+-----------------------------------------------------------------------------------------------+-----------+
+Found something worth keeping!
+Common Data Format (Version 2.5 or earlier) data
+Found something worth keeping!
+Matlab v4 mat-file (little endian) UUUUUUUU, numeric, rows 4294967295, columns 4294967295
+Running Module: MultiHandler
+
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ ls
+dump.pcap  email-export.eml  flag  flag.png  flag.zip  Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png  results  secret  trace.pcap
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ cd results 
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/…/CTF/picoCTF_2023/forensics/results]
+└─$ ls
+keepers  LSBExtracted.bin
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/…/CTF/picoCTF_2023/forensics/results]
+└─$ cd keepers 
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/…/picoCTF_2023/forensics/results/keepers]
+└─$ ls
+1679548564.63637-3ff6f41e1846544c1c6014020bd22e12    1679548578.9468153-0d8280b50b7f6b030a257b2f0a24288c  460D.7z
+1679548575.7949412-663c8008fe204f85e9a1cb4776b7e64d  460D
+                                                                                                                                                                        
+┌──(bl4ck4non㉿bl4ck4non)-[~/…/picoCTF_2023/forensics/results/keepers]
+└─$ strings 1679548564.63637-3ff6f41e1846544c1c6014020bd22e12| grep -i "pico"
+picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}
+```
+cool, we got our flag
+
+FLAG:- ```picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}```
 
 
 
+<h2>Invisible_WORDs Forensics -- 300 points</h2>
 
+![image](https://user-images.githubusercontent.com/67879936/227110827-5551d0a7-d6a7-46f4-9911-f31dd50192ee.png)
 
-
+Lets download this image to our machine
 
 
 
