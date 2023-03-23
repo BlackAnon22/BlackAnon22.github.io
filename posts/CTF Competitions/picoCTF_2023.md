@@ -980,7 +980,7 @@ Lets decrypt this with cyberchef
 
 ![image](https://user-images.githubusercontent.com/67879936/227107620-b706748e-1577-4411-b30d-7c2a8108bece.png)
 
-cool, we got the half part of the flag. ```picoCTF{R34DING_LOKd_```. I went on looking for a password in this pcap file lool. It took ne a while to know that this half part of the flag is actually the password needed to unzip the zip file.
+cool, we got the half part of the flag. ```picoCTF{R34DING_LOKd_```. I went on looking for a password in this pcap file lool. It sure took me a while in noticing that this half part of the flag is actually the password needed to unzip the zip file.
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
