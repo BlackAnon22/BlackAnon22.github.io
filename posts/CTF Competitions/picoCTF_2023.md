@@ -1123,6 +1123,122 @@ FLAG:- ```picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}```
 
 Lets download this image to our machine
 
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ ls
+dump.pcap  email-export.eml  flag  flag.png  flag.zip  Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png  output.bmp  results  secret  trace.pcap
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ file output.bmp                                             
+output.bmp: PC bitmap, Windows 98/2000 and newer format, 960 x 540 x 32, cbSize 2073738, bits offset 138
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ exiftool output.bmp                                             
+ExifTool Version Number         : 12.57
+File Name                       : output.bmp
+Directory                       : .
+File Size                       : 2.1 MB
+File Modification Date/Time     : 2023:03:23 11:25:17+01:00
+File Access Date/Time           : 2023:03:23 11:26:42+01:00
+File Inode Change Date/Time     : 2023:03:23 11:25:17+01:00
+File Permissions                : -rw-r--r--
+File Type                       : BMP
+File Type Extension             : bmp
+MIME Type                       : image/bmp
+BMP Version                     : Windows V5
+Image Width                     : 960
+Image Height                    : 540
+Planes                          : 1
+Bit Depth                       : 32
+Compression                     : Bitfields
+Image Length                    : 2073600
+Pixels Per Meter X              : 11811
+Pixels Per Meter Y              : 11811
+Num Colors                      : Use BitDepth
+Num Important Colors            : All
+Red Mask                        : 0x00007c00
+Green Mask                      : 0x000003e0
+Blue Mask                       : 0x0000001f
+Alpha Mask                      : 0x00000000
+Color Space                     : sRGB
+Rendering Intent                : Proof (LCS_GM_GRAPHICS)
+Image Size                      : 960x540
+Megapixels                      : 0.518
+```
+okay, this is a bitmap file. I viewed this file on cyberchef and found something interesting
+
+![image](https://user-images.githubusercontent.com/67879936/227176480-6d0e0cc2-e197-40cb-8836-982132c51543.png)
+
+As you can see the  header of this image we see ```PK```, similar to the previous challenge we solved it is meant to be a zip file, but there are some bits before ```PK```, so what we have to do is remove them. To do this I used a python script
+
+```
+with open('output.bmp', 'rb') as f:
+    f.seek(140)  # Move the file pointer to byte 140
+    data = f.read()  # Read the remaining bytes from the file starting from byte 140
+
+    # Create a sequence of indices starting from 0 and incrementing by 4 up to the length of f
+    indices = range(0, len(data), 4)
+
+    # Create a list of byte strings, where each element is a slice of f that starts at the current index x
+    # and extends to the next index x+2
+    byte_strings = [data[i:i+2] for i in indices]
+
+    # Write the list of byte strings to a file
+    with open('output.txt', 'wb') as f:
+        for byte_string in byte_strings:
+            f.write(byte_string)
+
+    print('File written successfully.')  # Output success message
+```
+This script is extracting every second byte from the BMP image file and writing the extracted bytes to a new binary file. You should know  that the resulting file may have a different format than the original BMP file.
+
+Now, lets save this script in a ```.py``` file and run it in the same directory where we have our ```output.bmp``` file. 
+
+>command: python omor.py
+
+![image](https://user-images.githubusercontent.com/67879936/227178658-e35272ea-c451-4db0-94df-e19ca41eeab0.png)
+
+As you can see we now have a zip file. Lets use binwalk to extract information from this
+
+>command: binwalk -e output.txt
+
+![image](https://user-images.githubusercontent.com/67879936/227179574-5daf4aa2-7e7f-4d47-8ffd-957cf3caf70f.png)
+
+we found our flag hehe
+
+FLAG:- ```picoCTF{w0rd_d4wg_y0u_f0und_5h3113ys_m4573rp13c3_a23dfbd4}```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
