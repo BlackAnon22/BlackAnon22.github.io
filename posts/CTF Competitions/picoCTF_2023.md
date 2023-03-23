@@ -1209,6 +1209,129 @@ we found our flag hehe
 FLAG:- ```picoCTF{w0rd_d4wg_y0u_f0und_5h3113ys_m4573rp13c3_a23dfbd4}```
 
 
+<h2>HideToSee Cryptography -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/227182078-3d71d33b-f616-4a6d-91de-756b20bc5561.png)
+
+Lets download the file to our machine
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/cryptography]
+└─$ ls 
+atbash.jpg
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/cryptography]
+└─$ file atbash.jpg                  
+atbash.jpg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, baseline, precision 8, 465x455, components 3
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/cryptography]
+└─$ exiftool atbash.jpg 
+ExifTool Version Number         : 12.57
+File Name                       : atbash.jpg
+Directory                       : .
+File Size                       : 51 kB
+File Modification Date/Time     : 2023:03:23 11:56:12+01:00
+File Access Date/Time           : 2023:03:23 11:56:30+01:00
+File Inode Change Date/Time     : 2023:03:23 11:56:18+01:00
+File Permissions                : -rw-r--r--
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+JFIF Version                    : 1.01
+Resolution Unit                 : None
+X Resolution                    : 1
+Y Resolution                    : 1
+Image Width                     : 465
+Image Height                    : 455
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
+Image Size                      : 465x455
+Megapixels                      : 0.212
+```
+okay, this is a jpeg file. We'll be using a tool called ```steghide``` to extact information from this jpeg file
+
+To install: ```sudo apt install steghide```.
+
+since we don't have a passphrase, we'll just hit the ```enter``` key when we are asked to provide a passphrase
+
+![image](https://user-images.githubusercontent.com/67879936/227183180-e689737f-bbde-41f9-b564-c952dae0975d.png)
+
+Now, that looks like the flag, when I checked the type of cipher it turned out to be a ```caesar cipher```.
+
+This is the mapping
+```
+ABCDEFGHIJKLMNOPQRSTUVWXYZ ----- plaintext
+ZYXWVUTSRQPONMLKJIHGFEDCBA ----- cipher
+```
+So, decrypting it we have the flag
+
+FLAG:- ```picoCTF{atbash_crack_8a0feddc} ```
+
+
+
+<h2>ReadMyCert Cryptography -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/227187329-7203bd0a-5e4c-4bb1-a80a-cbbc44ff2b5b.png)
+
+Lets download this file to our machine
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/cryptography]
+└─$ ls
+atbash.jpg  encrypted.txt  readmycert.csr
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/cryptography]
+└─$ file readmycert.csr
+readmycert.csr: PEM certificate request
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/cryptography]
+└─$ exiftool readmycert.csr 
+ExifTool Version Number         : 12.57
+File Name                       : readmycert.csr
+Directory                       : .
+File Size                       : 997 bytes
+File Modification Date/Time     : 2023:03:23 12:17:18+01:00
+File Access Date/Time           : 2023:03:23 12:17:34+01:00
+File Inode Change Date/Time     : 2023:03:23 12:17:21+01:00
+File Permissions                : -rw-r--r--
+File Type                       : TXT
+File Type Extension             : txt
+MIME Type                       : text/plain
+MIME Encoding                   : us-ascii
+Newlines                        : Unix LF
+Line Count                      : 17
+Word Count                      : 21
+```
+From the hint we were given we were told to try to read the file. Lets try to read it from our file manager
+
+![image](https://user-images.githubusercontent.com/67879936/227188684-4b47ef5d-3be3-440f-9c2f-617acabfa53e.png)
+
+We found our flag
+
+FLAG:- ```picoCTF{read_mycert_693f7c03}```
+
+
+
+<h2>rotation Cryptography -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/227189216-6da83614-ff7c-49aa-bcd7-087a054a9549.png)
+
+Lets download this file to our machine
+
+![image](https://user-images.githubusercontent.com/67879936/227189751-dbd1fe1e-196e-4c9a-abf0-7a7a69742499.png)
+
+we got another encrypted text having the flag format. I got to know that this is a ```caesar cipher```, so I used decrypted it with an online tool
+
+Link: https://www.boxentriq.com/code-breaking/caesar-cipher
+
+![image](https://user-images.githubusercontent.com/67879936/227194861-a2814861-9a2a-45d5-9837-84dc6c80cfec.png)
+
+We got our flag
+
+FLAG:- ```picoCTF{r0tat1on_d3crypt3d_949af1a1}```
+
 
 
 
