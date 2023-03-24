@@ -1209,6 +1209,288 @@ we found our flag hehe
 FLAG:- ```picoCTF{w0rd_d4wg_y0u_f0und_5h3113ys_m4573rp13c3_a23dfbd4}```
 
 
+
+
+<h2>UnforgottenBits  Forensics -- 500 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/227452424-9c66f7f0-4742-477a-b9ad-cd2c3f9e0bd2.png)
+
+Lets go ahead and download the file to our machine
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ ls
+disk.flag.img.gz  email-export.eml  flag.png  Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png  output.bmp  _output.txt.extracted  secret
+dump.pcap         flag              flag.zip  omor.py                                                  output.txt  results                trace.pcap
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ file disk.flag.img.gz 
+disk.flag.img.gz: gzip compressed data, was "disk.flag.img", last modified: Thu Mar 16 02:35:52 2023, from Unix, original size modulo 2^32 1073741824
+```
+This is a compressed data, to extract we'll be using the ```gzip``` command
+
+>command: gzip -d disk.flag.img.gz
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ gzip -d  disk.flag.img.gz
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ ls
+disk.flag.img  email-export.eml  flag.png  Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png  output.bmp  _output.txt.extracted  secret
+dump.pcap      flag              flag.zip  omor.py                                                  output.txt  results                trace.pcap
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
+└─$ file disk.flag.img   
+disk.flag.img: DOS/MBR boot sector; partition 1 : ID=0x83, active, start-CHS (0x0,32,33), end-CHS (0xc,223,19), startsector 2048, 204800 sectors; partition 2 : ID=0x82, start-CHS (0xc,223,20), end-CHS (0x2d,130,21), startsector 206848, 524288 sectors; partition 3 : ID=0x83, start-CHS (0x2d,130,22), end-CHS (0x82,138,8), startsector 731136, 1366016 sectors
+```
+cool, now we got a disk image. Lets go ahead and mount it. 
+
+>command: fdisk -l disk.flag.img
+
+![image](https://user-images.githubusercontent.com/67879936/227453796-987d0ddf-989f-4853-bb87-6ad3073c0f11.png)
+
+Multiply that number by 512, multiplying mine I get ```374341632```. So, now we'll be using this command
+
+>command: sudo mount -t ext4 -o loop,offset=374341632 disk.flag.img /mnt/
+
+![image](https://user-images.githubusercontent.com/67879936/227454325-d6a3364a-33d8-4976-abbc-7f7485efe92f.png)
+
+cool, we have successfully mounted it to the ```/mnt/``` directory
+
+Lets check the ```/home``` directory we are going to find some cool stuffs there hehe
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt]
+└─$ cd home
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home]
+└─$ ls -la     
+total 12
+drwxr-xr-x  3 root      root      4096 Jan 12 21:57 .
+drwxr-xr-x 22 root      root      4096 Dec 19 22:02 ..
+drwxr-sr-x  7 bl4ck4non bl4ck4non 4096 Jan 16 20:52 yone
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home]
+└─$ cd yone
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone]
+└─$ ls -la
+total 32
+drwxr-sr-x 7 bl4ck4non bl4ck4non 4096 Jan 16 20:52 .
+drwxr-xr-x 3 root      root      4096 Jan 12 21:57 ..
+-rw------- 1 bl4ck4non bl4ck4non    8 Jan 16 20:52 .ash_history
+drwxr-xr-x 2 bl4ck4non bl4ck4non 4096 Jan 14 20:18 gallery
+drwxr-xr-x 5 bl4ck4non bl4ck4non 4096 Jan 14 20:08 irclogs
+drwxr-xr-x 2 bl4ck4non bl4ck4non 4096 Jan 14 20:12 .lynx
+drwx------ 5 bl4ck4non bl4ck4non 4096 Jan 14 19:59 Maildir
+drwxr-sr-x 2 bl4ck4non bl4ck4non 4096 Jan 14 23:13 notes
+```
+Lets start by checking the ```/gallery``` directory.
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone]
+└─$ cd gallery 
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ ls -la
+total 12312
+drwxr-xr-x 2 bl4ck4non bl4ck4non    4096 Jan 14 20:18 .
+drwxr-sr-x 7 bl4ck4non bl4ck4non    4096 Jan 16 20:52 ..
+-rw-r--r-- 1 bl4ck4non bl4ck4non 3145782 Jan 14 20:18 1.bmp
+-rw-r--r-- 1 bl4ck4non bl4ck4non 3145782 Jan 14 20:18 2.bmp
+-rw-r--r-- 1 bl4ck4non bl4ck4non 3145782 Jan 14 20:18 3.bmp
+-rw-r--r-- 1 bl4ck4non bl4ck4non 3145782 Jan 14 20:18 7.bmp
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ file 1.bmp            
+1.bmp: PC bitmap, Windows 3.x format, 1024 x 1024 x 24, image size 3145728, resolution 11811 x 11811 px/m, cbSize 3145782, bits offset 54
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ steghide --extract -sf 1.bmp                                   
+Enter passphrase: 
+steghide: could not extract any data with that passphrase!
+```
+oops, we'll be needing a passphrase in order to extract informmation from those images. Moving on to ```/irclogs```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone]
+└─$ cd irclogs 
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/irclogs]
+└─$ ls -la
+total 20
+drwxr-xr-x 5 bl4ck4non bl4ck4non 4096 Jan 14 20:08 .
+drwxr-sr-x 7 bl4ck4non bl4ck4non 4096 Jan 16 20:52 ..
+drwxr-xr-x 3 bl4ck4non bl4ck4non 4096 Jan 14 20:08 01
+drwxr-xr-x 7 bl4ck4non bl4ck4non 4096 Jan 14 20:08 02
+drwxr-xr-x 3 bl4ck4non bl4ck4non 4096 Jan 14 20:08 07
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/irclogs]
+└─$ cd 01     
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/irclogs/01]
+└─$ ls -la
+total 12
+drwxr-xr-x 3 bl4ck4non bl4ck4non 4096 Jan 14 20:08 .
+drwxr-xr-x 5 bl4ck4non bl4ck4non 4096 Jan 14 20:08 ..
+drwxr-xr-x 2 bl4ck4non bl4ck4non 4096 Jan 14 20:08 04
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/irclogs/01]
+└─$ cd 04
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/…/yone/irclogs/01/04]
+└─$ ls -la
+total 12
+drwxr-xr-x 2 bl4ck4non bl4ck4non 4096 Jan 14 20:08  .
+drwxr-xr-x 3 bl4ck4non bl4ck4non 4096 Jan 14 20:08  ..
+-rw-r--r-- 1 bl4ck4non bl4ck4non 1513 Jan 14 20:08 '#avidreader13.log'
+```
+cool, we found a log file. Lets read the content of this log file
+
+![image](https://user-images.githubusercontent.com/67879936/227456397-657921d8-7004-4a1c-b4ac-13fc3153cee8.png)
+
+Now, this is a conversation between two characters, and as you can see we found vital informations. We found a passphrase to use for steghide ```akalibardzyratrundle``` and also an encryption key ```salt=0f3fa17eeacd53a9 key=58593a7522257f2a95cce9a68886ff78546784ad7db4473dbd91aecd9eefd508 iv=7a12fd4dc1898efcd997a1b9496e7591```
+
+Lets go back to the ```/gallery``` directory to extract those images
+
+![image](https://user-images.githubusercontent.com/67879936/227456997-90ebe9c9-708a-42f7-b4b5-d1295ea5929a.png)
+
+cool, as you can see the passphrase wasn't working for the last image. Well, this was when I knew there was something else about ```7.bmp``` lool. The extracted information we got from the 3 other bmp images are encrypted
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ ls -la
+total 12452
+drwxr-xr-x 2 bl4ck4non bl4ck4non    4096 Mar 24 08:45 .
+drwxr-sr-x 7 bl4ck4non bl4ck4non    4096 Jan 16 20:52 ..
+-rw-r--r-- 1 bl4ck4non bl4ck4non 3145782 Jan 14 20:18 1.bmp
+-rw-r--r-- 1 bl4ck4non bl4ck4non 3145782 Jan 14 20:18 2.bmp
+-rw-r--r-- 1 bl4ck4non bl4ck4non 3145782 Jan 14 20:18 3.bmp
+-rw-r--r-- 1 bl4ck4non bl4ck4non 3145782 Jan 14 20:18 7.bmp
+-rw-r--r-- 1 bl4ck4non bl4ck4non   56784 Mar 24 08:45 dracula.txt.enc
+-rw-r--r-- 1 bl4ck4non bl4ck4non   55024 Mar 24 08:45 frankenstein.txt.enc
+-rw-r--r-- 1 bl4ck4non bl4ck4non   26464 Mar 24 08:45 les-mis.txt.enc
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ file dracula.txt.enc  
+dracula.txt.enc: data
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ file frankenstein.txt.enc 
+frankenstein.txt.enc: data
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ file les-mis.txt.enc     
+les-mis.txt.enc: data
+```
+This means we can use openssl to decrypt the texts since we found the key in their conversation earlier.
+
+>command:  openssl enc -aes-256-cbc -d -in dracula.txt.enc -out dracula_decrypted -salt -iv 7a12fd4dc1898efcd997a1b9496e7591  -K 58593a7522257f2a95cce9a68886ff78546784ad7db4473dbd91aecd9eefd508
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ openssl enc -aes-256-cbc -d -in dracula.txt.enc -out dracula_decrypted -salt -iv 7a12fd4dc1898efcd997a1b9496e7591  -K 58593a7522257f2a95cce9a68886ff78546784ad7db4473dbd91aecd9eefd508
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ openssl enc -aes-256-cbc -d -in frankenstein.txt.enc -out frankenstein_decrypted -salt -iv 7a12fd4dc1898efcd997a1b9496e7591  -K 58593a7522257f2a95cce9a68886ff78546784ad7db4473dbd91aecd9eefd508
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ openssl enc -aes-256-cbc -d -in les-mis.txt.enc -out lesmis_decrypted -salt -iv 7a12fd4dc1898efcd997a1b9496e7591  -K 58593a7522257f2a95cce9a68886ff78546784ad7db4473dbd91aecd9eefd508
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ ls -la
+total 12592
+drwxr-xr-x 2 bl4ck4non bl4ck4non    4096 Mar 24 08:51 .
+drwxr-sr-x 7 bl4ck4non bl4ck4non    4096 Jan 16 20:52 ..
+-rw-r--r-- 1 bl4ck4non bl4ck4non 3145782 Jan 14 20:18 1.bmp
+-rw-r--r-- 1 bl4ck4non bl4ck4non 3145782 Jan 14 20:18 2.bmp
+-rw-r--r-- 1 bl4ck4non bl4ck4non 3145782 Jan 14 20:18 3.bmp
+-rw-r--r-- 1 bl4ck4non bl4ck4non 3145782 Jan 14 20:18 7.bmp
+-rw-r--r-- 1 bl4ck4non bl4ck4non   56772 Mar 24 08:50 dracula_decrypted
+-rw-r--r-- 1 bl4ck4non bl4ck4non   56784 Mar 24 08:45 dracula.txt.enc
+-rw-r--r-- 1 bl4ck4non bl4ck4non   55013 Mar 24 08:51 frankenstein_decrypted
+-rw-r--r-- 1 bl4ck4non bl4ck4non   55024 Mar 24 08:45 frankenstein.txt.enc
+-rw-r--r-- 1 bl4ck4non bl4ck4non   26456 Mar 24 08:51 lesmis_decrypted
+-rw-r--r-- 1 bl4ck4non bl4ck4non   26464 Mar 24 08:45 les-mis.txt.enc
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ file dracula_decrypted 
+dracula_decrypted: Unicode text, UTF-8 (with BOM) text, with CRLF line terminators
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ file frankenstein_decrypted 
+frankenstein_decrypted: Unicode text, UTF-8 (with BOM) text, with CRLF line terminators
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
+└─$ file lesmis_decrypted 
+lesmis_decrypted: Unicode text, UTF-8 (with BOM) text, with CRLF line terminators
+```
+cool, we have them decoded already. But trust me when I say there's nothing there, just a thousand line of stories and all 😂. 
+
+The next goal now is to look for the passphrase we can use to extract information from ```7.bmp```. 
+
+Lets check the  ```notes``` directory
+
+![image](https://user-images.githubusercontent.com/67879936/227459738-cf78f753-e33c-4af0-ac8e-b5d059735188.png)
+
+we found something similar to a passphrase but it is incomplete. I found a mail in the ```home/yone/Maildir/new/``` directory
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt]
+└─$ cd home/yone/Maildir/new/                                          
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/Maildir/new]
+└─$ ls -la
+total 12
+drwx------ 2 bl4ck4non bl4ck4non 4096 Jan 14 19:59 .
+drwx------ 5 bl4ck4non bl4ck4non 4096 Jan 14 19:59 ..
+-rw-r--r-- 1 bl4ck4non bl4ck4non  358 Jan 16 20:49 1673722272.M424681P394146Q14.haynekhtnamet
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/Maildir/new]
+└─$ cat 1673722272.M424681P394146Q14.haynekhtnamet 
+subject: Deleting emails
+to: Sten Walker <yone786@gmail.com>
+from: Bob Bobberson <azerite17@gmail.com>
+
+Yone,
+
+This is just a reminder to delete all of our emails and scrub your trash can as well. We don't want our precious light falling into the wrong hands. You know the punishment for such 'crimes'.
+
+To the Light and All it reveals,
+- The Azerite Master
+```
+Ohh, this means some emails have been deleted already. At this point I had to switch to autopsy in order to view the deleted mails. 
+
+Autopsy is a tool that comes preinstalled with kali linux but it requires sudo privileges to be able to use it.
+
+![image](https://user-images.githubusercontent.com/67879936/227462138-1583cf02-f319-4d2c-85b8-4fd048151017.png)
+
+![image](https://user-images.githubusercontent.com/67879936/227462356-bdcae0d3-88ef-4e42-bb56-953cb735b53c.png)
+
+cool, so we'll be mounting the disk here
+
+![image](https://user-images.githubusercontent.com/67879936/227463079-8a38f088-f031-4565-98ef-7e27e7a061c4.png)
+![image](https://user-images.githubusercontent.com/67879936/227463142-e76ddf52-fbe7-425b-9edc-77d4a4ae9e76.png)
+
+The "case name" can be anything lool
+
+![image](https://user-images.githubusercontent.com/67879936/227463277-17ca2769-7cb6-46f4-a450-381482d5db4d.png)
+![image](https://user-images.githubusercontent.com/67879936/227463391-2c1cb30b-6cc4-41c4-b724-6b94d1350d73.png)
+![image](https://user-images.githubusercontent.com/67879936/227463484-643509cf-f2da-4dff-8f8b-78f832b06e2a.png)
+![image](https://user-images.githubusercontent.com/67879936/227463556-67478230-b868-4a51-8b31-c9cc07c0c6cf.png)
+![image](https://user-images.githubusercontent.com/67879936/227464878-ace32acf-478f-40bd-ada5-33f521815328.png)
+![image](https://user-images.githubusercontent.com/67879936/227465388-d2586a68-bce2-42a6-97ea-5aaef5c7d41a.png)
+![image](https://user-images.githubusercontent.com/67879936/227465468-4a7a4ac7-3c54-4b3c-a385-587c45d377e5.png)
+![image](https://user-images.githubusercontent.com/67879936/227465540-ec87cc37-0649-467a-9083-8f28bc0a2c05.png)
+![image](https://user-images.githubusercontent.com/67879936/227465705-32370b21-8525-4947-aa30-10e7c1e2e138.png)
+![image](https://user-images.githubusercontent.com/67879936/227465771-d21e7f0f-004d-4cb7-8d56-0d51c358799e.png)
+
+And that is how you mount an image using autopsy. Now, lets go ahead and view the deleted mails.
+
+
+
+
 <h2>HideToSee Cryptography -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227182078-3d71d33b-f616-4a6d-91de-756b20bc5561.png)
