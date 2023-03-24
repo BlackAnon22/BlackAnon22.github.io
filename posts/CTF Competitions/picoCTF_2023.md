@@ -1488,6 +1488,221 @@ The "case name" can be anything lool
 
 And that is how you mount an image using autopsy. Now, lets go ahead and view the deleted mails.
 
+we all know a email will always have the word "subject", lets go ahead and use  the keyword search to search for this
+
+![image](https://user-images.githubusercontent.com/67879936/227471655-0c0e161c-5111-4401-84cf-dc98d28c2179.png)
+
+we got  a bunch of results, but don't forget we are looking for the deleted mails
+
+![image](https://user-images.githubusercontent.com/67879936/227474207-4dcbcb6e-e416-4dec-8bd4-83fb32f520e6.png)
+
+We can now read the deleted mails. Going through the mail I found some interesting details
+
+![image](https://user-images.githubusercontent.com/67879936/227474843-c2b755e2-3769-4ddd-aba2-f2853d9ab68f.png)
+
+The name ```Azerite``, the Link ```https://xkcd.com/936/``` and the statement ```My only adaptation is that I use unique words from my favorite game, World of Warcraft```. Something you should know  is  that the game in this case is ```league of legends``` and not ```world of witchcraft```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone]
+└─$ ls -la
+total 32
+drwxr-sr-x 7 bl4ck4non bl4ck4non 4096 Jan 16 20:52 .
+drwxr-xr-x 3 root      root      4096 Jan 12 21:57 ..
+-rw------- 1 bl4ck4non bl4ck4non    8 Jan 16 20:52 .ash_history
+drwxr-xr-x 2 bl4ck4non bl4ck4non 4096 Mar 24 08:51 gallery
+drwxr-xr-x 5 bl4ck4non bl4ck4non 4096 Jan 14 20:08 irclogs
+drwxr-xr-x 2 bl4ck4non bl4ck4non 4096 Jan 14 20:12 .lynx
+drwx------ 5 bl4ck4non bl4ck4non 4096 Jan 14 19:59 Maildir
+drwxr-sr-x 2 bl4ck4non bl4ck4non 4096 Jan 14 23:13 notes
+                                                                                                                                                                                                                                 
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone]
+└─$ cd irclogs  
+                                                                                                                                                                                                                                 
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/irclogs]
+└─$ ls -la     
+total 20
+drwxr-xr-x 5 bl4ck4non bl4ck4non 4096 Jan 14 20:08 .
+drwxr-sr-x 7 bl4ck4non bl4ck4non 4096 Jan 16 20:52 ..
+drwxr-xr-x 3 bl4ck4non bl4ck4non 4096 Jan 14 20:08 01
+drwxr-xr-x 7 bl4ck4non bl4ck4non 4096 Jan 14 20:08 02
+drwxr-xr-x 3 bl4ck4non bl4ck4non 4096 Jan 14 20:08 07
+                                                                                                                                                                                                                                 
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/irclogs]
+└─$ cd 02/07 
+                                                                                                                                                                                                                                 
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/…/yone/irclogs/02/07]
+└─$ ls -l  
+total 4
+-rw-r--r-- 1 bl4ck4non bl4ck4non 2424 Jan 14 20:08 '#leagueoflegends.log'
+                                                                                                                                                                                                                                 
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/…/yone/irclogs/02/07]
+└─$ cat \#leagueoflegends.log 
+[21:25] <yone786> Yes, yes… I know that
+[21:25] <yone786> That’s why I asked you
+[21:25] <beautifulAkali07> Why don’t you want her to be on your team then?
+[21:25] <yone786> Yeah, because
+[21:26] <beautifulAkali07> I do want to be on your team.
+[21:26] <beautifulAkali07> My team is a very small team at this point.
+[21:27] <beautifulAkali07> I want to get on the list.
+[21:28] <yone786> I know
+[21:29] <beautifulAkali07> Thank you though
+[21:30] <yone786> Thank you for your answer
+[21:30] <yone786> I didn’t say anything
+[21:30] <beautifulAkali07> I know
+[21:31] <AdriiB> But can you not see that you are already on the list?
+[21:31] <yone786> I can see that my team isn’t a very strong one
+[21:32] <beautifulAkali07> I think I will start a new team soon, so I don’t want to add another member.
+[21:32] <beautifulAkali07> But yeah.
+[21:32] <AdriiB> Then use the next time you get on your team to join this list.
+[21:33] <yone786> But she is in. I want. I love. That person.
+[21:33] <beautifulAkali07> But yeah, I’m on your team
+[21:33] <AdriiB> And I suggest that you do not get distracted by the fact that some other member of your team is already on the list.
+[21:33] <beautifulAkali07> I’ve thought about it.
+[21:33] <beautifulAkali07> I’m not going to get distracted by the fact that I’m already on your team.
+[21:33] <beautifulAkali07> It wouldn’t make any sense to me.
+[21:34] <beautifulAkali07> I’m on your team.
+[21:34] <AdriiB> What the hell does “make sense” mean?
+[21:34] <beautifulAkali07> Sorry
+[21:35] <BeautifulAkali07> I didn’t mean it like that.
+[21:35] <beautifulAkali07> I’m going to use the word “sense” for one of my teams I created.
+[21:35] <beautifulAkali07> I’m going to use it for all of them.
+[21:35] <beautifulAkali07> There was a time when there was no sense to it.
+[21:35] <yone786> I don’t like. Where are you going
+[21:35] <AdriiB> “I don’t like” as in “Oh no, Akali is going to leave me” ?
+[21:35] <beautifulAkali07> Yes
+[21:35] <AdriiB> Now how do you “like” someone leaving you in a comment?
+[21:35] <beautifulAkali07> What do you mean?
+[21:35] <yone786> I didn’t say.
+[21:35] <beautifulAkali07> I think I might stop by sometime and say hi
+[21:36] <beautifulAkali07> See you in a while
+[21:36] <yone786> I don’t know
+[21:36] <beautifulAkali07> Why don’t you tell me your answer?
+[21:36] <beautifulAkali07> OK.
+[21:36] <yone786>
+```
+So, yeah they played ```league of legends```. Navigating to the link we saw in one of the deleted mails., we see something like this 
+
+![image](https://user-images.githubusercontent.com/67879936/227483193-74eaeb2e-d619-422d-9fa1-5b3bf9ebfc5f.png)
+
+From the above screenshot we can tell that four common random words put together will be a difficult password to guess. If you could recall we found an incomplete passphrase earlier
+
+![image](https://user-images.githubusercontent.com/67879936/227485674-845c005e-6ca0-4f32-9424-766de92eef4b.png)
+
+The first word ```yasuo``` was from the leauge of legends character, second word ```aatrox``` was also from the league of legends character. Don't forget a difficult password to guess is putting four random words together, this means to complete the passphrase we have to add 2 other league of legends characters (Trust me I got this idea after 3 days of solving this particular challlenge 😂)
+
+You can get the characters from league of legends here: https://www.leagueoflegends.com/en-us/champions/
+
+![image](https://user-images.githubusercontent.com/67879936/227491446-e2e20022-dc53-46cb-9ae2-8a8d2cfe79a1.png)
+
+well, after much trial I eventually got the full passphrase which is the combination of 4 legend of league characters, ```yasuo```,```aatrox```,```ashe``` and ```cassiopeia```. Putting them together, you'll have ```yasuoaatroxashecassiopeia```. Now, lets try this  passphrase for the ```7.bmp``` file.
+
+![image](https://user-images.githubusercontent.com/67879936/227492562-f9fa86f0-3d04-4a70-8ed4-608e9bc0996c.png)
+
+cool, it worked. Now, what is left is to look for the key we can use to decrypt the encrypted text we got after using steghide. 
+
+If you recall we saw the word ```Azerite``` in one of the deleted mails. Lets go ahead and use the keyword search in autopsy to search for this
+
+![image](https://user-images.githubusercontent.com/67879936/227494024-2519d85b-4df0-4bd4-8536-d1563e86d86b.png)
+
+cool, we got 3 results in one of the results you'll see this
+
+![image](https://user-images.githubusercontent.com/67879936/227494326-481ef7a9-ebb9-4943-98eb-f3284adad8f9.png)
+
+We got a bunch of 0's and 1's. I tried decrypting this omor there was nothing😂.
+
+But I got to know that I am meant to use Golden base to decrypt the binary to get an AES key. So, my teammate wrote a script that we can use to decode this
+
+```
+import math
+
+# Define the Base-Phi constant
+PHI = (1 + math.sqrt(5)) / 2
+
+# Define a function to perform Base-Phi decoding
+def base_phi_decode(encoded_string):
+    # Split the encoded string into segments separated by periods
+    segments = encoded_string.split('.')
+
+    # Initialize the result string
+    result = ''
+
+    # Iterate over each segment
+    for segment in segments:
+        # Initialize the decoded value for this segment to 0
+        print(len(segment))
+        value = 0
+
+        # Iterate over each character in the segment
+        for i in range(len(segment)):
+            # If the character is '1', add PHI to the decoded value
+            if segment[i] == '1':
+                value += PHI**(len(segment) - i - 1)
+
+        # Append the decoded character to the result string
+        result += str(int(value))
+
+    # Return the result string
+    return result
+
+# Test the function with the given encoded string
+encoded_string = "01010010100.01001001000100.01001010000100.00101010010101.01000100100100.00100100000100.01000100000101.01000100001010.00000100000001.00001001010000.00000100010010.01000100010010.01001001001000.10001001000101.01001001010000.00001001000100.01001001010001.00000100000010.01000100010000.00001001001000.10000100010100.01000000010100.01001010000010.00101001010000.00001010101000.10000100100100.00101001000100.01000100010100.01001001010001.00000100010010.01000100010000.00001001000101.01000100010010.01000100010001.00000100001000.10001001000101.01001001001010.00000100010100.01000100000100.01000100010001.00000100000001.00000100001010.00000100010001.00001001000100.01000100000001.00000100001010.00000100001000.10000100000001.00000100010010.01001001001010.00000100000100.01000100010001.00000100001000.10001001010000.00001001010000.00000100000101.01001001000100.01000100010010.01000100010010.01001001000100.01000100010010.01000100000101.01001001000100.01001001001010.00000100010100.01000100010001.00000100000100.01000100000100.01000100000010.01000100010001.00001001000101.01000100010010.01000100000010.01001001010001.00001001001010.00001001001000.10000100000100.01001001000101.01001001000101.01000100010010.01001001010000.00000100010010.01001001001000.10001001000100.01000100010010.01000100010001.00000100000101.01000100010000.00001001001010.00001001000100.01000000010100.01001001010101.01001010100010.00100100100100.00100100010100.01000100000001.00000100010010.01000100001000.10000100001010.00000100010010.01001001010000.00000100001000.10000100010010.01001001010001.00001001001000.10000100010010.01001001001010.00001001000101.01000100000010.01001001001000.10000100001010.00001001000100.01000100001000.10000100010000.00001001010001.00000100000010.01000100010010.01001001010001.00000100000001.00001001010001.00001001010000.00001001000101.01000100000010.01000100000010.01000100010100.01001001010001.00000000010100.010"
+
+
+eeee = encoded_string.split('.')
+out = []
+
+for i in range(len(eeee)-1):
+    if i ==0:
+        out.append(eeee[i]+'.'+eeee[i+1][:3])
+    else:
+        out.append(eeee[i][3:]+'.'+eeee[i+1][:3])
+
+# print(out)
+
+
+# decoded_string = base_phi_decode(encoded_string)
+
+# print(decoded_string)
+
+key = ''
+for p in out:
+
+    integer_part, fractional_part = p.split(".")
+
+
+    # Convert the integer part to decimal
+    decimal_value = 0
+    for i in range(len(integer_part)):
+        decimal_value += int(integer_part[i]) * (PHI ** (len(integer_part) - i - 1))
+
+    # Convert the fractional part to decimal
+    if len(fractional_part) > 0:
+        fractional_value = 0
+        for i in range(len(fractional_part)):
+            fractional_value += int(fractional_part[i]) * (2 ** -(i + 1))
+        decimal_value += fractional_value
+
+    key += chr(round(decimal_value))
+
+print(key)
+print(len(out))
+```
+Save this script and run it.
+
+>command: python bankai.py
+
+![image](https://user-images.githubusercontent.com/67879936/227496312-eba1532c-92da-46fa-804d-c90b63a31b37.png)
+
+we got the key😆. With this we can decrypt the encrypted text
+
+>command: openssl enc -aes-256-cbc -d -in ledger.1.txt.enc -out bankai_zankanotachi -salt -iv 908458e48fc8db1c5a46f18f0feb119f  -K a9f86b874bd927057a05408d274ee3a88a83ad972217b81fdc2bb8e8ca8736da
+
+![image](https://user-images.githubusercontent.com/67879936/227497310-91e27f7f-384f-4fdf-96f7-c37eab179ef9.png)
+
+We got our flag.
+
+FLAG:- ```picoCTF{f473_53413d_de7d35ee}```
+
 
 
 
