@@ -1054,7 +1054,7 @@ b4,g,msb,xy         .. text: ["w" repeated 16 times]
 b4,b,lsb,xy         .. text: "\"\"\"\"\"\"\"\"4DC\""
 b4,b,msb,xy         .. text: "wwwwwwww3333"`
 ```
-oops, nothing 🙃
+oops, nothing😅
 
 After researching for a while, I got to know about a tool called ```stegoveritas```. This is a tool that extract data from image files including LSB images.
 
@@ -1500,7 +1500,7 @@ We can now read the deleted mails. Going through the mail I found some interesti
 
 ![image](https://user-images.githubusercontent.com/67879936/227474843-c2b755e2-3769-4ddd-aba2-f2853d9ab68f.png)
 
-The name ```Azerite``, the Link ```https://xkcd.com/936/``` and the statement ```My only adaptation is that I use unique words from my favorite game, World of Warcraft```. Something you should know  is  that the game in this case is ```league of legends``` and not ```world of witchcraft```
+The name ```Azerite```, the Link ```https://xkcd.com/936/``` and the statement ```My only adaptation is that I use unique words from my favorite game, World of Warcraft```. Something you should know  is  that the game in this case is ```league of legends``` and not ```world of witchcraft```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone]
@@ -1699,7 +1699,7 @@ we got the key😆. With this we can decrypt the encrypted text
 
 ![image](https://user-images.githubusercontent.com/67879936/227497310-91e27f7f-384f-4fdf-96f7-c37eab179ef9.png)
 
-We got our flag.
+We got our flag😎
 
 FLAG:- ```picoCTF{f473_53413d_de7d35ee}```
 
