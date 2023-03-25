@@ -156,7 +156,20 @@ redis:x:111:119::/var/lib/redis:/usr/sbin/nologin
 mysql:x:112:120:MySQL Server,,,:/nonexistent:/bin/false
 icingadb:x:999:999::/etc/icingadb:/sbin/nologin
 ```
-cool, we can view the ```/etc/passwd``` file. Lets go ahead to look for credentials we can use for the login page we found earlier. I found one in the ```etc/
+cool, we can view the ```/etc/passwd``` file. Lets go ahead to look for credentials we can use for the login page we found earlier. I found one in the ```/etc/icingaweb2/resources.ini``` dirrectory
+
+![image](https://user-images.githubusercontent.com/67879936/227718564-9db860da-405d-4d8e-bc52-696356bf6898.png)
+
+so with this we can now log in
+
+```username:matthew```                     ```password:IcingaWebPassword2023```
+
+![image](https://user-images.githubusercontent.com/67879936/227718630-3ce4fb45-3bb0-4c51-b1b3-b4131bbdd8ff.png)
+![image](https://user-images.githubusercontent.com/67879936/227718639-bf7737b4-b221-4e0b-b7ec-8721d09ba5d8.png)
+
+cool, we are logged in.
+
+
 
 
 
