@@ -1770,7 +1770,7 @@ FLAG:- ```picoCTF{atbash_crack_8a0feddc} ```
 
 <h2>ReadMyCert Cryptography -- 100 points</h2>
 
-![image](https://user-images.githubusercontent.com/67879936/227187329-7203bd0a-5e4c-4bb1-a80a-cbbc44ff2b5b.png)
+![image](https://user-images.githubusercontent.com/67879936/227761758-01583d9f-5ccb-4a29-bc5c-22633b72ffcd.png)
 
 Lets download this file to our machine
 
@@ -2001,9 +2001,46 @@ FLAG:- ```picoCTF{ToctoU_!s_3a5y_107916f2}```
 
 
 
+<h2>VNE Binary Exploitation -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/227761196-01294f2d-8808-4594-91bc-eafdbe27513d.png)
+
+Lets connect to the instance
+
+![image](https://user-images.githubusercontent.com/67879936/227761223-7101add8-f4f0-433a-b786-2f386eeeeb53.png)
+
+cool, from the challenge description we have a binary that can list directories as root
+
+![image](https://user-images.githubusercontent.com/67879936/227761252-14ffc5c7-a763-4df7-9d2f-68a76a0fd61c.png)
+
+We get an error message when we try to run the binary, this means we have to set the environment variable ```SECRET_DIR```.
+
+>command: export SECRET_DIR=/root
+
+Then we run the binary
+
+![image](https://user-images.githubusercontent.com/67879936/227761326-bc103bd5-c340-4f87-a152-addb52078771.png)
+
+This listed the content of the ```/root``` folder. What's left now is we finding a way to read the ```flag.txt``` file. Checking the hints we get this "**_Find a way to add more instructions to the ls_**"
+
+After doing my research I found this ```export SECRET_DIR='() { :;};  cat /root/flag.txt'```
+
+<font color="Green">This command  defines an environment variable named SECRET_DIR with a value that contains a Bash function. The function contains a Bash vulnerability known as Shellshock that allows an attacker to execute arbitrary commands on the system by appending commands to environment variables. Executing this command could potentially allow an attacker to gain unauthorized access to sensitive information on the system.</font>
+
+>command: export SECRET_DIR='() { :;};  cat /root/flag.txt'
+
+Running the ```bin``` binary now should give you your flag
+
+![image](https://user-images.githubusercontent.com/67879936/227761657-4c8a33bb-ffb6-4616-99c8-38b8fcc7dce0.png)
+
+cool, we got our flag
+
+FLAG:- ```picoCTF{Power_t0_man!pul4t3_3nv_d0cc7fe2}```
 
 
 
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
