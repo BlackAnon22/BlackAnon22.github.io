@@ -336,29 +336,30 @@ From the challenge description the author said "**_How about matching a regular 
 
 ```
 import re
+import random
 
 # Define the regular expression pattern
 pattern = r'^p.....F!?'
 
-# Test strings
-test_strings = ['picoCTF', 'p3q3F?', 'picooooF!', 'p!F', '12345']
-![image](https://user-images.githubusercontent.com/67879936/227763172-68dcc2f3-863a-4dc4-bcf4-4564bdeb8beb.png)
-# Loop through test strings and check for a match
-for string in test_strings:
-    if re.match(pattern, string):
-        print(f"'{string}' matches the pattern.")
-    else:
-        print(f"'{string}' does not match the pattern.")
+# Generate a random string that matches the pattern
+while True:
+    # Generate a random string of length 7
+    random_string = ''.join(random.choices('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?', k=7))
+    
+    # Check if the string matches the pattern
+    if re.match(pattern, random_string):
+        print(f"The random string '{random_string}' matches the pattern.")
+        break
 ```
-This python script uses the ```re``` module to match a regular expression similar to ```^p.....F!?```
+This is a Python script that generates a random string of length 7 consisting of uppercase and lowercase letters, digits, and the characters "!", and "?". It then checks if the string matches the regular expression pattern '^p.....F!?', which requires a string of length 7 starting with "p", followed by any 5 characters, and ending with either "F" or "F!" or "F?".
 
 Save the script in a ```.py``` file and run it
 
-![image](https://user-images.githubusercontent.com/67879936/227763531-be00e066-c13b-4eab-84fb-8daa2b1d354e.png)
+![image](https://user-images.githubusercontent.com/67879936/227764725-b57bc33a-e2a5-4d7c-94a3-18dba2812526.png)
 
-cool, ```picoCTF``` matches the pattern. Lets go ahead and put this in the ```input text``` box
+cool, ```p2oX?gF``` matches the pattern. Lets go ahead and put this in the ```input text``` box
 
-![image](https://user-images.githubusercontent.com/67879936/227763284-89c1d9b5-4f2e-4b64-acda-43266c72ca47.png)
+![image](https://user-images.githubusercontent.com/67879936/227764796-c1c85a48-5c72-4c23-84e7-26e84c4bb79d.png)
 
 cool, we got our flag😎
 
