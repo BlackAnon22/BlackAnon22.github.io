@@ -1927,7 +1927,7 @@ From the challenge description there is a binary that read files with root privi
 
 ![image](https://user-images.githubusercontent.com/67879936/227751098-dc5a7c05-32df-4341-a9d8-9f8aa7f9ea02.png)
 
-cool, we can read this file. Now this is because the file owned by the user running it. Lets try to read a file owned by root
+cool, we can read this file. Now this is because the file is owned by the user running it. Lets try to read a file owned by root
 
 ![image](https://user-images.githubusercontent.com/67879936/227751195-d4f90e30-cb91-4c19-ba45-698681ac377f.png)
 
