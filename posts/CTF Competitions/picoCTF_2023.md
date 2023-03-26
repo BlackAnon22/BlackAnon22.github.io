@@ -1658,7 +1658,7 @@ cool, we got 3 results in one of the results you'll see this
 
 We got a bunch of 0's and 1's. I tried decrypting this omor there was nothing😂.
 
-But I got to know that I am meant to use Golden base to decrypt the binary to get an AES key. So, my teammate wrote a script that we can use to decode this
+But I got to know that I am meant to use Golden base to decrypt the binary to get an AES key. So, my teammate (@cyber_guru) wrote a script that we can use to decode this
 
 ```
 import math
