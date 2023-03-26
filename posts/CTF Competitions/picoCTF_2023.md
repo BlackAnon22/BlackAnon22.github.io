@@ -354,7 +354,7 @@ This python script uses the ```re``` module to match a regular expression simila
 
 Save the script in a ```.py``` file and run it
 
-![image](https://user-images.githubusercontent.com/67879936/227763248-2d02758e-e6a7-4bbe-85d6-87c76ef31883.png)
+![image](https://user-images.githubusercontent.com/67879936/227763531-be00e066-c13b-4eab-84fb-8daa2b1d354e.png)
 
 cool, ```picoCTF``` matches the pattern. Lets go ahead and put this in the ```input text``` box
 
