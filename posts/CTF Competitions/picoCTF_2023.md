@@ -1832,6 +1832,85 @@ FLAG:- ```picoCTF{r0tat1on_d3crypt3d_949af1a1}```
 
 
 
+<h2>two-sum Binary_Explotation -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/227749774-cfcf6202-d9bf-4d3a-9d21-d1bac2c9426c.png)
+
+Lets connect to the instance
+
+![image](https://user-images.githubusercontent.com/67879936/227749822-fecc0334-c196-4fe8-bde0-66b483b12cd7.png)
+
+cool, checking the hint provided I saw something about ```integer overflow```. I remember reading about this in one of my friend's writeup (@HackYou)
+
+Link To Writeup: https://markuched13.github.io/posts/thm/pwn101.html
+
+Reading through the ```challenge 5``` you'll see this
+
+![image](https://user-images.githubusercontent.com/67879936/227749954-bc83aa9a-c8a3-47a7-b7ee-46b972065faf.png)
+
+Now, lets use this in this case
+
+So for the 2 positive numbers the first number will be ```2147483647``` while the second number will be ```1```
+
+![image](https://user-images.githubusercontent.com/67879936/227750018-dd86ba8e-d41d-49ad-8029-a606bab8c026.png)
+
+we got our flag😎
+
+FLAG:- ```picoCTF{Tw0_Sum_Integer_Bu773R_0v3rfl0w_bc0adfd1}```
+
+
+
+<h2>hijacking Binary_Exploitation -- 200 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/227750109-6e233b98-0d3d-4935-848d-fba677916704.png)
+
+Connecting to this instance
+
+![image](https://user-images.githubusercontent.com/67879936/227750153-7aba36ed-5a96-42ae-bf98-8c4fcb6482d6.png)
+
+cool, from the challenge description there is a python script in the user's directory we are meant to play with. Also, running the command ```sudo -l``` we find something interesting
+
+![image](https://user-images.githubusercontent.com/67879936/227750437-c825205e-8f5c-425e-9304-23b6e18034b9.png)
+
+This means we can use the script to escalate our privileges to the ```root``` user using the ```sudo``` command.
+
+![image](https://user-images.githubusercontent.com/67879936/227750182-14916a14-52fb-40f6-b849-1d51639fd800.png)
+
+This script and the challenge name gave me the 100% confidence that we'll be using ```library hijacking``` to escalate our privileges here.
+
+Lets locate the ```base64.py``` file
+
+>command: find / 2>/dev/null | grep -i "base64.py"
+
+![image](https://user-images.githubusercontent.com/67879936/227750247-e8d8fc70-6115-4ff7-96ac-901d2c6107b2.png)
+
+Found it, this script runs as root. Since we have write privileges over it this means we can modify the script to help us escalate our privileges
+
+We'll be adding this payload to the top of the ```base64.py``` file
+
+```import os
+
+os.system('chmod +s /bin/bash')
+```
+
+![image](https://user-images.githubusercontent.com/67879936/227750387-9cfa9e8a-baa4-4d6d-aafa-9879c8877357.png)
+
+cool, now that we've modified the script we can as well go ahead and escalate our privileges. Now, if you remember earlier we ran  the ```sudo -l``` command and we saw that we can run the python file in the user's directory to get root using the sudo command.
+
+![image](https://user-images.githubusercontent.com/67879936/227750581-be94523d-c7e0-4747-a934-3fa67b83cb93.png)
+
+cool, our payload got executed successfully
+
+Running the command ```/bin/bash -p``` should get you a root shell
+
+![image](https://user-images.githubusercontent.com/67879936/227750634-2010e341-121d-4b31-a5b2-8c3ec33d8eb2.png)
+
+cool, we got our flag :sunglasses
+
+FLAG:- ```picoCTF{pYth0nn_libraryH!j@CK!n9_4c188d27}```
+
+
+
 
 
 
