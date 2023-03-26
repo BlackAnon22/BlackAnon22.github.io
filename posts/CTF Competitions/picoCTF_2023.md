@@ -318,6 +318,53 @@ FLAG:- ```picoCTF{proxies_all_the_way_d1c0b112}```
 
 we were provided with a link, navigating to that link
 
+![image](https://user-images.githubusercontent.com/67879936/227762649-de662161-dcd4-4e75-a02f-0e09c44684a8.png)
+
+Lets try to input a text
+
+![image](https://user-images.githubusercontent.com/67879936/227762676-e731a6a2-84b2-4eac-b92a-4a4e5dd815b7.png)
+
+The error message "wrong match" definitely means the correct match would give us our flag
+
+Checking the source code I found something interesting
+
+![image](https://user-images.githubusercontent.com/67879936/227762771-2aff6d6f-247c-4894-82e9-d49480c862fb.png)
+
+This is a javascript function, it appears that the function is designed to take user input from a text field, pass it as a query parameter to a server endpoint at /flag, and receive a response containing a flag.
+
+From the challenge description the author said "**_How about matching a regular expression_**". To solve this I'll be using a python script
+
+```
+import re
+
+# Define the regular expression pattern
+pattern = r'^p.....F!?'
+
+# Test strings
+test_strings = ['picoCTF', 'p3q3F?', 'picooooF!', 'p!F', '12345']
+![image](https://user-images.githubusercontent.com/67879936/227763172-68dcc2f3-863a-4dc4-bcf4-4564bdeb8beb.png)
+# Loop through test strings and check for a match
+for string in test_strings:
+    if re.match(pattern, string):
+        print(f"'{string}' matches the pattern.")
+    else:
+        print(f"'{string}' does not match the pattern.")
+```
+This python script uses the ```re``` module to match a regular expression similar to ```^p.....F!?```
+
+Save the script in a ```.py``` file and run it
+
+![image](https://user-images.githubusercontent.com/67879936/227763248-2d02758e-e6a7-4bbe-85d6-87c76ef31883.png)
+
+cool, ```picoCTF``` matches the pattern. Lets go ahead and put this in the ```input text``` box
+
+![image](https://user-images.githubusercontent.com/67879936/227763284-89c1d9b5-4f2e-4b64-acda-43266c72ca47.png)
+
+cool, we got our flag😎
+
+FLAG:- ```picoCTF{succ3ssfully_matchtheregex_2375af79}```
+
+
 
 
 <h2>SOAP Web -- 100 points</h2>
