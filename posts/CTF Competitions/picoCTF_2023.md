@@ -1,4 +1,4 @@
-<h2>chrono General Skills -- 100 points</h2>
+<h2>chrono-->General Skills -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226687719-42b2846c-c3fc-41d5-81fd-2ba56610a025.png)
 
@@ -23,7 +23,7 @@ FLAG:- ```picoCTF{Sch3DUL7NG_T45K3_L1NUX_1b4d8744}```
 
 
 
-<h2>money-ware General Skills -- 100 points</h2>
+<h2>money-ware-->General Skills -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226774556-d8b41c6f-53a1-4bc0-b0b1-5c111e50a8c3.png)
 
@@ -52,7 +52,7 @@ FLAG:- ```picoCTF{Petya}```
 
 
 
-<h2>permissions General Skills -- 100 points</h2>
+<h2>permissions-->General Skills -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226691382-6c1aa280-d329-4cbc-a579-fec959c68c2e.png)
 
@@ -80,7 +80,7 @@ FLAG:- ```picoCTF{uS1ng_v1m_3dit0r_1cee9dcb}```
 
 
 
-<h2>repititions General Skills -- 100 points</h2>
+<h2>repititions-->General Skills -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226695184-f17295d6-988e-40c3-a68e-4a546d58e1ee.png)
 
@@ -114,7 +114,7 @@ I had to decode with base64 six times to get the flag 😂
 FLAG:- ```picoCTF{base64_n3st3d_dic0d!n8_d0wnl04d3d_dfe803c6}```
 
 
-<h2>Rule-2023 General Skills -- 100 points</h2>
+<h2>Rule-2023-->General Skills -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226698018-0673dd13-8c37-4557-b5ce-ae5e1ae2c5b8.png)
 
@@ -126,7 +126,7 @@ FLAG:- ```picoCTF{h34rd_und3r5700d_4ck_cba1c711}```
 
 
 
-<h2>useless General Skills -- 100 points</h2>
+<h2>useless-->General Skills -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226699237-4491b5bd-f08f-405f-98bd-8e38e528f9d9.png)
 
@@ -201,7 +201,7 @@ FLAG:- ```picoCTF{us3l3ss_ch4ll3ng3_3xpl0it3d_3555}```
 
 
 
-<h2>Special General Skills -- 300 points</h2>
+<h2>Special-->General Skills -- 300 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226752355-407ff1c5-3913-42f0-bf49-78b5acdd35e8.png)
 
@@ -245,7 +245,7 @@ FLAG:- ```picoCTF{5p311ch3ck_15_7h3_w0r57_a60bdf40}```
 
 
 
-<h2>Specialer General Skills -- 400 points</h2>
+<h2>Specialer-->General Skills -- 400 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226762586-51626a16-bbfb-444b-b5a9-e5ec7cab5509.png)
 
@@ -279,7 +279,7 @@ FLAG:- ```picoCTF{y0u_d0n7_4ppr3c1473_wh47_w3r3_d01ng_h3r3_811ae7e9}```
 
 
 
-<h2>findme Web -- 100 points</h2>
+<h2>findme-->Web -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226775277-6e9a25bf-d668-4084-9536-8a2fc3b10f97.png)
 
@@ -312,7 +312,7 @@ FLAG:- ```picoCTF{proxies_all_the_way_d1c0b112}```
 
 
 
-<h2>MatchTheRegex Web -- 100 points</h2>
+<h2>MatchTheRegex-->Web -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226777518-f7e31894-0062-4d7f-bbba-ad10f17c7262.png)
 
@@ -368,7 +368,7 @@ FLAG:- ```picoCTF{succ3ssfully_matchtheregex_2375af79}```
 
 
 
-<h2>SOAP Web -- 100 points</h2>
+<h2>SOAP-->Web -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226987116-0bbee11f-2c34-47c7-9113-33017f09f42a.png)
 
@@ -402,7 +402,7 @@ FLAG:- ```picoctf:x:1001:picoCTF{XML_3xtern@l_3nt1t1ty_0dcf926e}```
 
 
 
-<h2>More SQLi Web -- 200 points</h2>
+<h2>More SQLi-->Web -- 200 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226990281-16e57013-0258-4ac6-a57d-c15cdb7c0d0f.png)
 
@@ -612,7 +612,7 @@ FLAG:- ```picoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_6984ed7d}```
 
 
 
-<h2>Java Code Analysis!?! Web -- 300 points</h2>
+<h2>Java Code Analysis!?!-->Web -- 300 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/226993303-8febcfe1-2295-4ea9-bac2-dd008643dbaa.png)
 
@@ -690,7 +690,7 @@ FLAG:- ```picoCTF{w34k_jwt_n0t_g00d_d72df65e}```
 
 
 
-<h2>hideme Forensics -- 100 points</h2>
+<h2>hideme-->Forensics -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227004778-3dff76ce-32ef-416d-9a44-a120667fe186.png)
 
@@ -786,7 +786,7 @@ Yeah, we got the flag
 FLAG:- ```picoCTF{Hiddinng_An_imag3_within_@n_ima9e_82101824}```
 
 
-<h2>PcapPoisoning Forensics -- 100 points</h2>
+<h2>PcapPoisoning-->Forensics -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227007350-f6b63c12-da6a-4734-be02-0bbe6407f6b1.png)
 
@@ -812,7 +812,7 @@ cool, we got our flag. As I said it was quite easy lool
 FLAG:- ```picoCTF{P64P_4N4L7S1S_SU55355FUL_0f2d7dc9}```
 
 
-<h2>who is it Forensics -- 100 points</h2>
+<h2>who is it-->Forensics -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227008613-63578643-58cc-47f7-a30d-6f4cf5c288c2.png)
 
@@ -990,7 +990,7 @@ FLAG:- ```picoCTF{WilhelmZwalina}```
 
 
 
-<h2>FindAndOpen Forensics -- 200 points</h2>
+<h2>FindAndOpen-->Forensics -- 200 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227011475-4edf9061-8f63-4769-821b-edb25ddf0182.png)
 
@@ -1046,7 +1046,7 @@ we got our flag
 FLAG:- ```picoCTF{R34DING_LOKd_fil56_succ3ss_0f2afb1a}```
 
 
-<h2>MSB Forensics -- 200 points</h2>
+<h2>MSB-->Forensics -- 200 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227108243-96a19e7e-0169-4276-a8a3-bf94b917a83b.png)
 
@@ -1165,7 +1165,7 @@ FLAG:- ```picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}```
 
 
 
-<h2>Invisible_WORDs Forensics -- 300 points</h2>
+<h2>Invisible WORDs-->Forensics -- 300 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227110827-5551d0a7-d6a7-46f4-9911-f31dd50192ee.png)
 
@@ -1259,7 +1259,7 @@ FLAG:- ```picoCTF{w0rd_d4wg_y0u_f0und_5h3113ys_m4573rp13c3_a23dfbd4}```
 
 
 
-<h2>UnforgottenBits  Forensics -- 500 points</h2>
+<h2>UnforgottenBits-->Forensics -- 500 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227452424-9c66f7f0-4742-477a-b9ad-cd2c3f9e0bd2.png)
 
@@ -1754,7 +1754,7 @@ FLAG:- ```picoCTF{f473_53413d_de7d35ee}```
 
 
 
-<h2>HideToSee Cryptography -- 100 points</h2>
+<h2>HideToSee-->Cryptography -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227182078-3d71d33b-f616-4a6d-91de-756b20bc5561.png)
 
@@ -1816,7 +1816,7 @@ FLAG:- ```picoCTF{atbash_crack_8a0feddc} ```
 
 
 
-<h2>ReadMyCert Cryptography -- 100 points</h2>
+<h2>ReadMyCert-->Cryptography -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227761758-01583d9f-5ccb-4a29-bc5c-22633b72ffcd.png)
 
@@ -1859,7 +1859,7 @@ FLAG:- ```picoCTF{read_mycert_693f7c03}```
 
 
 
-<h2>rotation Cryptography -- 100 points</h2>
+<h2>rotation-->Cryptography -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227189216-6da83614-ff7c-49aa-bcd7-087a054a9549.png)
 
@@ -1880,7 +1880,7 @@ FLAG:- ```picoCTF{r0tat1on_d3crypt3d_949af1a1}```
 
 
 
-<h2>two-sum Binary Explotation -- 100 points</h2>
+<h2>two-sum-->Binary Explotation -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227749774-cfcf6202-d9bf-4d3a-9d21-d1bac2c9426c.png)
 
@@ -1908,7 +1908,7 @@ FLAG:- ```picoCTF{Tw0_Sum_Integer_Bu773R_0v3rfl0w_bc0adfd1}```
 
 
 
-<h2>hijacking Binary Exploitation -- 200 points</h2>
+<h2>hijacking-->Binary Exploitation -- 200 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227750109-6e233b98-0d3d-4935-848d-fba677916704.png)
 
@@ -1963,7 +1963,7 @@ FLAG:- ```picoCTF{pYth0nn_libraryH!j@CK!n9_4c188d27}```
 
 
 
-<h2>tic-tac Binary Exploitation -- 200 points</h2>
+<h2>tic-tac-->Binary Exploitation -- 200 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227750967-4f8f450b-3415-4480-b329-4b2284ea06ac.png)
 
@@ -2049,7 +2049,7 @@ FLAG:- ```picoCTF{ToctoU_!s_3a5y_107916f2}```
 
 
 
-<h2>VNE Binary Exploitation -- 100 points</h2>
+<h2>VNE-->Binary Exploitation -- 100 points</h2>
 
 ![image](https://user-images.githubusercontent.com/67879936/227761196-01294f2d-8808-4594-91bc-eafdbe27513d.png)
 
@@ -2084,6 +2084,267 @@ Running the ```bin``` binary now should give you your flag
 cool, we got our flag
 
 FLAG:- ```picoCTF{Power_t0_man!pul4t3_3nv_d0cc7fe2}```
+
+
+
+<h2>Reverse-->Reverse Engineering -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/228824342-d2f712e8-4969-4844-97c1-35167583692a.png)
+
+Lets download this file to our machine
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/rev_eng]
+└─$ ls
+ret
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/rev_eng]
+└─$ file ret
+ret: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=7f12d7198b75bd4d9f159e7a45141d4f13836e51, for GNU/Linux 3.2.0, not stripped
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/rev_eng]
+└─$ exiftool ret           
+ExifTool Version Number         : 12.57
+File Name                       : ret
+Directory                       : .
+File Size                       : 17 kB
+File Modification Date/Time     : 2023:03:30 12:41:59+01:00
+File Access Date/Time           : 2023:03:30 12:42:27+01:00
+File Inode Change Date/Time     : 2023:03:30 12:42:01+01:00
+File Permissions                : -rw-r--r--
+File Type                       : ELF shared library
+File Type Extension             : so
+MIME Type                       : application/octet-stream
+CPU Architecture                : 64 bit
+CPU Byte Order                  : Little endian
+Object File Type                : Shared object file
+CPU Type                        : AMD x86-64
+```
+cool, it is an executable, using the ```strings``` command actually gave me the flag
+
+>command: strings ret | grep -i "pico"
+
+![image](https://user-images.githubusercontent.com/67879936/228825680-46db6658-59d5-4382-b4d6-f83c740d455a.png)
+
+We got our flag.
+
+FLAG:- ```picoCTF{3lf_r3v3r5ing_succe55ful_fa9cb3b1}```
+
+
+
+<h2>Safe Opener 2-->Reverse Enginnering -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/228826005-02d10568-d0e4-44ac-828e-cc42a0391852.png)
+
+Lets download this file to our machine
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/rev_eng]
+└─$ ls
+ret  SafeOpener.class
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/rev_eng]
+└─$ file SafeOpener.class 
+SafeOpener.class: compiled Java class data, version 52.0 (Java 1.8)
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/rev_eng]
+└─$ exiftool SafeOpener.class 
+ExifTool Version Number         : 12.57
+File Name                       : SafeOpener.class
+Directory                       : .
+File Size                       : 2.0 kB
+File Modification Date/Time     : 2023:03:30 12:46:01+01:00
+File Access Date/Time           : 2023:03:30 12:46:24+01:00
+File Inode Change Date/Time     : 2023:03:30 12:46:16+01:00
+File Permissions                : -rw-r--r--
+File Type                       : Java bytecode
+File Type Extension             : class
+MIME Type                       : application/java-byte-code
+```
+The same way we got the flag for the previous challenge is the same way we are getting the flag for this challenge. That is, we'll be using the ```strings``` command.
+
+>command: strings SafeOpener.class| grep -i "pico"
+
+![image](https://user-images.githubusercontent.com/67879936/228826698-650e28a6-8468-46a5-b723-9eb3d75ee412.png)
+
+cool, we got our flag.
+
+FLAG:- ```picoCTF{SAf3_0p3n3rr_y0u_solv3d_it_198203f7}```
+
+
+<h2>Virtual Machine 0-->Reverse Engineering -- 100 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/228827398-30a5263c-000d-4c27-9bab-eafec9ccf516.png)
+
+The task involves a Collada file, the first step I took was to open the file in Three.js, an online emulator for 3D designs. Upon loading the file,we got this
+
+![image](https://user-images.githubusercontent.com/67879936/228829941-d312635a-5b5a-431f-b870-a3e02ee98ab9.png)
+
+I noticed that the box contained two gears, and I decided to change the view to wireframe to better understand the structure of the model.
+
+![image](https://user-images.githubusercontent.com/67879936/228830052-ab8b04a9-e51e-46f7-bba2-2155f43a6c43.png)
+
+By switching to wireframe view, I was able to see the box's internal structure more clearly and identify the gears. I then proceeded to dismantle the box by removing each Lego piece in the body one by one until the gears were the only components remaining. This process allowed me to focus solely on the gears.
+
+To go into further detail, a Collada file is a type of 3D model file format that is used to represent 3D graphics in a variety of applications. Three.js is a JavaScript library that provides a simple way to create and display 3D graphics on the web. By using Three.js to load the Collada file, I was able to easily manipulate and explore the 3D model, including changing the view to wireframe mode to see the model's internal structure.
+
+After dismantling the box by removing each Lego piece by piece we arrived at this.
+
+![image](https://user-images.githubusercontent.com/67879936/228830405-0de9f02b-7022-4f7a-bbb8-179dbf98a5c1.png)
+
+The driver gear (the bigger one) has 40 teeths, while the driven gear (the smaller one) has 8 teeths. So, if the driver gear makes 1 rotation, the driven gear will make 5 rotations. If you recall we have an input we got from the file we downloaded from the task description.
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/rev_eng]
+└─$ ls
+input.txt
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/rev_eng]
+└─$ cat input.txt 
+39722847074734820757600524178581224432297292490103996086521425478666370329 
+```
+So, if the input is the number of rotations the driver gear this means the driven gear will make 5 times the rotation of the driver gear. This means the driven gear will make ```198614235373674103788002620892906122161486462450519980432607127393331851645``` number of rotations. This number of rotations for the driven gear is actually encoded. Interesting right?😎
+
+Lets decode this from Decimal to Hex
+
+![image](https://user-images.githubusercontent.com/67879936/228830706-02956209-7adf-437d-9acf-1b581321f3a8.png)
+
+Then we convert from Hexadecimal to Text
+
+![image](https://user-images.githubusercontent.com/67879936/228830804-651c2c64-6166-415b-90d6-46e55fa8b1ef.png)
+
+cool, we got our flag🙂
+
+FLAG:- ```picoCTF{g34r5_0f_m0r3_cef8e141}```
+
+
+
+<h2>Ready Gladiator 2-->Reverse Engineering -- 400 points</h2>
+
+![image](https://user-images.githubusercontent.com/67879936/228831839-7770ad8e-bdfd-4c70-beac-f3a60567a192.png)
+
+Go ahead and start the instance
+
+This challenge focuses on wining every round in a CoreWars game, So the plan is to find a suitable strategy to make our warrior win every round in the game
+
+One of the ways is the use a Bomber script. A bomber randomly drops complex bombs designed to damage or stun the opponent. So I found this blog online that has multiple strategies of wining an imp game
+
+Link: https://corewar.co.uk/strategy.htm
+
+![image](https://user-images.githubusercontent.com/67879936/228832129-48271742-f02d-4304-8d92-7ce2dd974380.png)
+
+tips for winning an imp game
+
+So, lets try this particular bomber to test if we can win all the rounds, because the script looks simple and short. Here is the link below
+
+Link: https://corewar.co.uk/heremscimitar.htm
+
+Copy the code from the site and paste it into your imp.red file.
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/rev_eng]
+└─$ nano imp.red
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/rev_eng]
+└─$ cat imp.red  
+;redcode-94
+;name Herem/Scimitar
+;author A.Ivner,P.Kline
+;strategy bomber
+;macro
+step     equ   27
+count    equ   1470
+
+         jmp   clr
+start    mov   sb,@st
+st       mov   {100,cnt-(2count*step)-1
+         add   bmb,st
+cnt      djn   start,#count-1
+sb       spl   #step,0
+clr      mov   bmb,>-13
+         djn.f clr,{-14
+  for 22
+         dat   0,0
+  rof
+         dat   <4,step+step
+bmb      dat   <4,step+step
+            start
+end
+```
+Run the imp file against the server using the nc listener provided by PicoCTF
+
+>command: nc saturn.picoctf.net 64120 < imp.red
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/rev_eng]
+└─$ nc saturn.picoctf.net 64120 < imp.red
+;redcode-94
+;name Herem/Scimitar
+;author A.Ivner,P.Kline
+;strategy bomber
+;macro
+step     equ   27
+count    equ   1470
+
+         jmp   clr
+start    mov   sb,@st
+st       mov   {100,cnt-(2count*step)-1
+         add   bmb,st
+cnt      djn   start,#count-1
+sb       spl   #step,0
+clr      mov   bmb,>-13
+         djn.f clr,{-14
+  for 22
+         dat   0,0
+  rof
+         dat   <4,step+step
+bmb      dat   <4,step+step
+            start
+end
+Submit your warrior: (enter 'end' when done)
+
+Warrior1:
+;redcode-94
+;name Herem/Scimitar
+;author A.Ivner,P.Kline
+;strategy bomber
+;macro
+step     equ   27
+count    equ   1470
+
+         jmp   clr
+start    mov   sb,@st
+st       mov   {100,cnt-(2count*step)-1
+         add   bmb,st
+cnt      djn   start,#count-1
+sb       spl   #step,0
+clr      mov   bmb,>-13
+         djn.f clr,{-14
+  for 22
+         dat   0,0
+  rof
+         dat   <4,step+step
+bmb      dat   <4,step+step
+            start
+end
+
+Warning in line 22: '            start'
+        Ignored, redefinition of label 'start'
+Warning:
+        Missing ';assert'. Warrior may not work with the current setting
+Number of warnings: 2
+
+Rounds: 100
+Warrior 1 wins: 100
+Warrior 2 wins: 0
+Ties: 0
+You did it!
+picoCTF{d3m0n_3xpung3r_ed173f56}
+```
+We got our flag
+
+FLAG:- ```picoCTF{d3m0n_3xpung3r_ed173f56}```
+
 
 
 
