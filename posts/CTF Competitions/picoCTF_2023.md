@@ -44,7 +44,7 @@
 -      Reverse (100 points)
 -      Safe Opener 2 (100 points)
 -      Virtual Machine 0 (100 points)
--      Virtual Machine 1 (100 points)
+-      Virtual Machine 1 (300 points)
 -      Ready Gladiator 2 (400 points)
 
 
