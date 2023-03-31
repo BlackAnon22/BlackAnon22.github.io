@@ -1,3 +1,11 @@
+My teammates(Phantom_Troupe) and I participated in the picoCTF_2023 organized by Carnegie Mellon University, which took place between March 14, 2023 to March 28, 2023. It was a great learning experience and I really learnt a lot.
+
+![image](https://user-images.githubusercontent.com/67879936/229220285-466d1802-8884-4a95-9072-e005406f8e6f.png)
+
+This is a writeup of the challenges I solved during the event
+
+
+
 # Challenges Solved
 ## General Skills
 -      chrono (100 points)
@@ -2456,7 +2464,11 @@ We got our flag
 
 FLAG:- ```picoCTF{d3m0n_3xpung3r_ed173f56}```
 
-------------------------------
+
+
+## Remainning Solutions
+My Team mate [cyber_guru](https://github.com/Cyberguru1) solved the other categories of the challegnes
+take a look [here](https://github.com/Cyberguru1/PicoCTF2023_Writeup/blob/master/README.md)
 
 <br> <br>
 [Back To Home](../../index.md)
