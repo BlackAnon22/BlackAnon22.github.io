@@ -1,4 +1,5 @@
 <h2>chrono-->General Skills -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/226687719-42b2846c-c3fc-41d5-81fd-2ba56610a025.png)
 
@@ -20,10 +21,10 @@ cool, we got the flag
 
 FLAG:- ```picoCTF{Sch3DUL7NG_T45K3_L1NUX_1b4d8744}```
 
-
-
+------------------------------
 
 <h2>money-ware-->General Skills -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/226774556-d8b41c6f-53a1-4bc0-b0b1-5c111e50a8c3.png)
 
@@ -49,10 +50,10 @@ I think we found our flag
 
 FLAG:- ```picoCTF{Petya}```
 
-
-
+------------------------------
 
 <h2>permissions-->General Skills -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/226691382-6c1aa280-d329-4cbc-a579-fec959c68c2e.png)
 
@@ -78,9 +79,10 @@ boom!!! we got a shell as root and also got our flag which was in the ```/root``
 
 FLAG:- ```picoCTF{uS1ng_v1m_3dit0r_1cee9dcb}```
 
-
+------------------------------
 
 <h2>repititions-->General Skills -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/226695184-f17295d6-988e-40c3-a68e-4a546d58e1ee.png)
 
@@ -113,8 +115,10 @@ I had to decode with base64 six times to get the flag 😂
 
 FLAG:- ```picoCTF{base64_n3st3d_dic0d!n8_d0wnl04d3d_dfe803c6}```
 
+------------------------------
 
 <h2>Rule-2023-->General Skills -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/226698018-0673dd13-8c37-4557-b5ce-ae5e1ae2c5b8.png)
 
@@ -124,9 +128,10 @@ They provided a link, navigatung to the link we saw the rules, and checking the 
 
 FLAG:- ```picoCTF{h34rd_und3r5700d_4ck_cba1c711}```
 
-
+------------------------------
 
 <h2>useless-->General Skills -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/226699237-4491b5bd-f08f-405f-98bd-8e38e528f9d9.png)
 
@@ -199,9 +204,10 @@ We got the flag hehe
 
 FLAG:- ```picoCTF{us3l3ss_ch4ll3ng3_3xpl0it3d_3555}```
 
-
+------------------------------
 
 <h2>Special-->General Skills -- 300 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/226752355-407ff1c5-3913-42f0-bf49-78b5acdd35e8.png)
 
@@ -243,9 +249,10 @@ cool we got the flag
 
 FLAG:- ```picoCTF{5p311ch3ck_15_7h3_w0r57_a60bdf40}```
 
-
+------------------------------
 
 <h2>Specialer-->General Skills -- 400 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/226762586-51626a16-bbfb-444b-b5a9-e5ec7cab5509.png)
 
@@ -277,9 +284,10 @@ we found our flag
 
 FLAG:- ```picoCTF{y0u_d0n7_4ppr3c1473_wh47_w3r3_d01ng_h3r3_811ae7e9}```
 
-
+------------------------------
 
 <h2>findme-->Web -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/226775277-6e9a25bf-d668-4084-9536-8a2fc3b10f97.png)
 
@@ -310,9 +318,10 @@ cool, we got the flag
 
 FLAG:- ```picoCTF{proxies_all_the_way_d1c0b112}```
 
-
+------------------------------
 
 <h2>MatchTheRegex-->Web -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/226777518-f7e31894-0062-4d7f-bbba-ad10f17c7262.png)
 
@@ -365,10 +374,10 @@ cool, we got our flag😎
 
 FLAG:- ```picoCTF{succ3ssfully_matchtheregex_2375af79}```
 
-
-
+------------------------------
 
 <h2>SOAP-->Web -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/226987116-0bbee11f-2c34-47c7-9113-33017f09f42a.png)
 
@@ -400,9 +409,10 @@ cool, scrolling down we find our flag
 
 FLAG:- ```picoctf:x:1001:picoCTF{XML_3xtern@l_3nt1t1ty_0dcf926e}```
 
-
+------------------------------
 
 <h2>More SQLi-->Web -- 200 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/226990281-16e57013-0258-4ac6-a57d-c15cdb7c0d0f.png)
 
@@ -610,9 +620,10 @@ cool, we found our flag
 
 FLAG:- ```picoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_6984ed7d}```
 
-
+------------------------------
 
 <h2>Java Code Analysis!?!-->Web -- 300 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/226993303-8febcfe1-2295-4ea9-bac2-dd008643dbaa.png)
 
@@ -687,10 +698,10 @@ cool, we got our flag. This challenge was actually an interesting one 🙂
 
 FLAG:- ```picoCTF{w34k_jwt_n0t_g00d_d72df65e}```
 
-
-
+------------------------------
 
 <h2>hideme-->Forensics -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227004778-3dff76ce-32ef-416d-9a44-a120667fe186.png)
 
@@ -785,8 +796,10 @@ Yeah, we got the flag
 
 FLAG:- ```picoCTF{Hiddinng_An_imag3_within_@n_ima9e_82101824}```
 
+------------------------------
 
 <h2>PcapPoisoning-->Forensics -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227007350-f6b63c12-da6a-4734-be02-0bbe6407f6b1.png)
 
@@ -811,8 +824,10 @@ cool, we got our flag. As I said it was quite easy lool
 
 FLAG:- ```picoCTF{P64P_4N4L7S1S_SU55355FUL_0f2d7dc9}```
 
+------------------------------
 
 <h2>who is it-->Forensics -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227008613-63578643-58cc-47f7-a30d-6f4cf5c288c2.png)
 
@@ -988,9 +1003,10 @@ The task was to look for the owner of the mail server, and from our ```whois``` 
 
 FLAG:- ```picoCTF{WilhelmZwalina}```
 
-
+------------------------------
 
 <h2>FindAndOpen-->Forensics -- 200 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227011475-4edf9061-8f63-4769-821b-edb25ddf0182.png)
 
@@ -1045,8 +1061,10 @@ we got our flag
 
 FLAG:- ```picoCTF{R34DING_LOKd_fil56_succ3ss_0f2afb1a}```
 
+------------------------------
 
 <h2>MSB-->Forensics -- 200 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227108243-96a19e7e-0169-4276-a8a3-bf94b917a83b.png)
 
@@ -1163,9 +1181,10 @@ cool, we got our flag
 
 FLAG:- ```picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}```
 
-
+------------------------------
 
 <h2>Invisible WORDs-->Forensics -- 300 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227110827-5551d0a7-d6a7-46f4-9911-f31dd50192ee.png)
 
@@ -1256,10 +1275,10 @@ we found our flag hehe
 
 FLAG:- ```picoCTF{w0rd_d4wg_y0u_f0und_5h3113ys_m4573rp13c3_a23dfbd4}```
 
-
-
+------------------------------
 
 <h2>UnforgottenBits-->Forensics -- 500 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227452424-9c66f7f0-4742-477a-b9ad-cd2c3f9e0bd2.png)
 
@@ -1757,10 +1776,10 @@ We got our flag😎
 
 FLAG:- ```picoCTF{f473_53413d_de7d35ee}```
 
-
-
+------------------------------
 
 <h2>HideToSee-->Cryptography -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227182078-3d71d33b-f616-4a6d-91de-756b20bc5561.png)
 
@@ -1820,9 +1839,10 @@ So, decrypting it we have the flag
 
 FLAG:- ```picoCTF{atbash_crack_8a0feddc} ```
 
-
+------------------------------
 
 <h2>ReadMyCert-->Cryptography -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227761758-01583d9f-5ccb-4a29-bc5c-22633b72ffcd.png)
 
@@ -1863,9 +1883,10 @@ We found our flag
 
 FLAG:- ```picoCTF{read_mycert_693f7c03}```
 
-
+------------------------------
 
 <h2>rotation-->Cryptography -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227189216-6da83614-ff7c-49aa-bcd7-087a054a9549.png)
 
@@ -1883,10 +1904,10 @@ We got our flag
 
 FLAG:- ```picoCTF{r0tat1on_d3crypt3d_949af1a1}```
 
-
-
+------------------------------
 
 <h2>two-sum-->Binary Explotation -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227749774-cfcf6202-d9bf-4d3a-9d21-d1bac2c9426c.png)
 
@@ -1912,9 +1933,10 @@ we got our flag😎
 
 FLAG:- ```picoCTF{Tw0_Sum_Integer_Bu773R_0v3rfl0w_bc0adfd1}```
 
-
+------------------------------
 
 <h2>hijacking-->Binary Exploitation -- 200 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227750109-6e233b98-0d3d-4935-848d-fba677916704.png)
 
@@ -1966,10 +1988,10 @@ cool, we got our flag😎
 
 FLAG:- ```picoCTF{pYth0nn_libraryH!j@CK!n9_4c188d27}```
 
-
-
+------------------------------
 
 <h2>tic-tac-->Binary Exploitation -- 200 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227750967-4f8f450b-3415-4480-b329-4b2284ea06ac.png)
 
@@ -2052,10 +2074,10 @@ cool, we got our flag😄
 
 FLAG:- ```picoCTF{ToctoU_!s_3a5y_107916f2}```
 
-
-
+------------------------------
 
 <h2>VNE-->Binary Exploitation -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/227761196-01294f2d-8808-4594-91bc-eafdbe27513d.png)
 
@@ -2091,9 +2113,10 @@ cool, we got our flag
 
 FLAG:- ```picoCTF{Power_t0_man!pul4t3_3nv_d0cc7fe2}```
 
-
+------------------------------
 
 <h2>Reverse-->Reverse Engineering -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/228824342-d2f712e8-4969-4844-97c1-35167583692a.png)
 
@@ -2136,9 +2159,10 @@ We got our flag.
 
 FLAG:- ```picoCTF{3lf_r3v3r5ing_succe55ful_fa9cb3b1}```
 
-
+------------------------------
 
 <h2>Safe Opener 2-->Reverse Enginnering -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/228826005-02d10568-d0e4-44ac-828e-cc42a0391852.png)
 
@@ -2177,8 +2201,10 @@ cool, we got our flag.
 
 FLAG:- ```picoCTF{SAf3_0p3n3rr_y0u_solv3d_it_198203f7}```
 
+------------------------------
 
 <h2>Virtual Machine 0-->Reverse Engineering -- 100 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/228827398-30a5263c-000d-4c27-9bab-eafec9ccf516.png)
 
@@ -2225,9 +2251,10 @@ cool, we got our flag🙂
 
 FLAG:- ```picoCTF{g34r5_0f_m0r3_cef8e141}```
 
-
+------------------------------
 
 <h2>Ready Gladiator 2-->Reverse Engineering -- 400 points</h2>
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/228831839-7770ad8e-bdfd-4c70-beac-f3a60567a192.png)
 
@@ -2353,8 +2380,7 @@ We got our flag
 
 FLAG:- ```picoCTF{d3m0n_3xpung3r_ed173f56}```
 
-
-
+------------------------------
 
 <br> <br>
 [Back To Home](../../index.md)
