@@ -91,7 +91,7 @@ FLAG:- ```picoCTF{Sch3DUL7NG_T45K3_L1NUX_1b4d8744}```
 
 We got a hint that said "**_Some crypto-currencies abuse databases exist; check them out!_**"
 
-Then I went to google and got this url https://www.bitcoinabuse.com/
+Then I went to google and got this [url](https://www.bitcoinabuse.com/)
 
 Lets paste the bitcoin address in here
 
@@ -376,9 +376,7 @@ so I sent this to burp repeater
 
 ![image](https://user-images.githubusercontent.com/67879936/226776850-1ee23abc-904c-49dc-87f8-ca6f0d8bb9fe.png)
 
-I think we  got something encoded in base64, putting them together you have ```cGljb0NURntwcm94aWVzX2FsbF90aGVfd2F5X2QxYzBiMTEyfQ==``` Lets decode this using cyberchef
-
-Link: https://gchq.github.io/CyberChef/
+I think we  got something encoded in base64, putting them together you have ```cGljb0NURntwcm94aWVzX2FsbF90aGVfd2F5X2QxYzBiMTEyfQ==``` Lets decode this using cyberchef. You can access cyberchef [here](https://gchq.github.io/CyberChef/)
 
 ![image](https://user-images.githubusercontent.com/67879936/226777095-c8c99c4f-bc56-42c7-9aa7-635f8e72550d.png)
 
@@ -722,9 +720,7 @@ So I changed the directory. You can also see that we have a jwt token, lets try 
 
 ![image](https://user-images.githubusercontent.com/67879936/227002348-981b9f6c-d20c-4c9a-829d-972078cd7d81.png)
 
-oops, we got an error that says "**_Access Denied_**". Lets try to decrypt the jwt token to see what it stores
-
-Link: https://jwt.io
+oops, we got an error that says "**_Access Denied_**". Lets try to decrypt the jwt token to see what it stores. [Here](https://jwt.io) is the link to the website
 
 ![image](https://user-images.githubusercontent.com/67879936/226996480-b4aee037-a980-46e4-ae4c-a6492e288858.png)
 
@@ -1992,9 +1988,7 @@ Lets connect to the instance
 
 ![image](https://user-images.githubusercontent.com/67879936/227749822-fecc0334-c196-4fe8-bde0-66b483b12cd7.png)
 
-cool, checking the hint provided I saw something about ```integer overflow```. I remember reading about this in one of my friend's writeup (@HackYou)
-
-Link To Writeup: https://markuched13.github.io/posts/thm/pwn101.html
+cool, checking the hint provided I saw something about ```integer overflow```. I remember reading about this in one of my friend's writeup (@HackYou), you can access the writeup [here](https://markuched13.github.io/posts/thm/pwn101.html)
 
 Reading through the ```challenge 5``` you'll see this
 
@@ -2346,17 +2340,13 @@ Go ahead and start the instance
 
 This challenge focuses on wining every round in a CoreWars game, So the plan is to find a suitable strategy to make our warrior win every round in the game
 
-One of the ways is the use a Bomber script. A bomber randomly drops complex bombs designed to damage or stun the opponent. So I found this blog online that has multiple strategies of wining an imp game
-
-Link: https://corewar.co.uk/strategy.htm
+One of the ways is the use a Bomber script. A bomber randomly drops complex bombs designed to damage or stun the opponent. So I found this blog online that has multiple strategies of wining an imp game. You can read about it [here](https://corewar.co.uk/strategy.htm)
 
 ![image](https://user-images.githubusercontent.com/67879936/228832129-48271742-f02d-4304-8d92-7ce2dd974380.png)
 
 tips for winning an imp game
 
-So, lets try this particular bomber to test if we can win all the rounds, because the script looks simple and short. Here is the link below
-
-Link: https://corewar.co.uk/heremscimitar.htm
+So, lets try this particular bomber to test if we can win all the rounds, because the script looks simple and short. [Here](https://corewar.co.uk/heremscimitar.htm) is the link.
 
 Copy the code from the site and paste it into your imp.red file.
 
@@ -2466,7 +2456,7 @@ FLAG:- ```picoCTF{d3m0n_3xpung3r_ed173f56}```
 
 
 
-## Remainning Solutions
+## Remaining Solutions
 My Team mate [cyber_guru](https://github.com/Cyberguru1) solved the other categories of the challegnes
 take a look [here](https://github.com/Cyberguru1/PicoCTF2023_Writeup/blob/master/README.md)
 
