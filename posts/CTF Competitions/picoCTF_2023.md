@@ -38,7 +38,6 @@
 -      hijacking (200 points)
 -      tic-tac (200 points)
 -      VNE (200 points)
--      Horsetrack (300 points)
 
 
 ## Reverse Engineering
@@ -2182,10 +2181,6 @@ Running the ```bin``` binary now should give you your flag
 cool, we got our flag
 
 FLAG:- ```picoCTF{Power_t0_man!pul4t3_3nv_d0cc7fe2}```
-
-------------------------------
-
-## Horsetrack (300 points)
 
 
 
