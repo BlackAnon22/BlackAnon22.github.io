@@ -262,11 +262,15 @@ We got another ssh instance to connect to
 
 cool, we are logged in. 
 
-You should have noticed by now that what we tried for the special challenge won't work here xD. 
+![image](https://user-images.githubusercontent.com/67879936/229069451-330e4cb0-54af-470e-9b8e-081a0a485d1d.png)
+
+oops, we are in a restricted bash shell lool
+
+You should have also noticed by now that what we tried for the special challenge won't work here xD. 
 
 ![image](https://user-images.githubusercontent.com/67879936/226765626-841afe4a-433b-46f5-b933-99e6a0caa7a1.png)
 
-Exactly, we get an error. After looking around for a while and yeah doing research I found out that the echo command works
+Exactly, we get an error. After looking around for a while and yeah doing research I found out that I can use  the ```echo``` command
 
 ![image](https://user-images.githubusercontent.com/67879936/226765721-494259e3-c336-4c3d-b71b-7a7c4bfbf971.png)
 
