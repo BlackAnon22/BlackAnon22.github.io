@@ -1664,7 +1664,7 @@ Going through the files again in the home directory I found the search history
 
 So, he made a search to the website https://www.wikiwand.com/en/Golden_ratio_base, that talked about ```Golden_ratio_base```
 
-After a little research I got to know that I am meant to use ```Golden_ratio_base``` to decrypt the binary to get an AES key. So, my teammate (@cyber_guru) wrote a script that we can use to decode this
+After a little research I got to know that I can use ```Golden_ratio_base``` to decrypt the binary to get an AES key. So, my teammate (@cyber_guru) wrote a script that we can use to decode this
 
 ```
 import math
