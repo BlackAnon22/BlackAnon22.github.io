@@ -97,7 +97,7 @@ Lets paste the bitcoin address in here
 
 ![image](https://user-images.githubusercontent.com/67879936/226773534-3900dabd-ab93-40a3-8c0e-f7a40eddec6d.png)
 
-At the bottom of this page we find the link that says more information here: https://blog.avira.com/petya-strikes-back/ 
+At the bottom of this page we find the link that gives more information [here](https://blog.avira.com/petya-strikes-back/)
 
 Navigating to that link
 
@@ -166,9 +166,7 @@ MlZXVlhoWGJYQk9VbFJXU0ZkcVRuTldaM0JZVWpGS2VWWkdaSGRXCk1sWnpWV3hhVm1KRk5XOVVW
 VkpEVGxaYVdFMVhSbHBWV0VKVVZGWm9RMlZzV2tWUmJFNVNDbUpXV25wWmExSmhWMGRHZEdWRlZs
 aGkKYlRrelZERldUMkpzUWxWTlJYTkxDZz09Cg==
 ```
-ohh nice hehe, we were given a base64 encoding. Lets go ahead and decode this. We'll be using cyberchef for this
-
-Link to CyberChef: https://gchq.github.io/CyberChef/
+ohh nice hehe, we were given a base64 encoding. Lets go ahead and decode this. We'll be using cyberchef for this, you can access cyberchef [here](https://gchq.github.io/CyberChef/)
 
 ![image](https://user-images.githubusercontent.com/67879936/226696867-9fb5104c-f416-4bb0-82b4-7ee07ebd2962.png)
 
@@ -730,7 +728,7 @@ Checking the hints provided, "**_Maybe try to find the JWT Signing Key ("secret 
 
 So what I did was to crack it, I used a tool called ```jwt-cracker```
 
-You can download it here: https://github.com/lmammino/jwt-cracker
+You can download it [here](https://github.com/lmammino/jwt-cracker)
 
 >command: jwt-cracker eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiRnJlZSIsImlzcyI6ImJvb2tzaGVsZiIsImV4cCI6MTY4MDExMzQ1MSwiaWF0IjoxNjc5NTA4NjUxLCJ1c2VySWQiOjEsImVtYWlsIjoidXNlciJ9.2RQlnqDTS1xJwChm7aR-uNk7Q8naxsoHw0tGq1AzyRw 123456789 6
 
@@ -1724,7 +1722,7 @@ From the above screenshot we can tell that four common random words put together
 
 The first word ```yasuo``` was from the leauge of legends character, second word ```aatrox``` was also from the league of legends character. Don't forget a difficult password to guess is putting four random words together, this means to complete the passphrase we have to add 2 other league of legends characters (Trust me I got this idea after 3 days of solving this particular challlenge 😂)
 
-You can get the characters from league of legends here: https://www.leagueoflegends.com/en-us/champions/
+You can get the characters from league of legends [here](https://www.leagueoflegends.com/en-us/champions/)
 
 ![image](https://user-images.githubusercontent.com/67879936/227491446-e2e20022-dc53-46cb-9ae2-8a8d2cfe79a1.png)
 
@@ -1748,7 +1746,7 @@ Going through the files again in the home directory I found the search history
 
 ![image](https://user-images.githubusercontent.com/67879936/229060987-85d511f4-84e4-4ce9-b22d-72753523852b.png)
 
-So, he made a search to the website https://www.wikiwand.com/en/Golden_ratio_base, that talked about ```Golden_ratio_base```
+So, he made a search to this [website](https://www.wikiwand.com/en/Golden_ratio_base), that talked about ```Golden_ratio_base```
 
 After a little research I got to know that I can use ```Golden_ratio_base``` to decrypt the binary to get an AES key. So, my teammate (@cyber_guru) wrote a script that we can use to decode this
 
@@ -1964,9 +1962,7 @@ Lets download this file to our machine
 
 ![image](https://user-images.githubusercontent.com/67879936/227189751-dbd1fe1e-196e-4c9a-abf0-7a7a69742499.png)
 
-we got another encrypted text having the flag format. I got to know that this is a ```caesar cipher```, so I used decrypted it with an online tool
-
-Link: https://www.boxentriq.com/code-breaking/caesar-cipher
+we got another encrypted text having the flag format. I got to know that this is a ```caesar cipher```, so I used decrypted it with this online tool [here](https://www.boxentriq.com/code-breaking/caesar-cipher)
 
 ![image](https://user-images.githubusercontent.com/67879936/227194861-a2814861-9a2a-45d5-9837-84dc6c80cfec.png)
 
@@ -2025,7 +2021,7 @@ This means we can use the script to escalate our privileges to the ```root``` us
 
 This script and the challenge name gave me the 100% confidence that we'll be using ```python library hijacking``` to escalate our privileges here.
 
-You can read more about python library hijacking here: https://medium.com/analytics-vidhya/python-library-hijacking-on-linux-with-examples-a31e6a9860c8
+You can read more about python library hijacking [here](https://medium.com/analytics-vidhya/python-library-hijacking-on-linux-with-examples-a31e6a9860c8)
 
 Lets locate the ```base64.py``` file
 
@@ -2082,7 +2078,7 @@ Now we get an error. From the challenge tags I saw ```toctou``` so I went ahead 
 
 <font color="Green">TOCTOU stands for "Time-Of-Check to Time-Of-Use," and it refers to a type of vulnerability that can occur in computer programs. Specifically, it occurs when a program performs a security check at one point in time, but then performs an action based on the result of that check at a later point in time.This vulnerability is called a TOCTOU vulnerability because it's based on the time between the check and the use of the check.</font>
 
-You can read more about it here: https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use
+You can read more about it [here](https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use)
 
 Now, lets exploit this. If we are successful with exploiting it we should be able to read the ```flag.txt``` file.
 
