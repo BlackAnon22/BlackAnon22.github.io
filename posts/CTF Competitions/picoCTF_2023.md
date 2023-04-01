@@ -52,7 +52,6 @@ This is a writeup of the challenges I solved during the event
 -      Reverse (100 points)
 -      Safe Opener 2 (100 points)
 -      Virtual Machine 0 (100 points)
--      Virtual Machine 1 (300 points)
 -      Ready Gladiator 2 (400 points)
 
 
@@ -200,7 +199,8 @@ We were given a ssh instance to connect to. Lets connect to the instance
 
 From the description of this challenge we know we have a script sitting in the user's directory and the script is able to make basic mathematical calculations
 
-```picoplayer@challenge:~$ pwd
+```
+picoplayer@challenge:~$ pwd
 /home/picoplayer
 picoplayer@challenge:~$ ls -la
 total 16
@@ -215,7 +215,7 @@ picoplayer@challenge:~$ file useless
 useless: Bourne-Again shell script, ASCII text executable
 picoplayer@challenge:~$ cat useless 
 #!/bin/bash
-#Basic mathematical operations via command-line arguments
+# Basic mathematical operations via command-line arguments
 
 if [ $# != 3 ]
 then
@@ -2320,10 +2320,6 @@ Then we convert from Hexadecimal to Text
 cool, we got our flag🙂
 
 FLAG:- ```picoCTF{g34r5_0f_m0r3_cef8e141}```
-
-------------------------------
-
-## Virtual Machine 1 (300 points)
 
 ------------------------------
 
