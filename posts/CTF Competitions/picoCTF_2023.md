@@ -1554,7 +1554,7 @@ frankenstein_decrypted: Unicode text, UTF-8 (with BOM) text, with CRLF line term
 └─$ file lesmis_decrypted 
 lesmis_decrypted: Unicode text, UTF-8 (with BOM) text, with CRLF line terminators
 ```
-cool, we have them decoded already. But trust me when I say there's nothing there, just stories that are thoudands of lines and all 😂. 
+cool, we have them decoded already. But trust me when I say there's nothing there, just stories that are thousands of lines and all 😂. 
 
 The next goal now is to look for the passphrase we can use to extract information from ```7.bmp```. 
 
