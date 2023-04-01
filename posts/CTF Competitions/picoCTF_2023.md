@@ -730,8 +730,6 @@ So what I did was to crack it, I used a tool called ```jwt-cracker```
 
 You can download it [here](https://github.com/lmammino/jwt-cracker)
 
-command:```jwt-cracker eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiRnJlZSIsImlzcyI6ImJvb2tzaGVsZiIsImV4cCI6MTY4MDExMzQ1MSwiaWF0IjoxNjc5NTA4NjUxLCJ1c2VySWQiOjEsImVtYWlsIjoidXNlciJ9.2RQlnqDTS1xJwChm7aR-uNk7Q8naxsoHw0tGq1AzyRw 123456789 6```
-
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/picoCTF_2023/web]
 └─$ jwt-cracker eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiRnJlZSIsImlzcyI6ImJvb2tzaGVsZiIsImV4cCI6MTY4MDExMzQ1MSwiaWF0IjoxNjc5NTA4NjUxLCJ1c2VySWQiOjEsImVtYWlsIjoidXNlciJ9.2RQlnqDTS1xJwChm7aR-uNk7Q8naxsoHw0tGq1AzyRw 123456789 6
@@ -1518,8 +1516,6 @@ les-mis.txt.enc: data
 ```
 This means we can use openssl to decrypt the texts since we found the key in their conversation earlier.
 
-command:```openssl enc -aes-256-cbc -d -in dracula.txt.enc -out dracula_decrypted -salt -iv 7a12fd4dc1898efcd997a1b9496e7591  -K 58593a7522257f2a95cce9a68886ff78546784ad7db4473dbd91aecd9eefd508```
-
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[/mnt/home/yone/gallery]
 └─$ openssl enc -aes-256-cbc -d -in dracula.txt.enc -out dracula_decrypted -salt -iv 7a12fd4dc1898efcd997a1b9496e7591  -K 58593a7522257f2a95cce9a68886ff78546784ad7db4473dbd91aecd9eefd508
@@ -1832,8 +1828,6 @@ command:```python bankai.py```
 ![image](https://user-images.githubusercontent.com/67879936/227496312-eba1532c-92da-46fa-804d-c90b63a31b37.png)
 
 we got the key😆. With this we can decrypt the encrypted text
-
-command:```openssl enc -aes-256-cbc -d -in ledger.1.txt.enc -out bankai_zankanotachi -salt -iv 908458e48fc8db1c5a46f18f0feb119f  -K a9f86b874bd927057a05408d274ee3a88a83ad972217b81fdc2bb8e8ca8736da```
 
 ![image](https://user-images.githubusercontent.com/67879936/227497310-91e27f7f-384f-4fdf-96f7-c37eab179ef9.png)
 
