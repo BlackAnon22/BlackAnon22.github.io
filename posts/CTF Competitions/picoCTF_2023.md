@@ -286,7 +286,7 @@ Checking the hints we have "**_Experiment with different shell syntax_**". After
 
 <font color="Green">In a Linux shell, the double underscore (__) is not a command, but rather a convention used to indicate special variables or functions.</font>
 
->command: __|whoami
+command:``` __|whoami```
 
 ![image](https://user-images.githubusercontent.com/67879936/226758471-3849129e-b6cb-4cc7-9719-5a3a42b2eb63.png)
 
@@ -300,7 +300,7 @@ After googling stuffs, I found out that if i run ```__|ls "-la"``` I won't get a
 
 cool, from the above screenshot we can see that ```blargh``` is a directory now lets go ahead and read the flag file. Since this is a CTF competition I assumed the flag name to be "flag.txt"
 
->command: __|cat "blargh/flag.txt"
+command:``` __|cat "blargh/flag.txt"```
 
 ![image](https://user-images.githubusercontent.com/67879936/226761957-87700ef5-b64e-4b12-a7f7-9d4122daed4e.png)
 
