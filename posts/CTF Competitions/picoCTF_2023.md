@@ -215,7 +215,7 @@ picoplayer@challenge:~$ file useless
 useless: Bourne-Again shell script, ASCII text executable
 picoplayer@challenge:~$ cat useless 
 #!/bin/bash
-# Basic mathematical operations via command-line arguments
+#Basic mathematical operations via command-line arguments
 
 if [ $# != 3 ]
 then
