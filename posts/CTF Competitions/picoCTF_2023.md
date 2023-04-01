@@ -73,7 +73,7 @@ cool, we are logged in. Looking at the description of the challenge it says "**_
 
 <font color="Green">A cronjob is a task or command that is scheduled to run automatically at specific intervals on a Unix or Linux system. Cron is a time-based job scheduler in Unix and Linux operating systems, which allows users to schedule jobs or scripts to run automatically at specified times or intervals. A cronjob consists of a set of instructions or a script that tells the system what to do and when to do it. For example, a cronjob could be set up to run a backup script every night at midnight or to update a database every hour.</font>
 
-Now we can view a cronjob running when we reapicoCTF{Sch3DUL7NG_T45K3_L1NUX_1b4d8744}d the contents of the ```crontab``` file in the ```/etc``` directory.
+Now we can view a cronjob running when we read the contents of the ```crontab``` file in the ```/etc``` directory.
 
 ![image](https://user-images.githubusercontent.com/67879936/226690638-c0eecc92-77c6-4011-88f8-041ac988e5b7.png)
 
