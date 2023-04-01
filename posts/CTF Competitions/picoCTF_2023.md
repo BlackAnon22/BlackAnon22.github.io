@@ -65,7 +65,7 @@ This is a writeup of the challenges I solved during the event
 
 Starting the instance we were given ssh credentials to connect to, now lets connect
 
->command: ssh picoplayer@saturn.picoctf.net -p 53271
+command:```ssh picoplayer@saturn.picoctf.net -p 53271```
 
 ![image](https://user-images.githubusercontent.com/67879936/226688073-bc027985-c22f-45a5-8fc7-ce2fe56218db.png)
 
@@ -119,7 +119,7 @@ FLAG:- ```picoCTF{Petya}```
 
 We also got another ssh instance to connect to, lets go ahead and connect 
 
->command: ssh picoplayer@saturn.picoctf.net -p 60852
+command:```ssh picoplayer@saturn.picoctf.net -p 60852```
 
 ![image](https://user-images.githubusercontent.com/67879936/226691689-645ceb2d-d6c8-4d90-9217-a6bae9f5e321.png)
 
