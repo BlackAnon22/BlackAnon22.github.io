@@ -2446,6 +2446,8 @@ FLAG:- ```picoCTF{d3m0n_3xpung3r_ed173f56}```
 My Team mate [cyber_guru](https://github.com/Cyberguru1) solved them
 take a look [here](https://github.com/Cyberguru1/PicoCTF2023_Writeup/blob/master/README.md)
 
+You can also take a look at [cybermma](https://medium.com/@cybermma0/ctf-writeup-picoctf-2023-99ea5d0e28bc) writeup
+
 <br> <br>
 [Back To Home](../../index.md)
 
