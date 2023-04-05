@@ -194,7 +194,31 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 372.64 seconds
            Raw packets sent: 131297 (5.781MB) | Rcvd: 198 (8.860KB)
 ```
-From the
+From the above scan we see that we have 4 ports opened. Port 21 which runs ftp, port 25022 which runs ssh, port 33414 (service is unknown) and port 40080 which runs http. We'll be starting our enumeration from port 21.
+
+# Enumeration (Port 21)
+
+Since Anonymous login is allowed, this means we can login using default credentials
+
+```username:anonymous```                    ```password:anonymous```
+
+command:```ftp 192.168.120.249```
+
+![image](https://user-images.githubusercontent.com/67879936/230232998-7e795c8d-0b02-4f9a-8d8b-394600ae1837.png)
+
+As you can see, from the above screenshot we logged in successfully but when we try to view files nothing is displayed.
+
+Since we can't get directory listing lets move on to the next port
+
+
+
+# Enumeration (Port 40080)
+
+Navigating to the webpage should get you this
+
+![image](https://user-images.githubusercontent.com/67879936/230233696-43760bb2-26d7-44d8-add0-a53658fbaa80.png)
+
+
 
 
 
