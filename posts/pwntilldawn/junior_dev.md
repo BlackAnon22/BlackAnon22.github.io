@@ -1,7 +1,6 @@
 # Recon
 
 ## PortScanning
-
 command:```sudo nmap -A 10.150.150.38 -T4  -v -Pn -p-```
 
 ```
@@ -153,11 +152,17 @@ we found our password hehe. Now, lets try to login
 ![image](https://user-images.githubusercontent.com/67879936/230776407-42050e30-dc80-40a4-a52e-b0faf75e50f0.png)
 ![image](https://user-images.githubusercontent.com/67879936/230776519-962416c3-b1ef-4c56-8be9-0ff87f41a79d.png)
 
-cool, we are logged in. Looking around the webpage, you should see this
+cool, we are logged in. 
+
+
+
+
+# Exploitation
+Looking around the webpage, you should see this
 
 ![image](https://user-images.githubusercontent.com/67879936/230776632-d9a919fd-e7eb-449f-8187-03a220a00287.png)
 
-scroll down, you should find this
+scrolling down, you should find this
 
 ![image](https://user-images.githubusercontent.com/67879936/230776671-9ba428bf-edba-4795-a837-5cb771256c3f.png)
 ![image](https://user-images.githubusercontent.com/67879936/230776696-1ff12aeb-f0e4-4bba-83c0-dae731cf337e.png)
@@ -192,8 +197,11 @@ Checking the user's home directory
 
 ![image](https://user-images.githubusercontent.com/67879936/230777459-7eb15c5d-e67e-44fe-af9c-d7cf335be823.png)
 
-oops, we don't have access to view any file here because they belong to user ```juniordev```.
+oops, we don't have access to view any file here because they belong to user ```juniordev```. Lets go ahead and escalate our privileges
 
+
+
+# Privilege Escalation
 Lets try to display all open tcp connections on this box
 
 command:```netstat -antup```
