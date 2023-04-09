@@ -52,6 +52,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 -  [[March 05 2023]] [PwnTillDawn--Pwndrive Academy](https://Blackanon22.github.io/posts/pwntilldawn/Pwndrive_Academy.html) `Weak Authentication` `Arbitrary File Upload`
 -  [[March 05 2023]] [PwnTillDawn--Snare](https://Blackanon22.github.io/posts/pwntilldawn/snare.html) `RFI` `Weak File Permissions`
 -  [[March 06 2023]] [PwnTillDawn--Mr Blue](https://Blackanon22.github.io/posts/pwntilldawn/mr_blue.html) `Eternal Blue MS17-010`
+-  [[April 09 2023]] [PwnTillDawn--JuniorDev](https://Blackanon22.github.io/posts/pwntilldawn/junior_dev.html) `Jenkins`  `Command Injection`
 
 * * *
 ### **HackTheBox:~#**
