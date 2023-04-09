@@ -246,7 +246,7 @@ I actually found out this is a python web app. Lets try to capture the request o
 
 cool, send it over to burp repeater
 
-I read this [article](https://sethsec.blogspot.com/2016/11/exploiting-python-code-injection-in-web.html) on exploiting command injection on python web apps.
+I read this [article](https://sethsec.blogspot.com/2016/11/exploiting-python-code-injection-in-web.html) on exploiting command injection in python web apps.
 
 I found a payload that got me a reverse shell back to my machine
 
