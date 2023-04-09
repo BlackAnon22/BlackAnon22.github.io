@@ -197,7 +197,7 @@ Checking the user's home directory
 
 ![image](https://user-images.githubusercontent.com/67879936/230777459-7eb15c5d-e67e-44fe-af9c-d7cf335be823.png)
 
-oops, we don't have access to view any file here because they belong to user ```juniordev```. Lets go ahead and escalate our privileges
+oops, we don't have access to view any file here because they all belong to user ```juniordev```. Lets go ahead and escalate our privileges
 
 
 
