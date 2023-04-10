@@ -73,7 +73,125 @@ Read data files from: /usr/bin/../share/nmap
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 # Nmap done at Mon Apr 10 06:50:40 2023 -- 1 IP address (1 host up) scanned in 789.78 seconds
 ```
-From our scan we have 4 port opened. Port 22 which runs ssh, port 80 which runs http and port 139&445 which runs netbios-ssn. We'll be starting our enumeration
+From our scan we have 4 port opened. Port 22 which runs ssh, port 80 which runs http and port 139&445 which runs netbios-ssn. We'll be starting our enumeration from the port 80.
+
+
+
+
+# Enumeration (port 80)
+Going to the webpage, you'll get this
+
+![image](https://user-images.githubusercontent.com/67879936/230836631-80b1c48c-8cad-44e4-990a-0e6b0dfaf8d4.png)
+
+A login page. I tried using default creds to login but none worked. 
+
+Lets try to fuzz for directories using ```ffuf```
+
+command:```ffuf -u "http://10.10.149.13/FUZZ" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -e .zip,.sql,.php,.phtml,.bak,.backup```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~]
+└─$ ffuf -u "http://10.10.149.13/FUZZ" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -e .zip,.sql,.php,.phtml,.bak,.backup  
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://10.10.149.13/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+ :: Extensions       : .zip .sql .php .phtml .bak .backup 
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+index.php               [Status: 302, Size: 0, Words: 1, Lines: 1, Duration: 170ms]
+login.php               [Status: 200, Size: 848, Words: 115, Lines: 35, Duration: 204ms]
+css                     [Status: 301, Size: 310, Words: 20, Lines: 10, Duration: 203ms]
+logout.php              [Status: 302, Size: 0, Words: 1, Lines: 1, Duration: 156ms]
+cloud                   [Status: 301, Size: 312, Words: 20, Lines: 10, Duration: 190ms]
+server-status           [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 235ms]
+```
+cool, we found a directory ```/cloud```. Moving to that directory you should get something like this
+
+![image](https://user-images.githubusercontent.com/67879936/230845383-e4fd8a56-a239-4fa6-a7d6-0181d219267d.png)
+
+So, we can upload an image here by providing the link to where the image is provided. Lets try to upload an image
+
+![image](https://user-images.githubusercontent.com/67879936/230845724-5ddb1201-ce61-4e05-8c9c-9130dd9527f8.png)
+![image](https://user-images.githubusercontent.com/67879936/230845802-afd37968-0ae4-4d40-a295-ca6bde043c6b.png)
+
+After clicking on the upload button
+
+![image](https://user-images.githubusercontent.com/67879936/230845907-91f05b10-3a97-4fa6-bdad-4f84c1d72208.png)
+![image](https://user-images.githubusercontent.com/67879936/230846016-6b47e133-7133-4155-a70e-8a77787e3c43.png)
+
+
+
+
+# Exploitation
+
+Now, what we'll do is to abuse this file upload function in helping us to upload a reverse shell. I'll be usng the php reverse shell from pentest monkey. You can get it [here](https://github.com/jivoi/pentest/blob/master/shell/rshell.php).
+
+![image](https://user-images.githubusercontent.com/67879936/230846850-529ebd60-a2f9-47ae-aa78-e586b6dbe8e4.png)
+
+Ensure you change the $ip and the $port. Now, lets save this
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/opacity]
+└─$ file abeg.php 
+abeg.php: PHP script, ASCII text
+```
+So, we have a php script. but the file upload function only allows images(png,jpg,jpeg). To upload our reverse shell, we'll have to bypass this.
+
+![image](https://user-images.githubusercontent.com/67879936/230848782-d10497a2-70a0-4506-8ebf-9519d87722e8.png)
+![image](https://user-images.githubusercontent.com/67879936/230848878-c7be5fd7-3a6d-4497-8e90-11473090d6f0.png)
+
+Lets capture this request on burpsuite
+
+![image](https://user-images.githubusercontent.com/67879936/230854019-c7ee1295-eb9f-4ca2-81fc-12ce847610c9.png)
+
+<font color="Green">We'll be using the "#" character in the url, it changes the interpretation of the URL by the web browser. The "#" character is used to represent a fragment identifier, which indicates a specific section within the webpage that should be scrolled to</font>
+
+![image](https://user-images.githubusercontent.com/67879936/230854059-60012059-773b-4654-9ac1-2ff58a915e38.png)
+
+<font color="Green">The web browser will interpret the URL as a request to load the "abeg.php" webpage and then scroll to the section identified by the fragment identifier "#". Because the fragment identifier does not match any section ID in the webpage, the browser will not actually scroll to any section, but it will still load the webpage.</font>
+
+Now, lets forward this request. Also, don't forget to set up your netcat listener.
+
+Keep forwarding the request
+
+![image](https://user-images.githubusercontent.com/67879936/230853755-a5e8f13f-5bd2-4730-8a2b-cf441e7a3bd4.png)
+
+Checking your netcat listener, you should have gotten a shell
+
+![image](https://user-images.githubusercontent.com/67879936/230853984-9541b685-9992-49f3-abca-26a9a8ded24b.png)
+
+Let's stabilize this shell
+
+```
+python3 -c “import pty;pty.spawn(‘/bin/bash’)”
+ctrl + z (to background)
+stty raw -echo && fg
+export TERM=screen
+```
+![image](https://user-images.githubusercontent.com/67879936/230854628-e9baf49e-6eb5-4e4f-934c-a519857f4e76.png)
+
+Now, lets go ahead and escalate our privileges.
+
+
+
+
+# Privilege Escalation
 
 
 
