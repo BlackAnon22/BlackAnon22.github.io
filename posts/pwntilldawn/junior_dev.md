@@ -1,7 +1,7 @@
 # Recon
 
 ## PortScanning
-command:```sudo nmap -A 10.150.150.38 -T4  -v -Pn -p-```
+command:```sudo nmap -A 10.150.150.38 -T4  -v -p-```
 
 ```
 Starting Nmap 7.93 ( https://nmap.org ) at 2023-04-09 14:10 WAT
