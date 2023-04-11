@@ -2,7 +2,7 @@
 
 <h3>PortScanning</h3>
 
->command: sudo nmap -A 10.10.11.205  -T4  -v -p-
+command:```sudo nmap -A 10.10.11.205  -T4  -v -p-```
 
 ```
 Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-25 12:12 WAT
@@ -107,10 +107,7 @@ We found one, ```path transversal vulnerability```. Lets go ahead and exploit th
 
 
 <h2>Exploitation</h2>
-
-Link:https://github.com/JacobEbben/CVE-2022-24716
-
-Download this to your machine
+Download [this](https://github.com/JacobEbben/CVE-2022-24716) to your machine
 
 ![image](https://user-images.githubusercontent.com/67879936/227716867-c31f29b1-6b1a-467b-8a21-c089d3d916dd.png)
 
