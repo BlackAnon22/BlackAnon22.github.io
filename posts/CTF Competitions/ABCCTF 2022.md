@@ -12,7 +12,7 @@ From the above screenshot we can see that we are allowed to upload an image. I w
 
 Ohh, Muzec actually wrote something there but trust me there was no meaning to what was there xD. So, I went ahead to fire up gobuster so as to check for hidden directories.
 
->command:gobuster dir -u http://185.203.119.220:8001/ -w /usr/share/dirb/wordlists/common.txt 16 -x php,html,txt,zip,bak,backup
+command:```gobuster dir -u http://185.203.119.220:8001/ -w /usr/share/dirb/wordlists/common.txt 16 -x php,html,txt,zip,bak,backup```
 
 ![image](https://user-images.githubusercontent.com/67879936/222438465-ed2d8d79-23b1-4ba4-b41d-404e6faeb3b6.png)
 
@@ -45,9 +45,7 @@ I got this error when I tried to upload a .jpeg file. At this point I knew there
 1.Upload a .jpeg file
 2.The maximum size of the .jpeg file must be 35 bytes
 
-Now, in my mind I was like bypassing the .jpeg condition won’t be difficult, the issue will be the size of the file I want to upload. That is, it must not exceed 35 bytes. At this point I became lost lool. When doing my research I found this
-
->link:https://null-byte.wonderhowto.com/how-to/bypass-file-upload-restrictions-web-apps-get-shell-0323454/
+Now, in my mind I was like bypassing the .jpeg condition won’t be difficult, the issue will be the size of the file I want to upload. That is, it must not exceed 35 bytes. At this point I became lost lool. When doing my research I found this [link](https://null-byte.wonderhowto.com/how-to/bypass-file-upload-restrictions-web-apps-get-shell-0323454)
 
 From the page I got a simple php bypass payload to use
 
@@ -63,7 +61,7 @@ I stored the payload in a file (abeg.php), then I used a tool “hexeditor” to
 
 Now, lets go ahead and use hexeditor to change the content of the header
 
->command:hexeditor abeg.php
+command:```hexeditor abeg.php```
 
 ![image](https://user-images.githubusercontent.com/67879936/222441796-92dce8c9-a974-4076-bfae-4c1633a37b8e.png)
 
@@ -91,7 +89,7 @@ Nice, the above screenshot actually means we found our file hehe.
 
 Now, lets go ahead and exploit this bad boy. If you recall, we pasted a php payload in the abeg.php file, now what this payload will do is that it will lead to a command injection vulnerability. Interesting right??
 
->link: http://185.203.119.220:8001/uploads/abeg.php?cmd=id
+url:```http://185.203.119.220:8001/uploads/abeg.php?cmd=id```
 
 You going to that link should get you something like this
 
@@ -99,19 +97,19 @@ You going to that link should get you something like this
 
 Lets try reading the /etc/passwd file also
 
->link:http://185.203.119.220:8001/uploads/abeg.php?cmd=cat /etc/passwd
+url:```http://185.203.119.220:8001/uploads/abeg.php?cmd=cat /etc/passwd```
 
 ![image](https://user-images.githubusercontent.com/67879936/222443911-eff89710-f8c9-4e28-9c5e-4b9bc0031ec0.png)
 
 Now, lets try to read the flag. After searching for a while I didn’t find anything, then I recalled that during our enumeration we found a /upload.php file. Then, I went ahead to check the content of the file
 
->link:http://185.203.119.220:8001/uploads/abeg.php?cmd=cat /var/www/html/upload.php
+url:```http://185.203.119.220:8001/uploads/abeg.php?cmd=cat /var/www/html/upload.php```
 
 ![image](https://user-images.githubusercontent.com/67879936/222444041-a5a7c8e7-8841-4843-b79c-dbee8f965283.png)
 
 oops, didn’t see anything that looks like a flag here. After a while, my teammate told me to use curl to read the file. I was like “wow, so truee”. Then I went ahead to use curl to read the content of upload.php.
 
->command:curl http://185.203.119.220:8001/uploads/abeg.php?cmd=cat%20/var/www/html/upload.php
+command:```curl http://185.203.119.220:8001/uploads/abeg.php?cmd=cat%20/var/www/html/upload.php```
 
 ![image](https://user-images.githubusercontent.com/67879936/222444251-be5631b2-a403-4115-81b7-3925915b5468.png)
 
