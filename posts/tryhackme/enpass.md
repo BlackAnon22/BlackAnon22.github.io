@@ -2,7 +2,7 @@
 
 <h3>PortScanning</h3>
 
->command: sudo nmap -A 10.10.134.162 -p- -T4 -v
+command:```sudo nmap -A 10.10.134.162 -p- -T4 -v```
 
 ```
 [~] Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-11 08:24 WAT
@@ -87,7 +87,7 @@ Going to the webpage should get you this
 
 Lets go ahead and fire up ffuf to help us search for directories
 
->command: ffuf -u "http://10.10.134.162:8001/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup
+command:```ffuf -u "http://10.10.134.162:8001/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Enpass]
