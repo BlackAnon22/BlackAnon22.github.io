@@ -182,7 +182,7 @@ Let's stabilize this shell
 python3 -c “import pty;pty.spawn(‘/bin/bash’)”
 ctrl + z (to background)
 stty raw -echo && fg
-export TERM=screen
+export TERM=xterm
 ```
 ![image](https://user-images.githubusercontent.com/67879936/230854628-e9baf49e-6eb5-4e4f-934c-a519857f4e76.png)
 
@@ -193,7 +193,105 @@ Now, lets go ahead and escalate our privileges.
 
 # Privilege Escalation
 
+Running linpeas I found this
 
+![image](https://user-images.githubusercontent.com/67879936/233614862-bdf58eb9-3317-4821-9e56-0221d5933c2b.png)
+
+There seems to be something in the ```/opt``` directory. Lets check it out
+
+![image](https://user-images.githubusercontent.com/67879936/233615237-b97c9798-6f1c-4b62-bc5b-d485fe7a7bd2.png)
+
+<font color="Green">A KDBX file is a password-protected database file format used by KeePass, a popular open-source password manager application. It stores sensitive information such as passwords, usernames, and other confidential data in an encrypted format, ensuring that the data remains secure and protected from unauthorized access.</font>
+
+Cool😎, lets send this file to our machine
+
+![image](https://user-images.githubusercontent.com/67879936/233616274-ca3889b4-5a67-4cf3-bf72-1943b58c41ff.png)
+
+Lets try to open this file. I'll be using a tool called ```keepassxc```. To install this you can use ```sudo apt install keepassxc```
+
+![image](https://user-images.githubusercontent.com/67879936/233616889-98562bb3-0479-44b4-a8d6-7fcdc6a4079a.png)
+
+It asks for a password when we try to open the file, but we sure didn't find any password during our enumeration. Since this is a kdbx file, we can use **_John the Ripper_** to crack the password.
+
+command:```keepass2john dataset.kdbx > dataset.txt```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/opacity]
+└─$ keepass2john dataset.kdbx > dataset.txt 
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/opacity]
+└─$ ls -l dataset.txt 
+-rw-r--r-- 1 bl4ck4non bl4ck4non 322 Apr 21 11:45 dataset.txt
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/opacity]
+└─$ cat dataset.txt 
+dataset:$keepass$*2*100000*0*2114f635de17709ecc4a2be2c3403135ffd7c0dd09084c4abe1d983ad94d93a5*2bceccca0facfb762eb79ca66588135c72a8835e43d871977ff7d3e9db0ffa17*cae9a25c785fc7f16772bb00bac5cc82*b68e2c3be9e46e8b7fc05eb944fad8b4ec5254a40084a73127b4126408b2ff46*b0afde2bd0db881200fc1c2494baf7c28b7486f081a82e935411ab72a27736b4
+```
+Using John,
+
+command:```john dataset.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt```
+
+![image](https://user-images.githubusercontent.com/67879936/233617809-96d43b5b-b5e2-437a-93f6-41dcb7a60eb5.png)
+
+We were about to get the password hehe. Now, lets use this password to open the file
+
+![image](https://user-images.githubusercontent.com/67879936/233617980-14524dff-6049-4e99-a219-48cd84c2a565.png)
+![image](https://user-images.githubusercontent.com/67879936/233618653-165ee5e8-12ed-4148-bdbe-1f87c4b5815e.png)
+
+The password worked, we can see that this file contains the credentials for user ```sysadmin```
+
+Lets login to the ssh server using the creds we found
+
+```username:sysadmin```                 ```password:Cl0udP4ss40p4city#8700```
+
+command:```ssh sysadmin@10.10.251.188```
+
+![image](https://user-images.githubusercontent.com/67879936/233619357-330c7c7c-0570-4fd9-8c6c-275180e79870.png)
+
+cool, we are logged in.
+
+Lets go ahead and further escalate our privileges
+
+![image](https://user-images.githubusercontent.com/67879936/233620159-ec2a3e07-158c-41b9-b59a-66c07cbff215.png)
+
+We see the ```script.php``` script running as root. Lets check what the script entails
+
+![image](https://user-images.githubusercontent.com/67879936/233620905-7243aec9-6831-4bf4-996d-868e738c6883.png)
+
+<font color="Green">The script requires the "backup.inc.php" library file, which is likely a script containing backup-related functions that are used in this script.The line "require_once('lib/backup.inc.php');" at the beginning of the script includes the "backup.inc.php" file in the current script, making its functions available for use. This is known as "including" or "importing" a script into another script.</font>
+
+What we'll be doing is that we'll change the content of the ```backup.inc.php``` script located in the ```home/sysadmin/scripts/lib``` directory
+
+![image](https://user-images.githubusercontent.com/67879936/233621542-2ce5ba62-b731-4bea-a770-1e43331f5c57.png)
+
+Let's move this to another file say ```opacity.php``` since we have write access to the file
+
+![image](https://user-images.githubusercontent.com/67879936/233621778-1d44b0cc-83c6-4858-81af-9952fdbc949c.png)
+
+Cool, now lets go ahead and create our own ```backup.inc.php```, yeah the script will have to be malicious if we want to further escalate our privileges. We'll be using the php reverse shell from pentest monkey that we made use of earlier.
+
+![image](https://user-images.githubusercontent.com/67879936/233622436-2ba26172-b00a-4068-8ccd-65d7b92c1f9c.png)
+
+Ensure you change the $ip and $port. Lets go ahead and save this script
+
+![image](https://user-images.githubusercontent.com/67879936/233622558-925873dd-6e5f-4c45-ae61-1dfda3d5c33d.png)
+
+Ensure you set your netcat listener after saving the file
+
+![image](https://user-images.githubusercontent.com/67879936/233622877-d335e9c4-6527-49c7-8625-6b407bcc205f.png)
+
+Wait for some mins and check back on your netcat listener
+
+![image](https://user-images.githubusercontent.com/67879936/233623165-808aaf69-b30d-4897-9a7d-fac11598c0ff.png)
+
+cool, we got a shell as the ```root``` user😎. Lets stabilize this shell as we did earlier
+
+![image](https://user-images.githubusercontent.com/67879936/233623502-f059580d-54bf-485b-8fb4-bc5a9c0e3444.png)
+
+That'll be all for today.
+
+<hr> <hr>
+[Back To Home](../../index.md)
 
 
 
