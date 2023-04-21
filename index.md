@@ -26,6 +26,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[March 03 2023]] [TryHackMe--Archangel](https://Blackanon22.github.io/posts/tryhackme/archangel.html) `LFI Log Poisoning` `CronJob` `SUID Binaries`
 - [[March 03 2023]] [TryHackMe--IDE](https://Blackanon22.github.io/posts/tryhackme/ide.html) `Cadever RCE` `SUDO Privileges`
 - [[March 10 2023]] [TryHackMe--Chocolate Factory](https://Blackanon22.github.io/posts/tryhackme/chocolate_factory.html) `Command Injection` `SUDO Privileges`
+- [[April 21 2023]] [TryHackMe--Opacity](https://Blackanon22.github.io/posts/tryhackme/opacity.html) `File Upload` `Cronjob`
 
 * * *
 ### **Proving Grounds:~#**
