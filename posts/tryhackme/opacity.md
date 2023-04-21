@@ -290,7 +290,7 @@ cool, we got a shell as the ```root``` user😎. Lets stabilize this shell as we
 
 That'll be all for today.
 
-<hr> <hr>
+<br> <br>
 [Back To Home](../../index.md)
 
 
