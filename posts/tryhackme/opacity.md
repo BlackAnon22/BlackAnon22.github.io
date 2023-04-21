@@ -233,7 +233,7 @@ command:```john dataset.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt```
 
 ![image](https://user-images.githubusercontent.com/67879936/233617809-96d43b5b-b5e2-437a-93f6-41dcb7a60eb5.png)
 
-We were about to get the password hehe. Now, lets use this password to open the file
+Gotten the password already hehe. Now, lets use this password to open the file
 
 ![image](https://user-images.githubusercontent.com/67879936/233617980-14524dff-6049-4e99-a219-48cd84c2a565.png)
 ![image](https://user-images.githubusercontent.com/67879936/233618653-165ee5e8-12ed-4148-bdbe-1f87c4b5815e.png)
