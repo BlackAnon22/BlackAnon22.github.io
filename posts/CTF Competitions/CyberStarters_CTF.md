@@ -1,3 +1,4 @@
+
 # Challenges Solved
 ## Sanity Check
 -      Discord (10 points)
