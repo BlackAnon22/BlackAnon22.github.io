@@ -261,6 +261,7 @@ FLAG:- ```DoHCTF{The_flags_revealed_009}```
 
 ## Hensel's Mystery (360 points)
 
+![image](https://user-images.githubusercontent.com/67879936/235305639-2c32e020-561d-4c1e-99f1-c95e1e226819.png)
 
 
 
