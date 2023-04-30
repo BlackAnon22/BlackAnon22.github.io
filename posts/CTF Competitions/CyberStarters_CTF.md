@@ -283,6 +283,23 @@ What information were we provided with?
 
 I tried lots of stuffs, downloaded lots of osint tools and still didn't get anywhere😞. Not until I thought of PalmPay😂, and this is because PalmPay do use the phone number of their clients as their account numbers. In this case the account number will be ```8109439442```. Lets try sending money to this account number, if we are lucky we'll see his full name there.
 
+![image](https://user-images.githubusercontent.com/67879936/235340128-0ce8c8a6-fe0b-46a4-91cd-9f38864efacc.png)
+
+Well Well Well, We found a name ```Adebayo Ekeh```, if you recall they provided us with a third name ```Mustapha```. Now, lets go over to LinkedIn to look for our rogue hacker. 
+
+fullname: ```Adebayo Mustapha Ekeh```
+
+![image](https://user-images.githubusercontent.com/67879936/235340215-102c4624-dec7-4026-a72f-1a4e94d1e209.png)
+
+cool we found our rogue hacker😎. Lets decode the base64 code
+
+command:```echo  RG9IQ1RGe3RoYXRfd2FzX2Vhc3lfcmlnaHQ/X3JpZ2h0P30K  | base64 --d```
+
+![image](https://user-images.githubusercontent.com/67879936/235340319-0404652e-2be1-4ac2-b725-af10eea60230.png)
+
+We found our flag
+
+FLAG:- ```DoHCTF{that_was_easy_right?_right?}```
 
 
 
