@@ -264,6 +264,69 @@ FLAG:- ```DoHCTF{The_flags_revealed_009}```
 
 ![image](https://user-images.githubusercontent.com/67879936/235305639-2c32e020-561d-4c1e-99f1-c95e1e226819.png)
 
+Lets download the files to our machine
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/CyberStarters_CTF/Cryptography]
+└─$ ls    
+flag.png  output.txt  ring.py
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/CyberStarters_CTF/Cryptography]
+└─$ file output.txt  
+output.txt: ASCII text, with very long lines (884)
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/CyberStarters_CTF/Cryptography]
+└─$ file ring.py   
+ring.py: Python script, ASCII text executable
+```
+We got ourselves an ASCII text and a Python script.
+
+The content of both files
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/CyberStarters_CTF/Cryptography]
+└─$ cat output.txt 
+45406770103725904509890104231914678754265961643298482440409237765195072368733672685631587979562241346*x^4 + 42764372489624602989152383173709795403796386376344802703066528962696589468564501897000324538498812883*x^3 + 37672731284607729155480237866218406485893919987814572486490754064498223292180995037432012350216544417*x^2 + 55462425449896168600390367564436787134741290054741525865807795492693442375757671549228298754153509613*x + 6778690755895128168751737959454411972187106669733266559106651743590246692689398562032067795146717162848413292299573013038367117575935673619248776925892672201933424467005517162118712395701681263279585553299544107860626811206695844212433182471614373859755499052750286667585910623259340579702249091680614010546399687179863049582625671630876108790555962058243905551470611736992489702159306356102118074450673803009393106039180751255185874156459283395261688861
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/CyberStarters_CTF/Cryptography]
+└─$ cat ring.py   
+from sage.all import *
+import codecs
+
+def read_flag():
+    with open('flag.txt', 'r') as file:
+        return file.read().strip()
+
+def encode_flag(flag):
+    encoded = codecs.encode(flag.encode(), 'hex')
+    return int(encoded, 16)
+
+def generate_polynomial(flag):
+    ranges = int(log(flag, 2))
+    p = 35671
+    k = 100
+    N = p**k
+    d = 5
+    P = PolynomialRing(Zmod(N), names='x', implementation='NTL')
+    x = P.gen()
+    poly = 0
+    for c in range(d):
+        poly += ZZ.random_element(2**ranges, 2**(ranges+1))*x**c
+    remainder = poly(flag)
+    poly = poly - remainder
+    assert poly(flag) == 0
+    return poly
+
+def main():
+    flag = read_flag()
+    encoded_flag = encode_flag(flag)
+    poly = generate_polynomial(encoded_flag)
+    print(poly)
+
+if __name__ == '__main__':
+    main()
+```
+
 
 
 
