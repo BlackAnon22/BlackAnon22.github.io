@@ -156,7 +156,7 @@ Well, after a bit of research I found something interesting. I remember completi
 
 ![image](https://user-images.githubusercontent.com/67879936/235301152-04ee2265-0571-4cf4-8a41-457b33ad04df.png)
 
-Now, this vulnerability falls under the owasptop 10, the name of the vulnerability is ```Data Integrity Failures```. You can learn more about it [here](https://tryhackme.com/room/owasptop102021).
+Now, this vulnerability falls under the owasptop10, the name of the vulnerability is ```Data Integrity Failures```. You can learn more about it [here](https://tryhackme.com/room/owasptop102021).
 
 At this point I just had to follow what I had in my note😎. Let's go this [webpage](https://appdevtools.com/base64-encoder-decoder)
 
@@ -326,6 +326,8 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+what does this script do??
+
 
 
 
