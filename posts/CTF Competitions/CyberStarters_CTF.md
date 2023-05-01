@@ -85,6 +85,7 @@ FLAG:- ```yes```
 
 
 
+
 # Steg
 
 ## OK (46 points)
@@ -118,6 +119,7 @@ command:```stegsnow -C 0cold_flag.txt```
 cool, we got our flag
 
 FLAG:- ```DoHCTF{another_quite_simple_one}```
+
 
 
 
@@ -328,6 +330,7 @@ FLAG:- ```DoHCTF{xor_rox_xor}```
 
 
 
+
 # Cryptography
 
 ## di_sease (100 points)
@@ -457,7 +460,74 @@ what does this script do??
 
 <font color="Green">This Python script uses the SageMath library to generate a polynomial with a specific property. The polynomial is generated based on an encoded flag read from a file called "flag.txt". The encoding of the flag is done by converting the flag string to its hexadecimal representation and then converting the hexadecimal representation to an integer.</font>
 
+Well, I am not really a cryptography fanboy. Went online to read writeups and I found [this](https://amritabi0s.wordpress.com/2019/03/18/confidence-teaser-ctf-crypto-writeups/)
 
+From the script it is  clear that the output is the root of a polynomial, and the file ```output..txt``` contains some polynomials. So, the challenge is to find the root of the polynomial.
+
+To solve this challenge, we can first find a solution for the given polynomial over ```mod p``` and then use Hensel’s lifting lemma to find a solution 
+
+<font color="Green">Hensel's lifting lemma, also known as Hensel's lemma or Hensel's lemma for polynomials, is a theorem in algebra that allows the lifting of a solution to a modular equation to a solution of a nearby polynomial equation with integer coefficients. Specifically, the theorem provides a method for constructing solutions to congruences modulo prime powers by iteratively lifting a solution modulo a prime to a solution modulo a higher power of the same prime. The lemma is useful in various areas of mathematics and computer science, including number theory, algebraic geometry, and cryptography.</font>
+
+I'll be using this python script to solve the challenge
+
+```
+from sage.all import *
+
+p = 35671
+k = 100
+N = p**k
+
+P = PolynomialRing(Zmod(p), names='x', implementation='NTL')
+x = P.gen()
+pol = 45406770103725904509890104231914678754265961643298482440409237765195072368733672685631587979562241346*x**4 + 42764372489624602989152383173709795403796386376344802703066528962696589468564501897000324538498812883*x**3 + 37672731284607729155480237866218406485893919987814572486490754064498223292180995037432012350216544417*x**2 + 55462425449896168600390367564436787134741290054741525865807795492693442375757671549228298754153509613*x + 6778690755895128168751737959454411972187106669733266559106651743590246692689398562032067795146717162848413292299573013038367117575935673619248776925892672201933424467005517162118712395701681263279585553299544107860626811206695844212433182471614373859755499052750286667585910623259340579702249091680614010546399687179863049582625671630876108790555962058243905551470611736992489702159306356102118074450673803009393106039180751255185874156459283395261688861
+
+# help polynomial
+var('y')
+f = 45406770103725904509890104231914678754265961643298482440409237765195072368733672685631587979562241346*y**4 + 42764372489624602989152383173709795403796386376344802703066528962696589468564501897000324538498812883*y**3 + 37672731284607729155480237866218406485893919987814572486490754064498223292180995037432012350216544417*y**2 + 55462425449896168600390367564436787134741290054741525865807795492693442375757671549228298754153509613*y + 6778690755895128168751737959454411972187106669733266559106651743590246692689398562032067795146717162848413292299573013038367117575935673619248776925892672201933424467005517162118712395701681263279585553299544107860626811206695844212433182471614373859755499052750286667585910623259340579702249091680614010546399687179863049582625671630876108790555962058243905551470611736992489702159306356102118074450673803009393106039180751255185874156459283395261688861
+# derivative of f
+fd = 4*45406770103725904509890104231914678754265961643298482440409237765195072368733672685631587979562241346*y**3 + 42764372489624602989152383173709795403796386376344802703066528962696589468564501897000324538498812883*3*y**2 + 37672731284607729155480237866218406485893919987814572486490754064498223292180995037432012350216544417*2*y + 55462425449896168600390367564436787134741290054741525865807795492693442375757671549228298754153509613
+
+# First, find roots modulo p
+sols = []
+for i in range(p):
+    if Mod(pol(i),p) == 0:
+        sols.append(i)
+
+derivs = [fd(y=s) for s in sols]
+
+sols_old = sols
+for n in range(k-1):
+    sols = []
+    for s_old,d in zip(sols_old, derivs):
+        sols.append(int(Mod(s_old-int(f(y=s_old))*int(Mod(d,p**(n+2))**(-1)), p**(n+2))))
+    sols_old = sols
+    
+print("The bytes for all roots:")
+[print(i, int.to_bytes(s, 500, 'big').lstrip(b"\x00"), end="\n\n") for i,s in enumerate(sols)]
+```
+Save it, then run it
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/cyberstarter_ctf/crypto]
+└─$ python abeg.py  
+Traceback (most recent call last):
+  File "/home/bl4ck4non/Downloads/CTF/cyberstarter_ctf/crypto/abeg.py", line 1, in <module>
+    from sage.all import *
+ModuleNotFoundError: No module named 'sage'
+```
+As you can see we got a **_ModuleNotFoundError_** which says **_No module named sage_**. Well, installing sage from my end was a drag. I went on to do a little research and I found this [webpage](https://cocalc.com/features/sage)
+
+![image](https://user-images.githubusercontent.com/67879936/235384112-6054ef28-ab4b-46df-95a3-d8a567ae616c.png)
+
+I definitely can run my script here without any **_No module named sage_** error.
+
+Pasting our script to the web browser and running it
+
+![image](https://user-images.githubusercontent.com/67879936/235384232-356f8677-4ec7-4259-ba27-e5f5f41fe2ed.png)
+
+cool, we got our flag💆
+
+FLAG:- ```DoHCTF{univariate_polynomial_ring_go_brrr}```
 
 
 
