@@ -61,6 +61,7 @@ FLAG:- ```DoHCTF{try_to_be_hacktive_on_discord_hehehehehehe}```
 ------------------------------
 
 ## DoHCTF{_colwSPs:(} (10 points)
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/235298743-b5cd9a91-5380-4ad9-9efd-b7ce445d334c.png)
 
@@ -71,6 +72,7 @@ FLAG:- ```DoHCTF{_colwSPs:(}```
 ------------------------------
 
 ## Twitter (10 points)
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/235298853-a35e8f5e-9771-4aa4-bba1-2650457f6850.png)
 
@@ -209,6 +211,7 @@ FLAG:- ```DoHCTF{jwt_has_a_none_algo_loll}```
 ------------------------------
 
 ## ^_^ (200 points)
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/235378245-a1d74b2d-b358-4f74-869b-f9c393468763.png)
 
@@ -397,6 +400,7 @@ FLAG:- ```DoHCTF{The_flags_revealed_009}```
 ------------------------------
 
 ## Hensel's Mystery (360 points)
+<hr>
 
 ![image](https://user-images.githubusercontent.com/67879936/235305639-2c32e020-561d-4c1e-99f1-c95e1e226819.png)
 
