@@ -235,7 +235,7 @@ These are the directories that look base64 ish
 /HwEBBw0WGQ0HAQEaVBYcEAwHHw0QHRAaHxAdEAEQ/c2R1c2hkdWhzdWRoOHNoZGl1c2hkaXVoc3VpZGRi
 /ISdFLDRLKitfPDRKRT0SCRcHEBIIFwsTEg/QEUqWUAqSEQqSFUoKkhmaHVoZWZpdWRmZg
 ```
-Lets try to crack one of these example ```ISdFLDRLKitfPDRKRT0SCRcHEBIIFwsTEg```
+For example, lets try to crack this ```ISdFLDRLKitfPDRKRT0SCRcHEBIIFwsTEg```
 
 command:```echo ISdFLDRLKitfPDRKRT0SCRcHEBIIFwsTEg | base64 --d ```
 
@@ -247,11 +247,17 @@ command:```echo ISdFLDRLKitfPDRKRT0SCRcHEBIIFwsTEg | base64 --d ```
 ```
 Now, this is the weird string I was talking about. 
 
-Well, I had to sacrifice 20 points to get hint so as to know the next course of action
+Well, I had to sacrifice 20 points to unlock the hint so as to know the next course of action
 
 ![image](https://user-images.githubusercontent.com/67879936/235379173-8eb2e2b2-a518-4f34-a1df-41c318b5f8dc.png)
 
-Now, from the hint we got ```^ bitwise operation```. I also noticed that for the directories the base64 has the same length (i.e before and after the /). 
+Now, from the hint we got ```^ bitwise operation```. 
+
+<font color="Green">The bitwise XOR (^)(exclusive OR) operation takes two bit patterns of equal length and performs a logical XOR operation on each pair of corresponding bits. The resulting bit pattern has a 1 in each position where the corresponding bits in the operands are different, and a 0 where they are the same.</font>
+
+Taking a look at the directories you'll observe they have the same length (i.e before and after the /). 
+
+For example,
 
 We'll be xoring ```HwEBBw0WGQ0HAQEaVBYcEAwHHw0QHRAaHxAdEAEQ``` with ```c2R1c2hkdWhzdWRoOHNoZGl1c2hkaXVoc3VpZGRi``` to see if we can get something.
 
