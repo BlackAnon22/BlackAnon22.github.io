@@ -1,3 +1,8 @@
+I participated in the CyberStarters CTF qualifier competition organized by the Diary of Hackers, took place between April 28th to April 30th 2023. For me personally I got to learn new things
+
+This is a writeup of the challenges I solved during the event. Lets jump right into it
+
+
 
 # Challenges Solved
 ## Sanity Check
@@ -11,6 +16,7 @@
 
 ## Web
 -     None Shall Pass (68 points)
+-     ^_^ (200 points)
 
 
 ## Cryptography
@@ -198,6 +204,127 @@ We got our flag😎
 
 FLAG:- ```DoHCTF{jwt_has_a_none_algo_loll}```
 
+------------------------------
+
+## ^_^ (200 points)
+
+![image](https://user-images.githubusercontent.com/67879936/235378245-a1d74b2d-b358-4f74-869b-f9c393468763.png)
+
+We were told not to bruteforce lool, this means we don't need directory fuzzing tools. Lets navigate to the webpage
+
+![image](https://user-images.githubusercontent.com/67879936/235378390-a7436bb1-bcce-42cf-8a70-89b25f205501.png)
+
+We get this, take note of the url
+
+![image](https://user-images.githubusercontent.com/67879936/235378439-a6e49bb8-d52e-401e-bff8-b2589bfcacf7.png)
+
+Now, those look like base64 code. Checking the source page
+
+![image](https://user-images.githubusercontent.com/67879936/235378469-748ca325-60c8-4caa-be6c-238dda6d5d6f.png)
+
+We get 2 more directories also looking like base64 code. Now, trying to crack this was giving me some weird strings.
+
+What do I mean??
+
+These are the directories that look base64 ish
+
+```
+/GgoXAQ4QGxMCHA4ZA1JKDFlWAEFRG1YQGw/c2RzZHZ5dXdnZGd3ZzcyZTcyZTk4dTJ1Yw
+/HwEBBw0WGQ0HAQEaVBYcEAwHHw0QHRAaHxAdEAEQ/c2R1c2hkdWhzdWRoOHNoZGl1c2hkaXVoc3VpZGRi
+/ISdFLDRLKitfPDRKRT0SCRcHEBIIFwsTEg/QEUqWUAqSEQqSFUoKkhmaHVoZWZpdWRmZg
+```
+Lets try to crack one of these example ```ISdFLDRLKitfPDRKRT0SCRcHEBIIFwsTEg```
+
+command:```echo ISdFLDRLKitfPDRKRT0SCRcHEBIIFwsTEg | base64 --d ```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/CyberStarters_CTF/Web]
+└─$ echo ISdFLDRLKitfPDRKRT0SCRcHEBIIFwsTEg | base64 --d                  
+!'E,4K*+_<4JE=  
+               base64: invalid input
+```
+Now, this is the weird string I was talking about. 
+
+Well, I had to sacrifice 20 points to get hint so as to know the next course of action
+
+![image](https://user-images.githubusercontent.com/67879936/235379173-8eb2e2b2-a518-4f34-a1df-41c318b5f8dc.png)
+
+Now, from the hint we got ```^ bitwise operation```. I also noticed that for the directories the base64 has the same length (i.e before and after the /). 
+
+We'll be xoring ```HwEBBw0WGQ0HAQEaVBYcEAwHHw0QHRAaHxAdEAEQ``` with ```c2R1c2hkdWhzdWRoOHNoZGl1c2hkaXVoc3VpZGRi``` to see if we can get something.
+
+I'll be using this python script
+
+```
+import base64
+
+# Example base64 encoded strings
+encoded_str1 = "HwEBBw0WGQ0HAQEaVBYcEAwHHw0QHRAaHxAdEAEQ"
+encoded_str2 = "c2R1c2hkdWhzdWRoOHNoZGl1c2hkaXVoc3VpZGRi"
+
+# Base64 decode the encoded strings
+decoded_str1 = base64.b64decode(encoded_str1)
+decoded_str2 = base64.b64decode(encoded_str2)
+
+# XOR the two decoded strings
+xored_str = bytes([a ^ b for a, b in zip(decoded_str1, decoded_str2)])
+
+# Print the result
+print(xored_str)
+```
+This script demonstrates how to perform XOR operation between two base64-encoded strings
+
+Lets run it
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/CyberStarters_CTF/Web]
+└─$ ls
+abeg.py
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/CyberStarters_CTF/Web]
+└─$ python abeg.py
+b'letterletterletterletterletter'
+```
+cool, I got this. Fortunately they gave a free hint which goes like this
+
+```
+indexindexindexindexindex
+aboutaboutaboutaboutabout
+letterletterletterletterletter
+flagflagflagflagflag
+```
+From our script we ran earlier we can tell that we are on the right path. Now, what we have to do is to look for a way to encode the ```flagflagflagflagflag``` to it's base64 representation then we xor null byte with null byte which will give A. After we can make the length of the base64 encoded form of A to be equal to len of null byte which is 28.
+
+The reason why we are using null byte is because when you xor something with zero you get that samme value being xored and when you xor two things that are the same you get zero.
+
+For this we'll be using a python script
+
+```
+from pwn import xor
+import base64 as b
+
+flag = b'flagflagflagflagflag'
+encoded_flag = b.b64encode(flag)
+
+null = b'0x0'
+xored = xor(null, null)
+second_ = b.b64encode(xored) * 7
+
+
+print(encoded_flag+b'/'+second_)
+```
+Save this script and run it
+
+![image](https://user-images.githubusercontent.com/67879936/235380419-ae235849-fdd3-4310-a6b3-a4da7799cc66.png)
+
+We got the output we wanted, lets navigate to this directory, hopefully we get our flag
+
+![image](https://user-images.githubusercontent.com/67879936/235380484-4591b648-3999-4b52-a8c4-9450537d9bee.png)
+
+cool, we got our flag😎
+
+FLAG:- ```DoHCTF{xor_rox_xor}```
+
 
 
 
@@ -328,6 +455,10 @@ if __name__ == '__main__':
 ```
 what does this script do??
 
+<font color="Green">This Python script uses the SageMath library to generate a polynomial with a specific property. The polynomial is generated based on an encoded flag read from a file called "flag.txt". The encoding of the flag is done by converting the flag string to its hexadecimal representation and then converting the hexadecimal representation to an integer.</font>
+
+
+
 
 
 
@@ -368,6 +499,8 @@ FLAG:- ```DoHCTF{that_was_easy_right?_right?}```
 
 
 
+
+
 # BlockChain
 
 ## Ask The Block (96 points)
@@ -404,9 +537,6 @@ After lots of clicking, I eventually found one
 cool, we got our flag already😎
 
 FLAG:- ```DoHCTF{5644}```
-
-
-    
     
     
     
