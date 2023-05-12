@@ -4,6 +4,63 @@
 
 command:```sudo nmap -A 10.10.106.137 -T4  -v -p-```
 
+```
+# Nmap 7.93 scan initiated Fri May 12 10:05:36 2023 as: nmap -A -T4 -v -p- -oN empline 10.10.106.137
+Increasing send delay for 10.10.106.137 from 0 to 5 due to 1308 out of 3269 dropped probes since last increase.
+Increasing send delay for 10.10.106.137 from 5 to 10 due to 21 out of 52 dropped probes since last increase.
+Nmap scan report for 10.10.106.137
+Host is up (0.16s latency).
+Not shown: 65532 closed tcp ports (reset)
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 c0d541eea4d0830c970d75cc7b107f76 (RSA)
+|   256 8382f969197d0d5c5365d554f645db74 (ECDSA)
+|_  256 4f913e8b696909700e8226285c8471c9 (ED25519)
+80/tcp   open  http    Apache httpd 2.4.29 ((Ubuntu))
+|_http-title: Empline
+| http-methods: 
+|_  Supported Methods: POST OPTIONS HEAD GET
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+3306/tcp open  mysql   MySQL 5.5.5-10.1.48-MariaDB-0ubuntu0.18.04.1
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.1.48-MariaDB-0ubuntu0.18.04.1
+|   Thread ID: 86
+|   Capabilities flags: 63487
+|   Some Capabilities: ODBCClient, ConnectWithDatabase, SupportsCompression, Support41Auth, IgnoreSigpipes, Speaks41ProtocolOld, SupportsTransactions, InteractiveClient, IgnoreSpaceBeforeParenthesis, LongPassword, FoundRows, Speaks41ProtocolNew, LongColumnFlag, SupportsLoadDataLocal, DontAllowDatabaseTableColumn, SupportsAuthPlugins, SupportsMultipleStatments, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: 5;i!dU\NT:ceP@2x)_'@
+|_  Auth Plugin Name: mysql_native_password
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.93%E=4%D=5/12%OT=22%CT=1%CU=41084%PV=Y%DS=2%DC=T%G=Y%TM=645E054
+OS:8%P=x86_64-pc-linux-gnu)SEQ(SP=104%GCD=1%ISR=10A%TI=Z%CI=Z%TS=A)SEQ(SP=1
+OS:04%GCD=1%ISR=10A%TI=Z%CI=Z%II=I%TS=A)OPS(O1=M506ST11NW6%O2=M506ST11NW6%O
+OS:3=M506NNT11NW6%O4=M506ST11NW6%O5=M506ST11NW6%O6=M506ST11)WIN(W1=F4B3%W2=
+OS:F4B3%W3=F4B3%W4=F4B3%W5=F4B3%W6=F4B3)ECN(R=Y%DF=Y%T=40%W=F507%O=M506NNSN
+OS:W6%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%D
+OS:F=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O
+OS:=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W
+OS:=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%R
+OS:IPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Uptime guess: 41.098 days (since Sat Apr  1 08:01:26 2023)
+Network Distance: 2 hops
+TCP Sequence Prediction: Difficulty=260 (Good luck!)
+IP ID Sequence Generation: All zeros
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 554/tcp)
+HOP RTT       ADDRESS
+1   164.08 ms 10.18.0.1
+2   173.72 ms 10.10.106.137
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri May 12 10:22:16 2023 -- 1 IP address (1 host up) scanned in 999.52 seconds
+```
+
 From our scan we have 3 opened ports. Port 22 which runs ssh, port 80 which runs http and port 3306 which runs mysql. We'll be starting our enumeration today from port 80.
 
 
