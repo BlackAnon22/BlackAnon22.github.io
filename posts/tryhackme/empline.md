@@ -115,7 +115,7 @@ Navigating to the subdomain page should get you this
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2d3d2def-63ff-4e4e-8caf-7377bc4b5c85)
 
-<font color="green">it is an open-source software application that is designed to help recruiters and HR professionals manage the recruitment process. OpenCATS can be used to track job openings, manage resumes, schedule interviews, and manage communication with candidates, among other things.</font>
+<font color="green">opencats is an open-source software application that is designed to help recruiters and HR professionals manage the recruitment process. OpenCATS can be used to track job openings, manage resumes, schedule interviews, and manage communication with candidates, among other things.</font>
 
 This webpage is running on ```opencats 0.9.4```. Lets try to look for exploits
 
