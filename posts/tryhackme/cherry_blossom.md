@@ -253,7 +253,7 @@ oops, we are required to provide a password to unzip the file. Well, I guess it'
 
 Lets get the password
 
-commands
+commands:
 ```
 zip2john _journal.zip > abeg.txt
 john abeg.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt
@@ -332,7 +332,11 @@ oops, we are required to provide a password here also. Thank God John hasn't lef
 
 Lets get the password
 
-command:```
+commands:
+```
+7z2john Journal.ctz > hehe.txt
+john hehe.txt -w=/home/bl4ck4non/Documents/rockyou.txt
+```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
