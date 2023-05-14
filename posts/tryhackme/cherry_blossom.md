@@ -536,7 +536,7 @@ Resolving deltas: 100% (14/14), done.
 └─$ ls 
 exploit.c  LICENSE  Makefile  README.md
 ```
-To compile this exploit, I tried using the ```gcc``` compiler but I was getting an error. I guess this is because the gcc compiler on my machine was the newer version. We also can't compile this on the target's machine because the compiler ```gcc``` isn't installed on the target's machine.
+To compile this exploit, I tried using the ```gcc``` compiler but I was getting an error. I guess this was because the gcc compiler on my machine was the newer version. We also can't compile this on the target's machine because the compiler ```gcc``` isn't installed on the target's machine.
 
 Well, what did I do next??
 
