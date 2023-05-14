@@ -102,7 +102,7 @@ command:```smbclient //10.10.244.236/Anonymous```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/88db4e04-d65b-48d8-aa3f-80288f6c0571)
 
-Note: When it prompts you for a password, just hit the enter key and you'll be logged in.
+**_Note: When it prompts you for a password, just hit the enter key and you'll be logged in._**
 
 cool, we are logged in. We can go ahead and look for files that are available on this server
 
