@@ -124,7 +124,7 @@ Now, this is a base64 encoding, lets try to decode this using [cyberchef](https:
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3678e6f0-0808-47e0-93bb-fa6cfa912124)
 
-As you can see from the above screenshot, we have something that looks like a ```png header```. What this means is that the base64 encoding contains a ```png image```. So what we can do is decode the base64 encoding into an image. To do this we will be using a python script
+As you can see from the above screenshot, we have something that looks like a ```png header```. What this means is that the base64 encoding contains a ```png image```. So what we can do is decode the base64 encoding into an image. To do this we will be using this python script
 
 ```
 import base64
