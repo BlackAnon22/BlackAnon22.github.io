@@ -510,7 +510,7 @@ Running the command ```sudo -l```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c64c759f-e0a4-444b-94b3-bffeb03d4b21)
 
-From the above screenshot, you can see that we are getting the password echoed back to us, now this isn't meant to be actually. This is a function called pwfeedback thats enabled in the ```/etc/sudoers``` config, so basically a stack-based buffer overflow in the privileged sudo process. You can read more about it [here](https://nvd.nist.gov/vuln/detail/CVE-2019-18634)
+From the above screenshot, you can see that we are getting the password echoed back to us, now this isn't meant to be actually. This is a function called "pwfeedback" thats enabled in the ```/etc/sudoers``` config, so basically a stack-based buffer overflow in the privileged sudo process. You can read more about it [here](https://nvd.nist.gov/vuln/detail/CVE-2019-18634)
 
 After a little research I found an [exploit](https://github.com/saleemrashid/sudo-cve-2019-18634)
 
