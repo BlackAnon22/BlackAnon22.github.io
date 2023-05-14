@@ -414,7 +414,7 @@ FLAG:- ```THM{054a8f1db7618f8f6a41a0b3349baa11}```
 
 Now, that we've solved the first question lets move on to the second question which is getting the user flag. 
 
-TO do this I'll be opening this file using the text editor ```gedit```
+To do this I'll be opening this file using the text editor ```gedit```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/38292f1b-2d7f-440e-8b76-89aa5e98145d)
 
