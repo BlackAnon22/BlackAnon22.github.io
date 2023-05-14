@@ -540,7 +540,7 @@ To compile this exploit, I tried using the ```gcc``` compiler but I was getting 
 
 Well, what did I do next??
 
-I got an idea from my sensei😎 to use compile using makefile, doing my research on this led me to a compiler known as ```cc```, well this is the first time I'll also be hearing about this compiler.
+I got an idea from my sensei😎 to compile using makefile, doing my research on this led me to a compiler known as ```cc```, well this is the first time I'll also be hearing about this compiler.
 
 command:```cc -Os -g3 -std=c11 -Wall -Wextra -Wpedantic -static -o abeg_gimme_shell exploit.c```
 
