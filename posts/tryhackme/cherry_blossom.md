@@ -215,24 +215,8 @@ Now, lets extract hidden informations from our ```image.png``` file.
 
 command:```python steg.py ../../image.png```
 
-```
-┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
-└─$ python steg.py ../../image.png 
-File _journal.zip succesfully extracted from ../../image.png
-                                                                                                                                  
-                                                                                                                                 ┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
-└─$ ls
-crypt.py  __init__.py  _journal.zip  lsb.py  __pycache__  steg.py  test.npy  tests.py
-                                                                                                                                                                                                
-┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
-└─$ unzip _journal.zip 
-Archive:  _journal.zip
-file #1:  bad zipfile offset (local header sig):  0
-                                                                                                                                                                                                
-┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
-└─$ file _journal.zip 
-_journal.zip: JPEG image data
-```
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0401c9e8-f137-4973-abf1-304aa850e906)
+
 This  looks so unusual😂, a ```.zip``` extension having a ```jpeg``` header😂. Well, there's a solution for this abnormality.
 
 What we'll be doing is changing the header from that of a ```jpeg``` image data to a ```zip``` file using a tool called ```hexeditor```. This tools come preinstalled with kali linux.
@@ -295,20 +279,23 @@ cool, we got the password ```september```.
 
 Now, lets unzip
 
-```
+```                                                                                            
+┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
+└─$ python steg.py ../../image.png
+File _journal.zip succesfully extracted from ../../image.png
+                                                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
+└─$ ls
+crypt.py  __init__.py  _journal.zip  lsb.py  __pycache__  steg.py  test.npy  tests.py
+                                                                                                                                                                                                                                
 ┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
 └─$ unzip _journal.zip
 Archive:  _journal.zip
-[_journal.zip] Journal.ctz password: 
-  inflating: Journal.ctz             
-                                                                                                                                                                                                
+file #1:  bad zipfile offset (local header sig):  0
+                                                                                                                                                                                                                                
 ┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
-└─$ ls
-abeg.txt  crypt.py  __init__.py  Journal.ctz  _journal.zip  lsb.py  __pycache__  steg.py  test.npy  tests.py
-                                                                                                                                                                                                
-┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
-└─$ file Journal.ctz         
-Journal.ctz: 7-zip archive data, version 0.4
+└─$ file _journal.zip 
+_journal.zip: JPEG image data
 ```
 We sucessfully unziped the file. Upon unziping the file we were provided with a ```journal.ctz``` file, which is a ```7-zip archive data```. To extract the files from the file we'll be using a tool called ```7z```.
 
