@@ -279,23 +279,20 @@ cool, we got the password ```september```.
 
 Now, lets unzip
 
-```                                                                                            
-┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
-└─$ python steg.py ../../image.png
-File _journal.zip succesfully extracted from ../../image.png
-                                                                                                                                                                                                                                
-┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
-└─$ ls
-crypt.py  __init__.py  _journal.zip  lsb.py  __pycache__  steg.py  test.npy  tests.py
-                                                                                                                                                                                                                                
+```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
 └─$ unzip _journal.zip
 Archive:  _journal.zip
-file #1:  bad zipfile offset (local header sig):  0
-                                                                                                                                                                                                                                
+[_journal.zip] Journal.ctz password: 
+  inflating: Journal.ctz             
+                                                                                                                                                                                                
 ┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
-└─$ file _journal.zip 
-_journal.zip: JPEG image data
+└─$ ls
+crypt.py  __init__.py  Journal.ctz  _journal.zip  lsb.py  __pycache__  steg.py  test.npy  tests.py
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/…/TryHackMe/Cherry_Blossom/stegpy/stegpy]
+└─$ file Journal.ctz 
+Journal.ctz: 7-zip archive data, version 0.4
 ```
 We sucessfully unziped the file. Upon unziping the file we were provided with a ```journal.ctz``` file, which is a ```7-zip archive data```. To extract the files from the file we'll be using a tool called ```7z```.
 
