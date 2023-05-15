@@ -1,5 +1,5 @@
 ## Legacy HackTheBox
-## Easy
+## Level:Easy
 <hr>
 
 Lets get started
