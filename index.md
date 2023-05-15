@@ -64,6 +64,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[March 05 2023]] [HackTheBox--Jerry](https://Blackanon22.github.io/posts/hackthebox/jerry.html) `Tomcat` `Arbitrary File Upload` `Default Credentials`
 - [[March 13 2023]] [HackTheBox--Agile](https://Blackanon22.github.io/posts/hackthebox/agile.html) `LFI` `IDOR` `SudoEdit`
 - [[March 13 2023]] [HackTheBox--Inject](https://Blackanon22.github.io/posts/hackthebox/inject.html) `File Upload` `Directory Transversal` `Spring` `Ansible`
+- [[May 15 2023]] [HackTheBox--Legacy](https://Blackanon22.github.io/posts/hackthebox/legacy.html)
 
 * * *
 ### **CTF Competitions:~#**
