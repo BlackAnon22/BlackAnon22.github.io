@@ -11,6 +11,64 @@ Lets get started
 command:```sudo nmap -A 10.10.10.4 -T4  -v -p-```
 
 ```
+# Nmap 7.93 scan initiated Mon May 15 13:07:04 2023 as: nmap -A -T4 -v -p- -oN Legacy 10.10.10.4
+Increasing send delay for 10.10.10.4 from 0 to 5 due to 1267 out of 3166 dropped probes since last increase.
+Increasing send delay for 10.10.10.4 from 5 to 10 due to 11 out of 21 dropped probes since last increase.
+Nmap scan report for 10.10.10.4
+Host is up (0.21s latency).
+Not shown: 65532 closed tcp ports (reset)
+PORT    STATE SERVICE      VERSION
+135/tcp open  msrpc        Microsoft Windows RPC
+139/tcp open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds Windows XP microsoft-ds
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.93%E=4%D=5/15%OT=135%CT=1%CU=37050%PV=Y%DS=2%DC=T%G=Y%TM=646224
+OS:37%P=x86_64-pc-linux-gnu)SEQ(SP=101%GCD=1%ISR=107%TI=I%CI=I%II=I%SS=S%TS
+OS:=0)OPS(O1=M539NW0NNT00NNS%O2=M539NW0NNT00NNS%O3=M539NW0NNT00%O4=M539NW0N
+OS:NT00NNS%O5=M539NW0NNT00NNS%O6=M539NNT00NNS)WIN(W1=FAF0%W2=FAF0%W3=FAF0%W
+OS:4=FAF0%W5=FAF0%W6=FAF0)ECN(R=Y%DF=Y%T=80%W=FAF0%O=M539NW0NNS%CC=N%Q=)T1(
+OS:R=Y%DF=Y%T=80%S=O%A=S+%F=AS%RD=0%Q=)T2(R=Y%DF=N%T=80%W=0%S=Z%A=S%F=AR%O=
+OS:%RD=0%Q=)T3(R=Y%DF=Y%T=80%W=FAF0%S=O%A=S+%F=AS%O=M539NW0NNT00NNS%RD=0%Q=
+OS:)T4(R=Y%DF=N%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T5(R=Y%DF=N%T=80%W=0%S=Z%A=
+OS:S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=N%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T7(R=Y%DF
+OS:=N%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=80%IPL=B0%UN=0%RIPL=G
+OS:%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=S%T=80%CD=Z)
+
+Network Distance: 2 hops
+TCP Sequence Prediction: Difficulty=257 (Good luck!)
+IP ID Sequence Generation: Incremental
+Service Info: OSs: Windows, Windows XP; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_xp
+
+Host script results:
+|_clock-skew: mean: 5d00h27m39s, deviation: 2h07m16s, median: 4d22h57m39s
+|_smb2-time: Protocol negotiation failed (SMB2)
+| nbstat: NetBIOS name: LEGACY, NetBIOS user: <unknown>, NetBIOS MAC: 005056b97097 (VMware)
+| Names:
+|   LEGACY<00>           Flags: <unique><active>
+|   HTB<00>              Flags: <group><active>
+|_  LEGACY<20>           Flags: <unique><active>
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb-os-discovery: 
+|   OS: Windows XP (Windows 2000 LAN Manager)
+|   OS CPE: cpe:/o:microsoft:windows_xp::-
+|   Computer name: legacy
+|   NetBIOS computer name: LEGACY\x00
+|   Workgroup: HTB\x00
+|_  System time: 2023-05-20T17:20:48+03:00
+
+TRACEROUTE (using port 1723/tcp)
+HOP RTT       ADDRESS
+1   221.90 ms 10.10.14.1
+2   222.07 ms 10.10.10.4
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon May 15 13:23:19 2023 -- 1 IP address (1 host up) scanned in 974.89 seconds
 ```
 From the scan above we have 3 ports opened. Port 135 which runs msrpc, port 139 which runs netbios-ssn and port 445 which runs microsoft-ds. Today We'll be starting our enumeration from port 139.
 
