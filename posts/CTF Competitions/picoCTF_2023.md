@@ -407,7 +407,7 @@ This is a javascript function, it appears that the function is designed to take 
 
 From the challenge description the author said "**_How about matching a regular expression_**". To solve this I'll be using a python script
 
-```
+```python
 import re
 import random
 
@@ -1301,7 +1301,7 @@ okay, this is a bitmap file. I viewed this file on cyberchef and found something
 
 As you can see the  header of this image we see ```PK```, similar to the previous challenge we solved it is meant to be a zip file, but there are some bits before ```PK```, so what we have to do is remove them. To do this I used a python script
 
-```
+```python
 with open('output.bmp', 'rb') as f:
     f.seek(140)  # Move the file pointer to byte 140
     data = f.read()  # Read the remaining bytes from the file starting from byte 140
@@ -1746,7 +1746,7 @@ So, he made a search to this [website](https://www.wikiwand.com/en/Golden_ratio_
 
 After a little research I got to know that I can use ```Golden_ratio_base``` to decrypt the binary to get an AES key. So, my teammate (@cyber_guru) wrote a script that we can use to decode this
 
-```
+```python
 import math
 
 # Define the Base-Phi constant
@@ -2027,7 +2027,7 @@ Found it, this script runs as root. Since we have write privileges over it this 
 
 We'll be adding this payload to the top of the ```base64.py``` file
 
-```
+```python
 import os
 
 os.system('chmod +s /bin/bash')
@@ -2090,7 +2090,7 @@ command:```ln -s /home/ctf-player/flag.txt /tmp/hax/flag.txt```
 
 We'll be using this c exploit.
 
-```
+```c
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <fcntl.h>
