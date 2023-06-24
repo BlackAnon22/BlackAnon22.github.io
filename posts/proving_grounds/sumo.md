@@ -269,8 +269,9 @@ command:```ssh firefart@192.168.170.87```
 
 We got our root shell😎
 
-That will be all for today.
-
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
