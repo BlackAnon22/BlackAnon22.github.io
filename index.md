@@ -45,6 +45,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[March 04 2023]] [Proving Grounds--Exfiltrated](https://Blackanon22.github.io/posts/proving_grounds/exfiltrated.html) `Subrion RCE` `CronJob` `Exiftool Vulnerability`
 - [[March 05 2023]] [Proving Grounds--Flimsy](https://Blackanon22.github.io/posts/proving_grounds/flimsy.html) `APISIX RCE` `CronJob` `APT-GET Exploitation`
 - [[March 05 2023]] [Proving Grounds--Snookums](https://Blackanon22.github.io/posts/proving_grounds/snookums.html) `RFI` `MySql`
+- [[June 24 2023]] [Proving Grounds--Sumo](https://Blackanon22.github.io/posts/proving_grounds/sumo.html) `ShellShock ` `Outdated Kernel` 
 
 * * *
 ### **PwnTillDawn:~#**
