@@ -73,7 +73,7 @@ Checking the source page;
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/15ca60b9-b7a8-433a-bda3-41b87be75a45)
 
-Cool,. we found a username ```itsskv```
+Cool,we found a username ```itsskv```
 
 There's no login page to test this username against, but since we have port 22 (which runs ssh) open, our best guess will be to test the username for the ssh server. But we haven't found a password yet. Well, lets keep looking
 
