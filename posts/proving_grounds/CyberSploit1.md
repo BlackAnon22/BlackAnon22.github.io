@@ -126,7 +126,7 @@ oops, we don't have permission to view the webpage.
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/169e8dc9-792f-4500-a9fb-0f920aa80d0f)
 
-This is more like the backgrounf gif, there's nothing else there.
+This is more like the background gif, there's nothing else there.
 
 <h4>/robots.txt</h4>
 
