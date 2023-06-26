@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2bfd7a82-8a06-4f7c-b823-7461fd033ad2)## Smag_Grotto TryHackMe
+## Smag_Grotto TryHackMe
 ## Level: Easy
 <hr>
 
