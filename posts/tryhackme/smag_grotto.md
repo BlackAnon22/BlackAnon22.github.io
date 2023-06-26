@@ -10,6 +10,41 @@ Lets get started
 
 command:```sudo nmap -A 10.10.161.219 -T4  -v -p-```
 
+```
+# Nmap 7.93 scan initiated Mon Jun 26 10:13:41 2023 as: nmap -A -T4 -v -p- -oN smag_grotto 10.10.161.219
+Increasing send delay for 10.10.161.219 from 0 to 5 due to 1587 out of 3966 dropped probes since last increase.
+Increasing send delay for 10.10.161.219 from 5 to 10 due to 11 out of 19 dropped probes since last increase.
+Nmap scan report for 10.10.161.219
+Host is up (0.25s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 74e0e1b405856a15687e16daf2c76bee (RSA)
+|   256 bd4362b9a1865136f8c7dff90f638fa3 (ECDSA)
+|_  256 f9e7da078f10af970b3287c932d71b76 (ED25519)
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-title: Smag
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+Aggressive OS guesses: Linux 5.4 (96%), ASUS RT-N56U WAP (Linux 3.4) (94%), Linux 3.16 (94%), Linux 3.1 (93%), Linux 3.2 (93%), Linux 3.10 - 3.13 (92%), Linux 3.2 - 3.16 (92%), Linux 3.2 - 4.9 (92%), AXIS 210A or 211 Network Camera (Linux 2.6.17) (92%), Crestron XPanel control system (91%)
+No exact OS matches for host (test conditions non-ideal).
+Uptime guess: 0.003 days (since Mon Jun 26 10:29:34 2023)
+Network Distance: 2 hops
+TCP Sequence Prediction: Difficulty=255 (Good luck!)
+IP ID Sequence Generation: All zeros
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 5900/tcp)
+HOP RTT       ADDRESS
+1   264.81 ms 10.8.0.1
+2   264.86 ms 10.10.161.219
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Jun 26 10:34:03 2023 -- 1 IP address (1 host up) scanned in 1222.08 seconds
+```
 From our scan we have 2 open ports, port 22 which runs ssh and port 80 which runs http. Enumeration today will be focused on port 80.
 
 
@@ -68,7 +103,7 @@ We are able to read their mails, the mail contains a pcap file. Lets download th
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c9e0ce99-8564-4326-ade4-1fcc0ec47364)
 
-cool stuff, we'll be analyzing this pcap file by using a tool called wireshark, this tool comes preinstalled with the linux operating system
+cool stuff, we'll be analyzing this pcap file by using a tool called wireshark, this tool comes preinstalled with the kali linux operating system
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fc2e13ce-1e4a-4e8a-9e61-8fb4811af249)
 
@@ -94,7 +129,7 @@ Clicking on ```admin.php```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/39efca26-64a0-4097-a4ca-7409345a3584)
 
-We are required to login. We'll be using the creds we found earlier when we were analyzing the pcap files
+We are required to log in. We'll be using the creds we found earlier when we were analyzing the pcap file
 
 username:```helpdesk```         password:```cH4nG3M3_n0w```
 
@@ -161,7 +196,7 @@ I used the name ```gabimaru```, You can choose to use a name of your choice thou
 
 So, we'll be echoing ```gabimaru.md``` into ```.backups/jake_id_rsa.pub.backup```
 
-Let's send the file over to the targe's machine first
+Let's send the file over to the target's machine first
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/eb115adc-2708-45e7-b4b2-71ec52eee55b)
 
