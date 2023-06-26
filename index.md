@@ -29,7 +29,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[April 21 2023]] [TryHackMe--Opacity](https://Blackanon22.github.io/posts/tryhackme/opacity.html) `File Upload` `Cronjob`
 - [[May 12 2023]] [TryHackMe--Empline](https://Blackanon22.github.io/posts/tryhackme/empline.html) `File Upload` `XXE` `Linux Capabilities`
 - [[May 14 2023]] [TryHackMe--CherryBlossom](https://Blackanon22.github.io/posts/tryhackme/cherry_blossom.html) `Steganography` `Crypto` `Password Cracking` `Buffer Overflow`
-- [[June 26 2023]] [TryHackMe--Smag Grotto](https://Blackanon22.github.io/posts/tryhackme/smag_grotto.html `Wireshark` `Cronjob`  `SUDO Privileges`
+- [[June 26 2023]] [TryHackMe--Smag Grotto](https://Blackanon22.github.io/posts/tryhackme/smag_grotto.html) `Wireshark` `Cronjob`  `SUDO Privileges`
 
 * * *
 ### **Proving Grounds:~#**
