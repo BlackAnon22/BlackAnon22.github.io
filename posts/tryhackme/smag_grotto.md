@@ -238,7 +238,7 @@ Cool stuff, we got a shell as root
 
 
 That will be all for today
-<br></br>
+<br> <br>
 [Back To Home](../../index.md)
 
 
