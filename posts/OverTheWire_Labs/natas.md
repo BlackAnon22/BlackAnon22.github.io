@@ -293,10 +293,64 @@ if(array_key_exists("submit", $_POST)) {
 ```
 Explaining the code
 ```
+1. The encoded secret is stored in the variable $encodedSecret. It is a hexadecimal representation of the original secret.
+2. The function encodeSecret($secret) is defined. This function takes a secret as input, performs three operations on it, and returns the result.
+   a. The secret is base64 encoded using base64_encode($secret).
+   b. The resulting base64 string is reversed using strrev().
+   c. The reversed string is converted to its hexadecimal representation using bin2hex().
+3. The code checks whether the form has been submitted (array_key_exists("submit", $_POST)). It assumes that there is an HTML form with an input field named "secret" and a submit button.
+4. If the form has been submitted, the code compares the encoded secret generated from the submitted secret with the original encoded secret (encodeSecret($_POST['secret']) == $encodedSecret).
+5. If the comparison is true, it prints the message "Access granted. The password for natas9 is <censored>," where <censored> indicates that the password is intentionally hidden.
+6. If the comparison is false, it prints the message "Wrong secret."
+```
+Taking the encodedsecret ```3d3d516343746d4d6d6c315669563362```, since it is hex encoded, lets decode it using [cyberchef](https://gchq.github.io/CyberChef/)
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/19a19f4b-dcd1-47c0-b03c-413e4cf5a7c9)
 
+Now, we'll try to use the ```strrev()``` function to reverse the base64 we got. For this we'll use a python script
 
+```python
+import base64
 
+def reverse_base64(encoded_base64):
+
+    # Step 1: Reverse the decoded bytes
+    reversed_bytes = encoded_base64[::-1]
+
+    # Step 2: Decode the Base64 string
+    decoded_bytes = base64.b64decode(reversed_bytes)
+
+    # Step 3: Encode the reversed bytes back to Base64
+    reversed_base64 = base64.b64encode(decoded_bytes).decode()
+
+    return reversed_base64
+
+# Example usage
+encoded_base64 = "==QcCtmMml1ViV3b"
+reversed_base64 = reverse_base64(encoded_base64)
+print(reversed_base64)
+```
+After running the script, you should get this
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
+└─$ python abeg.py
+b3ViV1lmMmtCcQ==
+```
+Now, lets go ahead and decode this base64
+
+command:```echo "b3ViV1lmMmtCcQ==" | base64 -d```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
+└─$ echo "b3ViV1lmMmtCcQ==" | base64 -d
+oubWYf2kBq
+```
+Applying the output we got as the secret, that is ```oubWYf2kBq```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1aacba88-da8a-4f30-874d-74db1c62769f)
+
+Cool, we got the password for the next level
 
 
 
