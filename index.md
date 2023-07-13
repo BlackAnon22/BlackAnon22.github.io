@@ -80,4 +80,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[May 01 2023]] [CyberStarters CTF 2023](https://Blackanon22.github.io/posts/CTF Competitions/CyberStarters_CTF.html)
 
 * * *
+### **OverTheWire Labs:~#**
+* * *
 
+- [[July 13 2023]] [Natas(Web) Labs](https://Blackanon22.github.io/posts/OverTheWire_Labs/natas.html)
