@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d27ba9e7-ff48-45c2-96ec-82a84755e372)I will be solving the Natas Labs from OverTheWire. OverTheWire is a platform that can help you learn and practice security concepts in the form of fun-filled games.
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b67e0198-65f7-42d9-8833-bfcde0788d87)I will be solving the Natas Labs from OverTheWire. OverTheWire is a platform that can help you learn and practice security concepts in the form of fun-filled games.
 
 PS: As I keep solving the labs, I'll be adding them to this writeup
 
@@ -240,6 +240,63 @@ Viewing the page source;
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/50880754-c635-44cf-bf38-88d2b9ade22d)
 
 We got a hint saying the password for the next level is in ```etc/natas_webpass/natas8```
+
+Going back to the webpage and clicking on ```Home```,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/aae0a694-6f55-4a0a-9c87-0cf3b93bf9e2)
+
+From the url we can tell that there's a possible LFI (Local File Inclusion) vulnerability, which can enable us to read files.
+
+Lets try to read the ```/etc/passwd``` file
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/963582a6-bd83-45f4-a2c4-b5ffae665de9)
+
+cool stuff😎
+
+Now, using the hint they gave us earlier, lets get the  password for the next level
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7765c1c9-9a77-42da-8c42-9bf1998ab648)
+
+Nice, we got the password for the next level
+
+
+
+# Level 8
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e48f580b-f5cc-440b-8ddd-153c0090fc1d)
+
+Navigating to the webpage and using the password we got from the previous level
+
+username:```natas8```          password:```a6bZCNYwdKqN5cGP11ZdtPg0iImQQhAB```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/da44f7dc-dd4b-4b3c-9ede-b4ce3f3fd07d)
+
+Viewing the source page I got this php code
+
+```php
+<?
+
+$encodedSecret = "3d3d516343746d4d6d6c315669563362";
+
+function encodeSecret($secret) {
+    return bin2hex(strrev(base64_encode($secret)));
+}
+
+if(array_key_exists("submit", $_POST)) {
+    if(encodeSecret($_POST['secret']) == $encodedSecret) {
+    print "Access granted. The password for natas9 is <censored>";
+    } else {
+    print "Wrong secret";
+    }
+}
+?>
+```
+Explaining the code
+```
+
+
+
+
 
 
 
