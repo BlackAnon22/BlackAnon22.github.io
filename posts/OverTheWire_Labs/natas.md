@@ -354,6 +354,111 @@ Cool, we got the password for the next level
 
 
 
+# Level 9
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/72ae6eda-8264-4dff-be2c-244a40c8b5e9)
+
+Navigating to the webpage and using the password we got from the previous level
+
+username:```natas9```       password:```Sda6t0vkOPkM8YeOZkAGVhFoaplvlJFd```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b3047805-b9f7-4bb3-ab45-52475b05243f)
+
+Viewing the source code we get this php code
+
+```php
+<?
+$key = "";
+
+if(array_key_exists("needle", $_REQUEST)) {
+    $key = $_REQUEST["needle"];
+}
+
+if($key != "") {
+    passthru("grep -i $key dictionary.txt");
+}
+?>
+```
+Explaining this code
+```
+1. The script initializes an empty variable named $key.
+2. It checks if the "needle" parameter exists in the request using array_key_exists("needle", $_REQUEST).
+3. If the "needle" parameter is found, its value is assigned to the $key variable.
+4. The script checks if $key is not an empty string.
+5. If $key is not empty, it executes a shell command using passthru().
+6. The shell command being executed is grep -i $key dictionary.txt, which searches for the value of $key (case-insensitive) in the file named "dictionary.txt".
+7. If there are any matches found in the dictionary file, the results will be displayed as the output.
+```
+So, this basically executes our commands for us. Lets find the word "password"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/45f277e1-4341-41a1-9dde-1824a925fef5)
+
+Now, this looks like a possible command injection vulnerability where you can pass other commands.
+
+For example, to read the ```/etc/passwd``` file, we can use this ```password;cat/etc/passwd```, so what happens here is that the shell interprets the command as 2 separate commands, ```grep -i password``` and ```cat /etc/passwd```. The ```grep``` searches for the word password in the dictionary.txt file, while the ```cat``` command displays the content of the ```/etc/passwd``` file.
+
+Trying it out;
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3d22c56b-9740-45a1-a1bc-43ba84cc3548)
+
+It worked, now lets try to read the password for the next level from ```/etc/natas_webpass/natas10```
+
+command:```password;cat /etc/natas_webpass/natas10```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3734ca46-daef-4bfc-bd5d-4f626b8922f4)
+
+Cool, we got the password for the next level.
+
+
+
+# Level 10
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2cce50b3-5aec-4d8e-aa66-0e71e891a778)
+
+Navigating to the webpage and using the password we got from the previous level
+
+username:```natas10```        password:```D44EcsFkLxPIkAAKLosx8z3hxX1Z4MCE```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9c47a48b-ccc2-4ba2-82cf-4e812d0a7010)
+
+oops, they now filter characters which means it won't accept the input it did earlier.
+
+Viewing the source code I got this php code;
+
+```php
+<?
+$key = "";
+
+if(array_key_exists("needle", $_REQUEST)) {
+    $key = $_REQUEST["needle"];
+}
+
+if($key != "") {
+    if(preg_match('/[;|&]/',$key)) {
+        print "Input contains an illegal character!";
+    } else {
+        passthru("grep -i $key dictionary.txt");
+    }
+}
+?>
+```
+This code is similar to the code from the previous level just that this one is more secured. It filters out special characters ```;```,```|``` or ```&```, which means we can't use it.
+
+Now, all hope is not lost hehe😎.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
