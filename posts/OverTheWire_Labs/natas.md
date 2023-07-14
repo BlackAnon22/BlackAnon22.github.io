@@ -446,6 +446,103 @@ This code is similar to the code from the previous level just that this one is m
 
 Now, all hope is not lost hehe😎.
 
+Since, this filters out special characters we can go ahead to use a string
+
+For example,to read the ```/etc/passwd``` file, we can try somthing like this ```B /etc/passwd```, what this does is that it runs the command as this ```grep -i B /etc/passwd dictionary.txt```, this command attempts to search for the string "B", in both the ```/etc/passwd``` file and the ```dictionary.txt```. You should know that if the string ```B``` isn't in the ```/etc/passwd``` file, it won't show the output. So it is more like a trial and error stuff, that is, trying the letters till you get an output
+
+Lets try it out
+
+command:```B /etc/passwd```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a7d1d9cc-67ad-4621-943e-6d2012e6f4ed)
+
+It worked, now we can use this to read the password to use for the next level
+
+command:```A /etc/natas_webpass/natas11```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/adf09225-b3b5-412e-987b-32b08cddec74)
+
+Cool, we got the password for the next level.
+
+
+
+# Level 11
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d628a915-6be4-481c-b2e1-22baa64b3b6a)
+
+Navigating to the webpage and making use of the password we found in the previous level
+
+username:```natas11```     password:```1KFqoJXi6hRaPluAmk8ESDW4fSysRoIg```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2dd87656-2987-4672-acf4-961e82b51932)
+
+Viewing the source code we get this php code
+
+```php
+<?
+
+$defaultdata = array( "showpassword"=>"no", "bgcolor"=>"#ffffff");
+
+function xor_encrypt($in) {
+    $key = '<censored>';
+    $text = $in;
+    $outText = '';
+
+    // Iterate through each character
+    for($i=0;$i<strlen($text);$i++) {
+    $outText .= $text[$i] ^ $key[$i % strlen($key)];
+    }
+
+    return $outText;
+}
+
+function loadData($def) {
+    global $_COOKIE;
+    $mydata = $def;
+    if(array_key_exists("data", $_COOKIE)) {
+    $tempdata = json_decode(xor_encrypt(base64_decode($_COOKIE["data"])), true);
+    if(is_array($tempdata) && array_key_exists("showpassword", $tempdata) && array_key_exists("bgcolor", $tempdata)) {
+        if (preg_match('/^#(?:[a-f\d]{6})$/i', $tempdata['bgcolor'])) {
+        $mydata['showpassword'] = $tempdata['showpassword'];
+        $mydata['bgcolor'] = $tempdata['bgcolor'];
+        }
+    }
+    }
+    return $mydata;
+}
+
+function saveData($d) {
+    setcookie("data", base64_encode(xor_encrypt(json_encode($d))));
+}
+
+$data = loadData($defaultdata);
+
+if(array_key_exists("bgcolor",$_REQUEST)) {
+    if (preg_match('/^#(?:[a-f\d]{6})$/i', $_REQUEST['bgcolor'])) {
+        $data['bgcolor'] = $_REQUEST['bgcolor'];
+    }
+}
+
+saveData($data);
+
+
+
+?>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
