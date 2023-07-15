@@ -1,4 +1,4 @@
-I will be solving the Natas Labs from OverTheWire. OverTheWire is a platform that can help you learn and practice security concepts in the form of fun-filled games.
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/323a2f8e-1e72-439b-8a46-36bc5b6912eb)I will be solving the Natas Labs from OverTheWire. OverTheWire is a platform that can help you learn and practice security concepts in the form of fun-filled games.
 
 PS: As I keep solving the labs, I'll be adding them to this writeup
 
@@ -525,11 +525,139 @@ if(array_key_exists("bgcolor",$_REQUEST)) {
 
 saveData($data);
 
+```
+Explaining the code
+```
+1. Default values for "showpassword" and "bgcolor" are defined in an array.
+2. XOR encryption function is implemented.
+3. Data is loaded from a cookie, decrypted, and validated.
+4. Data is saved by encrypting and encoding it as a cookie.
+5. The script loads data, either from the cookie or using default values.
+6. If a valid "bgcolor" is provided in the request, it updates the data.
+7. The updated data is saved as a cookie.
+```
+Also
+```php
+?>
 
+<h1>natas11</h1>
+<div id="content">
+<body style="background: <?=$data['bgcolor']?>;">
+Cookies are protected with XOR encryption<br/><br/>
+
+<?
+if($data["showpassword"] == "yes") {
+    print "The password for natas12 is <censored><br>";
+}
 
 ?>
 ```
+Explaining this code also
+```
+1. The code sets the background color of the page based on the $data['bgcolor'] value.
+2. It mentions that cookies are protected with XOR encryption.
+3. If $data["showpassword"] is "yes", it prints a censored message about the password for the next level (natas12).
+```
+Lets first get the cookie, inspecting element
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4462b2b1-59af-4b51-8348-262cd645ffb5)
+
+So, that's our cookie ```MGw7JCQ5OC04PT8jOSpqdmkgJ25nbCorKCEkIzlscm5oKC4qLSgubjY%3D```, Url Decoding this using [cyberchef](https://gchq.github.io/CyberChef/) should result in a base64 encoding
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ea4eb80b-b742-4202-9496-4b9601610421)
+
+Cool, we got our cookie which is ```MGw7JCQ5OC04PT8jOSpqdmkgJ25nbCorKCEkIzlscm5oKC4qLSgubjY=```. The next thing to do now is get the key
+
+To get the key, we'll be using this php script
+
+```php
+<?php  
+
+function xor_encrypt($in) {  
+    $key = json_encode(array( "showpassword"=>"no", "bgcolor"=>"#ffffff"));  
+    $text = $in;  
+    $outText = '';  
+  
+    // Iterate through each character  
+    for($i=0;$i<strlen($text);$i++) {  
+    $outText .= $text[$i] ^ $key[$i % strlen($key)];  
+    }  
+  
+    return $outText;  
+}
+
+$cookie="MGw7JCQ5OC04PT8jOSpqdmkgJ25nbCorKCEkIzlscm5oKC4qLSgubjY=";  
+  
+echo xor_encrypt(base64_decode($cookie));  
+  
+?>
+```
+This script  takes a base64-encoded string ($cookie), decrypts it using XOR encryption with a predefined key, and then outputs the decrypted result
+
+To run the script
+
+command:```php -f key.php```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
+└─$ php -f key.php   
+KNHLKNHLKNHLKNHLKNHLKNHLKNHLKNHLKNHLKNHLK
+```
+cool, we got our key which is ```KNHL```. What we'll do now is try to generate a new cookie using this key we got, during the explanation of the php codes we saw that if ```showpassword``` is set to ```yes``` then we'll get the password to the next level printed out.
+
+To generate a new cookie we'll use this php script
+
+```php
+ <?php  
+  
+function xor_encrypt($in) {  
+    $key = 'KNHL';  
+    $text = $in;  
+    $outText = '';  
+  
+    // Iterate through each character  
+    for($i=0;$i<strlen($text);$i++) {  
+    $outText .= $text[$i] ^ $key[$i % strlen($key)];  
+    }  
+  
+    return $outText;  
+}  
+  
+$data = array( "showpassword"=>"yes", "bgcolor"=>"#ffffff");  
+  
+echo base64_encode(xor_encrypt(json_encode($data)));  
+  
+?>  
+```
+The script encrypts a JSON-encoded string ($data) using XOR encryption with the key "KNHL". It then base64-encodes the encrypted result and outputs the encoded string.
+
+To run the script
+
+command:```php -f cookie.php```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
+└─$ php -f cookie.php
+MGw7JCQ5OC04PT8jOSpqdmk3LT9pYmouLC0nICQ8anZpbS4qLSguKmkz
+```
+We got a new cookie, replacing the previous cookie with this new generated one should get us the password to the next level
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/debc93dc-f596-40f5-9c95-8bd28a0cca67)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/29014e94-34ca-4165-9c53-5be04e99b8a9)
+
+Cool, we got the password to the next level
+
+
+
+# Level 12
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c207c032-ec6c-4552-963a-d348a1199da8)
+
+Navigate to the webpage using the password we got from the previous level
+
+username:```natas12```        password:```YWqo0pjpcXzSIl5NMAVxg12QxeC1w9QG```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f5ed8743-ff02-432d-b5a4-bee40815e1ef)
 
 
 
