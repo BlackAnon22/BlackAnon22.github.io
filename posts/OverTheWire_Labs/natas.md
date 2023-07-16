@@ -1,4 +1,4 @@
-I will be solving the Natas Labs from OverTheWire. OverTheWire is a platform that can help you learn and practice security concepts in the form of fun-filled games.
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e4ef14ea-f95c-4b28-8ea1-80e5a94ed388)I will be solving the Natas Labs from OverTheWire. OverTheWire is a platform that can help you learn and practice security concepts in the form of fun-filled games.
 
 PS: As I keep solving the labs, I'll be adding them to this writeup
 
@@ -1017,7 +1017,58 @@ Explaining the code
 ```
 The sql query from then source code is ```SELECT * FROM users WHERE username="<username>"```
 
+Lets try the username ```natas16``` to see if it exists
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/17e6293e-418e-40ab-9fee-2a53c3706b17)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/efeb46b8-1939-4163-84ea-ea3e98b582b2)
+
+Now, this is a ```boolean based blind SQLi```. Lets prepare a payload that returns a true value
+
+payload:```" or '1'='1'#```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/05922a52-dc38-4c09-b24c-9c306cb11fb9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2df9bf67-c75b-44d4-b02c-c0448e270566)
+
+We'll be using sqlmap to dump the database.
+
+First, capture the request on burpsuite and save it in a file, say ```req.txt```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2dbb7397-ef9e-4971-8369-165d8fccd1bc)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f8d854b1-95cf-4731-873d-d464e16180c4)
+
+Using sqlmap;
+
+command:```sqlmap -r req.txt --level=5 --risk=3 -D natas15 -T users -C username,password --dump```
+
+Let me explain this command
+
+```
+-r --> This tells sqlmap to use the request stored in req.txt file as the basis for analysis
+-D --> Database name which is natas15 (Saw this from the source code)
+-T --> Table name which is users (Got this from the sql query)
+-C --> Column names which are username and password (Got this also from the sql query)
+--dump --> This option tells sqlmap to dump the contents of the selected columns
+--risk=3 --> This option sets the risk factor to 3, indicating a high-risk level for the injection attack
+--level=5 --> This option sets the level of tests to be performed by SQLMap to the highest level, which is 5
+```
+Running the command;
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/84d36cd6-96ed-4053-99aa-e9e643dda098)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9d6fbfb9-467c-4368-ba4b-c7677427556d)
+
+Cool, we got  the password for the next level
+
+
+
+# Level 16
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f2d36d45-5184-46c2-bb51-bb184ca971e2)
+
+Navigating to the webpage and using the password we got from the previous level
+
+username:```natas16```        password```TRD7iZrd5gATjj9PkPEuaOlfEjHqj32V```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a1e9d3c8-b88c-41e6-a827-57d8bfd56734)
 
 
 
