@@ -1258,82 +1258,11 @@ username:```natas18```               password:```8NEDUUxg8kFgPV84uLwvZkGn6okJQ6a
 
 Viewing the source code;
 
-```php
-<?php
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7d5681be-22d3-4199-a539-a3097936480e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cd3be324-f398-40ba-b585-54e7acde5e63)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b2bfddc7-8762-4ebd-bdef-e8fb6d1faa08)
 
-$maxid = 640; // 640 should be enough for everyone
 
-function isValidAdminLogin() { /* {{{ */
-    if($_REQUEST["username"] == "admin") {
-    /* This method of authentication appears to be unsafe and has been disabled for now. */
-        //return 1;
-    }
-
-    return 0;
-}
-/* }}} */
-function isValidID($id) { /* {{{ */
-    return is_numeric($id);
-}
-/* }}} */
-function createID($user) { /* {{{ */
-    global $maxid;
-    return rand(1, $maxid);
-}
-/* }}} */
-function debug($msg) { /* {{{ */
-    if(array_key_exists("debug", $_GET)) {
-        print "DEBUG: $msg<br>";
-    }
-}
-/* }}} */
-function my_session_start() { /* {{{ */
-    if(array_key_exists("PHPSESSID", $_COOKIE) and isValidID($_COOKIE["PHPSESSID"])) {
-    if(!session_start()) {
-        debug("Session start failed");
-        return false;
-    } else {
-        debug("Session start ok");
-        if(!array_key_exists("admin", $_SESSION)) {
-        debug("Session was old: admin flag set");
-        $_SESSION["admin"] = 0; // backwards compatible, secure
-        }
-        return true;
-    }
-    }
-
-    return false;
-}
-/* }}} */
-function print_credentials() { /* {{{ */ /\}\}/
-    if($_SESSION and array_key_exists("admin", $_SESSION) and $_SESSION["admin"] == 1) {
-    print "You are an admin. The credentials for the next level are:<br>";
-    print "<pre>Username: natas19\n";
-    print "Password: <censored></pre>";
-    } else {
-    print "You are logged in as a regular user. Login as an admin to retrieve credentials for natas19.";
-    }
-}
-/* }}} */
-
-$showform = true;
-if(my_session_start()) {
-    print_credentials();
-    $showform = false;
-} else {
-    if(array_key_exists("username", $_REQUEST) && array_key_exists("password", $_REQUEST)) {
-    session_id(createID($_REQUEST["username"]));
-    session_start();
-    $_SESSION["admin"] = isValidAdminLogin();
-    debug("New session started");
-    $showform = false;
-    print_credentials();
-    }
-}
-
-if($showform) {
-?>
-```
 Explaining this code
 ```
 1. The initial part of the code sets a maximum ID value and defines several functions, such as isValidAdminLogin(), isValidID(), createID(), debug(), and my_session_start(). These functions handle tasks like checking if a login is valid, validating user IDs, creating session IDs, debugging output, and starting the session.
