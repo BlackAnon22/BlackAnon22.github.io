@@ -1305,7 +1305,7 @@ function my_session_start() { /* {{{ */
     return false;
 }
 /* }}} */
-function print_credentials() { /* {{{ */
+function print_credentials() { /* {{{ */ /\}\}/
     if($_SESSION and array_key_exists("admin", $_SESSION) and $_SESSION["admin"] == 1) {
     print "You are an admin. The credentials for the next level are:<br>";
     print "<pre>Username: natas19\n";
