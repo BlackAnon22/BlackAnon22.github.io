@@ -1,4 +1,4 @@
-I will be solving the Natas Labs from OverTheWire. OverTheWire is a platform that can help you learn and practice security concepts in the form of fun-filled games.
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cc6ea21e-c7da-480f-9e54-00f380cf6352)I will be solving the Natas Labs from OverTheWire. OverTheWire is a platform that can help you learn and practice security concepts in the form of fun-filled games.
 
 PS: As I keep solving the labs, I'll be adding them to this writeup
 
@@ -1022,7 +1022,7 @@ Lets try the username ```natas16``` to see if it exists
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/17e6293e-418e-40ab-9fee-2a53c3706b17)
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/efeb46b8-1939-4163-84ea-ea3e98b582b2)
 
-Now, this is a ```boolean based blind SQLi```. Lets prepare a payload that returns a true value
+Now, this is a ```boolean-based SQLi```. Lets prepare a payload that returns a true value
 
 payload:```" or '1'='1'#```
 
@@ -1209,12 +1209,210 @@ Explaining the code
 4. The code does not provide specific output for the existing or non-existing user cases.
 5. Any query execution errors are not handled or displayed.
 ```
+Lets try to see if user ```natas18``` exists in the data
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/eeb4615d-c1ec-4632-890a-d433de3d07e4)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9f26080f-aff9-4cf4-ae3a-bd8a14d8f7f0)
+
+As you can see, there was no output. If you recall when we were on ```Level 15``` we had to solve a ```boolean-based SQLi```. In this level we are dealing with a ```boolean-based blind SQLi``` or ```time-based blind SQLi```. Unlike in ```boolean-based SQLi``` where we receive feedbacks, in ```boolean-based blind SQLi``` we inject malicious SQL code into the vulnerable web application, but do not receive direct feedback about the results of the injected queries.
+
+We'll be using sqlmap to dump te database
+
+First, capture the request using burpsuite  and save it in a file, say ```req.txt```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c69ea5ce-dfdc-4469-9538-11b3cb79737e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4defbe6f-6973-460e-9b9f-323327c53b39)
+
+using sqlmap;
+
+command:```sqlmap -r req.txt --level=5 --risk=3 -D natas17 -T users -C username,password --dump```
+
+Explaining the command
+```
+-r --> This tells sqlmap to use the request stored in req.txt file as the basis for analysis
+-D --> Database name which is natas15 (Saw this from the source code)
+-T --> Table name which is users (Got this from the sql query)
+-C --> Column names which are username and password (Got this also from the sql query)
+--dump --> This option tells sqlmap to dump the contents of the selected columns
+--risk=3 --> This option sets the risk factor to 3, indicating a high-risk level for the injection attack
+--level=5 --> This option sets the level of tests to be performed by SQLMap to the highest level, which is 5
+```
+Running the command;
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a09a4522-f60f-4174-97bd-f4673e7c37c9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e9b1ab7a-a1af-416c-a47d-6ba4ea085ddc)
+
+Cool stuff, we got the password for the next level😎
 
 
 
+# Level 18
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6c318c0d-a1b4-4c1f-b267-7dd6542d5c44)
+
+Navigating to the webpage and using the password we got from the previous level
+
+username:```natas18```               password:```8NEDUUxg8kFgPV84uLwvZkGn6okJQ6aq```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5c0ba30b-729f-4641-a290-a5ea5f5629dd)
+
+Viewing the source code;
+
+```php
+<?php
+
+$maxid = 640; // 640 should be enough for everyone
+
+function isValidAdminLogin() { /* {{{ */
+    if($_REQUEST["username"] == "admin") {
+    /* This method of authentication appears to be unsafe and has been disabled for now. */
+        //return 1;
+    }
+
+    return 0;
+}
+/* }}} */
+function isValidID($id) { /* {{{ */
+    return is_numeric($id);
+}
+/* }}} */
+function createID($user) { /* {{{ */
+    global $maxid;
+    return rand(1, $maxid);
+}
+/* }}} */
+function debug($msg) { /* {{{ */
+    if(array_key_exists("debug", $_GET)) {
+        print "DEBUG: $msg<br>";
+    }
+}
+/* }}} */
+function my_session_start() { /* {{{ */
+    if(array_key_exists("PHPSESSID", $_COOKIE) and isValidID($_COOKIE["PHPSESSID"])) {
+    if(!session_start()) {
+        debug("Session start failed");
+        return false;
+    } else {
+        debug("Session start ok");
+        if(!array_key_exists("admin", $_SESSION)) {
+        debug("Session was old: admin flag set");
+        $_SESSION["admin"] = 0; // backwards compatible, secure
+        }
+        return true;
+    }
+    }
+
+    return false;
+}
+/* }}} */
+function print_credentials() { /* {{{ */
+    if($_SESSION and array_key_exists("admin", $_SESSION) and $_SESSION["admin"] == 1) {
+    print "You are an admin. The credentials for the next level are:<br>";
+    print "<pre>Username: natas19\n";
+    print "Password: <censored></pre>";
+    } else {
+    print "You are logged in as a regular user. Login as an admin to retrieve credentials for natas19.";
+    }
+}
+/* }}} */
+
+$showform = true;
+if(my_session_start()) {
+    print_credentials();
+    $showform = false;
+} else {
+    if(array_key_exists("username", $_REQUEST) && array_key_exists("password", $_REQUEST)) {
+    session_id(createID($_REQUEST["username"]));
+    session_start();
+    $_SESSION["admin"] = isValidAdminLogin();
+    debug("New session started");
+    $showform = false;
+    print_credentials();
+    }
+}
+
+if($showform) {
+?>
+```
+Explaining this code
+```
+1. The initial part of the code sets a maximum ID value and defines several functions, such as isValidAdminLogin(), isValidID(), createID(), debug(), and my_session_start(). These functions handle tasks like checking if a login is valid, validating user IDs, creating session IDs, debugging output, and starting the session.
+2. The print_credentials() function is responsible for displaying the user's credentials, either as an admin or a regular user.
+3. The script checks if a session is already active by calling my_session_start(). If a session is active, it calls print_credentials() and sets $showform to false, indicating that the login form should not be displayed.
+4. If a session is not active, it checks if the username and password parameters are present in the $_REQUEST superglobal. If so, it generates a session ID using createID() with the provided username, starts the session, and sets the $_SESSION["admin"] value based on the result of isValidAdminLogin(). It then calls print_credentials() and sets $showform to false.
+5. If neither a session is active nor the username and password parameters are provided, the script assumes the user needs to log in and displays a login form.
+```
+Lets try to login with something random, say
+
+username:```BlackAnon```      password:```groceriesandfloatingberries```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f7d4502f-ee15-4bdd-860e-a566544fcdf2)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4f295ce8-f874-43ad-a002-560deeb06d26)
+
+Okay, so we need to be logged in as the admin so as to be able to view the password we would be using for the next level.
+
+Lets capture this request on burpsuite
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e5aa42d4-f4fc-4f78-bb5b-c4229f137917)
+
+Sending this over to burp repeater;
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/808dbe8a-b722-48cd-a83a-aa17e0a595d7)
+
+Take note of the ```PHPSESSID=330```, checking the source code again, you'll see this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/369d32f6-3282-4e90-8fe8-1d11778a5878)
+
+This means the highest value ```PHPSESSID``` can hold is ```640```.
+
+What we'll do is that we'll use burp intruder to get the correct ```PHPSESSID``` for the ```Admin``` user.
+
+Send the request to burp intruder;
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6e1216d8-7b3b-484e-a363-7f4e1f09d8c9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6f75a596-bba5-465c-9b8b-998dfd0947cd)
+
+Now, start the attack
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/37815af9-fb5b-4b1e-8adf-bb1a7fc97fd2)
+
+From the above screenshot we can see that the payload ```119``` has a different length compared to the other payloads.
+
+I think we just  found the Admin user's PHPSESSID hehe. Replacing the ```330``` with ```119``` we should be able to get the password that'll help us in the next level
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0af8d06f-1676-4c58-88f2-a79fb29d8abc)
+
+Cool, we got the password to the next level.
 
 
 
+# Level 19
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7a4f8a59-12f5-4dbd-b570-bdb572e6e9fe)
+
+Navigating to the webpage and using the password we found from the previous level
+
+username:```natas19```         password:```8LMJEhKFbMKIL2mxQKjv0aEDdk7zpT0s```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c9cd0bae-70cf-4251-8cda-fcbe87135e5d)
+
+So, this level uses the same code as the previous level, the  difference is just that in this level session IDs are no longer sequential
+
+Lets use the previous creds we used in the previous level
+
+username:```BlackAnon```       password:```groceriesandfloatingberries```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b3ef551b-46d2-428c-9a71-fcf9a1f5d47f)
+
+Capturing the request on burpsuite;
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6460ffb1-8fb5-44a6-9a37-c71407238b27)
+
+Sending it over to repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cdca4458-14da-444d-a169-c00451a8114f)
+
+As you can see the value for ```PHPSESSID``` is different unlike the one we saw in the previous level.
 
 
 
