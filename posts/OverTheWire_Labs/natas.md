@@ -1149,7 +1149,7 @@ for i in range(1,34):
 
 Save the  script in a file and run it
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/71f39d86-431a-410f-9d71-75de91b9b35c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/be992da2-006f-43fa-b88b-a26d0dfcd638)
 
 Cool, we got the password to the next level
 
