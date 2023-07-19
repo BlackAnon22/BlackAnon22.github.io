@@ -1389,7 +1389,7 @@ Output has been written to phpsessid.txt
 342d426c61636b416e6f6e
 352d426c61636b416e6f6e
 362d426c61636b416e6f6e
-
+.
 ...
 ```
 We'll send the request to intruder
