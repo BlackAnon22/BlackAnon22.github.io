@@ -1430,116 +1430,34 @@ username:```natas20```          password:```guVaZ3ET35LbgbFMoaN5tFcYT1jEP7UH```
 
 Viewing the source code, we get this long php code
 
-```php
-<?php
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8ddf8b73-dfc0-4297-9e2f-a1ced15f9fa5)
 
-function debug($msg) { /* {{{ */
-    if(array_key_exists("debug", $_GET)) {
-        print "DEBUG: $msg<br>";
-    }
-}
-/* }}} */
-function print_credentials() { /* {{{ */
-    if($_SESSION and array_key_exists("admin", $_SESSION) and $_SESSION["admin"] == 1) {
-    print "You are an admin. The credentials for the next level are:<br>";
-    print "<pre>Username: natas21\n";
-    print "Password: <censored></pre>";
-    } else {
-    print "You are logged in as a regular user. Login as an admin to retrieve credentials for natas21.";
-    }
-}
-/* }}} */
+Explaining this code
+```
+1. The debug($msg) function is used for debugging and prints the provided message with the "DEBUG:" prefix if the "debug" key exists in the URL parameters.
+2. The print_credentials() function displays user credentials for the next level if the user is logged in as an admin (checked through session data). The username is "natas21," but the password is intentionally censored and not revealed in the output. If the user is not an admin or not logged in, a message prompts them to log in as an admin to view the credentials.
+```
 
-/* we don't need this */
-function myopen($path, $name) {
-    //debug("MYOPEN $path $name");
-    return true;
-}
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a0b86c0f-052e-4d5a-9b5c-13564ffcae43)
 
-/* we don't need this */
-function myclose() {
-    //debug("MYCLOSE");
-    return true;
-}
+Explaining this code
+```
+1. The myread($sid) function reads session data from a session file based on the provided session ID ($sid).
+2. It checks if the session ID contains only alphanumeric characters and the hyphen ("-"). If the session ID contains any other characters, it's considered invalid, and the function returns an empty string.
+3. The function constructs the filename of the session file using the session save path and the provided session ID.
+4. If the session file does not exist, the function returns an empty string.
+5. The function reads the contents of the session file into the variable $data.
+6. It resets the $_SESSION superglobal array to an empty array.
+7. It processes each line of the session data, splitting it into key-value pairs using space as a delimiter and populates the $_SESSION array.
+8. Finally, the function returns the encoded session data stored in the $_SESSION array, which can be sent back to the client to maintain session state between requests.
+```
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a22dfcc9-c5ba-47b9-bb02-343ede9abd8c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1d9b3cb4-5f27-4c04-ad31-321f49fadc00)
 
-function myread($sid) {
-    debug("MYREAD $sid");
-    if(strspn($sid, "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM-") != strlen($sid)) {
-    debug("Invalid SID");
-        return "";
-    }
-    $filename = session_save_path() . "/" . "mysess_" . $sid;
-    if(!file_exists($filename)) {
-        debug("Session file doesn't exist");
-        return "";
-    }
-    debug("Reading from ". $filename);
-    $data = file_get_contents($filename);
-    $_SESSION = array();
-    foreach(explode("\n", $data) as $line) {
-        debug("Read [$line]");
-    $parts = explode(" ", $line, 2);
-    if($parts[0] != "") $_SESSION[$parts[0]] = $parts[1];
-    }
-    return session_encode();
-}
+Explaining this code
+```
 
-function mywrite($sid, $data) {
-    // $data contains the serialized version of $_SESSION
-    // but our encoding is better
-    debug("MYWRITE $sid $data");
-    // make sure the sid is alnum only!!
-    if(strspn($sid, "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM-") != strlen($sid)) {
-    debug("Invalid SID");
-        return;
-    }
-    $filename = session_save_path() . "/" . "mysess_" . $sid;
-    $data = "";
-    debug("Saving in ". $filename);
-    ksort($_SESSION);
-    foreach($_SESSION as $key => $value) {
-        debug("$key => $value");
-        $data .= "$key $value\n";
-    }
-    file_put_contents($filename, $data);
-    chmod($filename, 0600);
-}
-
-/* we don't need this */
-function mydestroy($sid) {
-    //debug("MYDESTROY $sid");
-    return true;
-}
-/* we don't need this */
-function mygarbage($t) {
-    //debug("MYGARBAGE $t");
-    return true;
-}
-
-session_set_save_handler(
-    "myopen",
-    "myclose",
-    "myread",
-    "mywrite",
-    "mydestroy",
-    "mygarbage");
-session_start();
-
-if(array_key_exists("name", $_REQUEST)) {
-    $_SESSION["name"] = $_REQUEST["name"];
-    debug("Name set to " . $_REQUEST["name"]);
-}
-
-print_credentials();
-
-$name = "";
-if(array_key_exists("name", $_SESSION)) {
-    $name = $_SESSION["name"];
-}
-
-?>```
-
-
+```
 
 
 
