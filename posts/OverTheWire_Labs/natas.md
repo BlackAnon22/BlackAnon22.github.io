@@ -1452,13 +1452,28 @@ Explaining this code
 8. Finally, the function returns the encoded session data stored in the $_SESSION array, which can be sent back to the client to maintain session state between requests.
 ```
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a22dfcc9-c5ba-47b9-bb02-343ede9abd8c)
+
+Explaining this code
+```
+1. The mywrite function saves session data to a file with a custom encoding.
+2. It checks if the session ID ($sid) contains only alphanumeric characters and hyphens.
+3. It constructs the filename using the session save path and the provided session ID.
+4. It sorts the session data array ($_SESSION) based on keys in ascending order.
+5. It iterates through the sorted session array, concatenates key-value pairs into a string, and saves it as the new $data.
+6. The function writes the new $data to the session file.
+7. It sets the file permissions of the session file to 0600 (read and write only for the owner).
+```
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1d9b3cb4-5f27-4c04-ad31-321f49fadc00)
 
 Explaining this code
 ```
-
+1. Sets custom session handling functions using session_set_save_handler.
+2. Starts or resumes a session using session_start().
+3. If the "name" parameter exists in the HTTP request, it sets the "name" session variable to its value and prints a debug message.
+4. Calls the print_credentials() function.
+5. Checks if the "name" session variable exists and assigns its value to the $name variable.
 ```
-
+The sessions are handled by ```session_set_save_handler``` and are saved in a directory manually. The ```print_credentials()``` prints our desired credentials if ```$_SESSION and array_key_exists("admin", $_SESSION) and $_SESSION["admin"] == 1```. This means if there's a ```$_SESSION``` variable with a key "admin" and that the key has the value of "1". 
 
 
 
