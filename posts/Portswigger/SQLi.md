@@ -143,11 +143,95 @@ Capturing this request on burpsuite and sending it over to burp intruder
 
 Now, lets check the number of columns available in the database using the query
 ```
+' order by 1-- -
+' order by 2-- -
+' order by 3-- -
+```
+Ensure this is url encoded, so when you get the internal server error, it means the column number isn't available
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3a425de3-a5bc-45d1-8c42-49ab259a9d9b)
+
+This means we have a column available in the database.
+
+Moving on,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4213061d-8978-4139-98a8-969f29cdf0e9)
+
+This means we have 2 columns available in the database.
+
+Moving on,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/df69463e-1b78-4785-bedb-a7d2b1ff3fc2)
+
+From the above screenshot you'll see that the query ```' order by 3-- -``` returned an Internal Server Error, which means there isn't a column 3 available in the database.
+
+Now, to display the database version string, we can use  the query
+```
+' UNION SELECT version(),null-- -
+```
+Using this query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6bc2ab51-98ba-4253-bdb6-54bc1f6c5415)
+
+Now, lets show this response in our browser
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/07d81260-800d-4d88-90df-1e5695deaf95)
+
+Nice, we have successfully completed the task for this lab😎
+
+--------------------------
+
+# SQL injection attack, listing the database contents on non-Oracle databases
+<hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4b71c9e3-4b94-4834-b5c5-a0ee579a0c1e)
+
+Navigate to the webpage and click on "Gift"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d8704324-610b-4fb8-a5c6-3a0d1c436dad)
+
+Capturing the request on burpsuite and sending it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e3971a3f-8b29-4e64-89bc-99cde62a1c2f)
+
+First, lets check the number of columns available in this database.
+
+We can do that using the queries
+```
 ' order by 1--
 ' order by 2--
 ' order by 3--
 ```
-Ensure this is url encoded, so when you get the internal server error, it means the column number isn't available
+Ensure you url encode the queries before using themm
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c75e93d5-10f7-4453-a7f2-2a95acf6320e)
+
+Now, this means we have a column available in the database.
+
+Moving on,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f8e49c5a-f5ab-4ed6-87dd-a445af4f8513)
+
+We have 2 columns available in the database.
+
+Moving on,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4331b044-4dec-4b1a-928b-364225933074)
+
+We got an Internal Server Error here, this means there isn't a column 3 available in the database.
+
+Hence, we have 2 columns available in the database.
+
+Lets try to get the version the database is running, we can use the query
+```
+' UNION SELECT version(),null--
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5c2c24f3-0b28-422e-bfde-a78afceacc68)
+
+Now, lets check the name of the database
 
 
 
