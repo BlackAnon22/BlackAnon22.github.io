@@ -20,6 +20,20 @@ Sending the request over to burp repeater,
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/40ce0d22-99e5-4dbf-9505-f49d929d73ab)
 
-To display one or more unreleased products, we can use the payload ```' or 1=1--```, make sure this is url encoded to something like this
+To display one or more unreleased products, we can use the payload ```' or 1=1--```, make sure this is url encoded to something like this ```'+or+1%3d1--```.
+
+Adding this payload to the url,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ef4d74eb-dd1b-42e4-ab2b-2d9c795441ca)
+
+cool, the status code is "ok". Viewing the response in browser
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1e5003b4-7002-4fb4-9f2a-7e0d2206dfea)
+
+Nice, we have successfully solved the lab😎.
+
+
+
+
 
 
