@@ -412,10 +412,127 @@ We have successfully completed the task for this lab
 
 -------------------------
 
-#
+# SQL injection UNION attack, finding a column containing text
 <hr>
 
 ## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/49ec3beb-2101-47b6-af5a-8365f9e59c50)
+
+Navigate to the webpage and click on "Lifestyle"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/feed1a8f-b225-442e-80d9-3c3cc9f0f4bf)
+
+Capturing this request on burpsuite and sending it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a6638917-3208-402e-8147-ac6384411c1f)
+
+First, lets determine the number of columns that's available in the database using the query
+```
+' order by 1--
+' order by 2--
+' order by 3--
+' order by 4--
+```
+Ensure you url encode the query when you use it.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/35bea675-b7b5-4d8e-993b-ff1ad4d566ed)
+
+This means we have a column available in the database.
+
+Moving on,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1303a537-2346-40de-8565-09afe6c89516)
+
+Alright, so we have 2 columns available in the database.
+
+Moving on,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4c1dded8-aae8-4cfb-bf45-cf8e5c5ce5b7)
+
+So, there are 3 columns available in the database.
+
+Moving on,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/57d2fbcb-1b69-46c3-8028-834fe6d48e15)
+
+We got an "Internal Server Error" meaning there isn't a column 4 in the database
+
+Hence, we have 3 columns available in the database.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/50143fc9-d043-43bc-97bd-d2251d5125d7)
+
+So, the task is to check which of the columns is compatible with string data. So, we are asked to return the string ```yuJfMW```.
+
+Now, lets start by using the ```UNION``` method to confirm the number of columns. We can use the query
+```
+' UNION SELECT null,null,null--
+```
+If we don't get the "Internal Server Error" it means there truly are 3 columns available in the database. 
+
+Applying the query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/201c39b0-c764-4f39-9aa2-86627659a7c7)
+
+cool, now lets look for the vulnerable column that is compatible with string data. We can try the following queries
+```
+' UNION SELECT 'yuJfMW',null,null--
+' UNION SELECT null,'yuJfMW',null--
+' UNION SELECT null,null,'yuJfMW'--
+```
+So, a query not returning the "Internal Server Errror" means the column where the string is positioned is vulnerable.
+
+Applying the queries,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8b2d5383-4809-44bb-88ab-a5340f8d49e1)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/029ada9c-28bf-4c1c-af57-1ccfbdf8d784)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/40a12261-5a5a-4a57-b383-ce48c57a39bb)
+
+From the above screensots, you'll see that only the query ```' UNION SELECT null,'yuJfMW',null--``` was able to retrieve the string from the database.
+
+Lets try to show the response in our browser
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c7484877-9166-43c9-b72c-0e4867f716d9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e6e6a239-9858-46a9-9b04-e39af6eee080)
+
+Cool, we have successfully solved the lab. So, it is safe to say the second column is compatible with string data.
+
+----------------------
+
+# SQL injection UNION attack, retrieving data from other tables
+<hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6423fe34-f6c3-448e-b70b-3c0ca04d847f)
+
+Navigate to the webpage and click on "Lifestyle"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7f1b7c45-5674-4047-9a70-16d8b0adeb94)
+
+Capturing this request on burpsuite and sending it over to burp repeater,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a1764eb5-41c3-4f7f-aa2a-4b1676306efb)
+
+Now, this should be an easy one since they already gave us the name of the table to be ```users```, also in the table there are columns ```username``` and ```password```. So, what we'll try to do is just determine the number of columns available in the database. We'll be using the query
+```
+' order by 1--
+' order by 2--
+' order by 3--
+```
+Applying the query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f921296c-acf7-4567-9d7e-7e7932e7c3ae)
+
+We have a column available in the database
+
+Moving on,
+
+
+
+
+
+
 
 
 
