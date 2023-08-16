@@ -362,7 +362,64 @@ Cool stuff, we have successfully completed the task for this lab.
 
 --------------------
 
+#  SQL injection UNION attack, determining the number of columns returned by the query
+<hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3e6da08f-142d-4933-afdd-503cc5d581bd)
+
+Navigate to the webpage and click on "Gifts"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2cc819c4-a5e4-4dfb-aa85-71b2d7dd7449)
+
+Capturing this request on burpsuite and sending it over to burp repeater,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5eb74c8c-1139-4f59-9d5b-aa828507f3c6)
+
+We can use ```UNION``` attack to determine the number of column available. We can use the query
+```
+' UNION SELECT null--
+' UNION SELECT null,null--
+' UNION SELECT null,null,null--
+' UNION SELECT null,null,null,null--
+```
+So, we'll continue the query like that until we get a ```HTTP response code 200 OK```.
+
+Note: You stop the query when you get ```HTTP response code 200 OK```
+
+Url Encode the queries before applying them
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f5cb029b-d976-4fb2-96c8-8d678e5c2060)
+
+This means, there's more than one column in the database, hence why we are getting the  "Internal Server Error"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8cc78ffe-9570-4ef4-8048-56e203fab051)
+
+We got the error, which means there are more than two columns in the database
+
+Moving on,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7db9fc51-319b-4dfd-9db8-3633b1f97c21)
+
+We got the ```HTTP response code 200 OK```, which means there are 3 columns in the database.
+
+Showing the response in our browser
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7690a347-f9aa-4b07-9894-cbcdefda5a76)
+
+We have successfully completed the task for this lab
+
+-------------------------
+
 #
+<hr>
+
+## Task
+
+
+
+
 
 
 
