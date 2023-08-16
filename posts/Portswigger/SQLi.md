@@ -536,7 +536,43 @@ Moving on,
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/20888d82-965e-4eab-afae-5a895cb76c26)
 
-The "Inter
+The "Internal Server Error" displayed is to tell us that there isn't a third column in the database.
+
+So, we have 2 columns available in this database
+
+Now, lets go ahead and dump the content of the columns ```username``` and ```password``` in the table ```users```. We can use this query
+```
+' UNION SELECT username,password FROM users--
+```
+Applying this query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/188133f5-c518-4378-8a91-e7beb6682ec5)
+
+Cool, we got the creds for the administrator user
+
+username:```administrator```          password:```nqic8fkyvzqjfez72khh```
+
+Lets try to log in with thi creds
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fd1dc676-0992-4910-a13e-0675c83b495f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9927d49e-288b-4ddc-bce3-9c8902d1f0ad)
+
+Cool, we have successfully completed the task for this lab
+
+-------------------------
+
+# SQL injection UNION attack, retrieving multiple values in a single column
+<hr>
+
+## Task
+
+
+
+
+
+
+
+
 
 
 
