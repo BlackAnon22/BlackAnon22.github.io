@@ -528,6 +528,15 @@ We have a column available in the database
 
 Moving on,
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b6c3f781-4138-418c-a666-1e4b54aec0a1)
+
+Alright, so 2 columns are available in the database
+
+Moving on,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/20888d82-965e-4eab-afae-5a895cb76c26)
+
+The "Inter
 
 
 
