@@ -839,10 +839,30 @@ Navigate to the webpage and click on "view details"
 
 Capturing the request on burpsuite and sending it over to burp repeater
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e639bc33-2f45-42da-b4c1-9972ed819e82)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/12ff50fb-095a-4758-9a21-3f04be353cb9)
 
+Now, lets start by testing conditions.
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/809423b2-153b-4acf-a7bc-ff430cb59f0c)
 
+From the hint provided we can see that this lab uses the oracle dabase
+
+So, using this query we should be able to test the conditions
+```
+'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE NULL END FROM dual)||'
+'||(SELECT CASE WHEN (1=2) THEN TO_CHAR(1/0) ELSE NULL END FROM dual)||'
+```
+Ensure you url encode this before using it
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/85c9f86a-c57f-4955-94f4-8c930ab8fa2e)
+
+We got the "Internal Server Error", this is because ```1=1``` will always be true at all times
+
+Trying the second query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ed83e499-8087-4ba2-bd74-863bb51a298a)
+
+This query didn't throw an error because the condition ```1=2``` is not true
 
 
 
