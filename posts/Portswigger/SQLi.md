@@ -824,6 +824,48 @@ So we got the final password to be ```pql8zsmjxr7biiyluqtj```. Lets try to login
 
 Nice, we have successfully solved this lab
 
+----------------------------
+
+# Blind SQL injection with conditional errors
+<hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/01eefd1c-7e06-4b4b-b11d-7ffb3ed52888)
+
+Navigate to the webpage and click on "view details"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8859de69-7dad-4974-a986-359b5446525e)
+
+Capturing the request on burpsuite and sending it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e639bc33-2f45-42da-b4c1-9972ed819e82)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
