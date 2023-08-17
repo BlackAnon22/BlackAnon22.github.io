@@ -639,6 +639,12 @@ Capturing the request and sending it over to burp repeater,
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f77d4c55-9823-446f-9dd5-2afad3995683)
 
+Since we already know the table name to be ```users``` and the columns in the tables are named ```username``` and ```password```. We also have a username ```administrator```
+
+We'll be extracting the password little by little
+
+
+
 
 
 
