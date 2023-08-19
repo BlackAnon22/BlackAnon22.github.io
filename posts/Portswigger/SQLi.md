@@ -1,4 +1,4 @@
-# SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f222d22b-5a60-44b7-b833-c3687cfe56d6)![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9eb92ea9-2ac6-46e2-881e-1d2f874e5804)# SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
 <hr>
 
 ## Task
@@ -1002,9 +1002,89 @@ So, I got the password to be ```b7dj6cx48d5qx0yzg7ld```, lets use this password 
 
 Cool stuff, we have completed the task for this lab,
 
+-------------------
 
+# Visible error-based SQL injectionVisible error-based SQL injection
+<hr>
 
+## Task
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/87eabdef-bcb7-41f7-8f58-1d4821881ff5)
+
+Navigate to the webpage and click on "View datails"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/402a9db4-1dc5-455d-b985-afe5c282e2f5)
+
+Capturing the request on burpsuite and sending it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/70a5c570-6a89-4245-82ec-2740b9d3c416)
+
+Lets try to trigger a sql error using the ```'``` symbol
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f8f697e9-b30c-48a5-87e3-27352c9532df)
+
+You can see we got the error "Unterminated string lateral", if you also observed an extra character ```'``` got added to the cookie section. So, lets try to comment that out using ```--```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bb83a6c1-605e-463a-be89-d4612f7fea0c)
+
+cool, you can see we didn't get an error, so this means we've got the right query.
+
+Now, lets try to use the ```CAST()``` function
+```
+' AND CAST((SELECT 1) AS int)--
+```
+Ensure this is url encoded
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ea53d2ea-d3ca-489e-9b44-da66f0b73970)
+
+From the error we have to make the argument ```AND``` boolean. We can solve that using this query
+```
+' AND 1=CAST((SELECT 1) AS int)--
+```
+Applying this query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e5450682-296a-4a49-a0ad-e77e020d97e1)
+
+you can see we didn't get any error
+
+Since we were told that there is a table called ```users``` with columns ```username``` and ```password```. Also, there is a username ```administrator```
+
+We can use this query to check for users
+```
+' AND 1=CAST((SELECT username FROM users) AS int)--
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b1a8f6f4-ad6a-4d69-9422-bc0ccfe1264e)
+
+We get another error, so there seems to be a character limit here. To get this solved, lets delete the value of the ```TrackingId```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/58d0b5c4-0203-4f4d-b9f9-8932fb3778d4)
+
+We get another error telling us that our query returned more than one row. Modifying the query to return just one row, we can use the query
+```
+' AND 1=CAST((SELECT username FROM users LIMIT 1) AS int)--
+```
+Using this query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/93e71885-2497-49e0-9037-17be8da140fa)
+
+cool, we got the first username in the ```users``` table to be administrator. Lets go ahead and leak the password hehe
+
+This  query will help us with that
+```
+' AND 1=CAST((SELECT password FROM users LIMIT 1) AS int)--
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9deb7d91-e7bd-421d-aea0-ee8e80fb87e5)
+
+Cool, we got the password of the administrator user to be ```zyxtiwdkhp96r63vsz5m```.
+
+Now, lets go ahead and login as the administrator user
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/70eb9961-3417-4be5-bb90-c629aa234951)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d88a94ea-d801-447d-b03d-288bb8b62b02)
+
+Nice, we have successfully solved this lab
 
 
 
