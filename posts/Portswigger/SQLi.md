@@ -1289,10 +1289,7 @@ click on stock and capture the request on burpsuite
 
 So, we have a table ```users``` and columns ```username``` and ```password```
 
-So, to solve this we can use the query
-```
-UNION SELECT username || '~' || password FROM users
-```
+
 
 
 
