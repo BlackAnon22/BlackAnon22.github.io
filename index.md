@@ -90,3 +90,13 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 * * *
 
 - [[August 15 2023]] [SQLi](https://Blackanon22.github.io/posts/Portswigger/SQLi.html)
+
+* * *
+### **PentesterLab Labs:~#**
+
+The writeups in this section are for the free exercises and courses available on the PentesterLab platform.
+* * *
+
+- [[August 25 2023]] [From SQL Injection to Shell: PostgreSQL Edition](https://Blackanon22.github.io/posts/PentesterLab_Labs/From_SQL_Injection_to_Shell_PostgreSQL_edition.html)
+- [[August 25 2023]] [From SQL Injection to Shell](https://Blackanon22.github.io/posts/PentesterLab_Labs/From_SQL_Injection_to_Shell.html)
+
