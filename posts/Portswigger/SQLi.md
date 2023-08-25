@@ -1,4 +1,4 @@
-# SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/96419483-b2cc-4dbc-b796-0c35b0a6d577)# SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
 <hr>
 
 ## Task
@@ -1289,8 +1289,36 @@ click on stock and capture the request on burpsuite
 
 So, we have a table ```users``` and columns ```username``` and ```password```
 
+Checking the hint we were given
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d85cab1f-f7d2-48ef-8c61-5b4893f4aebd)
 
+Let's try to download this extension
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7ef6884c-5b8d-448a-9831-0b1371bb882c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e7503e1d-b70f-49a0-808f-a1041c02cc26)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5ef26695-e7ea-4a16-a489-5654fac4f4c7)
+
+We are done installing it. We'll be using this query to dump the contents of the database
+```sql
+1 UNION SELECT username || ':' || password FROM users
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/70b8be0e-f7a6-45d6-abc9-d297c9de243e)
+
+our attack got detected, lets encode this using the ```hackvertor``` extension we just installed. To do this
+just highlight the query, right-click, then select Extensions > Hackvertor > Encode > dec_entities
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d22dbaa9-2d62-49f3-a6e1-f84735e4df0b)
+
+We have successfully dumped the contents of the database. Lets go ahead and login as the administrator user
+
+username:```administrator```        password:```hhkovl3d48vch2ix840b```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0a8d4a40-4ea6-44cd-905d-09f3f9ef2a9c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f406a392-5f46-447d-9aa0-965b654511fd)
+
+We have successfully completed this lab😎
 
 
 
