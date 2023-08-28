@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/96419483-b2cc-4dbc-b796-0c35b0a6d577)# SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
+# SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
 <hr>
 
 ## Task
