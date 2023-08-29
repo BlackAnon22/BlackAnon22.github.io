@@ -34,10 +34,43 @@ We have successfully completed the task
 
 ------------------------
 
+# Blind OS command injection with time delays
+<hr> 
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c2703689-8242-4165-a963-3c3a10f784c7)
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cc8c94cc-1e7d-4212-9528-be5e103cf7b0)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fe35f794-dfde-41c4-8382-c396458e1120)
+
+Lets capture this request and send it over to burp intruder
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e432dc1d-c393-4f04-a888-cb3f9490f4f5)
+
+We were told the vulnerability is in the feedback function. We'll be injecting the email section. we can use this payload to cause a 10 second delay
+```
+||ping -c 10 127.0.0.1||
+```
+Applying that payload and ensuring it is url encoded
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/baa7354a-3ff3-4511-89fb-5dd0fa884613)
+
+Checking the response in our browser
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7c60d089-0eff-426b-a40b-373969423ad6)
+
+We have successfully completed the task for this lab.
+
+-------------------------------------
+
 # 
 <hr>
 
 ## Task
+
 
 
 
