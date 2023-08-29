@@ -66,11 +66,52 @@ We have successfully completed the task for this lab.
 
 -------------------------------------
 
-# 
+# Blind OS command injection with output redirection
 <hr>
 
 ## Task
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b10aa245-fd9c-4860-875b-9b551fe50fb6)
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/50dd66e9-7259-4b7e-88a1-8e392a22f1d7)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/29482e08-8050-48bd-933d-8d863f08c3cc)
+
+Capturing this request on burpsuite and sending it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ccbd0a4a-dbd4-4672-8001-7d891bcf0bbc)
+
+Now, we were given the writable folder to be ```/var/www/images``` and we are to execute the ```whoami``` command and then retrieve the output. So to write to that folder we can use the payload
+```
+||whoami > /var/www/images/abeg.txt||
+```
+Ensure this is url encoded
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/52142d1b-dea3-4b0f-9398-4919c6d0dad5)
+
+Lets try to view an image, we'll be capturing this request on burpsuite and sending it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5e20f52c-9ab0-4e84-8811-2d9ad311d08a)
+
+Now the file we wrote the ```whoami``` command to earlier was ```abeg.txt```, so we'll be changing the name of the image to ```abeg.txt```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e4559180-7927-4715-bf87-c6424faf6935)
+
+Cool, the command got executed successfully. 
+
+Checking our browser
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/257f6306-c586-4e38-99e6-bf8d76839e97)
+
+We have successfully solved this lab.
+
+-------------------------
+
+#
+<hr>
+
+## Task
 
 
 
