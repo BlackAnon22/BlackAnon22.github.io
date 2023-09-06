@@ -66,7 +66,54 @@ We have successfully solved this lab
 
 ------------------------------------------
 
-# 
+# User role controlled by request parameter
+<hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/797fd993-666e-4268-a3e5-24b3d2b531e1)
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d3db81d7-3919-4550-81a3-3885aff57a16)
+
+In the task description we were told that the admin panel is at ```/admin```. Navigating to that directory
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e7ccce2b-4ea0-4489-b219-54ad08dc6471)
+
+This is saying we have to be logged in as the administrator user. But we currently don't have the credentials for the admin user.
+
+But we were given the creds for user ```wiener```. Navigate to the ```/login``` and login with this creds
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/75f59c62-9dfa-4039-9307-39cfff70b4bc)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/780c124a-482a-4540-b002-76db262e29b5)
+
+Now, navigate to the ```/admin``` directory and capture this request on burpsuite
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3f864d99-da51-4ee9-832a-057b57b08cdd)
+
+We'll be changing the cookie ```Admin=false``` to ```Admin=true```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7d88b2e5-576d-4e62-aa46-9b7c55c059e7)
+
+Forwarding the request should give us the admin panel
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b2f3ae7f-901a-4c2e-b95a-132b1d679e40)
+
+Now, lets delete user ```carlos``` account
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0a04c7b7-106f-4e11-9e3f-8c4809263b2f)
+
+We have successfully completed this lab.
+
+------------------------------------
+
+#
+<hr>
+
+
+
+
 
 
 
