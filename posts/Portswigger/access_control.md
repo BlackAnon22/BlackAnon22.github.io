@@ -29,6 +29,43 @@ We have successfully solved this lab😎
 
 --------------------------------------
 
+# Unprotected admin functionality with unpredictable URL
+<hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9eeed816-f915-4cfa-98fb-49c96512726d)
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/08eb2db9-2388-421d-90bc-dd279e1de0e0)
+
+Just like we did in the previous example. Lets check the ```robots.txt``` directory
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/72cbbded-8fb4-4144-a267-cdb8949ad79c)
+
+Not found hehe 
+
+In the task description, we were told that the location is  disclosed somewhere in the application.
+
+Checking the source page, 
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8736612a-0ab1-42f0-9b0e-fc7abfe7014d)
+
+We found our admin panel hehe
+
+Navigating to that directory,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9c55dd09-a372-4f81-b70a-7ccfe424452d)
+
+Cool, now lets delete user ```carlos``` account
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c7fb51b7-e59c-4bd9-a51c-e6e23c41ba46)
+
+We have successfully solved this lab
+
+------------------------------------------
+
 # 
 
 
