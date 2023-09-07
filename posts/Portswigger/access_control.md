@@ -163,7 +163,33 @@ We have succesfully solved this lab
 
 Navigate to the webpage
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/786d56cf-115f-4f76-8abb-baba5537e3d4)
 
+We were given creds for user ```wiener```, lets login
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6918f8c2-6a17-47ac-bc15-cb718da041e5)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b3a8d5a2-2d61-4aee-91e3-de7ed04e91a5)
+
+Alright, so in the task description we are asked to retrieve the api key for user ```carlos```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ff86a54f-1c00-4f18-a1fe-21aa7e160c28)
+
+Taking a look at the url you have something like this ```/my-account?id=wiener```. One thing we can do to retrieve the api key for user ```carlos``` is changing the ```id``` parameter.
+
+So, we'll have something like this ```/my-account?id=carlos```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f751612d-05c7-4b0b-aab5-b654d18ba13c)
+
+Submiting the api key
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5c67a8b8-8187-41c0-a08f-efb59219a837)
+
+We have successfully completed this lab.
+
+--------------------------------
+
+#
+<hr>
 
 
 
