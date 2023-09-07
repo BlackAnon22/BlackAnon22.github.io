@@ -287,10 +287,64 @@ We have successfully solved this lab
 
 ------------------------
 
-#
+# User ID controlled by request parameter with password disclosure
 <hr>
 
+## Task
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cfda9ab8-d606-4e17-9376-d4a2a1f8f3b3)
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/33c87a3a-0085-4ede-9404-e98bd0505b41)
+
+Since we have the creds for user ```wiener``` lets login
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b0cd136a-51d2-4b41-8b07-8642e46af27e)
+
+From the above screenshot, you can see that we have the ```update password``` button. Without changing the password, lets capture the request on burpsuite
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fb686e1d-e47e-4578-aeb6-535f4a7f8f47)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/da56c6f8-5103-4b1c-b93d-9e687bc06e38)
+
+You can see that the password is in plaintext form. 
+
+To get the password for the administrator user,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4eebfac5-4fbf-45cd-97fe-07d0a8abf1f6)
+
+click on that, capture the request on burpsuite and then send it to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4b639568-02f7-4acb-9991-80d29f9cd62d)
+
+We'll be changing the ```id``` parameter from ```wiener``` to ```administrator``` to see what happens
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/95c2bee7-7919-4e69-8e32-95e41a53e6eb)
+
+Scrolling down the response you should see this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/865248e3-bf96-4619-bcd1-d93a82a3afc3)
+
+We have the password for the administrator user hehe.
+
+Lets login
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c967fab5-ae94-43a2-8c1a-fbed302baf8f)
+
+We are logged in
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8f2dc454-288a-4f49-96a6-329b2f99ebd4)
+
+Deleting user ```carlos``` account
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4a330f8d-40ac-4980-9138-ea82f4172f11)
+
+We have successfully completed this lab😎
+
+------------------------------
+
+#
+<hr>
 
 
 
