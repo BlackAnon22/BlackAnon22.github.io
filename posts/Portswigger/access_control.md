@@ -1,4 +1,4 @@
-# Unprotected admin functionality
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c8c9fb57-c6d9-456a-a0ac-b7e319d8a6ef)# Unprotected admin functionality
 <hr>
 
 ## Task
@@ -386,14 +386,37 @@ This was saved as ```3.txt```. This means without even sending a message we can 
 
 So, what you'll do when viewing the transcript is change the number to ```1```
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7617473c-a135-468c-a94c-11ad9adbb0c9)
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3e13341d-c16a-4ac8-976e-dfbdeb6e349f)
+At this point, lets invite burpsuite to this party😎
 
-Now that we've downloaded it,
+What we'll do now is try to view the transcript, but this time we'll capture the request using burpsuite
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d20ee05e-50cd-421d-b782-88d8422c61be)
 
+Forward the request,
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/476139f9-3d63-40ea-9fa2-e789ed5c7deb)
 
+Send it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bb9ccc7b-a0e8-486b-87f4-b90769824e71)
+
+Changing the ```4.txt``` to ```1.txt``` should show us the message where the password is stored
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b26505c0-c9c7-47dc-bdb9-d09542f7781e)
+
+We found the password hehe
+
+Lets login
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/76bd61d5-0f7b-48ea-aedb-fdf5da8e8c83)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bffd8502-47b5-462d-b993-9dc93d2ea4a1)
+
+We have successfully completed this lab
+
+-------------------------------------
+
+#
+<hr>
 
 
 
