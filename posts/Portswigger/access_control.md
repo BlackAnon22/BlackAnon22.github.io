@@ -203,6 +203,63 @@ Lets login as user ```wiener``` since we were given the creds
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a935f568-2639-4f55-886d-0eecf2acad6d)
 
+Take a look at the url, you'll see something like this ```/my-account?id=0e05390c-3df5-4a4d-ae21-b65b38a7c19b```. We can see the GUID(Globally Unique Identifier) of user ```wiener```.
+
+Our task is to find the GUID for user ```carlos``` and then apply it
+
+Reading the posts you should be able to see the user that posted it. For example
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ce9bcb87-256d-458c-883f-8044fe6bdfcd)
+
+Clicking on ```administrator``` provides us with the GUID for the user and the blog posts posted by the user
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/76d21928-ab1c-4e74-bf62-641b6754ee7e)
+
+The url should have something like this ```blogs?userId=5bd25b61-de54-4f06-9667-5c01e9966aee```
+
+All we have to do now is to look for a blog post that was posted by user ```carlos```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a93bc644-0823-474d-a91c-d9b07905f181)
+
+Found one, clicking on ```carlos``` should get us the GUID of the user and the blog posts posted by the user
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/99798870-7b70-4aa6-bc72-7eb43cd8d6e3)
+
+The GUID should be located in the url ```/blogs?userId=6dfd4608-7537-4092-bfcf-ea3c4886716a```.
+
+Applying that GUID for the url ```/my-account?id=0e05390c-3df5-4a4d-ae21-b65b38a7c19b```. So the new url should have the GUID of user ```carlos```, something like this ```/my-account?id=6dfd4608-7537-4092-bfcf-ea3c4886716a```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/140fe7a8-a87f-4cf4-8f72-ee01d3412252)
+
+We found the API key, submitting the key
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/307dc7e8-b236-4abd-9665-e3c880518a35)
+
+We have successfully solved this lab
+
+---------------------------------------
+
+# 
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
