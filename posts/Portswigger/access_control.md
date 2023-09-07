@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c8c9fb57-c6d9-456a-a0ac-b7e319d8a6ef)# Unprotected admin functionality
+# Unprotected admin functionality
 <hr>
 
 ## Task
