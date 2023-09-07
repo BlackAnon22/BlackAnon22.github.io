@@ -1,4 +1,4 @@
-# Unprotected admin functionality
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f17e6cbf-09cf-49c5-8a13-80a5dc887acc)# Unprotected admin functionality
 <hr>
 
 ## Task
@@ -108,9 +108,54 @@ We have successfully completed this lab.
 
 ------------------------------------
 
-#
+# User role can be modified in user profile
 <hr>
 
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9dbe937a-1461-44a7-9197-a1fb0bcb61dc)
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b5d51d79-e649-422d-adff-20f1ea34c72e)
+
+We were given the creds for user ```wiener```. Lets try to login with this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/62563906-5437-4b5c-8457-a07e18ab833e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a62784f9-8475-42ab-9eb6-4809c7695ac9)
+
+Cool, we are logged in. 
+
+Our focus will be on the "update email" function. We'll try to provide an email then we'll capture this request on burpsuite and send it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ff6f2ef3-28aa-44c0-83b0-2cc4f8357c1b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dd40d600-72e1-4614-bceb-587dcd8b6c0d)
+
+Take a look at the ```roleid```. From the task description, we were told that the admin user has a ```roleid``` of ```2```.
+
+Now, we'll be changing the ```roleid``` of user ```wiener``` to ```2```. You can edit your request to this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8939ae1e-bac6-45d7-abcb-f01b7d2566cd)
+
+Following the redirection,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f59ebaf9-45d7-473f-a930-2a3f176b23b9)
+
+Checking the response in browser, you should have this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b57301bd-222e-4a7b-a50c-4f96590fb211)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e350acda-b8a4-4dfc-944b-bf3d9b2dc122)
+
+Lets go ahead and delete user ```carlos``` account
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/89edca54-0e96-4683-80e8-a16a93682517)
+
+We have succesfully solved this lab
+
+------------------------------------
+
+#
+<hr>
 
 
 
