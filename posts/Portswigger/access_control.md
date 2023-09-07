@@ -188,8 +188,20 @@ We have successfully completed this lab.
 
 --------------------------------
 
-#
+# User ID controlled by request parameter, with unpredictable user IDs 
 <hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e211f21e-902c-4846-8a9d-b16cc7c347b7)
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a0f1f93a-1b48-433f-ba38-9600d9d13d35)
+
+Lets login as user ```wiener``` since we were given the creds
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a935f568-2639-4f55-886d-0eecf2acad6d)
 
 
 
