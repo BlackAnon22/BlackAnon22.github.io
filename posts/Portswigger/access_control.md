@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f17e6cbf-09cf-49c5-8a13-80a5dc887acc)# Unprotected admin functionality
+# Unprotected admin functionality
 <hr>
 
 ## Task
@@ -154,8 +154,15 @@ We have succesfully solved this lab
 
 ------------------------------------
 
-#
+# User ID controlled by request parameter 
 <hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/02e62476-14ac-4fd6-8976-4a2a8f0a2752)
+
+Navigate to the webpage
+
 
 
 
