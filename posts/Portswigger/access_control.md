@@ -343,9 +343,53 @@ We have successfully completed this lab😎
 
 ------------------------------
 
-#
+# Insecure direct object references
 <hr>
 
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fd758785-3aca-4e48-9452-fe2669701c69)
+
+From the task description user chat logs are stored directly on the server's file system and can be retrieved using static urls.
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/84034729-f130-46a3-b53f-8876569a20cc)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9f1cd0fe-25bf-4169-9c5d-853be0d0138d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0f774aa7-1226-439b-8c97-f2cd9c394f36)
+
+Lets try to send a message,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2663adaf-c8ec-44fc-8e78-1f44891004d7)
+
+That was the message I sent. Click on "View transcript" and see what happens
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/portswigger]
+└─$ cat 2.txt    
+CONNECTED: -- Now chatting with Hal Pline --<br/>You: vawulence is good for the body<br/>Hal Pline: I heard the other half talking earlier. Someone needs to shape up
+```
+Ohh, so it just downloads the conversations we had with it. And the name was ```2.txt```.
+
+Let's send another conversation and see what happens when we try to view transcript
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/70790323-8aee-49cf-8874-a85bed1fcf3f)
+
+Trying to view the transcipt
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/portswigger]
+└─$ cat 3.txt 
+You: vawulence is good for the body<br/>Hal Pline: I heard the other half talking earlier. Someone needs to shape up<br/>CONNECTED: -- Now chatting with Hal Pline --<br/>You: vawulence is good for the body<br/>Hal Pline: Why would you want to know something like that? 
+```
+This was saved as ```3.txt```. This means without even sending a message we can try to download the transcipts from ```0.txt```. After checking for a while the one that stood out was ```1.txt```. 
+
+So, what you'll do when viewing the transcript is change the number to ```1```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7617473c-a135-468c-a94c-11ad9adbb0c9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3e13341d-c16a-4ac8-976e-dfbdeb6e349f)
+
+Now that we've downloaded it,
 
 
 
