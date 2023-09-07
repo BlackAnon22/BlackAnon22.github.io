@@ -369,7 +369,7 @@ That was the message I sent. Click on "View transcript" and see what happens
 └─$ cat 2.txt    
 CONNECTED: -- Now chatting with Hal Pline --<br/>You: vawulence is good for the body<br/>Hal Pline: I heard the other half talking earlier. Someone needs to shape up
 ```
-Ohh, so it just downloads the conversations we had with it. And the name was ```2.txt```.
+Ohh, so it just downloads the conversations we had with it and then goes ahead to name it. In this case the name of the converstation is ```2.txt```
 
 Let's send another conversation and see what happens when we try to view transcript
 
