@@ -239,10 +239,56 @@ We have successfully solved this lab
 
 ---------------------------------------
 
-# 
+# User ID controlled by request parameter with data leakage in redirect 
 <hr>
 
+## Task
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/af5d1b56-2c31-4d50-a344-e9625d0bbda3)
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/76439fb7-3cdb-4d95-a001-c79a0530a61a)
+
+Logging in as user  ```wiener```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3498f8e4-e8f7-4147-a020-14b17a2c3dcd)
+
+So, our task is to get the api key for user  ```carlos```
+
+To solve this lab what we'll do is capture the request using burpsuite when we try to login.
+
+Logging out and logging in again (this time we'll capture the request using burpsuite)
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/df8df38e-128d-4551-8664-f813a6f3e494)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c00389a7-3aa0-4ae8-983f-eb11a6f488d0)
+
+Forwarding the request
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/93ad272e-d911-4193-971d-816fdb886ad2)
+
+Sending this over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d2e01c3a-5d1b-424f-aada-f91c9305ec16)
+
+Now, lets change the ```id``` from ```wiener``` to ```carlos```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9ee61310-dc8a-4e9c-8ac5-38de26147059)
+
+We got a redirect, before following the redirection lets scroll down the response a little
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a9005aaf-cdeb-4956-b285-99056ca64a71)
+
+The API key was in the redirect. Submitting the key
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/87c724dd-9ba8-4715-84a3-6820fd723ff6)
+
+We have successfully solved this lab
+
+------------------------
+
+#
+<hr>
 
 
 
