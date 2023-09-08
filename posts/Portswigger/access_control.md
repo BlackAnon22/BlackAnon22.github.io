@@ -436,7 +436,7 @@ Let's click on "Admin panel" again, but this time we'll capture the request on b
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/65b0e9b3-d61c-4ab3-834f-8cfb6d292922)
 
-
+One way we can solve this is by using the HTTP request header ```X-Original-URL```, this is a request header that is sometimes used to provide information about the original URL or resource that a request was intended for.
 
 
 
