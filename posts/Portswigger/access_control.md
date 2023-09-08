@@ -508,7 +508,7 @@ Now, lets open another browser and login as user ```wiener```, this time we'll t
 
 We'll try to upgrade user ```carlos``` with user ```wiener``` account.
 
-Capture this request on burpsuite, what we need is the sessionn cookie for user ```wiener```
+Capture this request on burpsuite, what we need is the session cookie for user ```wiener```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/53075739-d1ef-4742-aa2a-407e652a0a3b)
 
@@ -546,15 +546,79 @@ We have successfully completed this lab
 
 ---------------------------------
 
-#
+# Multi-step process with no access control on one step
 <hr>
 
+## Task
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/38421c92-fa49-4d7f-a35a-1db1b65493fe)
 
+Navigate to the webpage,
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e5b2359a-796b-4501-85c1-152beb9bb79a)
 
+Creds for user ```administrator``` was given, we are to login as the user to familiarize ourselves with the admin panel.
 
+Lets go ahead and login as the administrator user,
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9a7eafba-047a-43ec-8ddf-ce85d018f4de)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/21116103-8926-4be9-b0c5-f124741880db)
+
+We'll try to upgrade the user ```carlos```, we'll observe how this process is done by using burpsuite
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/32f175c6-934f-41dc-b8c4-2aa589ff8552)
+
+Forward the request,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/aa6bdf67-0dff-4f3e-a2ad-3c58e57e61ad)
+
+Forward this too,
+
+Checking the browser you'll see this prompt
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/62f16c20-146f-4edd-872a-fc9318cb20fd)
+
+This is more like a multi-authentication process. Click on yes and check how the request is being captured on burpsuite
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b4374748-660a-4671-9810-39b6095fa0e1)
+
+Forward the request,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/00b22e04-e21e-457e-8810-8f8023911739)
+
+Cool, we have successfully upgraded the user
+
+Now, lets open another browser and login as user ```wiener```, this time we'll try to promote ourselves to become an administrator
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a9b780da-0df7-48b0-b638-b4e31b200cd6)
+
+We'll try to upgrade user ```carlos``` with user ```wiener``` account.
+
+Capture this request on burpsuite, what we need is the session cookie for user ```wiener```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/eb496805-5839-4bd0-b9c7-2c1fddc88dd9)
+
+Lets take that session cookie and replace it with the admin's session cookie when it tries to upgrade user carlos so as to see what happens
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d11e4e1a-14c2-4551-b77b-016f4faac267)
+
+Following redirection,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/823e55dd-3464-429e-8674-60e37988e360)
+
+We get the "Unauthorized" error
+
+Using a different asides the ```POST``` method, we can try something like ```POSTV```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7f2e8ee6-1333-446e-9ba3-04edb4aa2ab8)
+
+We got a bad request with the error "Missing parameter 'username'"
+
+Let's try to change the request method to ```GET``` by right-clicking
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/057faed9-c4d0-48b1-b9fd-5f26b7039ec5)
+
+We still got the "Unauthorized" error
 
 
 
