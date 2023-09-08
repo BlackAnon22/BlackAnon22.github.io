@@ -450,7 +450,33 @@ cool, we got a status of ```OK```. Checking the response in our browser
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/467d4a47-b905-418c-a29c-7c138e970e78)
 
-Deleting user ```carlos``` account,
+Cool, we can view the admin panel, but when we try to delete user ```carlos``` account we get the ```access denied``` error.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7d509134-6c8b-44de-81d1-3751c70670a5)
+
+Take a look at the url you'll see something like this ```/admin/delete?username=carlos```.
+
+So, what we'll do now is that we'll add ```/admin/delete``` to the request header ```X-Original-URL```, also add the paramater ```?username=carlos``` to the header.
+
+The request will look like this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8d86f533-727c-45fb-958e-c8e73cd4e9d4)
+
+Now, lets follow the redirection
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/84ce689a-fb4b-4927-a7e3-5b5259b781da)
+
+Got this, checking the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a5a929c2-1656-46cd-82d1-e1a6c8f60c53)
+
+We have successfully solved this lab 
+
+--------------------------------------
+
+#
+<hr>
+
 
 
 
