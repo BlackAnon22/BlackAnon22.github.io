@@ -528,14 +528,26 @@ One thing we can try to do is tweak with the ```POST``` method. What happens if 
 
 oops, a bad request having "Missing parameter 'username'" error.
 
-All hope isn't lost hehe, lets right-click and change the request method to ```GET```
+All hope isn't lost hehe, lets right-click and change the request method to ```GET```, before this change the ```username``` to ```wiener``` since that's who we are trying to upgrade
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/42307d8d-1c55-444b-ba22-145ddf5fb3b6)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/46f9b6b7-e55b-408d-a7c3-772537c99e08)
 
 Good, following redirection
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ee7279a2-caff-4bb6-8fdb-d50637236dea)
 
+hehehe, we were able to upgrade the user
 
+Checking the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1cc88807-1ee4-4142-922e-412d61682e46)
+
+We have successfully completed this lab
+
+---------------------------------
+
+#
+<hr>
 
 
 
