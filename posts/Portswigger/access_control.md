@@ -616,8 +616,62 @@ We have successfully solved this lab
 
 -----------------------------------
 
-#
+# Referer-based access control 
 <hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3b684460-c156-4aec-9911-545acfde9477)
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/444713aa-122c-4580-a171-5ea207d81419)
+
+Lets familiarize ourselves with the admin panel by logging in as the ```administrator``` user
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f0f9da7c-6fef-490d-99a2-cbc6bfb554d2)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6b523297-59f6-4caa-81ba-86f675f51440)
+
+Lets promote the user ```carlos```. We'll fire-up burpsuite to help us intercept the request so that way we know how the promotion is being done
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6a1175fc-a1f8-429a-9f72-60375f4febd4)
+
+Forward this request,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2fc1528a-1ee0-496a-8147-24b9d00f56a9)
+
+Forward this too,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5ca716a0-4996-41fa-8127-42f8bb4b6e7f)
+
+User has been promoted successfully.
+
+Now, lets try to promote user ```wiener```.
+
+First, we have to login
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2a1edd2b-53c9-47df-9eef-f9c9fdc3931a)
+
+We need the session cookie for this user, to get that we can just reload the page and capture the request using burpsuite
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2e71502f-8cbe-4f75-b09e-6ac4c6194c83)
+
+That's the session cookie we need, so we can try replacing the admin's session cookie we got from the upgrade request with this. We'll also change the username from ```carlos``` to ```wiener``` since that's the user we are trying to promote
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b33cccbb-600d-410f-95db-96072888ca96)
+
+Following the redirection
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/85451aa6-9fee-4a42-b151-cd7788c7ac94)
+
+We were able to successfully promote the user
+
+Checking the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ee197b4d-66a9-47b4-a3a3-1a0b10469f1e)
+
+We have successfully solved this lab😎
+
 
 
 
