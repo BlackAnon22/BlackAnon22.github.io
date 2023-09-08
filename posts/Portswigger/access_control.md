@@ -512,7 +512,7 @@ Capture this request on burpsuite, what we need is the session cookie for user `
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/53075739-d1ef-4742-aa2a-407e652a0a3b)
 
-Lets take that session cookie and replace it with the admin's session cookie when it tries to upgrade user carlos so as to see what happens
+Lets replace the admin's session cookie to user ```wiener``` session cookie when it tries to upgrade user carlos so as to see what happens
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/11b522c0-8c85-4133-ae14-ff5cfcbf8225)
 
@@ -598,29 +598,26 @@ Capture this request on burpsuite, what we need is the session cookie for user `
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/eb496805-5839-4bd0-b9c7-2c1fddc88dd9)
 
-Lets take that session cookie and replace it with the admin's session cookie when it tries to upgrade user carlos so as to see what happens
+Using the confirmation HTTP request, lets replace the admin's session cookie to user ```wiener``` session cookie when it tries to upgrade user carlos so as to see what happens. Also, change the username from ```carlos``` to ```wiener``` since that's the user we are trying to promote
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d11e4e1a-14c2-4551-b77b-016f4faac267)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/884d8512-1a64-42f3-99cc-7f417f10c8a6)
 
-Following redirection,
+Following the redirection
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/823e55dd-3464-429e-8674-60e37988e360)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3e75152c-06a1-447d-8321-e87f4aa09899)
 
-We get the "Unauthorized" error
+cool stuff, we were able to promote the user😎
 
-Using a different asides the ```POST``` method, we can try something like ```POSTV```
+Checking the webpage,
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7f2e8ee6-1333-446e-9ba3-04edb4aa2ab8)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f6822328-83b8-4693-a3b5-8f2d64e26c3a)
 
-We got a bad request with the error "Missing parameter 'username'"
+We have successfully solved this lab
 
-Let's try to change the request method to ```GET``` by right-clicking
+-----------------------------------
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/057faed9-c4d0-48b1-b9fd-5f26b7039ec5)
-
-We still got the "Unauthorized" error
-
-
+#
+<hr>
 
 
 
