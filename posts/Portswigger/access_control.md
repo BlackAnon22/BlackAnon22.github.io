@@ -474,8 +474,42 @@ We have successfully solved this lab
 
 --------------------------------------
 
-#
+# Method-based access control can be circumvented
 <hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/44cfedd8-bad1-418e-a048-ab40194792d7)
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6dcfecd7-d992-4e94-95d7-af8e761e6e68)
+
+Creds for user ```administrator``` was given, we are to login as the user to familiarize ourselves with the admin panel.
+
+Logging in as the ```administrator``` user,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ae754f43-4718-48fb-915b-d4a60d63a15c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ae5b5964-595c-4994-bb69-f5d176c252b3)
+
+Let's try to upgrade the user ```carlos```, we'll observe how this is done by using burpsuite
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ea02c340-52f6-4fe2-a774-550d3b65459e)
+
+Following the redirection,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8a5db48f-9d57-42dd-925f-149d3eb40152)
+
+We were able to upgrade the user.
+
+Now, lets logout and login as user ```wiener```, this time we'll try to promote ourselves to become an administrator
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c0f04984-1266-4aa3-9995-8e6bfd7b3b40)
+
+Lets capture this request using burpsuite and send it over to burp repeater
+
+
+
 
 
 
