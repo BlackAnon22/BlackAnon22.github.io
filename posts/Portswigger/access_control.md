@@ -438,6 +438,19 @@ Let's click on "Admin panel" again, but this time we'll capture the request on b
 
 One way we can solve this is by using the HTTP request header ```X-Original-URL```, this is a request header that is sometimes used to provide information about the original URL or resource that a request was intended for.
 
+We'll be using this header with a ```POST``` request. Since the ```/admin``` directory is the one we can't view, our request will look like this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/64118675-89f2-4b49-8800-7252e648a1dd)
+
+Sending the request
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/33cc366b-b1d7-4ec3-ad03-e14f8349d761)
+
+cool, we got a status of ```OK```. Checking the response in our browser
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/467d4a47-b905-418c-a29c-7c138e970e78)
+
+Deleting user ```carlos``` account,
 
 
 
