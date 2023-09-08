@@ -502,12 +502,37 @@ Following the redirection,
 
 We were able to upgrade the user.
 
-Now, lets logout and login as user ```wiener```, this time we'll try to promote ourselves to become an administrator
+Now, lets open another browser and login as user ```wiener```, this time we'll try to promote ourselves to become an administrator
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c0f04984-1266-4aa3-9995-8e6bfd7b3b40)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8364175e-37d7-441e-96ff-eb6c48c050f0)
 
-Lets capture this request using burpsuite and send it over to burp repeater
+We'll try to upgrade user ```carlos``` with user ```wiener``` account.
 
+Capture this request on burpsuite, what we need is the sessionn cookie for user ```wiener```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/53075739-d1ef-4742-aa2a-407e652a0a3b)
+
+Lets take that session cookie and replace it with the admin's session cookie when it tries to upgrade user carlos so as to see what happens
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/11b522c0-8c85-4133-ae14-ff5cfcbf8225)
+
+Replacing the session cookie,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/18da2fda-8d25-42d6-89dc-f782422c34de)
+
+oops, we got the "Unauthorized" error.
+
+One thing we can try to do is tweak with the ```POST``` method. What happens if we change it to something like ```POSTV```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6ad21704-d522-4561-83ea-0325e7d6cd85)
+
+oops, a bad request having "Missing parameter 'username'" error.
+
+All hope isn't lost hehe, lets right-click and change the request method to ```GET```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/42307d8d-1c55-444b-ba22-145ddf5fb3b6)
+
+Good, following redirection
 
 
 
