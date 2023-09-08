@@ -415,8 +415,30 @@ We have successfully completed this lab
 
 -------------------------------------
 
-#
+# URL-based access control can be circumvented
 <hr>
+
+## Task
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a86b3561-bdb0-4352-9ddf-546340def8d2)
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/57f0ea10-f109-400d-81a1-6711dc4802d1)
+
+Clicking on "Admin panel", you should get this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ecdb0771-b0a2-4a1d-a99d-315c4b716c19)
+
+We got the "Access denied" error. This means we aren't privileged to access the admin panel.
+
+Let's click on "Admin panel" again, but this time we'll capture the request on burpsuite and send it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/65b0e9b3-d61c-4ab3-834f-8cfb6d292922)
+
+
+
+
 
 
 
