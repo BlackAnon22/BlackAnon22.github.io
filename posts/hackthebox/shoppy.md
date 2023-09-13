@@ -303,6 +303,27 @@ command:```sudo -u deploy /home/deploy/password-manager```
 
 oops, a master password is needed
 
+Lets locate the binary and run the ```strings``` command on it, hopefully we get something
+
+We can use,
+
+command:```strings -e l password-manager```
+```
+-e specifies the encoding option.
+-l is typically used to specify the encoding as little-endian. Little-endian is a byte order where the least significant byte comes first in the memory representation of multibyte data.
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4d7497b3-81e6-4de0-93cd-6815aa224410)
+
+We got a word ```Sample```. Lets assume this to be the master password.
+
+Running this command again ```sudo -u deploy /home/deploy/password-manager```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dedc8acb-fdf0-44ae-9adf-1356851cc804)
+
+We got the username and password for user ```deploy```😎.
+
+Lets ssh into the server as user ```deploy```
 
 
 
