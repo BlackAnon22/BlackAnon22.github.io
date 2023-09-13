@@ -1,4 +1,4 @@
-# Box: Shoppy 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c8412f87-45ee-4c33-a7d7-419e8523bf75)# Box: Shoppy 
 # Level: Easy
 <hr>
 
@@ -247,7 +247,12 @@ Navigating to that subdomain
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/828e3374-c5a8-4d4b-a4ff-34c7ad27898c)
 
-We have a login page. If you recall we found the creds for a user ```josh```. 
+We have a login page. 
+
+
+# Exploitation
+
+If you recall we found the creds for a user ```josh```. 
 
 Well, we can try logging in
 
@@ -257,6 +262,46 @@ username:```josh```        password:```remembermethisway```
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4bf769c7-fcfe-4207-ac56-0af0a617c916)
 
 Cool, we are logged in.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d08c99f6-79d8-49e7-a619-e111f0119e57)
+
+So, there are two users asides user ```josh``` in the team. Heading over to "Development", you should be able to see their chats
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bb075b98-d7f5-432a-bb39-8f43b3c1cf11)
+
+So there's a user ```jaeger```. Checking their conversations, you see this 
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/74756d71-85db-4fb9-8310-3161ea0384ef)
+
+Heading over to "Deploy Machine"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/60f51275-e315-4dc9-972e-d1c4ec92ef12)
+
+I think we just found ourselves ssh creds for user ```jaeger```.
+
+Lets try to ssh into the server
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7f377675-78e2-486c-bd13-1b159e03b618)
+
+Cool stuff hehe, we've gotten user access. We can go ahead to escalate our privileges
+
+
+
+# Privilege Escalation
+
+Running the ```sudo -l``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0b7d0a2a-76f2-4fec-abb5-ca2bf6b2842a)
+
+So we can run the binary ```password-manager``` as user ```deploy```
+
+Lets try to run the binary as user ```deploy```
+
+command:```sudo -u deploy /home/deploy/password-manager```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d7c08aef-2685-4144-a94a-f264a632aae1)
+
+oops, a master password is needed
 
 
 
