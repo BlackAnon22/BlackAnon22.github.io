@@ -325,7 +325,33 @@ We got the username and password for user ```deploy```😎.
 
 Lets ssh into the server as user ```deploy```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3954e3b0-0628-4dc7-b23d-38ac0163da5b)
 
+We are in. Lets further escalate our privileges
+
+Running the ```id``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/db3fad59-574c-4049-a9fd-09a191f2f888)
+
+We can see that a docker image is running on this box. To check the docker image running we can use the command ```docker images```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3218f5da-e03b-41cf-af00-aedaba611553)
+
+It's running the ```alpine docker image```. Lets use this to further escalate our privileges
+
+Checking [GTFOBins](https://gtfobins.github.io/)
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9322573f-a1cb-4df6-b96c-cea11887139b)
+
+We can run that command to get a root shell
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/42737d3f-3140-407c-8c19-ff784ebebd87)
+
+Box pwned successfully😎 
+
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
