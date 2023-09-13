@@ -166,7 +166,42 @@ command:```ffuf -u "http://shoppy.htb/FUZZ" -w /usr/share/wordlists/dirb/common.
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/02085d5a-1f55-4d0a-913a-73ce07eab63e)
 
-Lets start with the ```/admin``` directory
+The only direcrories we can access on this webpage are ```/admin``` and ```/login```. Navigating to the ```/admin``` directory redirects to the ```/login``` directory
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/be5defca-dbef-435d-9cd6-b0ab300c0ec2)
+
+We have a login page, but we don't have creds we can use to login.
+
+Lets try SQLi bypass, 
+
+Lets continue with our enumeration by enumerating for subdomains,
+
+command:```ffuf -u http://shoppy.htb/ -H "Host: FUZZ.shoppy.htb" -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -fw 5```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1def6d28-acfc-4739-a0c7-1bab3081e4bc)
+
+Lets add the subdomain to our ```/etc/hosts``` file
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/shoppy]
+└─$ sudo nano /etc/hosts
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/shoppy]
+└─$ cat /etc/hosts
+127.0.0.1       localhost
+127.0.1.1       bl4ck4non
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+10.129.227.233 shoppy.htb, mattermost.shoppy.htb
+```
+Navigating to that subdomain
+
+
+
+
 
 
 
