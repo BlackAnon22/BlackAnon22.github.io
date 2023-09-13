@@ -245,6 +245,19 @@ ff02::2 ip6-allrouters
 ```
 Navigating to that subdomain
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/828e3374-c5a8-4d4b-a4ff-34c7ad27898c)
+
+We have a login page. If you recall we found the creds for a user ```josh```. 
+
+Well, we can try logging in
+
+username:```josh```        password:```remembermethisway```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e0171f38-a747-4528-862d-d8bc9c67b79c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4bf769c7-fcfe-4207-ac56-0af0a617c916)
+
+Cool, we are logged in.
+
 
 
 
