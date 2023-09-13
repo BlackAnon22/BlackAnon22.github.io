@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c8412f87-45ee-4c33-a7d7-419e8523bf75)# Box: Shoppy 
+# Box: Shoppy 
 # Level: Easy
 <hr>
 
