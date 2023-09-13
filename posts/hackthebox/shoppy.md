@@ -166,7 +166,7 @@ command:```ffuf -u "http://shoppy.htb/FUZZ" -w /usr/share/wordlists/dirb/common.
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/02085d5a-1f55-4d0a-913a-73ce07eab63e)
 
-The only direcrories we can access on this webpage are ```/admin``` and ```/login```. Navigating to the ```/admin``` directory redirects to the ```/login``` directory
+The direcrories we can access on this webpage are ```/admin``` and ```/login```. Navigating to the ```/admin``` directory redirects to the ```/login``` directory
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/be5defca-dbef-435d-9cd6-b0ab300c0ec2)
 
