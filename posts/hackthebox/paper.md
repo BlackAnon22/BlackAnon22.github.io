@@ -203,7 +203,7 @@ Lets navigate to the registration page ```http://chat.office.paper/register/8qoz
 Registering a new account,
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6e20f7f5-5d84-4ddb-be38-8ac7065b2a60)
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/50b4a76c-21a0-43a3-b0f2-12cef86ca32b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b0c3788d-1d04-4099-98d4-c5b8fa31b18a)
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e363dbda-582c-4988-aa02-bfe97fb8f9b0)
 
 
