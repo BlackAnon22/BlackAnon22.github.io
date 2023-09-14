@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/aa61bb00-2ffd-41c6-909a-01b734849308)# Box: Paper
+# Box: Paper
 # Level: Easy
 <hr>
 
@@ -143,7 +143,7 @@ command:```curl -I http://paper.htb```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8830c574-dc95-4e31-9d16-38f8a3e2ee9a)
 
-we found something interesting hehe, there's a backend server ```office.paper``` running. Lets add this to our ```/etc/hosts``` file
+we found something interesting hehe, there's a backend server ```office.paper``` that is handling our requests. Lets add this to our ```/etc/hosts``` file
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/paper]
