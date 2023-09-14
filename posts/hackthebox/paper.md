@@ -223,6 +223,15 @@ So, the bot can help list files. But how do we access this bot??
 
 Well, lets send the bot a dm hehe
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c38f7878-e6dd-4dd4-b135-ab26747bceca)
+
+From the above screenshot, you can see I used the ```list``` command, and the bot listed the files under the ```/sales``` directory
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/34765399-3b8b-4953-a868-ad02218b8e03)
+
+I took it up a notch by trying to view a directory in the ```/sales``` directory using the command ```list sales```
+
+
 
 
 
