@@ -1,4 +1,4 @@
-# Box: Paper
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/aa61bb00-2ffd-41c6-909a-01b734849308)# Box: Paper
 # Level: Easy
 <hr>
 
@@ -136,6 +136,32 @@ manual                  [Status: 301, Size: 232, Words: 14, Lines: 8, Duration: 
 :: Progress: [32298/32298] :: Job [1/1] :: 241 req/sec :: Duration: [0:02:15] :: Errors: 0 ::
 ```
 oops, nothing interesting here
+
+Lets view the http header for this webpage using curl
+
+command:```curl -I http://paper.htb```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8830c574-dc95-4e31-9d16-38f8a3e2ee9a)
+
+we found something interesting hehe, there's a backend server ```office.paper``` running. Lets add this to our ```/etc/hosts``` file
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/paper]
+└─$ sudo nano /etc/hosts
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/paper]
+└─$ cat /etc/hosts 
+127.0.0.1       localhost
+127.0.1.1       bl4ck4non
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+10.129.136.31 paper.htb office.paper
+```
+Cool, now we can navigate to the wepage ```office.paper```
+
 
 
 
