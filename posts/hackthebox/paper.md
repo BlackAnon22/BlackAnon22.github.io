@@ -162,7 +162,23 @@ ff02::2 ip6-allrouters
 ```
 Cool, now we can navigate to the wepage ```office.paper```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/65263496-d6ec-4cc9-a0ea-b06e1c6127cb)
 
+Alright so this is a wordpress site, ```wordpress 5.2.3``` to be exact.
+
+
+
+# Exploitation
+
+This wordpress version has an available exploit. It is vulnerable to ```CVE-2019-17671```. You can access the exploit [here](https://www.exploit-db.com/exploits/47690)
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3d62b35d-049f-45bc-a60a-5bff41a21c05)
+
+Adding ```?static=1``` to the back of the url
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/80b8cbd5-e3d7-46f1-bcde-9e0f6f54b1fc)
+
+So that was a private post we just viewed. As we can see there's a new 
 
 
 
