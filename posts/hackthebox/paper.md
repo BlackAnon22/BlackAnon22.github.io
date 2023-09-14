@@ -231,7 +231,13 @@ From the above screenshot, you can see I used the ```list``` command, and the bo
 
 I took it up a notch by trying to view a directory in the ```/sales``` directory using the command ```list sales```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2afa91b2-bb54-4fda-94b5-92a3dc1ea2a9)
 
+Cool, we can use the ```file``` command to read files. We can try this for the ```/etc/passwd``` file too I think🤔
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/64531f4c-3c3d-4bd9-8277-2a991cd927af)
+
+It worked hehe😎
 
 
 
