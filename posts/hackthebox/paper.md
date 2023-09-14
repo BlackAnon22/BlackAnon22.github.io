@@ -1,4 +1,4 @@
-# Box: Paper
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c167bc9f-f9a3-4a50-a5f5-2779514ee265)# Box: Paper
 # Level: Easy
 <hr>
 
@@ -178,7 +178,36 @@ Adding ```?static=1``` to the back of the url
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/80b8cbd5-e3d7-46f1-bcde-9e0f6f54b1fc)
 
-So that was a private post we just viewed. As we can see there's a new 
+So that was an unpublished draft we just viewed. As we can see there's a secret registration url for new employees chat system, this is being hosted on a subdomain, so we'll be adding ```chat.office.paper``` to our ```/etc/hosts``` file
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/paper]
+└─$ sudo nano /etc/hosts        
+[sudo] password for bl4ck4non: 
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/paper]
+└─$ cat /etc/hosts
+127.0.0.1       localhost
+127.0.1.1       bl4ck4non
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+10.129.136.31 paper.htb office.paper chat.office.paper
+```
+Lets navigate to the registration page ```http://chat.office.paper/register/8qozr226AhkCHZdyY```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2d067ce2-eaa5-400e-80da-d48e37b345fa)
+
+Registering a new account,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6e20f7f5-5d84-4ddb-be38-8ac7065b2a60)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/50b4a76c-21a0-43a3-b0f2-12cef86ca32b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e363dbda-582c-4988-aa02-bfe97fb8f9b0)
+
+
+
 
 
 
