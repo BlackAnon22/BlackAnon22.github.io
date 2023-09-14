@@ -206,7 +206,22 @@ Registering a new account,
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b0c3788d-1d04-4099-98d4-c5b8fa31b18a)
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e363dbda-582c-4988-aa02-bfe97fb8f9b0)
 
+Click on "general",
 
+This conversation box is "view only" but we can see there's a bot on the group chat
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e663411a-f68f-47f2-b172-7c323d67e19a)
+
+So, there's a bot that handles the chat group
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ebd31551-c05f-40c8-9657-96f6d48ea13d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b0a45919-c30d-47c4-9fb5-157848b076e7)
+
+So, the bot can help list files. But how do we access this bot??
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0484ed81-0e43-456d-9f34-574f13241ca4)
+
+Well, lets send the bot a dm hehe
 
 
 
