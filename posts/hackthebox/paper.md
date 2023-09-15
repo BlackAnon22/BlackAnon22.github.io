@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/782cf5ff-68ce-47eb-b1ac-c3875bc68933)# Box: Paper
+# Box: Paper
 # Level: Easy
 <hr>
 
