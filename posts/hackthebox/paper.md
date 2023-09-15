@@ -341,9 +341,15 @@ id: ‘ahmed’: no such user
 
 [+] Exploit Completed, Your new user is 'Ahmed' just log into it like, 'su ahmed', and then 'sudo su' to root
 ```
+You'll be prompted to provide a password, well what I did was put the password for user ```dwight```, I got an ```authentication failure``` message, but then I ran the script again and got a root shell
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e91c691a-21ae-4850-a5bd-71894803364f)
 
+Box pwned successfully😎
 
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
