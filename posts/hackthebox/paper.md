@@ -236,10 +236,32 @@ I took it up a notch by trying to view a directory in the ```/sales``` directory
 Cool, we can use the ```file``` command to read files. We can try this for the ```/etc/passwd``` file too I think🤔
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/64531f4c-3c3d-4bd9-8277-2a991cd927af)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/68b20f80-e251-4936-a5a9-2a4e61c98fbd)
 
 It worked hehe😎
 
+Well, I found an intersting file in user ```Dwight``` home directory
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bd8e65d0-992a-4bbb-9f26-ef7456c13e38)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/724ca109-222f-4a2d-94aa-9d7f4b9b85b5)
+
+Reading the file,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/96dce1e6-a102-45fc-9931-4fb2c72d49ef)
+
+We found a password hehe😄
+
+Well that password  works well for user ```dwight```😂
+
+What we can do now is ssh into the server as user ```dwight```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9ab83300-fd39-4723-8b84-bcb282424cc2)
+
+We are in hehe. Lets go ahead and escalate our privileges
+
+
+
+# Privilege Escalation
 
 
 
