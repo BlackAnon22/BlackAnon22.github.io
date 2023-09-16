@@ -176,8 +176,6 @@ Reverse shell successfully uploaded hehe. The next thing to do is to access it f
 
 Ensure you set up your netcat listener ```nc -lvnp 4443``` before accessing the reverse shell from the webpage.
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5b37a08f-aa79-4356-9a17-b517ebedd9f1)
-
 Now, lets access the reverse shell
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/99496086-9f7f-4f3c-9919-00a43002c868)
