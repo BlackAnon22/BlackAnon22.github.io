@@ -173,9 +173,37 @@ Lets locate the flag
 Well that's all
 
 
+Alright, wait😂. Metasploit??? well, I have some folks who would come for me if they caught me using it😂. So, we'll be doing the manual exploitation also,this is because metasploit is more of automation and all.
 
+Well I found this great exploit, you can download from [here](https://github.com/d4t4s3c/Win7Blue)
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/52f2d875-b76e-4364-a85f-9d17ef713c68)
 
+Now that we made the shell script executable, we can execute it with the command ```./Win7Blue.sh```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f2bd08d7-b255-4033-9117-4b1c06f3d069)
+
+Our target is a windows 7 with a 64 bits architecture, so we'll be choosing ```3```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/be5e0fe7-aba6-4d78-b910-8f888490fe02)
+
+RHOST should be the target's ip
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4b29c4e8-5f08-421f-89db-415d7a678faa)
+
+LHOST should be your tun0 ip
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3d763ca9-761a-4b15-b75f-7c470d64481b)
+
+LPORT should be the port you want to listen on, before setting this ensure you have a netcat listener set up already. For example, I plan on using port ```443```, so I have my netcat listener ready 
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c0e9a776-e6b8-4949-9080-2511b6b39b47)
+
+Now, we can provide the LPORT
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2d247926-c529-498e-b6f6-53eea1bcdaca)
+
+Checking the listener we set up,
 
 
 
