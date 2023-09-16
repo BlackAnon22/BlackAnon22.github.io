@@ -164,7 +164,7 @@ We got a meterpreter session hehehe
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bb99258e-33d4-449c-b637-585c72f91b16)
 
-We won't need to escalate privileges because we spawned a shell as the highest privileged user which is ```NT Authority\System```
+We won't be need privilege escalation, this is because we spawned a shell as the highest privileged user which is ```NT Authority\System```
 
 Lets locate the flag
 
