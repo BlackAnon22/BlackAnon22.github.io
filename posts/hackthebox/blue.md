@@ -205,9 +205,16 @@ Now, we can provide the LPORT
 
 Checking the listener we set up,
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bed411f9-6370-4788-aabb-362d3fec8194)
+
+We spwned a shell as user ```NT Authority\System```😎
+
+So, you can choose to either use the metasploit exploitation process or the manual exploitation process🙂
 
 
-
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
