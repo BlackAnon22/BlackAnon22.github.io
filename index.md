@@ -70,6 +70,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[May 15 2023]] [HackTheBox--Devel](https://Blackanon22.github.io/posts/hackthebox/devel.html) `File Upload` `FTP RCE` `Kernel Exploit`
 - [[September 13 2023]] [HackTheBox--Shoppy](https://Blackanon22.github.io/posts/hackthebox/shoppy.html) `NOSQL` `Hash Cracking` `Docker`
 - [[September 15 2023]] [HackTheBox--Paper](https://Blackanon22.github.io/posts/hackthebox/paper.html) `Outdated Software` `Information Disclosure` `Directory Transversal` `Polkit`
+- [[September 16 2023]] [HackTheBox--Blue](https://Blackanon22.github.io/posts/hackthebox/blue.html) `EternalBlue` `RCE`
 
 * * *
 ### **CTF Competitions:~#**
