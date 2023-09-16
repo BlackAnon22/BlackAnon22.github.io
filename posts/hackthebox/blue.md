@@ -11,6 +11,80 @@ Lets get started
 
 command:```sudo nmap -A 10.129.110.225 -T4  -v -p-```
 
+```
+Nmap scan report for 10.129.110.225
+Host is up (0.15s latency).
+Not shown: 65513 closed tcp ports (reset)
+PORT      STATE    SERVICE      VERSION
+47/tcp    filtered ni-ftp
+135/tcp   open     msrpc        Microsoft Windows RPC
+139/tcp   open     netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp   open     microsoft-ds Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+2468/tcp  filtered qip-msgd
+6099/tcp  filtered raxa-mgmt
+9834/tcp  filtered unknown
+19056/tcp filtered unknown
+31232/tcp filtered unknown
+33400/tcp filtered unknown
+37044/tcp filtered unknown
+45939/tcp filtered unknown
+49152/tcp open     msrpc        Microsoft Windows RPC
+49153/tcp open     msrpc        Microsoft Windows RPC
+49154/tcp open     msrpc        Microsoft Windows RPC
+49155/tcp open     msrpc        Microsoft Windows RPC
+49156/tcp open     msrpc        Microsoft Windows RPC
+49157/tcp open     msrpc        Microsoft Windows RPC
+49393/tcp filtered unknown
+49496/tcp filtered unknown
+61199/tcp filtered unknown
+61779/tcp filtered unknown
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.93%E=4%D=9/16%OT=135%CT=1%CU=35042%PV=Y%DS=2%DC=T%G=Y%TM=6505D5
+OS:1D%P=x86_64-pc-linux-gnu)SEQ(SP=103%GCD=1%ISR=10D%TI=I%CI=I%II=I%SS=S%TS
+OS:=7)OPS(O1=M539NW8ST11%O2=M539NW8ST11%O3=M539NW8NNT11%O4=M539NW8ST11%O5=M
+OS:539NW8ST11%O6=M539ST11)WIN(W1=2000%W2=2000%W3=2000%W4=2000%W5=2000%W6=20
+OS:00)ECN(R=Y%DF=Y%T=80%W=2000%O=M539NW8NNS%CC=N%Q=)T1(R=Y%DF=Y%T=80%S=O%A=
+OS:S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q
+OS:=)T5(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=80%W=0%S=A
+OS:%A=O%F=R%O=%RD=0%Q=)T7(R=N)U1(R=Y%DF=N%T=80%IPL=164%UN=0%RIPL=G%RID=G%RI
+OS:PCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=80%CD=Z)
+
+Uptime guess: 0.015 days (since Sat Sep 16 16:55:45 2023)
+Network Distance: 2 hops
+TCP Sequence Prediction: Difficulty=259 (Good luck!)
+IP ID Sequence Generation: Incremental
+Service Info: Host: HARIS-PC; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-time: 
+|   date: 2023-09-16T16:17:27
+|_  start_date: 2023-09-16T15:55:59
+| smb2-security-mode: 
+|   210: 
+|_    Message signing enabled but not required
+| smb-os-discovery: 
+|   OS: Windows 7 Professional 7601 Service Pack 1 (Windows 7 Professional 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_7::sp1:professional
+|   Computer name: haris-PC
+|   NetBIOS computer name: HARIS-PC\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2023-09-16T17:17:24+01:00
+|_clock-skew: mean: -19m57s, deviation: 34m37s, median: 1s
+
+TRACEROUTE (using port 1025/tcp)
+HOP RTT       ADDRESS
+1   148.34 ms 10.10.14.1
+2   148.63 ms 10.129.110.225
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+```
 Well from the scan we hav3 3 main ports opened. Our enumeration today will be focused on the port runnint the netbios service.
 
 
