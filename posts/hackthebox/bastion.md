@@ -231,7 +231,15 @@ We've successfully gotten user access hehe. Lets go ahead and escalate our privi
 
 # Privilege Escalation
 
+I found a remote connection management tool that stores user encrypted passwords ```C:\Program Files (x86)```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a69f5922-2b19-4659-a8e0-f74da4b6ac22)
+
+Well, doing some research about this I found this [blog](https://vk9-sec.com/exploiting-mremoteng/).
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4f147957-4129-4af3-bdeb-4bbeb838db76)
+
+We got the name of the file where the passwords are stored at
 
 
 
