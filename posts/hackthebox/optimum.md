@@ -90,6 +90,27 @@ We got a user shell🙂. Lets go ahead and escalate our privileges.
 
 # Privilege Escalation
 
+Lets run the  windows exploit suggester, you can get it [here](https://github.com/bitsadmin/wesng)
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4262d643-84bb-41aa-a462-f30ab610a048)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/715e4a57-6fb2-494f-b118-b4b68849886d)
+
+First lets update the database,
+
+command:```python3 wes.py --update```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/66d7d16f-b1f9-432d-a0f0-a6b7f4d49730)
+
+Done.
+
+Lets go back to the shell we got earlier and run the ```systeminfo``` command, save the output in a file say ```systeminfo.txt```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c735b9d0-4fbf-42bb-9a4b-f888eac61e3f)
+
+Now, to run the script
+
+command:```python3 wes.py path/to/systeminfo.txt```
+
 
 
 
