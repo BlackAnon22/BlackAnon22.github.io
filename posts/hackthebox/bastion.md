@@ -1,4 +1,4 @@
-# Box: Bastion
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b5a423fa-184a-4027-84fa-3950e05aaf6b)# Box: Bastion
 # Level: Easy
 # OS: Windows
 <hr>
@@ -104,6 +104,8 @@ Then we can mount,
 
 command:```sudo mount -t cifs //10.129.153.193/Backups /mnt/bastion_backup```
 
+This will prompt you for a password, you don't have to worry about that, just hit the ```Enter key```.
+
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/bastion]
 └─$ sudo mkdir /mnt/bastion_backup             
@@ -128,13 +130,44 @@ The mounting was a success hehe, now we can locate the vhd files
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/febaafcb-c087-4da4-9659-f290b2018d15)
 
-Well, lets mount the ```vhd``` disk files
+Well, lets mount the ```vhd``` disk files. Before we start mounting we have to install the required tools
 
+command:```sudo apt-get install qemu-utils```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c555130f-26e4-45f8-b2af-0f12b5ee9e24)
 
+Next is to load the NBD (Network Block Device) Module,
 
+command:```sudo modprobe nbd```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ab9bbf9b-4f29-4530-b6cf-23a9b4ebd932)
 
+Now, we can mount the vhd file
+
+command:```sudo qemu-nbd -c /dev/nbd0/ /mnt/bastion_backup/WindowsImageBackup/L4mpje-PC/Backup\ 2019-02-22\ 124351/9b9cfbc4-369e-11e9-a17c-806e6f6e6963.vhd```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e0045f8c-cba9-424c-8563-d34fe667b401)
+
+Next thing to do is partition and mount the disk,
+
+command:```sudo fdisk -l /dev/nbd0```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8c1b484f-816f-4769-aaf1-c5b43b883804)
+
+create a mount point and mount the partition
+
+command:```sudo mkdir /mnt/vhd_mount```
+command:```sudo mount /dev/nbd0pX /mnt/vhd_mount```
+
+Replace ```X``` with the appropriate partition number based on the output of ```fdisk```. In my case it's ```nbd0p1```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c210f207-39b8-47ec-9eeb-013ef7dcc4a7)
+
+Now, we can access the mounted VHD
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/701430de-84c0-46ae-96a6-8e1e74a8c94c)
+
+Nice stuff hehe😎
 
 
 
