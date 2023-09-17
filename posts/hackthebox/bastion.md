@@ -221,7 +221,15 @@ bureaulampje     (L4mpje)
 Use the "--show --format=NT" options to display all of the cracked passwords reliably
 Session completed. 
 ```
-We  were able to get the password for user ```L4mpje``` with the help of my bro John😂
+We  were able to get the password for user ```L4mpje``` with the help of my bro John😂. Now that we have a password, we can ssh into the server as user ```L4mpje```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bec420e2-9a0e-4f7a-89f5-c972950d2010)
+
+We've successfully gotten user access hehe. Lets go ahead and escalate our privileges
+
+
+
+# Privilege Escalation
 
 
 
