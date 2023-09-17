@@ -62,6 +62,34 @@ Well there is😅. Lets exploit right away
 
 # Exploitation
 
+Well, I found this great exploit, you can download it [here](https://www.exploit-db.com/exploits/39161)
+
+So, we'll set the ```LHOST``` to our tun0 ip, we'll also set the ```LPORT``` to the port we plan on listening on
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/de36cb6b-4ff8-4fc4-a752-ca27abd72924)
+
+Save the script.
+
+Ensure you have your netcat listener ready before running the script
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/35697632-7b3e-4ef6-a9f3-c6e3b673af51)
+
+Running the script requires the target's ip and port
+
+command:```python2 39161.py 10.129.58.117 80```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1080390a-86b9-4d15-9b11-a7fbad9a873b)
+
+Checking our netcat listener,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9c3cb0c2-d092-4d9a-85f8-3dfeff0a1a1d)
+
+We got a user shell🙂. Lets go ahead and escalate our privileges.
+
+
+
+# Privilege Escalation
+
 
 
 
