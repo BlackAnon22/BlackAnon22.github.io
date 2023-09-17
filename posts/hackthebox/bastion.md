@@ -169,6 +169,17 @@ Now, we can access the mounted VHD
 
 Nice stuff hehe😎
 
+Going through the files on the disk I found a SAM (Security Accounts Manager) file and a registry hehe. These files are always stored in the ```C:\Windows\System32\config``` directory
+
+Lets Navigate there
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ec579f51-a614-498c-ab14-cfbeb9152296)
+
+We can try sending these files to a different directory
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a70dc35b-31c4-4df9-b362-4b2214865501)
+
+
 
 
 
