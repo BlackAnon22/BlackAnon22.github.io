@@ -237,7 +237,7 @@ I found a remote connection management tool that stores user encrypted passwords
 
 Well, doing some research about this I found this
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4f147957-4129-4af3-bdeb-4bbeb838db76)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ab7e013f-00d0-4506-b177-1b6e225904e9)
 
 We got the name of the file where the passwords are stored at. Running a quick directory search command ```dir /s /b confCons.xml```
 
