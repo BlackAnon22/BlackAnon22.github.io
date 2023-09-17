@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b5a423fa-184a-4027-84fa-3950e05aaf6b)# Box: Bastion
+# Box: Bastion
 # Level: Easy
 # OS: Windows
 <hr>
