@@ -298,6 +298,10 @@ command:```ssh Administrator@10.129.76.187```
 Box Pwned Successfully😎
 
 
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
+
 
 
 
