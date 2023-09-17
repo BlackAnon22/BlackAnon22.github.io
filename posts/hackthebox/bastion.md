@@ -67,6 +67,34 @@ Unable to connect with SMB1 -- no workgroup available
 ```
 4 shares are available on this server, all the shares are standard smb shares except for the sharename ```Backups```. Lets try connecting to this share, this is  so we can view the files available on the share
 
+command:```smbclient //10.129.153.193/Backups```
+
+This will prompt you for a password, you don't have to worry about that, just hit the ```Enter key```.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a0237be3-a04b-46c3-a518-bfb60755d5a9)
+
+We have a ```.txt```,```.tmp``` file and also a ```windowsimagebackup``` directory available on this share. well, lets take a look at that directory
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f0ecdfce-4ebc-41f5-9051-1f7e05dc7498)
+
+After checking through the directories we find 2 disk images, lets download them to our machine using the ```get``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f1b0d1a4-67d1-4cfd-b5b7-ca4648bb7f80)
+
+I'm not sure this will be possible, we've already been told about this in the ```note.txt``` file😅
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d5b88adc-1496-4357-b7d0-4abbf468641f)
+
+Well, this doesn't mean we can't mount it though🤔. 
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d063999b-ec16-47c3-88a9-b25fb27227f6)
+
+Now that we know the way to go, lets exploit😎
+
+
+
+
+# Exploitation
 
 
 
