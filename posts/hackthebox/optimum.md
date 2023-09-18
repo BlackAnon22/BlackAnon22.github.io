@@ -137,7 +137,7 @@ Lets go back to the shell we got earlier and run the ```systeminfo``` command, s
 
 Now, to run the script
 
-command:```python3 wes.py path/to/systeminfo.txt```
+command:```python3 wes.py path/to/systeminfo.txt -e```
 
 
 
