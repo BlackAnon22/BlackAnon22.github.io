@@ -64,13 +64,13 @@ Well there is😅. Lets exploit right away
 
 Well, I found this great exploit, you can download it [here](https://www.exploit-db.com/exploits/39161)
 
-
-
 So, we'll set the ```LHOST``` to our tun0 ip, we'll also set the ```LPORT``` to the port we plan on listening on
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/de36cb6b-4ff8-4fc4-a752-ca27abd72924)
 
 Save the script.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/21bb23c8-3b48-4005-97d5-6ebc0b50c93d)
 
 As per the instruction in the script, we were told to host a ```nc.exe``` file, well I generated the ```.exe``` file using msfvenom
 
