@@ -1,11 +1,13 @@
 
 <h4>Servers and Services</h4>
+
 server is called a server because of what it does, it provides some sort of functionality specialized to that machine that can be utilized from other devices. The server can be running a windows operating system, a linux operating system or a macos server. Any computer could be a server depending on how you set it up. 
 
 Servers needs to be accessed remotely. The services running on a server requires opening up a listening port on the server and accepting connections remotely
 
 
 <h4>SMB</h4>
+
 SMB(sever message block)
 
 To Delete smb shares on a windows box
@@ -83,6 +85,7 @@ smbmap -u administrator -p smbserver_771 -d . -H 10.10.10.10 --download 'C$\flag
 
 
 ***Linux SMB Enumeration***
+
 For OS discovery
 ```
 nmap 10.10.10.10 -p 445 --script smb-os-discovery
@@ -128,7 +131,8 @@ rpcclient -U "" -N 10.10.10.10
 
 
 
-<h4>FTP</j4>
+<h4>FTP</h4>
+ 
 using nmap to bruteforce for creds
 ```
 nmap 10.10.10.10 --script ftp-brute --script-args userdb=/path/to/user_list -p21
@@ -146,6 +150,7 @@ nmap 10.10.10.10 -p 21 --script ftp-anon
 
 
 <h4>SSH</h4>
+
 To connect to ssh
 ```
 ssh student@10.10.10.10
@@ -162,6 +167,7 @@ nmap 10.10.10.10 --script ssh-brute --script-args userdb=/path/to/user.txt -p22
 
 
 <h4>HTTP</h4>
+
 Using browsh, this is used if you just have the cli
 ```
 browsh --startup-url http://10.10.10.10/default.aspx
@@ -178,6 +184,7 @@ nmap 10.10.10.10 -sV -p80 --script http-webdav-scan --script-args http-methods.u
 
 
 <h4>MySQL</h4>
+
 Loading file on mysql
 ```
 select load_file("/etc/shadow");
@@ -202,6 +209,7 @@ hydra -l root -P /usr/share/metasploit-framework/data/wordlists/unix_passwords.t
 
 
 <h4>MSSQL</h4>
+
 This is from Microsoft
 
 For info on the server
