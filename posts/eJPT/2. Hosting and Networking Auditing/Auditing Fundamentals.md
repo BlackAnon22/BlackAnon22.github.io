@@ -1,8 +1,10 @@
 <h4>Cybersecurity Basics</h4>
+
 CIA Triad(Confidentiality,Integrity,Availability)
 
 
 <h4>compliance</h4>
+
 Regulations
 1. PCI DSS (payment card industry Data security standard)
 2. HIPAA (Health Insurance Portability and Accountability)
@@ -14,6 +16,7 @@ Regulations
 
 
 <h4>Frameworks and Maturity</h4>
+
 1. ISO/IEC 27000
 2. COBIT
 3. NIST
