@@ -141,7 +141,7 @@ As we can see ```SeImpersonatePrivilege``` is enabaled, so this may be vulnerabl
 
 We can try [churrasco](https://github.com/Re4son/Churrasco/blob/master/churrasco.exe) here
 
-We'll  be transferring that to the target machine, now ```certutil``` and ```curl``` doesn't work on the target machine. This means we'll be sending the file over using smb
+We'll  be transferring that to the target machine, now ```certutil``` and ```curl``` doesn't work on the target machine. This means we'll be sending the file over to the target using smb
 
 Run this command in the directory where you downloaded the file
 
