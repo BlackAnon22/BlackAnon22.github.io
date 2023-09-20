@@ -127,7 +127,18 @@ Checking our netcat listener
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0cb72701-5ce3-4176-a704-f6bcdfab17a6)
 
-We got a shell
+We got a shell as ```nt authority\network service```, this means we  have to escalate our privileges
+
+
+
+# Privilege Escalation
+
+Running the ```systeminfo``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2cb1c3ce-0253-4775-a317-b811473f08ad)
+
+That's an outdated kernel I think, checking for available exploits
+
 
 
 
