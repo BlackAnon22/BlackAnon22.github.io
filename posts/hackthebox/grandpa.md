@@ -60,6 +60,27 @@ From our scan we can see we have just 1 open port, this means our enumeration to
 
 # Enumeration
 
+Navigate to the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/eb7731fd-6a41-48cb-986b-b26f248f919e)
+
+Well, there was nothing interesting in the page source actually.
+
+Going back to the nmap scan, I found this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6ccc2038-57f4-4ae5-ad11-4d48d571a03b)
+
+Alright, so I think there's an exploit for that guy I highlighted
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9dd310ad-45ad-4604-9992-4f5561b5a543)
+
+I was right hehehe. Well since we found our attack vector, lets exploit😎
+
+
+
+# Exploitation
+
+
 
 
 
