@@ -49,7 +49,7 @@ This won't print out the errors
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7c88f69a-55db-423c-abc3-4ae2b14e7fc9)
 
-***Getting live IP address using wireshark
+***Getting live IP address using wireshark***
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/aaef5220-48e0-4802-9188-5d2334232dc9)
 
