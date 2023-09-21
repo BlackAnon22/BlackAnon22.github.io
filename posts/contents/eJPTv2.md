@@ -229,9 +229,29 @@ $ john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
 $ john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt --format=RAW-md5
 $ john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt --format=NT
 ```
+--------------------
 
+# Privilege Escalation for Linux
+<hr>
 
-
+## Misconfigured Sudo Permissions
+```
+$ sudo -l
+```
+## SUID/SGID Executables
+```
+$ find / -perm -u=s -type f 2>/dev/null
+$ find / -type f -perm -04000 -ls 2>/dev/null
+```
+## Cron Jobs
+```
+$ crontab -l
+```
+## Capabilties
+```
+$ getcap -r / 2>/dev/null
+```
+N:B [GTFOBins](https://gtfobins.github.io/) has a good list of binaries that can be leveraged for privilege escalation if you find any set capabilities, misconfigured sudo permissions or suid/sgid executables.
 
 
 
