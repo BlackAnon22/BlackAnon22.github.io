@@ -197,7 +197,7 @@ ctrl + z
 ##### now, run the tcp module
 ```
 use auxiliary/scanner/portscan/tcp
-set RHOSTS 192.168.5.0/24
+set RHOSTS 192.168.5.1-254
 set PORTS 80, 8080, 445, 22, 10000, 3306
 run
 ```
