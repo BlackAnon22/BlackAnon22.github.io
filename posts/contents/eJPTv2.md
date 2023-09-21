@@ -213,8 +213,22 @@ metrepreter> portfwd add -l 1234 -p 80 -r 192.168.5.45
 ```
 http://127.0.0.1:1234
 ```
+------------
 
+# Password Cracking
+<hr>
 
+## John
+
+#### To crack the hash in /etc/shadow file
+```
+$ john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
+```
+#### To crack md5, and ntlm hashes
+```
+$ john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt --format=RAW-md5
+$ john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt --format=NT
+```
 
 
 
