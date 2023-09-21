@@ -173,7 +173,9 @@ meterpreter> migrate -N explorer.exe
 Let's say we have compromised a machine using metasploit and we have a meterpreter shell with session id 1. We discover that there is another machine but it's reachable only from the compromised machine.
 
 Our IP: ```192.168.50.10```
+
 Compromised host: ```192.168.50.89```
+
 Unreachable machine: ```192.168.5.45```. 
 
 So the subnet of the unreachable machine would be ```192.168.5.0/24```
