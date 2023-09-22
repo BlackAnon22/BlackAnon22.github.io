@@ -67,7 +67,18 @@ Well, I found an exploit for this
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dac6ffd1-8704-45a4-8091-9f766a84137a)
 
-So, it is vulnerabale to ```CVE-2010-2861```
+So, it is vulnerabale to ```CVE-2010-2861```. You can get it [here](https://www.exploit-db.com/exploits/14641) 
+
+Reading the exploit, I found this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7f0ea944-f3f0-4d95-90d6-999e9bd2b7b8)
+
+This means we can exploit this webpage using directory transversal. Well, this is not a Linux box, I would have said we should try reading the ```/etc/passwd``` file😂. 
+
+After a little research, I found out that ColdFusion 8 passwords are typically stored in an encrypted format in a configuration file called ```password.properties```. This file is used to store various ColdFusion passwords, including the administrator password and datasources passwords. The full path is typically ```[ColdFusion Installation Directory]/lib/password.properties```.
+
+
+
 
 
 
