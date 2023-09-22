@@ -57,6 +57,12 @@ Checking the directories, I found this login page
 
 From the above screenshot we can see that ```Adobe ColdFusion``` is being used on this webpage
 
+Lets try using default passwords for the login page
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/336d2dab-2ba4-4afd-96ab-a08cd9404add)
+
+oops, doesn't work🥲
+
 Well, I found an exploit for this
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dac6ffd1-8704-45a4-8091-9f766a84137a)
