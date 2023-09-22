@@ -51,13 +51,17 @@ Navigate to the webpage
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/005c79fd-6322-4e10-b7f5-a42210cd5721)
 
-Checking the directories, I found this
+Checking the directories, I found this login page
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/505168ab-0dcd-4279-b3c4-29af1f84b2b9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c142b585-6539-46a6-a06d-4b0388083778)
 
-From the above screenshot we can see that ```ColdFusion``` is being used on this webpage
+From the above screenshot we can see that ```Adobe ColdFusion``` is being used on this webpage
 
+Well, I found an exploit for this
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dac6ffd1-8704-45a4-8091-9f766a84137a)
+
+So, it is vulnerabale to ```CVE-2010-2861```
 
 
 
