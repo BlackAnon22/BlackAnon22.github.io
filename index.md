@@ -20,6 +20,12 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - **Github:** `https://github.com/BlackAnon22`
 
 * * *
+### **Articles:~#**
+* * *
+
+- [[September 22 2023]] [Articles--eJPTv2 Cheat Sheet](https://Blackanon22.github.io/posts/contents/eJPTv2.html)
+
+* * *
 ### **TryHackMe:~#**
 * * *
 
