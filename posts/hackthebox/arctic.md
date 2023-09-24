@@ -77,6 +77,8 @@ This means we can exploit this webpage using directory transversal. Well, this i
 
 After a little research, I found out that ColdFusion 8 passwords are typically stored in an encrypted format in a configuration file called ```password.properties```. This file is used to store various ColdFusion passwords, including the administrator password and datasources passwords. The full path is typically ```[ColdFusion Installation Directory]/lib/password.properties```.
 
+So we'll try to read the ```password.properties``` by navigating to the url ```?locale=../../../../../../../../../../ColdFusion8/lib/password.properties%00en```
+
 
 
 
