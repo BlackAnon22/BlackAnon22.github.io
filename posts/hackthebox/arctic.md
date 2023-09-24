@@ -150,6 +150,12 @@ We got the password to be ```happyday```. This means now we'll be able to login 
 
 Well lets do that
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ff266854-2e70-4a45-8329-5261fc677dd3)
+
+We are logged in hehe
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b68ef508-0b5a-481f-80e6-f1ffdaa296c6)
+
 
 
 
