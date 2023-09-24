@@ -213,7 +213,11 @@ We have gotten a user shell😎, lets go ahead and escalate our privileges
 
 # Privilege Escalation
 
+Running the ```systeminfo``` command, I found an outdated kernel
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3ed77c3b-ca58-4b4d-be36-5408bb903429)
+
+There's an exploit for this kernel
 
 
 
