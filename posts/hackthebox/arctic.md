@@ -217,8 +217,9 @@ Running the ```systeminfo``` command, I found an outdated kernel
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3ed77c3b-ca58-4b4d-be36-5408bb903429)
 
-There's an exploit for this kernel
+There's an exploit for this kernel.
 
+After doing some research I found this [exploit](https://github.com/egre55/windows-kernel-exploits/blob/master/MS10-059%3A%20Chimichurri/Compiled/Chimichurri.exe). Download it to your machine, so the next thing we'll do is to send the exploit to the target's machine
 
 Ensure you create a ```Temp``` directory before sending the exploit over
 
