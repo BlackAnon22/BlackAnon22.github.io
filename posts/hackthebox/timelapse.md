@@ -236,13 +236,12 @@ We can see that the issuer here is ```Legacyy```, well that's probably a user on
 
 If you recall, when we ran the nmap command we saw this port opened.
 
-Port 5986 is commonly used for secure communications with Windows Remote Management (WinRM) over HTTPS. WinRM is a management protocol used for remote management and automation tasks in Windows environments.
+<font color="Green">Port 5986 is commonly used for secure communications with Windows Remote Management (WinRM) over HTTPS. WinRM is a management protocol used for remote management and automation tasks in Windows environments.
+</font>
 
+So, we'll be using the evil-winrm tool since we have a username ```legacyy```, we also have a private key and a certificate
 
-
-
-
-
+command:```
 
 
 
