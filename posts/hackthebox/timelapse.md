@@ -146,6 +146,7 @@ Well, I called john already and he said he will be sending one of his brothers, 
 Using ```zip2john``` we'll try to generate a hash that can be cracked with ```john```
 
 command:```zip2john winrm_backup.zip > winrm.txt```
+
 command:```john winrm.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt```
 
 ```
@@ -194,6 +195,7 @@ I called  john again but he wasn't picking his calls (he probably thinks I'm dis
 Using ```pfx2john``` to get the hash and then using john to crack the hash
 
 command:```pfx2john legacyy_dev_auth.pfx > legacyy.txt```
+
 command:```john legacyy.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt```
 
 ```
@@ -217,6 +219,7 @@ We got the password to be ```thuglegacy```
 Now that we've gotten the password, we'll use openssl to get the private keys and certificate files, this should help us connect to the box
 
 command:```openssl pkcs12 -in legacyy_dev_auth.pfx -nocerts -out private.pem -nodes```
+
 command:```openssl pkcs12 -in legacyy_dev_auth.pfx -nokeys -out certificate.cert```
 
 ```
