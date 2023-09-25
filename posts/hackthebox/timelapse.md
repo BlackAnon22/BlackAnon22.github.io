@@ -232,7 +232,11 @@ We can see that the issuer here is ```Legacyy```, well that's probably a user on
 
 # Exploitation
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2ab0cf77-4403-4356-9b67-28febe5f7159)
 
+If you recall, when we ran the nmap command we saw this port opened.
+
+Port 5986 is commonly used for secure communications with Windows Remote Management (WinRM) over HTTPS. WinRM is a management protocol used for remote management and automation tasks in Windows environments.
 
 
 
