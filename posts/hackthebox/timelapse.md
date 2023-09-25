@@ -218,7 +218,20 @@ Applying this password
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f76a03c4-de24-4a0f-a84a-863eb2ca0e6e)
 
-We are asked to provide a passphrase
+We are asked to provide a passphrase. Lets use a simple passphrase, ```qwertyuiop``` should work. That's simple enough I guess
+
+Using the passphrase and yeah you have to verify the passphrase
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2bd683e5-61e4-414f-8e21-5386568975c2)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f69a777e-541c-4bae-b88e-3f7584b2d04e)
+
+We can see that the issuer here is ```Legacyy```, well that's probably a user on the box. Since we have the digital certificate and its associated private key we can try to get a user shell on this box
+
+
+
+
+# Exploitation
+
 
 
 
