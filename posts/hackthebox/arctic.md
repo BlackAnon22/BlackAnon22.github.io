@@ -247,7 +247,14 @@ command:```.\c.exe 10.10.14.142 1337```
 
 We were able to successfully escalate our privileges
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/52c4d3a6-37f9-4286-bdbc-f97fce59da3c)
 
+We have successfully pwned this box😎
+
+
+That will be all for today
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
