@@ -177,7 +177,26 @@ Archive:  winrm_backup.zip
 └─$ ls -l legacyy_dev_auth.pfx 
 -rwxr-xr-x 1 bl4ck4non bl4ck4non 2555 Oct 25  2021 legacyy_dev_auth.pfx
 ```
-cool the password worked and we got a file
+cool the password worked and we got a ```PKCS#12``` file.
+
+For those who don't know about ```PKCS#12``` file, it is a cryptographic file format that typically contains both a digital certificate and its associated private key. These files are often used for securing sensitive information and establishing secure connections, such as in SSL/TLS certificates for web servers.
+
+To access this file we can use the ```openssl``` command
+
+command:```openssl pkcs12 -info -in legacyy_dev_auth.pfx```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/90cff726-3689-4bb6-afa9-d3519ba43540)
+
+oops, a password is required. 
+
+I called  john again but he wasn't picking his calls (he probably thinks I am disturbing him). So, I called one of his brothers ```pfx2john```
+
+Using ```pfx2john``` to get the hash and then using john to crack the hash
+
+command:```pfx2john legacyy_dev_auth.pfx > legacyy.txt```
+command:```john legacyy.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt```
+
+
 
 
 
