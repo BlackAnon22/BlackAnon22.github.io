@@ -189,14 +189,36 @@ command:```openssl pkcs12 -info -in legacyy_dev_auth.pfx```
 
 oops, a password is required. 
 
-I called  john again but he wasn't picking his calls (he probably thinks I am disturbing him). So, I called one of his brothers ```pfx2john```
+I called  john again but he wasn't picking his calls (he probably thinks I'm disturbing him lool). So, I called one of his brothers ```pfx2john```
 
 Using ```pfx2john``` to get the hash and then using john to crack the hash
 
 command:```pfx2john legacyy_dev_auth.pfx > legacyy.txt```
 command:```john legacyy.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt```
 
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Timelapse]
+└─$ pfx2john legacyy_dev_auth.pfx > legacyy.txt
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Timelapse]
+└─$ john legacyy.txt  --wordlist=/home/bl4ck4non/Documents/rockyou.txt
+Using default input encoding: UTF-8
+Loaded 1 password hash (pfx, (.pfx, .p12) [PKCS#12 PBE (SHA1/SHA2) 256/256 AVX2 8x])
+Cost 1 (iteration count) is 2000 for all loaded hashes
+Cost 2 (mac-type [1:SHA1 224:SHA224 256:SHA256 384:SHA384 512:SHA512]) is 1 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+thuglegacy       (legacyy_dev_auth.pfx)     
+1g 0:00:01:42 DONE (2023-09-25 22:58) 0.009797g/s 31662p/s 31662c/s 31662C/s thuglife06..thsco04
+Use the "--show" option to display all of the cracked passwords reliably
+```
+We got the password to be ```thuglegacy```
 
+Applying this password
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f76a03c4-de24-4a0f-a84a-863eb2ca0e6e)
+
+We are asked to provide a passphrase
 
 
 
