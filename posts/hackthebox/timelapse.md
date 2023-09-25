@@ -252,9 +252,20 @@ If you recall, when we ran the nmap command we saw this port opened.
 <font color="Green">Port 5986 is commonly used for secure communications with Windows Remote Management (WinRM) over HTTPS. WinRM is a management protocol used for remote management and automation tasks in Windows environments.
 </font>
 
-So, we'll be using the evil-winrm tool since we have a username ```legacyy```, we also have a private key and a certificate
+So, we'll be using the evil-winrm tool since we have a private key and a certificate
 
-command:```
+command:```evil-winrm -i 10.129.227.105 -c certificate.cert -k private.pem -S```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d057bb3e-9dc3-4975-b126-5eec72b14609)
+
+We got a user shell as user ```legacyy```😎. Lets go ahead and escalate our privileges
+
+
+
+
+# Privilege Escalation
+
+
 
 
 
