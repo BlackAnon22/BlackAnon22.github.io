@@ -81,6 +81,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[September 18 2023]] [Optimum](https://Blackanon22.github.io/posts/hackthebox/optimum.html) `Rejetto` `Outdated Software`
 - [[September 20 2023]] [Grandpa](https://Blackanon22.github.io/posts/hackthebox/grandpa.html) `Microsoft IIS` `Potato Attack`
 - [[September 21 2023]] [Granny](https://Blackanon22.github.io/posts/hackthebox/granny.html) `Microsoft IIS` `Potato Attack`
+- [[September 25 2023]] [Arctic](https://Blackanon22.github.io/posts/hackthebox/arctic.html) `Adobe ColdFusion` `Outdated Kernel`
 
 * * *
 ### **CTF Competitions:~#**
