@@ -71,13 +71,71 @@ Read data files from: /usr/bin/../share/nmap
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 # Nmap done at Mon Sep 25 22:13:37 2023 -- 1 IP address (1 host up) scanned in 406.16 seconds
 ```
-From our nmap scan we have quite a number of open ports. Our enumeration today will actually be focused on the port running the http service, that is, port 5986.
+From our nmap scan we have quite a number of open ports. Our enumeration today will actually be focused on the port running the smb service, that is, port 445, also the port running the http service, that is, port 5986.
 
 
 
 
-# Enumeration (Port 5986)
+# Enumeration (Port 445)
 
+Lets start out by checking the shares available on the smb server
+
+command:```smbclient -L 10.129.227.105```
+
+Since we have no password just hit the ```Enter``` key
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Timelapse]
+└─$ smbclient -L 10.129.227.105      
+Password for [WORKGROUP\bl4ck4non]:
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        ADMIN$          Disk      Remote Admin
+        C$              Disk      Default share
+        IPC$            IPC       Remote IPC
+        NETLOGON        Disk      Logon server share 
+        Shares          Disk      
+        SYSVOL          Disk      Logon server share 
+Reconnecting with SMB1 for workgroup listing.
+do_connect: Connection to 10.129.227.105 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
+Unable to connect with SMB1 -- no workgroup available
+```
+We have 6 shares available on this server. The most interesting one out of these shares is the sharename ```Shares```
+
+Lets connect to this sharename to see what we have there
+
+command:```smbclient //10.129.227.105/Shares```
+
+Since we have no password just hit the ```Enter``` key
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Timelapse]
+└─$ smbclient //10.129.227.105/Shares
+Password for [WORKGROUP\bl4ck4non]:
+Try "help" to get a list of possible commands.
+smb: \> ls
+  .                                   D        0  Mon Oct 25 16:39:15 2021
+  ..                                  D        0  Mon Oct 25 16:39:15 2021
+  Dev                                 D        0  Mon Oct 25 20:40:06 2021
+  HelpDesk                            D        0  Mon Oct 25 16:48:42 2021
+
+                6367231 blocks of size 4096. 1286468 blocks available
+smb: \> 
+```
+Cool, we can now view the files avaiable on the sharename ```Shares``` on the smb server.
+
+Navigating to the ```Dev``` directory, there's a zip file
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c2700dea-b95a-4e51-9e85-e4a85d49bb14)
+
+Lets download this file to our machine by using the ```get``` command.
+
+command:```get winrm_backup.zip```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/80b5ad2e-52d3-4328-8b34-2a5e76bfeee4)
+
+Good. Now we can try to unzip the file
 
 
 
