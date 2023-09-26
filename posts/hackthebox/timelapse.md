@@ -265,6 +265,16 @@ We got a user shell as user ```legacyy```😎. Lets go ahead and escalate our pr
 
 # Privilege Escalation
 
+Navigating to this directory ```C:\Users\legacyy\Appdata\Roaming\Microsoft\Windows\PowerShell\PSReadLine```, we find the powershell history file
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2e0f72af-c995-431d-b92e-37892899d7a3)
+
+In that history file we find the user ```svc_deploy``` with the password ```E3R$Q62^12p7PLlC%KWaxuaV```.
+
+Lets switch to this user using ```evil-winrm```
+
+
+
 
 
 
