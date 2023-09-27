@@ -78,6 +78,25 @@ To solve this we have to uncomment that part of the code. We'll be using the dev
 
 So, right-click and inspect element
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c16de178-3964-49f4-ae0a-02b2fe8912bf)
+
+Click on that drop down
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e6c40a03-3e0b-4f8b-9352-3fe8d65917a5)
+
+Click on that also,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a65d193a-6025-4513-8004-5c1f0382600c)
+
+Good, so our goal is to uncomment that part of the code.
+
+Now, right-click and click on ```Edit As HTML```, we'll be removing the comments ```<!--``` and ```-->```
+
+Doing that should get you this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/76b4abc6-648f-4531-b93c-335f3fbfc383)
+
+As you can see  we can now access the upload button
 
 
 
