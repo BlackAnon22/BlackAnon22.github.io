@@ -158,6 +158,15 @@ bankai.php: JPEG image data
 ```
 Good, now lets try to upload this
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0eab6a04-a242-4526-a165-5e502427246c)
+
+It worked hehe😎
+
+Navigating to where the file was uploaded to
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5fd58f04-d694-4562-b347-a585b25d8b31)
+
+Cool, we get this. Now add ```?cmd=id``` to the back of the url
 
 
 
