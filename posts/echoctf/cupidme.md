@@ -209,6 +209,22 @@ Lets go ahead and escalate our privileges
 
 # Privilege Escalation
 
+I ran linpeas, and found this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/82b934d9-08fa-4441-9cd7-e5b0a75edfad)
+
+Port 25 is active on this box, it is being ran locally
+
+Lets try to test SMTP connectivity
+
+command:```nc -vn 127.0.0.1 25```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/840acd73-20f5-4a0e-b24b-06d61786ff63)
+
+So the port is running ```OpenSMTPD```
+
+Checking for exploits, I found this
+
 
 
 
