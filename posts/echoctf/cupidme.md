@@ -287,7 +287,7 @@ We got root shell, we have successfully pwned this box😎
 
 That will be all for today
 <br><br>
-[Back To Home](../index.md)
+[Back To Home](../../index.md)
 
 
 
