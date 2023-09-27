@@ -26,6 +26,12 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[September 22 2023]] [eJPTv2 Cheat Sheet](https://Blackanon22.github.io/posts/contents/eJPTv2.html)
 
 * * *
+### **echoCTF:~#**
+* * *
+
+- [[September 27 2023]] [cupidme](https://Blackanon22.github.io/posts/echoctf/cupidme.html)
+
+* * *
 ### **TryHackMe:~#**
 * * *
 
