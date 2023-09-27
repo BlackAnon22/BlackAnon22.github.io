@@ -60,7 +60,25 @@ LICENSE                 [Status: 200, Size: 1075, Words: 152, Lines: 19, Duratio
 upload.php              [Status: 302, Size: 0, Words: 1, Lines: 1, Duration: 161ms]
 :: Progress: [32305/32305] :: Job [1/1] :: 137 req/sec :: Duration: [0:02:46] :: Errors: 0 ::
 ```
-So, 
+Navigating to the ```images``` directory I got a ```403 error```. 
+
+Lets navaigate to the ```/upload.php``` directory
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cf7c2a44-346c-4dbb-884c-3935990b6131)
+
+As you can see we get redirected back to the main page.
+
+Checking the page source,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9122bbbb-3a8d-4b75-b504-7420ad97032e)
+
+Well, this is the reason why we can't view the ```/upload.php``` directory. The HTML code is commented.
+
+To solve this we have to uncomment that part of the code. We'll be using the developer tools for this
+
+So, right-click and inspect element
+
+
 
 
 
