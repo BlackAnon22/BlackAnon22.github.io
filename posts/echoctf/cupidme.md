@@ -188,7 +188,21 @@ Checking my netcat listener
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9a0fd000-34cc-4ca1-b09b-d2ca45c0ab73)
 
-We got a shell back to our machine. Lets go ahead and escalate our privileges
+We got a shell back to our machine. 
+
+To stabilize this shell
+
+commands
+```
+python3 -c “import pty;pty.spawn(‘/bin/bash’)”
+ctrl + z (to background)
+stty raw -echo && fg
+export TERM=xterm
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/98ed5cf6-b97f-4b86-8cd1-c5f898015d2b)
+
+Lets go ahead and escalate our privileges
 
 
 
