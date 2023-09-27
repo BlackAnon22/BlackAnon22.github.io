@@ -98,12 +98,27 @@ Doing that should get you this
 
 As you can see  we can now access the upload button.
 
+
+
+# Exploitation
+
 Lets try to upload something, say a ```.jpg``` file
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4bd42d2a-5f42-447a-9100-8c8b67a0ce91)
 
-oops, the file size supported is 39 bytes
+oops, the file size supported is 39 bytes. So there's a filter in this upload function
 
+1.Upload a .jpeg file 
+
+2.The maximum size of the .jpeg file must be 35 bytes
+
+These are the 2 filters in the upload function
+
+Reading this [blog](https://null-byte.wonderhowto.com/how-to/bypass-file-upload-restrictions-web-apps-get-shell-0323454/) talks about how to bypass file upload restrictions
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/11b52f62-d434-4baa-b702-fa5e10cebfee)
+
+This is the method we'll be using
 
 
 
