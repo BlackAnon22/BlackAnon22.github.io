@@ -96,7 +96,13 @@ Doing that should get you this
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/76b4abc6-648f-4531-b93c-335f3fbfc383)
 
-As you can see  we can now access the upload button
+As you can see  we can now access the upload button.
+
+Lets try to upload something, say a ```.jpg``` file
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4bd42d2a-5f42-447a-9100-8c8b67a0ce91)
+
+oops, the file size supported is 39 bytes
 
 
 
