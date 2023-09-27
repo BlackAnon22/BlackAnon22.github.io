@@ -12,6 +12,39 @@ Lets get started
 command:```sudo nmap -A 10.0.30.187 -T4  -v -p-```
 
 ```
+Nmap scan report for 10.0.30.187
+Host is up (0.16s latency).
+Not shown: 65534 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+80/tcp open  http    nginx 1.14.2
+|_http-title: Welcome to Cupid's homepage
+| http-methods: 
+|_  Supported Methods: GET HEAD POST
+|_http-server-header: nginx/1.14.2
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.93%E=4%D=9/27%OT=80%CT=1%CU=43908%PV=Y%DS=1%DC=T%G=Y%TM=651449B
+OS:E%P=x86_64-pc-linux-gnu)SEQ(SP=102%GCD=1%ISR=105%TI=Z%CI=RI%II=I%TS=C)OP
+OS:S(O1=M54DST11NW7%O2=M54DST11NW7%O3=M54DNNT11NW7%O4=M54DST11NW7%O5=M54DST
+OS:11NW7%O6=M54DST11)WIN(W1=FB34%W2=FB34%W3=FB34%W4=FB34%W5=FB34%W6=FB34)EC
+OS:N(R=Y%DF=N%T=40%W=FD5C%O=M54DNNSNW7%CC=Y%Q=)T1(R=Y%DF=N%T=40%S=O%A=S+%F=
+OS:AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=41%W=0%S=A%A=S%F=AR%O=%RD=0%Q=)T5
+OS:(R=Y%DF=N%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=41%W=0%S=A%A=S
+OS:%F=AR%O=%RD=0%Q=)T7(R=N)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK
+OS:=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Uptime guess: 9.763 days (since Sun Sep 17 22:07:50 2023)
+Network Distance: 1 hop
+TCP Sequence Prediction: Difficulty=258 (Good luck!)
+IP ID Sequence Generation: All zeros
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT       ADDRESS
+1   159.76 ms 10.0.30.187
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Wed Sep 27 16:26:54 2023 -- 1 IP address (1 host up) scanned in 1479.44 seconds
 ```
 From our scan we have only 1 open port, so our enumeration will be focused on that port
 
@@ -247,9 +280,14 @@ Setting a netcat listener
 
 Running the script
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4547c5bb-8182-492c-a3f0-48f1fabed150)
+
+We got root shell, we have successfully pwned this box😎
 
 
-
+That will be all for today
+<br><br>
+[Back To Home](../index.md)
 
 
 
