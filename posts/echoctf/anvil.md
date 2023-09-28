@@ -46,7 +46,7 @@ Running the ```sudo -l``` command again,
 So, user ```gold``` has ```sudo``` permissions to run the binary ```sftp```
 
 Checking [GTFOBins](https://gtfobins.github.io/gtfobins/sftp/#sudo), I found this
-
+ETSCTF_9db45ae7d07646fda58ed3dbec390b85
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/40fe3caa-f578-40b8-a5c0-1cdf7e06ce11)
 
 So we can try to do something like this
@@ -90,6 +90,41 @@ It worked, we got a shell as user ```gold```.
 
 Further escalating our privileges
 
+Running the ```sudo -l``` command again
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3d6af27d-4339-4033-b688-61153312e06e)
+
+We see that user ```ETSCTF``` can run the binary ```bzless``` with sudo privileges
+
+To do this,
+
+command:```sudo -u ETSCTF /bin/bzless```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/acafe978-11e9-431b-a149-dd27fffb0ac8)
+
+It requires a file parameter, what if we tried something like this
+
+command:```sudo -u ETSCTF /bin/bzless /bin/bash```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1eb66e74-4404-418e-9b88-45a644b3ee0e)
+
+We get this, so just run this ```!/bin/sh```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fa6a7453-8f0a-46e1-a579-e3f7485daae4)
+
+Hit the enter key,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ca38ddab-f0b2-4462-90d7-fa969b1694a8)
+
+It worked hehe. 
+
+We have successfully completed this exercise😎
+
+
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
