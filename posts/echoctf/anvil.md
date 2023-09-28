@@ -10,3 +10,7 @@ Lets get started
 Lets connect to the machine
 
 command:```nc -t 10.0.40.10 1337```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/008fc3e5-46c3-407c-a88a-fab135dd2dd6)
+
+cool
