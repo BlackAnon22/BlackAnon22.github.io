@@ -29,7 +29,8 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 ### **echoCTF:~#**
 * * *
 
-- [[September 27 2023]] [cupidme](https://Blackanon22.github.io/posts/echoctf/cupidme.html) `File Upload` `OpenSMTP RCE`
+- [[September 27 2023]] [cupidme](https://Blackanon22.github.io/posts/echoctf/cupidme.html) `File Upload` `OpenSMTPD RCE`
+- [[September 28 2023]] [CVE-2020-7247](https://Blackanon22.github.io/posts/echoctf/CVE_2020_7247.html) `OpenSMTPD RCE`
 
 * * *
 ### **TryHackMe:~#**
