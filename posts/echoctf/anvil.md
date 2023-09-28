@@ -46,7 +46,7 @@ Running the ```sudo -l``` command again,
 So, user ```gold``` has ```sudo``` permissions to run the binary ```sftp```
 
 Checking [GTFOBins](https://gtfobins.github.io/gtfobins/sftp/#sudo), I found this
-ETSCTF_9db45ae7d07646fda58ed3dbec390b85
+
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/40fe3caa-f578-40b8-a5c0-1cdf7e06ce11)
 
 So we can try to do something like this
