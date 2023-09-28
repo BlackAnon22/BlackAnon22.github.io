@@ -37,6 +37,19 @@ Good, now run this ```!/bin/sh```
 
 Nice, we were able to successfully escalate our privileges to user ```silver```
 
+Now, lets further escalate our privileges
+
+Running the ```sudo -l``` command again,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d6b10ccb-e766-4617-a4cf-8658b06314b4)
+
+So, user ```gold``` has ```sudo``` permissions to run the binary ```sftp```
+
+Checking [GTFOBins](https://gtfobins.github.io/gtfobins/sftp/#sudo), I found this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/40fe3caa-f578-40b8-a5c0-1cdf7e06ce11)
+
+So we can try to do something like this
 
 
 
