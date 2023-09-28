@@ -25,8 +25,17 @@ Checking [GTFOBins](https://gtfobins.github.io/gtfobins/debugfs/), I found this
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4684de10-2019-44b0-bf11-e2b06239fde6)
 
-Moving on,
+So, to escalate our privileges
 
+command:```sudo -u silver /sbin/debugfs```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/326117dd-f7bb-4267-ba24-46c0a73b547d)
+
+Good, now run this ```!/bin/sh```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ef7d5dd7-87e3-4a51-8449-3450d840922d)
+
+Nice, we were able to successfully escalate our privileges to user ```silver```
 
 
 
