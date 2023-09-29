@@ -63,7 +63,10 @@ Well, that's all for this challenge since we've successfully exploited the vulne
 # A2
 <hr>
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/11a9f185-7ec9-4718-9d2f-201b125f8df8)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0a6fc465-dff6-4ecf-8bde-eb388da15227)
 
+So the exercise here is to get ```user2``` personal information by exploiting the ```Broken Authentication and Session Management``` vulnerability
 
 
 
