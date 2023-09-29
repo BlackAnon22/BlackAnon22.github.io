@@ -1,4 +1,4 @@
-This is Vulnerable Mcachine ```Security Ninjas```.
+This is a Vulnerable Machine ```Security Ninjas```.
 
 We can test this for common web vulnerabilities
 
