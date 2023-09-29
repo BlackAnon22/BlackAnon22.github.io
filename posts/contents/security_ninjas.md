@@ -79,6 +79,74 @@ Cool, we are logged in
 
 Lets try to view personal details, but this time we'll capture the request to burpsuite and send it over to burp repeater
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2dce07c1-a515-4bef-9e4e-f8567e4b1394)
+
+We were able to view the personal information of ```user1```. Well, something eyes catching here is the ```sessionID```.
+
+I ran ```hash-identifier``` on that hash and found
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~]
+└─$ hash-identifier     
+   #########################################################################
+   #     __  __                     __           ______    _____           #
+   #    /\ \/\ \                   /\ \         /\__  _\  /\  _ `\         #
+   #    \ \ \_\ \     __      ____ \ \ \___     \/_/\ \/  \ \ \/\ \        #
+   #     \ \  _  \  /'__`\   / ,__\ \ \  _ `\      \ \ \   \ \ \ \ \       #
+   #      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #
+   #       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #
+   #        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/  v1.2 #
+   #                                                             By Zion3R #
+   #                                                    www.Blackploit.com #
+   #                                                   Root@Blackploit.com #
+   #########################################################################
+--------------------------------------------------
+ HASH: b3daa77b4c04a9551b8781d03191fe098f325e67
+
+Possible Hashs:
+[+] SHA-1
+[+] MySQL5 - SHA-1(SHA-1($pass))
+```
+Cool, the hash is ```SHA-1```. Lets crack it to see what it says
+
+Save the hash in a file and use john
+
+command:```john hash  --wordlist=/home/bl4ck4non/Documents/rockyou.txt --format=RAW-sha1```
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~]
+└─$ john hash  --wordlist=/home/bl4ck4non/Documents/rockyou.txt --format=RAW-sha1
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-SHA1 [SHA1 256/256 AVX2 8x])
+Warning: no OpenMP support for this hash type, consider --fork=4
+Press 'q' or Ctrl-C to abort, almost any other key for status
+user1            (?)     
+1g 0:00:00:02 DONE (2023-09-29 16:37) 0.4878g/s 1446Kp/s 1446Kc/s 1446KC/s user1 01989..user074
+Use the "--show --format=Raw-SHA1" options to display all of the cracked passwords reliably
+Session completed. 
+```
+John cracked the hash to be ```user1```. 
+
+So, we can say the ```sessionID``` is ```user1```.
+
+To read ```user2``` personal information, what we can do is generate a ```sha1``` hash for ```user2```.
+
+I used this [website](https://codebeautify.org/sha1-hash-generator) for that
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ff21b9eb-2391-4942-8983-6e12d16d59d7)
+
+Now. we'll be replacing the previous ```sessionID``` value with ```a1881c06eec96db9901c7bbfe41c42a3f08e9cb4```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f23c1c76-e085-444c-8214-959c89fc97fd)
+
+cool cool, we are able to read the personal information for ```user2```.
+
+That will be all for this challenge since we have successfully exploited the vulnerability😎
+
+-----------------------------
+
+# A3
+<hr>
 
 
 
