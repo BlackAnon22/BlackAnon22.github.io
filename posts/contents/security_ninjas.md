@@ -253,6 +253,91 @@ We were able to successfully view the confidential document. This means we have 
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1c7f7add-69e1-4a01-a8aa-ee6e1b9a5cf7)
 
+The task here is to exploit the ```file inclusion``` vulnerability
+
+What happens when we click on ```Meme1```??
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/59e2a6d2-a0c1-43d7-af43-8cb890c5fd8c)
+
+Take note of the url
+
+How about when we click on ```Meme2```??
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4ebb6993-a727-458a-b585-44213fb83633)
+
+Take a note of the url for this also.
+
+Lets, capture this request on burpsuite and send it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9479960a-babe-43a6-9894-900e7865963b)
+
+Now, lets test for file inclusion vulnerabilities
+
+We'll start with ```Local File Inclusion```
+
+### Local File Inclusion
+
+Local File Inclusion (LFI) is a type of security vulnerability that occurs when an attacker can manipulate input to a web application or system in such a way that it allows them to include and execute files on the local file system.
+
+To test for this, we can use the payload ```../../../../../../etc/passwd```, so we'll replace ```meme2.html``` in the url to this payload
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/81036cb6-c265-4b05-9fc2-6e83d869b672)
+
+Cool stuff hehe, we were able to exploit Local File Inclusion on this server.
+
+Moving on to ```Remote File Inclusion```
+
+### Remote File Inclusion
+
+Remote File Inclusion (RFI) is a security vulnerability that occurs in web applications when an attacker is able to include files from a remote server into the web application's code.
+
+So, we'll host a file on our machine and try to execute it from the web application.
+
+Lets host a ```.txt``` file
+
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~]
+└─$ echo "vawulence is good for the health" > bankai.txt
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~]
+└─$ ls -l bankai.txt 
+-rw-r--r-- 1 bl4ck4non bl4ck4non 33 Sep 29 23:19 bankai.txt
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~]
+└─$ python3 -m http.server 80                                      
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+```
+nice nice, now lets try to execute this file from the webserver
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0425e526-e559-44f2-ab04-d2b9d88368f8)
+
+Well, it didn't work, our file didn't get executed.
+
+So, it is safe to say we can exploit the Local File Inclusion on this webserver but not Remote File Inclusion.
+
+We've successfully completed this task
+
+------------------------
+
+# A6
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8eeff47b-f11a-4bc7-b6a4-d2c359c8fbf2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
