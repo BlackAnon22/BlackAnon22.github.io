@@ -186,6 +186,35 @@ Lets try to provide some inputs
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/198b6bf0-32c1-4e98-bab5-51c0223ed813)
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fbc469e3-1f91-4626-9b86-6845f0bf2b56)
 
+Now, stored xss occurs when an application allows users to store data that includes malicious scripts on the server, and then serves that data to other users who view the affected page. This allows the attacker to execute their malicious code in the context of other users' browsers, potentially leading to various security risks.
+
+This means our payload will be stored and executed when a user performs an action in the affected page.
+
+Lets inject the ```Name``` parameter with a simple javascript payload ```<script>alert(1)</script>```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fe3672ff-021a-439a-b460-b82d39ff49ad)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7bfdbb6d-8176-41f0-9b57-e30faa485172)
+
+Account creation was successful. Our payload will get executed when a user tries to view all the users in the database by clicking ```View Users```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/71966178-80d9-47b9-bdeb-ba6d00865d00)
+
+You can see it worked.
+
+Lets try to steal cookies this time with the payload ```<script>alert(document.cookie)</script>```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bf39b325-0a2b-4573-bdb1-7cecb6dcc206)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ed0c12ae-655e-48eb-ac11-14b9a7480499)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/169e10e5-528d-4b30-b4a8-635e487d9463)
+
+Our payload got executed successfully.
+
+We have successfully exploited both ```Reflected XSS``` and ```Stored XSS```
+
+------------------------------
+
+# A4
+<hr>
 
 
 
