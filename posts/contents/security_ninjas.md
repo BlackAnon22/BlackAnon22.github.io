@@ -1,4 +1,4 @@
-This is a Vulnerable Machine ```Security Ninjas```.
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/88a46513-8741-4942-ae80-f751c36f5452)This is a Vulnerable Machine ```Security Ninjas```.
 
 We can test this for common web vulnerabilities
 
@@ -224,12 +224,34 @@ Lets try to view the non-confidential document
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7e0b0ad7-be22-4c38-b787-14f15915fdc0)
 
-We get this.
+We get this. Well, the name of the pdf looks suspicious🤔
 
-Now lets try to view the non-confidential document again, but this time we'll capture the request on burpsuite and send it over to burp repeater
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e2f17502-9ac8-40c2-9792-9b1aa511dba8)
 
+This looks like ```hex```, well lets use [cyberchef](https://gchq.github.io/CyberChef/) to decode
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a737a865-28f0-41d1-a2f7-16f64aea2e7d)
 
+We got the hex decoded to be ```non_confidential```. So, the way the document is named was by encoding the ```non_confidential``` word to ```hex```
+
+This means to view the confidential document we have to encode the word ```confidential``` to ```hex```
+
+Using [cyberchef](https://gchq.github.io/CyberChef/) to encode
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f1a56b21-1445-42e8-bc3f-3d1f6953567b)
+
+Lets replace ```6e6f6e5f636f6e666964656e7469616c.pdf``` with ```636f6e666964656e7469616c.pdf```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c78e3ef1-36a2-4b53-9e45-73e1f0d4ff48)
+
+We were able to successfully view the confidential document. This means we have successfully completed this exercise😎
+
+----------------------
+
+# A5
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1c7f7add-69e1-4a01-a8aa-ee6e1b9a5cf7)
 
 
 
