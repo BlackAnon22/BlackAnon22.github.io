@@ -216,6 +216,7 @@ We have successfully exploited both ```Reflected XSS``` and ```Stored XSS```
 # A4
 <hr>
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3600f3bb-dcfd-4c1e-912d-63d27356b653)
 
 
 
