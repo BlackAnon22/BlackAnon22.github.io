@@ -218,6 +218,16 @@ We have successfully exploited both ```Reflected XSS``` and ```Stored XSS```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3600f3bb-dcfd-4c1e-912d-63d27356b653)
 
+So the task is to exploit the ```IDOR``` vulnerability and find a confidential document on the server.
+
+Lets try to view the non-confidential document
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7e0b0ad7-be22-4c38-b787-14f15915fdc0)
+
+We get this.
+
+Now lets try to view the non-confidential document again, but this time we'll capture the request on burpsuite and send it over to burp repeater
+
 
 
 
