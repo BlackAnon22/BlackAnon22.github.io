@@ -6,3 +6,12 @@ We can test this for common web vulnerabilities
 
 Well, lets dig in
 
+
+# A1
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/17788d91-cbd8-4094-a1c4-63fe307635dc)
+
+We were told that this page has an ```OS Command Injection``` flaw
+
+
