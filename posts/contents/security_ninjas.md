@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/88a46513-8741-4942-ae80-f751c36f5452)This is a Vulnerable Machine ```Security Ninjas```.
+This is a Vulnerable Machine ```Security Ninjas```.
 
 We can test this for common web vulnerabilities
 
