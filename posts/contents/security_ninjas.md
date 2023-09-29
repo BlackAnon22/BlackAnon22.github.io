@@ -343,6 +343,16 @@ We've completed the task😎. It was quite easy actually
 
 The task here is to find the function that lacks access control
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/59fe9b8c-efb2-4d6b-9d2f-30f6d2cb815f)
+
+Click on that, then capture the request using burpsuite and send it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8c799bb9-b5af-4d9f-80ff-524af73a6db1)
+
+We can see the ```is_admin``` function has a value of ```false```. What happens when we change that value to ```true```??
+
+Well, lets find out
+
 
 
 
