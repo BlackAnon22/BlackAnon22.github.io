@@ -29,8 +29,13 @@ For example lets say we want to run the ```id``` command alongside the domain na
 Lets try to execute this to see what happens
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/730ee60f-38a8-4c9a-85a4-5cf2f525d477)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7a23174f-f258-4b4d-8bad-91b5efffcb21)
 
+Scrolling down,
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6cef73f1-ffc0-4d30-858d-a7a1e4217465)
+
+It worked hehe, we were able to successfully execute the linux command
 
 
 
