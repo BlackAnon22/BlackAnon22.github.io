@@ -324,7 +324,7 @@ We've successfully completed this task
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8eeff47b-f11a-4bc7-b6a4-d2c359c8fbf2)
 
-
+The task here is to find the hidden discount code by exploiting the ```sensitive data exposure``` vulnerability
 
 
 
