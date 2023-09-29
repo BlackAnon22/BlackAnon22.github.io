@@ -232,7 +232,7 @@ This looks like ```hex```, well lets use [cyberchef](https://gchq.github.io/Cybe
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a737a865-28f0-41d1-a2f7-16f64aea2e7d)
 
-We got the hex decoded to be ```non_confidential```. So, the way the document is named was by encoding the ```non_confidential``` word to ```hex```
+The hex was decoded to be the word ```non_confidential```. So, the way the document is named was by encoding the ```non_confidential``` word to ```hex```
 
 This means to view the confidential document we have to encode the word ```confidential``` to ```hex```
 
