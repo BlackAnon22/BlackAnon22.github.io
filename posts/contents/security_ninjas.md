@@ -326,8 +326,22 @@ We've successfully completed this task
 
 The task here is to find the hidden discount code by exploiting the ```sensitive data exposure``` vulnerability
 
+Checking the page source, I found this
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/58583c67-3d0b-471a-a46c-dd6c5fcb7136)
 
+That's a conditional statement that gives 10% off if the discount code matches ```oneteamonedream```.
+
+We've completed the task😎. It was quite easy actually
+
+------------------------
+
+# A7
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f69e481a-2b5d-40c8-ab7c-748b54c4b4dc)
+
+The task here is to find the function that lacks access control
 
 
 
