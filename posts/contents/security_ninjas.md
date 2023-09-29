@@ -68,6 +68,17 @@ Well, that's all for this challenge since we've successfully exploited the vulne
 
 So the exercise here is to get ```user2``` personal information by exploiting the ```Broken Authentication and Session Management``` vulnerability
 
+Lets try to login with the details they provided to us
+
+username:```user1```        password:```145_Bluxome```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fa96800c-803b-4392-aa4e-c3089c40e40d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c8aca000-2109-4af5-b21d-b80d262b5051)
+
+Cool, we are logged in
+
+Lets try to view personal details, but this time we'll capture the request to burpsuite and send it over to burp repeater
+
 
 
 
