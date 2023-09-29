@@ -148,7 +148,43 @@ That will be all for this challenge since we have successfully exploited the vul
 # A3
 <hr>
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9dad152f-ec4c-466d-af5a-1d6965baebc6)
 
+We have both ```Reflected XSS``` and ```Stored XSS``` here.
+
+Lets start with ```Reflected XSS```
+
+### Reflexted XSS
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/af6179f2-80f0-4737-8412-c84b0c9c761d)
+
+Well, my name is ```BlackAnon```, lets try that
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/063cf694-f826-436f-be3f-c61e8c1971f5)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5a93b51d-abbd-437e-b070-57b2738d469e)
+
+Lets try a simple javascript payload ```<script>alert(1)</script>```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fff508ea-5f99-4e09-8e92-afbfb4b72d61)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/10c4aa1d-183f-4438-8ffe-f0c64582341b)
+
+The payload got executed successfully. Lets try to steal some cookies ```<script>alert(document.cookie)</script>```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1c051c2e-b22b-4591-b3f0-cc8365600ffe)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/81c25afb-1ac8-4f63-9b14-9d2235197ff6)
+
+Nice nice, we have successfully exploited this vulnerability.
+
+Moving on to ```Stored XSS```
+
+### Stored XSS
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5bcfb808-d9a5-4aef-aff4-35aaea4d1e0f)
+
+Lets try to provide some inputs
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/198b6bf0-32c1-4e98-bab5-51c0223ed813)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fbc469e3-1f91-4626-9b86-6845f0bf2b56)
 
 
 
