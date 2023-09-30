@@ -363,7 +363,16 @@ Well, lets find out
 
 We were provided login creds, the task is to login to the vulnerable page
 
+Lets login as ```user1```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/918bf4de-efb8-4713-9571-fd27f1f190e9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1272b423-a0f6-4b48-88d8-cdce32a5a8d6)
+
+We are asked to view email, lets do just that
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/62b2746e-1bde-41f3-9b28-77683d346a17)
+
+We are told that this page doesn't have csrf protection
 
 
 
