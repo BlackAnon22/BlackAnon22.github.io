@@ -391,6 +391,16 @@ So, we don't have the right privileges to perform this action
 # A9
 <hr>
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/44b29293-e43a-4c63-ab51-68c3de389b55)
+
+The task here is to exploit the public known vulnerability in one of the components the page uses
+
+Checking the page source,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/40b1ab4c-884c-4032-bc45-2ea281f9e49f)
+
+Well, I think there's a vulnerability for that component
+
 
 
 
