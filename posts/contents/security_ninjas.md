@@ -372,11 +372,19 @@ We are asked to view email, lets do just that
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/62b2746e-1bde-41f3-9b28-77683d346a17)
 
-We are told that this page doesn't have csrf protection
+We are told that this page doesn't have csrf protection, this means that it is vulnerable to CSRF attacks. CSRF is a type of security vulnerability where an attacker tricks a victim into making an unwanted or unauthorized request to a web application on which the victim is authenticated.
 
+Lets try to update ```user1``` email address
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/456312f6-99ed-453d-a62e-462dd727093b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8de70e00-2f77-4a7e-891a-a81399d1a7b7)
 
+We were able to successfully update ```user1``` email address. Lets try updating the email for ```user2```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f0e37442-ea72-4629-8cbe-c5c2a64d55a2)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/aa0f3f94-f6f9-4207-ab89-0a0c2f9f3246)
+
+So, we don't have the right privileges to perform this action
 
 
 
