@@ -353,7 +353,15 @@ We can see the ```is_admin``` function has a value of ```false```. What happens 
 
 Well, lets find out
 
+-----------------
 
+# A8
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cb7fd64a-62c9-49a4-89ec-03020ec137ae)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fdf72be9-3a77-45d4-b96d-e9829e69262c)
+
+We were provided login creds, the task is to login to the vulnerable page
 
 
 
