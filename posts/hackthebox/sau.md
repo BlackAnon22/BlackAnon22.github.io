@@ -118,15 +118,16 @@ From our nmap scan we have 2 open ports. Port 22 which runs ssh and Port 55555 w
 
 Navigate to the webpage
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fd27a970-d3d8-489c-984d-d43a31f28a83)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3df190a9-3e07-47fd-9452-6280f3319d4c)
 
-This webpage is running ```request baskets```
+This webpage is being powered by ```request baskets``` with version ```1.2.1```
 
 <font color="Green">Request Baskets is a web service designed to capture arbitrary HTTP requests and facilitate their inspection through either a RESTful API or a straightforward web user interface
 </font>
 
+Doing a little research, I found out this version of ```request baskets``` is vulnerable to ```Server-side Request Forgery(SSRF)```
 
-
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e56e0390-e3a4-41b4-99f1-75b045d0e84a)
 
 
 
