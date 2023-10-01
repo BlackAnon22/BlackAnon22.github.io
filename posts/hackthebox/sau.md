@@ -203,6 +203,11 @@ Nice, now lets go ahead and escalate our privileges
 
 # Privilege Escalation
 
+Running the ```sudo -l``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7bb3dd35-f61f-4155-8c82-2d78731e6100)
+
+so we can run that service with sudo privileges
 
 
 
