@@ -209,9 +209,22 @@ Running the ```sudo -l``` command
 
 so we can run that service with sudo privileges
 
+Using this to escalate our  privileges
+
+command:```sudo /usr/bin/systemctl status trail.service```
+
+Then enter the following command in the pager like less the command ```!sh```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4b68da85-2e78-4cd4-a7c8-021614f86c51)
+
+we were able to successfully escalate our privileges to spawn a shell as the ```root``` user
+
+We have successfully pwned this box😎
 
 
-
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
