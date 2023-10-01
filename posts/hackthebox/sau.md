@@ -120,7 +120,11 @@ Navigate to the webpage
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fd27a970-d3d8-489c-984d-d43a31f28a83)
 
-This webpage is running ```request basket```
+This webpage is running ```request baskets```
+
+<font color="Green">Request Baskets is a web service designed to capture arbitrary HTTP requests and facilitate their inspection through either a RESTful API or a straightforward web user interface
+</font>
+
 
 
 
