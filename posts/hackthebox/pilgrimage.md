@@ -27,8 +27,7 @@ Add that to your ```/etc/hosts``` file
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/pilgrimage]
-└─$ sudo nano /etc/hosts                         
-[sudo] password for bl4ck4non: 
+└─$ sudo nano /etc/hosts
                                                                                                                                                                                                 
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/pilgrimage]
 └─$ cat /etc/hosts
@@ -39,7 +38,6 @@ Add that to your ```/etc/hosts``` file
 ::1     localhost ip6-localhost ip6-loopback
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
-10.129.131.24 paper.htb office.paper chat.office.paper
 
 10.10.11.219 pilgrimage.htb
 ```
