@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/afdd546a-c457-4805-85f4-5a65e816bcc3)# Box: Sau
+# Box: Sau
 # Level: Easy
 # OS: Linux
 <hr>
