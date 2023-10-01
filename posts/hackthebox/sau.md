@@ -166,8 +166,11 @@ Doing this,
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/23125438-d22d-4105-a973-a75f00fd1167)
 
+cool, now that we've created a new basket ```bankai```, we can navigate to the url ```http://10.10.11.224:55555/bankai``` to view it
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/247238d5-085a-4a18-ab2f-19863aded691)
 
+So, we get this webpage powered by ```maltrail 0.53```. This version of ```maltrail``` has a public exploit. You can access it 
 
 
 
