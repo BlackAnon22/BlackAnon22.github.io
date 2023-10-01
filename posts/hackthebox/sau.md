@@ -1,4 +1,4 @@
-# Box: Sau
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/afdd546a-c457-4805-85f4-5a65e816bcc3)# Box: Sau
 # Level: Easy
 # OS: Linux
 <hr>
@@ -128,6 +128,43 @@ This webpage is being powered by ```request baskets``` with version ```1.2.1```
 Doing a little research, I found out this version of ```request baskets``` is vulnerable to ```Server-Side Request Forgery(SSRF)```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e56e0390-e3a4-41b4-99f1-75b045d0e84a)
+
+Lets exploit
+
+
+
+# Exploitation
+
+Checking the available POC's, I found [this](https://notes.sjtu.edu.cn/s/MUUhEymt7#)
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e346694a-eb05-4c1a-91bc-41d5536469dc)
+
+So, this is how our payload will look like.
+
+Lets try to create a basket,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f25a9cc7-bb72-4f6a-a26a-54253fbfdf82)
+
+capturing this request using burpsuite and sending it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4c1a7e67-f173-46b9-9801-488e88335d02)
+
+nice nice.
+
+Lets create another basket ```bankai``` from burpsuite, but this time we'll be addding the payload
+
+```
+{
+  "forward_url": "http://127.0.0.1:80/",
+  "proxy_response": true,
+  "insecure_tls": false,
+  "expand_path": true,
+  "capacity": 250
+}
+```
+Doing this,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/23125438-d22d-4105-a973-a75f00fd1167)
 
 
 
