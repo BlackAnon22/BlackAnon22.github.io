@@ -153,7 +153,7 @@ nice nice.
 
 Lets create another basket ```bankai``` from burpsuite, but this time we'll be addding the payload
 
-```
+```json
 {
   "forward_url": "http://127.0.0.1:80/",
   "proxy_response": true,
