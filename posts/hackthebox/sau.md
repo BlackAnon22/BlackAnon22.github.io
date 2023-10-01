@@ -21,3 +21,30 @@ From our nmap scan we have 2 open ports. Port 22 which runs ssh and Port 55555 w
 
 Navigate to the webpage
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fd27a970-d3d8-489c-984d-d43a31f28a83)
+
+This webpage is running ```request basket```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
