@@ -248,8 +248,42 @@ drwxr-xr-x 7 bl4ck4non bl4ck4non     4096 Oct  2 08:06 .git
 -rwxr-xr-x 1 bl4ck4non bl4ck4non     6836 Oct  2 08:06 register.php
 drwxr-xr-x 4 bl4ck4non bl4ck4non     4096 Oct  2 08:06 vendor
 ```
-we now have access to the source code ```index.php```
+we now have access to the source code ```index.php```. Reading the source code I found this
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/778c359b-3952-4760-81a0-74c602e4d0c2)
+
+The code snippet executes the ImageMagick "convert" command on files located in the "/var/www/pilgrimage.htb/tmp/" directory.
+
+We got the ```magick``` executable on our machine when we dumped the ```.git``` repository
+
+```
+┌──(venv)─(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/pilgrimage/output]
+└─$ ls -l magick            
+-rwxr-xr-x 1 bl4ck4non bl4ck4non 27555008 Oct  2 08:06 magick
+                                                                                                                                                                                                
+┌──(venv)─(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/pilgrimage/output]
+└─$ file magick                                                                                                       
+magick: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=9fdbc145689e0fb79cb7291203431012ae8e1911, stripped
+                                                                                                                                                                                                
+┌──(venv)─(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/pilgrimage/output]
+└─$ ./magick          
+Error: Invalid argument or not enough arguments
+
+Usage: magick tool [ {option} | {image} ... ] {output_image}
+Usage: magick [ {option} | {image} ... ] {output_image}
+       magick [ {option} | {image} ... ] -script {filename} [ {script_args} ...]
+       magick -help | -version | -usage | -list {option}
+```
+Checking the version of this executable, I found something interesting
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0d5aa9b0-1156-4bba-8904-925170faf274)
+
+Well, that version has a public exploit. Lets exploit
+
+
+
+
+# Exploitation
 
 
 
