@@ -99,8 +99,47 @@ Lets fuzz for directories using ```ffuf```
 command:```ffuf -u "http://pilgrimage.htb/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup```
 
 ```
+┌──(bl4ck4non㉿bl4ck4non)-[~]
+└─$ ffuf -u "http://pilgrimage.htb/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup
 
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://pilgrimage.htb/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Extensions       : .zip .sql .php .phtml .bak .backup 
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+.git/HEAD               [Status: 200, Size: 23, Words: 2, Lines: 2, Duration: 304ms]
+assets                  [Status: 301, Size: 169, Words: 5, Lines: 8, Duration: 263ms]
+dashboard.php           [Status: 302, Size: 0, Words: 1, Lines: 1, Duration: 308ms]
+index.php               [Status: 200, Size: 7621, Words: 2051, Lines: 199, Duration: 307ms]
+index.php               [Status: 200, Size: 7621, Words: 2051, Lines: 199, Duration: 307ms]
+login.php               [Status: 200, Size: 6166, Words: 1648, Lines: 172, Duration: 307ms]
+logout.php              [Status: 302, Size: 0, Words: 1, Lines: 1, Duration: 306ms]
+register.php            [Status: 200, Size: 6173, Words: 1646, Lines: 172, Duration: 309ms]
+tmp                     [Status: 301, Size: 169, Words: 5, Lines: 8, Duration: 294ms]
+vendor                  [Status: 301, Size: 169, Words: 5, Lines: 8, Duration: 307ms]
+:: Progress: [32305/32305] :: Job [1/1] :: 134 req/sec :: Duration: [0:03:55] :: Errors: 0 ::
 ```
+We have quite a lot of directory here. The most interesting one is the ```.git``` directory. Lets navigate to the directory to see what's there
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/40216ebb-7069-4bb3-b184-3241db323d85)
+
+oops, we got a 403 error🥲.
 
 
 
