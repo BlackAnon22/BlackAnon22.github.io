@@ -289,6 +289,11 @@ Well, that version has a public exploit. Lets exploit
 
 So, it has an arbitrary file upload vulnerability. You can find the POC [here](https://github.com/voidz0r/CVE-2022-44268)
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4ad82b0d-115d-4a48-9ef0-0beae92368e3)
+
+This is how to use the tool
+
+Lets install this to our machine
 
 
 
