@@ -326,9 +326,19 @@ Lets try to decrypt the hex we found after using the ```identify``` command
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b41b49ec-4ff1-49d1-9e5b-85169ca0e45f)
 
-We were able to read the ```/etc/passwd``` file hehe. 
+We were able to exploit the LFI by reading the ```/etc/passwd``` file hehe. 
 
+Reading the ```dashboard.php``` file we got when we dumped the ```.git``` repository earlier
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5164fb36-5f67-4d14-9c78-c2f40e2a3bbf)
+
+From the above screenshot we can see that there is an SQLite database located at ```/var/db/pilgrimage```. Lets try to read this
+
+command
+```
+cargo run "/var/db/pilgrimage"
+
+```
 
 
 
