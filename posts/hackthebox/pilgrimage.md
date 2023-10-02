@@ -313,6 +313,27 @@ Resolving deltas: 100% (8/8), done.
 └─$ ls    
 Cargo.lock  Cargo.toml  image.png  README.md  screens  src
 ```
+To install cargo, run the command ```sudo apt get cargo```
+
+After installing, run ```cargo run "/etc/passwd```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/40823405-1348-4b00-a84f-3a3d61ea357b)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
