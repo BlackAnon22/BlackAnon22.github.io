@@ -220,7 +220,35 @@ So, ```output``` will be the folder I want the output of the command to be saved
 ```
 Checking the ```output``` directory
 
-
+```
+┌──(venv)─(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/pilgrimage]
+└─$ ls -la
+total 20
+drwxr-xr-x  4 bl4ck4non bl4ck4non 4096 Oct  2 08:06 .
+drwxr-xr-x 37 bl4ck4non bl4ck4non 4096 Oct  1 20:09 ..
+drwxr-xr-x  5 bl4ck4non bl4ck4non 4096 Oct  2 08:06 output
+-rw-r--r--  1 root      root      2053 Oct  1 20:29 pilgrimage
+drwxr-xr-x  5 bl4ck4non bl4ck4non 4096 Oct  2 08:01 venv
+                                                                                                                                                                                                
+┌──(venv)─(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/pilgrimage]
+└─$ cd output 
+                                                                                                                                                                                                
+┌──(venv)─(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/pilgrimage/output]
+└─$ ls -la
+total 26972
+drwxr-xr-x 5 bl4ck4non bl4ck4non     4096 Oct  2 08:06 .
+drwxr-xr-x 4 bl4ck4non bl4ck4non     4096 Oct  2 08:06 ..
+drwxr-xr-x 6 bl4ck4non bl4ck4non     4096 Oct  2 08:06 assets
+-rwxr-xr-x 1 bl4ck4non bl4ck4non     5538 Oct  2 08:06 dashboard.php
+drwxr-xr-x 7 bl4ck4non bl4ck4non     4096 Oct  2 08:06 .git
+-rwxr-xr-x 1 bl4ck4non bl4ck4non     9250 Oct  2 08:06 index.php
+-rwxr-xr-x 1 bl4ck4non bl4ck4non     6822 Oct  2 08:06 login.php
+-rwxr-xr-x 1 bl4ck4non bl4ck4non       98 Oct  2 08:06 logout.php
+-rwxr-xr-x 1 bl4ck4non bl4ck4non 27555008 Oct  2 08:06 magick
+-rwxr-xr-x 1 bl4ck4non bl4ck4non     6836 Oct  2 08:06 register.php
+drwxr-xr-x 4 bl4ck4non bl4ck4non     4096 Oct  2 08:06 vendor
+```
+we now have access to the source code ```index.php```
 
 
 
