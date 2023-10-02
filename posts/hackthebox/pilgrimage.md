@@ -318,7 +318,15 @@ To install cargo, run the command ```sudo apt get cargo```
 After installing, run ```cargo run "/etc/passwd```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/40823405-1348-4b00-a84f-3a3d61ea357b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b28d97e2-28f8-4f7d-88da-6020fb6c7fb6)
 
+what I did in the above screenshot was recreate what was in the POC.
+
+Lets try to decrypt the hex we found after using the ```identify``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b41b49ec-4ff1-49d1-9e5b-85169ca0e45f)
+
+We were able to read the ```/etc/passwd``` file hehe. 
 
 
 
