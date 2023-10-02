@@ -186,6 +186,40 @@ command:```git-dumper http://pilgrimage.htb/.git output```
 
 So, ```output``` will be the folder I want the output of the command to be saved to
 
+```
+┌──(venv)─(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/pilgrimage]                                                                                                                                   
+└─$ git-dumper http://pilgrimage.htb/.git output                                                                                                                                                
+[-] Testing http://pilgrimage.htb/.git/HEAD [200]                                                                                                                                               
+[-] Testing http://pilgrimage.htb/.git/ [403]                                                                                                                                                   
+[-] Fetching common files                                                                                                                                                                       
+[-] Fetching http://pilgrimage.htb/.gitignore [404]                                                                                                                                             
+[-] http://pilgrimage.htb/.gitignore responded with status code 404                                                                                                                             
+[-] Fetching http://pilgrimage.htb/.git/description [200]                                                                                                                                       
+[-] Fetching http://pilgrimage.htb/.git/hooks/post-update.sample [200]                                                                                                                          
+[-] Fetching http://pilgrimage.htb/.git/COMMIT_EDITMSG [200]                                                                                                                                    
+[-] Fetching http://pilgrimage.htb/.git/hooks/post-commit.sample [404]                                                                                                                          
+[-] http://pilgrimage.htb/.git/hooks/post-commit.sample responded with status code 404                                                                                                          
+[-] Fetching http://pilgrimage.htb/.git/hooks/pre-commit.sample [200]                                                                                                                           
+[-] Fetching http://pilgrimage.htb/.git/hooks/applypatch-msg.sample [200]                                                                                                                       
+[-] Fetching http://pilgrimage.htb/.git/hooks/commit-msg.sample [200]                                                                                                                           
+[-] Fetching http://pilgrimage.htb/.git/hooks/post-receive.sample [404]                                                                                                                         
+[-] Fetching http://pilgrimage.htb/.git/hooks/pre-applypatch.sample [200]                                                                                                                       
+[-] http://pilgrimage.htb/.git/hooks/post-receive.sample responded with status code 404                                                                                                         
+[-] Fetching http://pilgrimage.htb/.git/hooks/pre-push.sample [200]                                                                                                                             
+[-] Fetching http://pilgrimage.htb/.git/hooks/update.sample [200]                                                                                                                               
+[-] Fetching http://pilgrimage.htb/.git/hooks/pre-receive.sample [200]                                                                                                                          
+[-] Fetching http://pilgrimage.htb/.git/info/exclude [200]
+
+.....
+
+[-] Fetching http://pilgrimage.htb/.git/objects/81/703757c43fe30d0f3c6157a1c20f0fea7331fc [200]
+[-] Fetching http://pilgrimage.htb/.git/objects/ca/d9dfca08306027b234ddc2166c838de9301487 [200]
+[-] Fetching http://pilgrimage.htb/.git/objects/23/1150acdd01bbbef94dfb9da9f79476bfbb16fc [200]
+[-] Fetching http://pilgrimage.htb/.git/objects/f1/8fa9173e9f7c1b2f30f3d20c4a303e18d88548 [200]
+[-] Running git checkout .
+```
+Checking the ```output``` directory
+
 
 
 
