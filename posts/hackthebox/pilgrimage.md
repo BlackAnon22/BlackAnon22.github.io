@@ -141,6 +141,46 @@ We have quite a lot of directory here. The most interesting one is the ```.git``
 
 oops, we got a 403 error🥲.
 
+Now, this site has an exposed ```.git``` repository. Well, we can try to dump this ```.git``` repository.
+
+We can use the tool ```git-dumper``` to do this
+
+To install
+```
+python -m venv venv
+source venv/bin/activate
+pip3 install git-dumper
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/78f535cc-248b-4c56-8a16-27df5c352657)
+
+Successfully installed. 
+
+```
+┌──(venv)─(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/pilgrimage]
+└─$ git-dumper -h                                                                                                     
+usage: git-dumper [options] URL DIR
+
+Dump a git repository from a website.
+
+positional arguments:
+  URL                   url
+  DIR                   output directory
+
+options:
+  -h, --help            show this help message and exit
+  --proxy PROXY         use the specified proxy
+  -j JOBS, --jobs JOBS  number of simultaneous requests
+  -r RETRY, --retry RETRY
+                        number of request attempts before giving up
+  -t TIMEOUT, --timeout TIMEOUT
+                        maximum time in seconds before giving up
+  -u USER_AGENT, --user-agent USER_AGENT
+                        user-agent to use for requests
+  -H HEADER, --header HEADER
+                        additional http headers, e.g `NAME=VALUE`
+```
+So, we can specify the url and also the directory we want the result to be outputted to
 
 
 
