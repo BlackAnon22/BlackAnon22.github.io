@@ -86,7 +86,21 @@ Now refresh the webpage
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c602636d-a9a7-495c-a8c1-6a998765077b)
 
-nice
+The page is now accessible. Lets register an account
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d63a9176-5266-4468-84bc-97b46281ef36)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/58ce2a2e-a0e5-4cf9-98d9-d2c8a35a387f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2a7426b7-ef6a-45ae-88cc-69e3ce87a04b)
+
+This is an upload page, where we can upload our jpegs and it gets it shrinked down for us. Now, this upload function doesn't allow other extensions, it's strictly ```jpeg``` and ```png``` files.
+
+Lets fuzz for directories using ```ffuf```
+
+command:```ffuf -u "http://pilgrimage.htb/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup```
+
+```
+
+```
 
 
 
