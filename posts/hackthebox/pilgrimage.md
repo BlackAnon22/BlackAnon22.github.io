@@ -293,9 +293,26 @@ So, it has an arbitrary file upload vulnerability. You can find the POC [here](h
 
 This is how to use the tool
 
-Lets install this to our machine
+Lets clone this repo to our machine
 
-
+```
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/pilgrimage]
+└─$ git clone https://github.com/voidz0r/CVE-2022-44268
+Cloning into 'CVE-2022-44268'...
+remote: Enumerating objects: 30, done.
+remote: Counting objects: 100% (30/30), done.
+remote: Compressing objects: 100% (25/25), done.
+remote: Total 30 (delta 8), reused 17 (delta 2), pack-reused 0
+Receiving objects: 100% (30/30), 954.74 KiB | 238.00 KiB/s, done.
+Resolving deltas: 100% (8/8), done.
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/pilgrimage]
+└─$ cd CVE-2022-44268 
+                                                                                                                                                                                                
+┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/pilgrimage/CVE-2022-44268]
+└─$ ls    
+Cargo.lock  Cargo.toml  image.png  README.md  screens  src
+```
 
 
 
