@@ -182,8 +182,9 @@ options:
 ```
 So, we can specify the url and also the directory we want the result to be outputted to
 
+command:```git-dumper http://pilgrimage.htb/.git output```
 
-
+So, ```output``` will be the folder I want the output of the command to be saved to
 
 
 
