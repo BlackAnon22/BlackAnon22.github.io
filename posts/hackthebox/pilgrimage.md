@@ -285,6 +285,10 @@ Well, that version has a public exploit. Lets exploit
 
 # Exploitation
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8946854f-e84c-4304-89f3-50f5428ff15b)
+
+So, it has an arbitrary file upload vulnerability. You can find the POC [here](https://github.com/voidz0r/CVE-2022-44268)
+
 
 
 
