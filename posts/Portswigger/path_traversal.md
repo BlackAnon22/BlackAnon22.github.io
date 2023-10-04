@@ -9,15 +9,17 @@ Navigate to the webpage
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5a66c13f-89ca-45b7-90a4-d368eb5cea34)
 
-Right-click on an image and try to open it another tab
+Right-click on an image and try to open it another tab, we'll capture this request and send it over to burp repeater
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/06cb7608-b880-42e3-bd6d-31082c674a55)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/98d8eb19-6bc4-4700-a3a4-b5a42a8e94b2)
 
 Replace the ```20.jpg``` with ```../../../../../../etc/passwd```. This should read the ```/etc/passwd``` file to us
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/48609651-7b1d-4924-9591-d6df8b081f5e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1f93a5f8-99d1-4a52-a3e9-f32218e9c6ed)
 
-Checking the webpage again
+Nice
+
+Checking the webpage,
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/38134a58-f682-4d9e-9f05-4ef408219ec8)
 
