@@ -69,11 +69,29 @@ Our task is to retrieve the ```/etc/passwd``` file
 
 Navigate to the webpage
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4f0781a2-7101-46ee-ba38-c85ec6aaecd5)
 
+Right-click on an image and try to open the image in a new tab, while we do that we'll capture the request using burpsuite and we'll send it over to burp repeater
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2c53f3f3-6a8e-4f8b-a0b8-ba8a93d710e4)
 
+Replace the ```23.jpg``` with the file path ```/etc/passwd```, lets see what happens when we do that
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/31cfc10f-06d9-4455-bc53-14f3d973a812)
 
+oops, it didn't work. This is because the application strips path traversal sequences from the user-supplied filename before using it. 
+
+To bypass this, we use nested traversal sequences. So we can try using the file path ```....//....//....//etc/passwd```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3296a330-7a23-4ce2-98ec-cad4c93e8e31)
+
+Checking the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9b2ae0ce-2143-40a3-aa75-8625f6a0e7c1)
+
+We have successfully completed this lab
+
+-------------------
 
 
 
