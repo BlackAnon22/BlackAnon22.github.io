@@ -60,6 +60,15 @@ We have successfully solved this lab
 
 -------------------------
 
+# Lab: File path traversal, traversal sequences stripped non-recursively
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/826bd87a-8337-42a2-887a-2c5badd9dfae)
+
+Our task is to retrieve the ```/etc/passwd``` file
+
+Navigate to the webpage
+
 
 
 
