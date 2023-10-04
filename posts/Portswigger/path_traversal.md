@@ -151,7 +151,11 @@ Nice, we got the content of the ```/etc/passwd``` file
 
 Checking the webpage
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f362e083-1345-4832-9f06-bd7a9ab5e6fe)
 
+We have successfully solved this lab
+
+-----------------
 
 
 
