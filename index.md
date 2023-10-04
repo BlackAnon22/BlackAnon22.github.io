@@ -115,6 +115,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[August 15 2023]] [SQLi](https://Blackanon22.github.io/posts/Portswigger/SQLi.html)
 - [[August 29 2023]] [Command Injection](https://Blackanon22.github.io/posts/Portswigger/command_injection.html)
 - [[September 08 2023]] [Access Control](https://Blackanon22.github.io/posts/Portswigger/access_control.html)
+- [[October 04 2023]] [Path Traversal](https://Blackanon22.github.io/posts/Portswigger/path_traversal.html)
 
 
 * * *
