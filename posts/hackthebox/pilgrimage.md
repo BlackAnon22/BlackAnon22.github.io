@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9b230a89-04f2-4bde-877b-3dc3ddf4639b)![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6c42eea1-c34d-4f98-8b62-c792767b1dbd)# Box: Pilgrimage
+# Box: Pilgrimage
 # Level: Easy
 # OS: Linux
 <hr>
