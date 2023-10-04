@@ -157,6 +157,15 @@ We have successfully solved this lab
 
 -----------------
 
+# Lab: File path traversal, validation of file extension with null byte bypass
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/503b4ca8-fd64-44c4-81b7-efdd63b2bbd4)
+
+Our task is to read the ```/etc/passwd``` file
+
+Navigate to the webpage
+
 
 
 
