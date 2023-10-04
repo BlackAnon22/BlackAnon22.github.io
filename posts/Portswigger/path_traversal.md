@@ -178,7 +178,7 @@ So, we'll have a file path like this ```../../../etc/passwd%00.jpg```.
 
 Lets replace ```15.jpg``` with that file path
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/099f17d2-ec7c-48e7-8b45-0ea2fc73b132)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3d6b8442-6da2-455d-b99a-8c7b99af5b61)
 
 cool stuff, we are able to read the content of the ```/etc/passwd``` file
 
