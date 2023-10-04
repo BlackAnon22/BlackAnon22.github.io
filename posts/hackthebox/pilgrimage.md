@@ -386,7 +386,19 @@ scrolling down,
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bb3174e5-8fb8-414d-a170-77908a7d1ba5)
 
-If you recall when we tried to view the content of the ```/etc/passwd``` file we saw the user ```emily```. Well, we now have her password to be ```
+If you recall when we tried to view the content of the ```/etc/passwd``` file we saw the user ```emily```. Well, we now have her password to be ```abigchonkyboi123```.
+
+Lets ssh into this server with those creds
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/45af364c-94a7-4af4-95a2-18c73982cc57)
+
+nice nice, we spawned a shell as user ```emily```. Lets go ahead and escalate our privileges
+
+
+
+# Privilege Escalation
+
+
 
 
 
