@@ -93,6 +93,30 @@ We have successfully completed this lab
 
 -------------------
 
+# Lab: File path traversal, traversal sequences stripped with superfluous URL-decode
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/06c243a5-8a46-449e-bf07-9714a955b0fe)
+
+Our task is to read the content of the file ```/etc/passwd```
+
+Navigate to the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0e520dbd-b5e6-41ab-a5d2-89af3bb6817d)
+
+Right-click on the image to open in a new tab, while we do this we'll capture the request on burpsuite and send it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c90a3eb2-0785-4b73-afe3-da9d36af6fd9)
+
+Lets replace ```34.jpg``` to the file path ```../../../etc/passwd```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4e89d083-2e89-41e7-b8f8-d12cc5d1c442)
+
+We get the "No such file" message. Well, this is because the application blocks input containing path traversal sequences. It then performs a URL-decode of the input before using it. 
+
+So, what we can do is url encoding our file path, I used [cyberchef](https://gchq.github.io/CyberChef/) for this
+
+
 
 
 
