@@ -114,8 +114,17 @@ Lets replace ```34.jpg``` to the file path ```../../../etc/passwd```
 
 We get the "No such file" message. Well, this is because the application blocks input containing path traversal sequences. It then performs a URL-decode of the input before using it. 
 
-So, what we can do is url encoding our file path, I used [cyberchef](https://gchq.github.io/CyberChef/) for this
+So, what we can do is url encoding our file path, so we can use the file path ```..%252f..%252f..%252fetc/passwd```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/80ba952d-6ec0-4d46-af1d-77fc0c075453)
+
+Checking the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/09477c01-83c9-4b1b-af48-a123d9573275)
+
+We have successfully solved this lab
+
+------------------------
 
 
 
