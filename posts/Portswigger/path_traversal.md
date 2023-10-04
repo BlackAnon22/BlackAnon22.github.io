@@ -174,6 +174,9 @@ Right-click on an image, click on "open image in a new tab", we'll capture the r
 
 We know that the application validates that the supplied filename ends with the expected file extension, what we can do is try to use a null byte to effectively terminate the file path before the required extension.
 
+<font color="Green">A null byte, often represented as '\0' in programming, is a character with a value of zero. It is used to terminate strings in C-style languages and can also be used in various contexts to denote the end of data or a delimiter.
+</font>
+
 So, we'll have a file path like this ```../../../etc/passwd%00.jpg```.
 
 Lets replace ```15.jpg``` with that file path
@@ -188,7 +191,7 @@ Checking the webpage
 
 We have successfully solved this labs.
 
-This concludes the end of the Path Traversal labs
+This marks the end of the Path Traversal labs😎
 <br><br>
 [Back To Home](../../index.md)
 
