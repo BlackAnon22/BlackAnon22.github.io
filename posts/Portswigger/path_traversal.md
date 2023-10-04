@@ -126,8 +126,30 @@ We have successfully solved this lab
 
 ------------------------
 
+# Lab: File path traversal, validation of start of path
+<hr>
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9656e116-17c2-442e-996e-521f388a6649)
 
+Our task is to view the content of the ```/etc/passwd``` file
+
+Navigate to the webpage,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cbcc41c4-005a-4a0a-9e5b-4db5b25a6af1)
+
+Right-click on an image, then open it in a new tab. We'll capture that request and send it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6ebe2518-6ea3-4d86-bfba-60732e44eab6)
+
+cool, now application transmits the full file path via a request parameter, and validates that the supplied path starts with the expected folder. So to solve this we'll include the required base folder followed by suitable traversal sequences
+
+This means we'll have something like this ```/var/www/images/../../../etc/passwd```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/860ed637-b467-4547-87fc-64e2bad8d6b7)
+
+Nice, we got the content of the ```/etc/passwd``` file
+
+Checking the webpage
 
 
 
