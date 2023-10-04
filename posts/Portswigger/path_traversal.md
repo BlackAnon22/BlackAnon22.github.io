@@ -166,6 +166,12 @@ Our task is to read the ```/etc/passwd``` file
 
 Navigate to the webpage
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/af46b765-3a12-446f-b6fc-41d63926efe2)
+
+Right-click on an image, click on "open image in a new tab", we'll capture the request using burpsuite and send it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/523dd8ea-669e-4daa-acad-a822938eb365)
+
 
 
 
