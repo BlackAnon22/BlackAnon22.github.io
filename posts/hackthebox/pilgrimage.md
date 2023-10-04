@@ -1,4 +1,4 @@
-# Box: Pilgrimage
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/063acdd1-22b1-465a-b56d-c5d1a23f78fb)![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c0cebade-08ab-4f79-ba9e-285079991e00)# Box: Pilgrimage
 # Level: Easy
 # OS: Linux
 <hr>
@@ -340,7 +340,27 @@ cargo run "/var/db/pilgrimage"
 
 ```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e4b4e03f-a3f0-47cd-ad25-32990c23f73e)
 
+Now, we'll go the the upload page and try to upload the ```image.png``` file, after uploading we'll download the shrunk image back to our machine
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e029b0c8-ab3a-4798-ac7a-7c2300bcf738)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f338304d-7872-4390-8f7c-dd96e7554f4e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3ccef96d-2572-476e-8dd4-a10a0c11a2fb)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b784d496-cf00-47f6-a338-16d513711d9d)
+
+Downloading the shrunk image to our machine, we can use the ```wget``` command
+
+command:```wget http://pilgrimage.htb/shrunk/651de8adb1a85.png```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6693e689-39ca-498b-a0ba-a643b0ec88da)
+
+cool cool, now lets run the ```identify``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a037f33a-14bf-4a1f-9c7e-756bf45a995b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/51590638-c6d7-44d3-a737-f6fc6dc75418)
+
+Lets decrypt the hex we found using [cyberchef](https://gchq.github.io/CyberChef/)
 
 
 
