@@ -172,7 +172,25 @@ Right-click on an image, click on "open image in a new tab", we'll capture the r
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/523dd8ea-669e-4daa-acad-a822938eb365)
 
-We know that the application validates that the supplied filename ends with the expected file extension
+We know that the application validates that the supplied filename ends with the expected file extension, what we can do is try to use a null byte to effectively terminate the file path before the required extension.
+
+So, we'll have a file path like this ```../../../etc/passwd%00.jpg```.
+
+Lets replace ```15.jpg``` with that file path
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/099f17d2-ec7c-48e7-8b45-0ea2fc73b132)
+
+cool stuff, we are able to read the content of the ```/etc/passwd``` file
+
+Checking the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/75197a75-c29d-45bd-9fd8-edad7b10d5cf)
+
+We have successfully solved this labs.
+
+This concludes the end of the Path Traversal labs
+<br><br>
+[Back To Home](../../index.md)
 
 
 
