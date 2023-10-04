@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/063acdd1-22b1-465a-b56d-c5d1a23f78fb)![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c0cebade-08ab-4f79-ba9e-285079991e00)# Box: Pilgrimage
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9b230a89-04f2-4bde-877b-3dc3ddf4639b)![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6c42eea1-c34d-4f98-8b62-c792767b1dbd)# Box: Pilgrimage
 # Level: Easy
 # OS: Linux
 <hr>
@@ -318,15 +318,33 @@ To install cargo, run the command ```sudo apt get cargo```
 After installing, run ```cargo run "/etc/passwd```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/40823405-1348-4b00-a84f-3a3d61ea357b)
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b28d97e2-28f8-4f7d-88da-6020fb6c7fb6)
 
-what I did in the above screenshot was recreate what was in the POC.
+Now, lets try to upload the ```image.png``` file located in the directory where we downloaded the POC.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bf8fc97c-1f16-4b75-9d4b-4ec71207d130)
+
+
+After uploading, we'll download the shrunk image back to our machine
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6bea1ec2-abac-4042-a2b5-a30df7a4ada1)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/445f6c2b-cca1-46cf-a7fd-fe8bd7097368)
+
+Lets  download this image to our machine using the command ```wget http://pilgrimage.htb/shrunk/651dec1af197c.png```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/59410bae-a521-4bc7-8c22-598e0c7a1d8b)
+
+nice nice, now lets run the ```identify``` command
+
+command:```identify -verbose 651dec1af197c.png```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5f486957-23d3-41fa-85bc-eed953c3637e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/93f54f13-a445-4850-8058-2186251d5833)
 
 Lets try to decrypt the hex we found after using the ```identify``` command
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b41b49ec-4ff1-49d1-9e5b-85169ca0e45f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2795bf7c-d759-4016-8eed-9da39c1302c4)
 
-We were able to exploit the LFI by reading the ```/etc/passwd``` file hehe. 
+cool, We were able to exploit the LFI by reading the ```/etc/passwd``` file hehe. We can also see that there's a user ```emily```
 
 Reading the ```dashboard.php``` file we got when we dumped the ```.git``` repository earlier
 
@@ -362,7 +380,13 @@ cool cool, now lets run the ```identify``` command
 
 Lets decrypt the hex we found using [cyberchef](https://gchq.github.io/CyberChef/)
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ae7a384a-0202-435b-a1fd-b5dbf881356c)
 
+scrolling down,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bb3174e5-8fb8-414d-a170-77908a7d1ba5)
+
+If you recall when we tried to view the content of the ```/etc/passwd``` file we saw the user ```emily```. Well, we now have her password to be ```
 
 
 
