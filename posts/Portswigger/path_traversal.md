@@ -172,7 +172,7 @@ Right-click on an image, click on "open image in a new tab", we'll capture the r
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/523dd8ea-669e-4daa-acad-a822938eb365)
 
-
+We know that the application validates that the supplied filename ends with the expected file extension
 
 
 
