@@ -26,3 +26,38 @@ Checking the webpage,
 We have successfully solved the lab
 
 --------------------
+
+# Lab: File path traversal, traversal sequences blocked with absolute path bypass
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fad452dd-8b6b-4b99-be47-91076d8f289f)
+
+Our task is to read the content of the ```/etc/passwd``` file
+
+Navigate to the webpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
