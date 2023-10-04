@@ -32,9 +32,33 @@ We have successfully solved the lab
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fad452dd-8b6b-4b99-be47-91076d8f289f)
 
-Our task is to read the content of the ```/etc/passwd``` file
+Our task is to read the content of the ```/etc/passwd``` file but defenses has been implemented against path traversal attacks. So we have to bypass this to read the file
 
 Navigate to the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6305bfc3-07b9-4bdd-b0f9-c306039c3895)
+
+Right-click on an image, then click "open image in new tab", doing this we'll capture the request on burpsuite and send it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/04897461-cd89-4b10-8132-d752a6ce1038)
+
+cool, now lets replace ```23.jpg``` with the path ```../../../../../../etc/passwd```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cf93b9d6-eda8-4be4-a3c0-fef19f81b8f2)
+
+We get the "No such file" message, this is probably because of the defence mechanism that was set up
+
+To bypass this we'll use an absolute path from the filesystem root, so we'll have the path ```/etc/passwd```. Lets try this path
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/78111726-55b5-4922-9c83-287bca015507)
+
+Checking the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1394adba-f48e-4335-be31-014fae2be4d3)
+
+We have successfully solved this lab
+
+-------------------------
 
 
 
