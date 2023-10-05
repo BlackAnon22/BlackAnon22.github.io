@@ -92,6 +92,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[September 21 2023]] [Granny](https://Blackanon22.github.io/posts/hackthebox/granny.html) `Microsoft IIS` `Potato Attack`
 - [[September 25 2023]] [Arctic](https://Blackanon22.github.io/posts/hackthebox/arctic.html) `Adobe ColdFusion` `Outdated Kernel`
 - [[October 01 2023]] [Sau](https://Blackanon22.github.io/posts/hackthebox/sau.html) `SSRF` `Misconfigured Sudo Permissions`
+- [[October 05 2023]] [Pilgrimage](https://Blackanon22.github.io/posts/hackthebox/pilgrimage.html) `Sensitive Data Exposure` `File Upload` `LFI` `Cronjob`
 
 * * *
 ### **CTF Competitions:~#**
