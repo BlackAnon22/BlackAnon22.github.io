@@ -453,7 +453,15 @@ Checking the script again on exploit-db
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4ab188a5-eee5-4bc9-8f95-e51566968d56)
 
-so, we'll be needing a png file. Lets download one online, you can download one from [here](
+so, we'll be needing a png file. I'll be transferring one from my machine to the target's machine
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1984cd14-9b5a-4161-a8ef-9118c8dbd3a3)
+
+Now, lets run the script again providing the necessary arguments
+
+
+
+
 
 
 
