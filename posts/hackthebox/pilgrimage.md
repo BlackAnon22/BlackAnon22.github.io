@@ -441,6 +441,13 @@ cool, we can use this to get RCE. You can download the exploit [here](https://ww
 
 After downloading, send this file over to the target's machine
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3e8eebaa-e999-4eb3-99fa-f0cd4ea933da)
+
+Lets run the exploit
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ec7402a8-5a04-4de5-a042-a541232a2ca9)
+
+There are some arguments we need to add
 
 
 
