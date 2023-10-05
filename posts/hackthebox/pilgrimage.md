@@ -449,9 +449,11 @@ Checking the script again on exploit-db
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4ab188a5-eee5-4bc9-8f95-e51566968d56)
 
-so, we'll be needing a png file. I'll be transferring one from my machine to the target's machine. Also, we'll need to provide our LHOST and also the port we plan on listening on
+so, we'll be needing a png file. I'll be transferring one from my machine to the target's machine. 
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1984cd14-9b5a-4161-a8ef-9118c8dbd3a3)
+
+Also, we'll need to provide our LHOST and also the port we plan on listening on
 
 Now, lets run the script again providing the necessary arguments
 
