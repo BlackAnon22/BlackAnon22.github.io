@@ -398,7 +398,14 @@ nice nice, we spawned a shell as user ```emily```. Lets go ahead and escalate ou
 
 # Privilege Escalation
 
+Running the ```pspy``` tool, I saw this
 
+```
+2023/10/05 11:39:01 CMD: UID=0     PID=29933  | /bin/bash /usr/sbin/malwarescan.sh 
+2023/10/05 11:39:01 CMD: UID=0     PID=29935  | /bin/bash /usr/sbin/malwarescan.sh
+2023/10/05 11:39:01 CMD: UID=0     PID=29938  | /bin/bash /usr/sbin/malwarescan.sh
+```
+Checking out the contents of the ```malwarescan.sh``` file
 
 
 
