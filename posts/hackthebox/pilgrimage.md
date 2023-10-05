@@ -435,7 +435,11 @@ command:```/usr/local/bin/binwalk```
 
 Well, there is an exploit for this version of binwalk
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c24c9ed5-da32-4986-a415-13f1024acdda)
 
+cool, we can use this to get RCE. You can download the exploit [here](https://www.exploit-db.com/exploits/51249)
+
+After downloading, send this file over to the target's machine
 
 
 
