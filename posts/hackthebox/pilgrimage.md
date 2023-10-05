@@ -407,14 +407,33 @@ Running the ```pspy``` tool, I saw this
 ```
 Checking out the contents of the ```malwarescan.sh``` file
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7bac18be-8ac7-434c-9dae-f0f78d2e5a60)
 
+```bash
+#!/bin/bash
 
+blacklist=("Executable script" "Microsoft executable")
 
+/usr/bin/inotifywait -m -e create /var/www/pilgrimage.htb/shrunk/ | while read FILE; do
+        filename="/var/www/pilgrimage.htb/shrunk/$(/usr/bin/echo "$FILE" | /usr/bin/tail -n 1 | /usr/bin/sed -n -e 's/^.*CREATE //p')"
+        binout="$(/usr/local/bin/binwalk -e "$filename")"
+        for banned in "${blacklist[@]}"; do
+                if [[ "$binout" == *"$banned"* ]]; then
+                        /usr/bin/rm "$filename"
+                        break
+                fi
+        done
+done
+```
+The most interesting part of this script is, when a new file is created, the script extracts embedded files using ```binwalk``` and checks if any of these embedded files contain banned strings listed in the blacklist array. If a banned string is found, the script deletes the originally created file
 
+Lets try to run the binwalk executable,
 
+command:```/usr/local/bin/binwalk```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c93e603f-2c6f-4226-ad22-f32ae0a0621d)
 
-
+Well, there is an exploit for this version of binwalk
 
 
 
