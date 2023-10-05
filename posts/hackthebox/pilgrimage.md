@@ -350,13 +350,9 @@ Reading the ```dashboard.php``` file we got when we dumped the ```.git``` reposi
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5164fb36-5f67-4d14-9c78-c2f40e2a3bbf)
 
-From the above screenshot we can see that there is an SQLite database located at ```/var/db/pilgrimage```. Lets try to read this
+From the above screenshot we can see that there is an SQLite database located at ```/var/db/pilgrimage```. Lets try to check what's there
 
-command
-```
-cargo run "/var/db/pilgrimage"
-
-```
+command:```cargo run "/var/db/pilgrimage"```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e4b4e03f-a3f0-47cd-ad25-32990c23f73e)
 
