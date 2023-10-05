@@ -189,7 +189,7 @@ Checking the webpage
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/75197a75-c29d-45bd-9fd8-edad7b10d5cf)
 
-We have successfully solved this labs.
+We have successfully solved this lab.
 
 This marks the end of the Path Traversal labs😎
 <br><br>
