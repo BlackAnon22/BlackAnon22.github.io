@@ -469,7 +469,7 @@ command:```cp binwalk_exploit.png /var/www/pilgrimage.htb/shrunk/```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9b41985b-818d-4e7c-a85b-6358d036d20d)
 
-We spawned a root shell
+We spawned a shell as the root user
 
 Box pwned successfully😎
 
