@@ -447,7 +447,13 @@ Lets run the exploit
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ec7402a8-5a04-4de5-a042-a541232a2ca9)
 
-There are some arguments we need to add
+There are some arguments we need to add.
+
+Checking the script again on exploit-db
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4ab188a5-eee5-4bc9-8f95-e51566968d56)
+
+so, we'll be needing a png file. Lets download one online, you can download one from [here](
 
 
 
