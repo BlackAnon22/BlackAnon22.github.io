@@ -421,7 +421,7 @@ blacklist=("Executable script" "Microsoft executable")
         done
 done
 ```
-This script is designed to monitor the "/var/www/pilgrimage.htb/shrunk/" directory, where recently created files are kept under observation.The most interesting part of this script is, when a new file is created, the script extracts embedded files using ```binwalk``` and checks if any of these embedded files contain banned strings listed in the blacklist array. If a banned string is found, the script deletes the originally created file
+This script is designed to monitor the "/var/www/pilgrimage.htb/shrunk/" directory, where recently created files are kept under observation. The most interesting part of this script is, when a new file is created, the script extracts embedded files using ```binwalk``` and checks if any of these embedded files contain banned strings listed in the blacklist array. If a banned string is found, the script deletes the originally created file
 
 Lets try to run the binwalk executable,
 
