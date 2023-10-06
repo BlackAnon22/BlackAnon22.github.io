@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e9d55b3b-9ea7-4d15-af83-2346cee4426f)# Box: Keeper
+# Box: Keeper
 # Level: Easy
 # OS: Linux
 <hr>
