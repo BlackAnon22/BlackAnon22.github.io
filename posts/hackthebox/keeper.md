@@ -84,7 +84,7 @@ ff02::2 ip6-allrouters
 ```
 cool, now lets navigate to that subdomain
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/45b62909-bbbf-4145-a11b-8282a5d18a79)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8ebb3073-989d-4be5-8c12-87c221540241)
 
 okay, we got a login page
 
@@ -92,14 +92,16 @@ Lets try to login with default creds to see what happens
 
 username:```admin```        password:```password```
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3643f82e-9bea-469b-b52d-c39caf6a533d)
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ee58cf2a-f0a9-489c-9613-8692f1d36577)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bc08d222-ba29-410b-82b0-ee3faf1f61ce)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d77123d1-cafb-4a7f-bb37-4e738a5034ed)
 
 oops, it didn't work
 
 If you take a look at the login page well, you'll see this
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/90c1889e-eb65-4fb0-afd4-089a0642afbb)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/217b2ab6-fe5b-4d66-8298-1064665fbceb)
+
+```rt``` basically just means ```request tracker```
 
 Doing my research, I found this
 
@@ -109,14 +111,25 @@ Lets login using those creds
 
 username:```root```         password:```password```
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d2606754-d0ef-4bc5-a261-410991edff59)
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a0c2c43c-163f-483f-8104-34abf718b0b9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e6925f84-c320-44c0-afb6-ebeada290b14)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/104d62a2-7ba5-4e44-ac86-af4d5228fc3d)
 
-Now, you can see we aren't logged in, we aren't also getting the login error that shows that either our username or password is incorrect.
+nice nice, we are logged in
 
-At this point I had to use burpsuite to analyze the request
 
-Lets capture the login request on burpsuite
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
