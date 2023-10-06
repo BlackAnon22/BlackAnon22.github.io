@@ -112,7 +112,7 @@ username:```root```         password:```password```
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d2606754-d0ef-4bc5-a261-410991edff59)
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a0c2c43c-163f-483f-8104-34abf718b0b9)
 
-Now, you can see we aren't logged in, we aren't also getting the login error that shows that either or username or password is incorrect.
+Now, you can see we aren't logged in, we aren't also getting the login error that shows that either our username or password is incorrect.
 
 At this point I had to use burpsuite to analyze the request
 
