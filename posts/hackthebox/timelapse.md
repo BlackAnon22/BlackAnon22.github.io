@@ -273,6 +273,41 @@ In that history file we find the user ```svc_deploy``` with the password ```E3R$
 
 Lets switch to this user using ```evil-winrm```
 
+command:```evil-winrm -u svc_deploy -i 10.129.107.247 -p 'E3R$Q62^12p7PLlC%KWaxuaV' -S```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7fad15d0-2e68-40e3-9b58-1aca09d664d1)
+
+nice nice, now lets further escalate our privileges
+
+Running the command ```net user svc_deploy```, I found out that the user belong to non-standard group
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/293792cf-2ef7-4a4e-9763-6a981a9f07eb)
+
+ LAPS stands for "Local Administrator Password Solution." LAPS is a Microsoft-developed tool and solution designed to enhance security by automatically managing and periodically rotating the local administrator account passwords on Windows computers. The property on an Active Directory computer object that contains the LAPS-generated password for the administrator account is typically called ```ms-MCS-AdmPwd```. This attribute is used to store the locally administered password, and it is managed by the Microsoft Local Administrator Password Solution (LAPS).
+
+ In a nutshell, this means we can try to read the administrator password
+
+ I used the ```Get-ADComputer``` command to do this
+
+ command:```Get-ADComputer DC01 -property 'ms-MCS-AdmPwd'```
+
+ ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/504b1eae-38e4-4344-af48-f30d382df23a)
+
+We got the password of the Administrator user to be ```roF7N&7V[c%k&ipx7k.+3tt%```
+
+Lets login as the Administrator user using ```evil-winrm```
+
+command:```evil-winrm -i 10.129.107.247 -u administrator -p 'roF7N&7V[c%k&ipx7k.+3tt%' -S```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3aecb159-25d7-4a85-bac1-bed19ae12361)
+
+We have successfullly pwned this box😎
+
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
+ 
 
 
 
