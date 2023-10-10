@@ -107,7 +107,9 @@ We got the password to be ```stealth1agent```. Lets try gain access using winrm
 
 command:```evil-winrm -u hazard -i 10.129.96.157 -p 'stealth1agent' -S```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/84a4e6da-f73f-4053-8bf5-7fc5578fc32d)
 
+oops, it didn't work
 
 
 
