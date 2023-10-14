@@ -100,6 +100,47 @@ Navigate to the webpage
 
 We get this HTB Printer Admin Panel
 
+Click on "Settings", you'll see this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7d4a38d9-2c47-4c16-9eee-ab20c042f988)
+
+We can perform something called ```LDAP Pass-back``` attack against this printer. This is a common attack against network devices, such as printers. Lets exploit this hehe
+
+
+# Exploitation
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/909ef243-ec00-408a-96d2-848ec437d8e5)
+
+In this attack we can modify this server address to our IP, then we'll get the printer to connect to us instead, which would disclose the credentials. To do this, let's use a simple Netcat listener to test if we can get the printer to connect to us. Since the default port of LDAP is 389, we can use the following command
+
+command:```nc -lvp 389```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a9a8bd17-12c9-4120-9330-6641225a25d3)
+
+Now, lets go back to the webpage and try to update the settings
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ef37a2ca-dfcd-43bf-a09e-e431cfe2e9a3)
+
+Checking our listener
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/24c3a85f-51a8-4d3e-b083-86f0db593b77)
+
+We were able to successfully capture the creds hehe😎.
+
+Now lets connect to this using ```evul-winrm```.
+
+command:```evil-winrm -u svc-printer -i 10.129.88.241 -p '1edFg43012!!'```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/83d6542b-65ff-4919-bfe8-18eb19a732ae)
+
+soft!!😂. Lets go ahead to escalate our privileges
+
+
+
+# Privilege Escalation
+
+
+
 
 
 
