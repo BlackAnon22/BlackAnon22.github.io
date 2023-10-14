@@ -127,7 +127,7 @@ Checking our listener
 
 We were able to successfully capture the creds hehe😎.
 
-Now lets connect to this using ```evul-winrm```.
+Now lets connect to this using ```evil-winrm```.
 
 command:```evil-winrm -u svc-printer -i 10.129.88.241 -p '1edFg43012!!'```
 
