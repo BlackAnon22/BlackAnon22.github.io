@@ -181,7 +181,7 @@ Ensure you set up your netcat listener before starting the service again
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9f0e1e00-edff-47b9-a491-242c38177eb3)
 
-Nice stuff hehe, we spwned a shell as ```nt authority\system```.
+Nice stuff hehe, we spawned a shell as ```nt authority\system```.
 
 That will be all for today
 <br><br>
