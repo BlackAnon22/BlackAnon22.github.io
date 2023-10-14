@@ -159,7 +159,50 @@ Navigate to the webpage
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4a29fdd8-1318-45cd-973c-d79b460961d6)
 
-We get this voting system login page
+We get this voting system login page. 
+
+Checking for available exploits, I found this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6040db55-520d-428e-a0aa-46164c2971ab)
+
+So, we can bypass this page using sqli. You can find the exploit [here](https://www.exploit-db.com/exploits/49843)
+
+Now, lets try to login then we capture the request on burpsuite and send it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/015bcee2-d44d-4bc5-a59f-e09340fb35da)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3b6b87e5-6662-46e1-80e0-4fdef4abb6f0)
+
+Lets exploit this hehe
+
+
+
+# Exploitation
+
+Using the payload I got from exploit-db, I got my request to look like this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/37e884fc-6503-4c71-aef3-ec27b43f74ab)
+
+Lets follow redirection
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2c572436-01d5-4ac7-ad3c-21a3a7592b59)
+
+Lets follow this redirection also
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3c8b4142-6989-4548-8214-a4063be105b6)
+
+Trying to view the response with "Render" should get you this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2cff733f-4cf9-403f-b373-ba882738acc2)
+
+As you can see, we are successfully logged in.
+
+Lets refresh the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/28483ce8-d9de-4357-bc7d-9e4a377e1cca)
+
+nice nice
+
+
 
 
 
