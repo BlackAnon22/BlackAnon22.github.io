@@ -99,6 +99,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[October 14 2023]] [Love](https://Blackanon22.github.io/posts/hackthebox/love.html) `SQLi` `Arbitrary File Upload` `Msfvenom`
 - [[October 20 2023]] [Analytics](https://Blackanon22.github.io/posts/hackthebox/analytics.html) `RCE` `Docker` `Kernel Exploit`
 - [[October 20 2023]] [Wifinetic](https://Blackanon22.github.io/posts/hackthebox/wifinetic.html) `Information Disclosure` `Wifi Hacking`
+- [[October 20 2023]] [CozyHosting](https://Blackanon22.github.io/posts/hackthebox/cozyhosting.html) `Command Injection` `PostgreSQL` `Misconfigured sudo permissions`
 
 * * *
 ### **CTF Competitions:~#**
