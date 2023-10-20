@@ -97,6 +97,8 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[October 11 2023]] [Heist](https://Blackanon22.github.io/posts/hackthebox/heist.html) `Information Disclosure` `Password Cracking`
 - [[October 14 2023]] [Return](https://Blackanon22.github.io/posts/hackthebox/return.html) `LDAP` `Local Groups`
 - [[October 14 2023]] [Love](https://Blackanon22.github.io/posts/hackthebox/love.html) `SQLi` `Arbitrary File Upload` `Msfvenom`
+- [[October 20 2023]] [Analytics](https://Blackanon22.github.io/posts/hackthebox/analytics.html) `RCE` `Docker` `Kernel Exploit`
+- [[October 20 2023]] [Wifinetic](https://Blackanon22.github.io/posts/hackthebox/wifinetic.html) `Information Disclosure` `Wifi Hacking`
 
 * * *
 ### **CTF Competitions:~#**
