@@ -163,11 +163,52 @@ We are in, soft right??😅. Lets go ahead and escalate our privileges
 
 # Privilege Escalation
 
+Lets check the services running on this server using the command ```service --status-all```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/99e1b543-7e1b-4f25-9831-adf44b1804b2)
 
+We can see from the above screenshot that the ```hostapd``` service is running. 
 
+What's hostapd??
 
+<font color="Green">Hostapd, short for "host access point daemon," is a user space software application used on Unix-like operating systems to create software-based Wi-Fi access points. It plays a key role in turning a network interface (usually a wireless network adapter) into an access point, enabling other devices to connect to it just as they would to a physical Wi-Fi router or access point.
+</font>
 
+To know the interface that's being used for monitoring, we can use the ```iwconfig``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/49d511a4-f52a-493f-b5eb-db2882617103)
+
+We found our interface, monitor mode has been enabled for ```mon0``` which enables sniffing of traffic.
+
+When it comes to wifi hacking, I use ```aircrack-ng```, but since it isnt't installed on this server, we'll be using ```reaver```.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2b37345d-9d7b-4f7e-abb9-36c016524e71)
+
+To use the tool, we need to specify the name of the monitor-mode interface to use and the bssid of the target access point. The switch ```-vv``` is just for verbosity.
+
+To get the bssid of the target access point, run the ```ifconfig``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/870672aa-f2c0-431b-a7c4-32ab9bf8a28c)
+
+Now that we've got all that we need, lets run the tool,
+
+command:```reaver -i mon0 -b 02:00:00:00:00:00 -vv```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/81fd8d49-9853-4a48-80c4-23fdcad454a1)
+
+We were able to get a password hehe
+
+Lets ssh into the server as the ```root``` user using that password
+
+username:```root```         password:```WhatIsRealAnDWhAtIsNot51121!```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e567f361-4f81-4a46-ac2e-5a49f49c5207)
+
+We have successfully pwned this box😎
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
