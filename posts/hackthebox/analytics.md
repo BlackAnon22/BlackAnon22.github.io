@@ -101,7 +101,7 @@ Doing my research I saw that there's a recent exploit for ```metabase```. Lets e
 
 # Exploitation
 
-You can check out this [blog](https://infosecwriteups.com/cve-2023-38646-metabase-pre-auth-rce-866220684396), if you need an in-depth knowledge.]
+You can check out this [blog](https://infosecwriteups.com/cve-2023-38646-metabase-pre-auth-rce-866220684396), if you need an in-depth knowledge.
 
 First thing to do is grab our set-up token from the api endpoint ```/api/session/properties```.
 
