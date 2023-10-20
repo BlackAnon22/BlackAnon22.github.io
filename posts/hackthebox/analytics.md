@@ -196,8 +196,44 @@ ctrl + z (to background)
 stty raw -echo && fg
 export TERM=xterm
 ```
-Well, this ain't working😂. Just realized now that we are in a docker container
+Well, this ain't working😂. Just realized now that we are in a docker container.
 
+I transferred Linpeas to the machine, checking the outputs I found this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a1550c65-d699-4443-b0e2-e5522b621384)
+
+We found creds hehe. Lets ssh into the server with these creds
+
+username:```metalytics```        password:```An4lytics_ds20223#```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e70534f6-8fa5-4744-a03d-d82bd5db43b6)
+
+We are in😎. Lets go ahead and escalate our privileges
+
+
+# Privilege Escalation
+
+Running the command ```cat /etc/issue``` shows the Linux Kernel version, apparently there's an exploit for this that helps us escalate our privileges
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7a24ed36-b359-417d-bd5d-0ed41df6e588)
+
+Found this,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/499e8575-e114-4856-8d0c-c96ed8c0cede)
+
+Now download the exploit from [here](https://github.com/g1vi/CVE-2023-2640-CVE-2023-32629/blob/main/exploit.sh) and send it over to the target's machine. 
+
+To run the exploit
+
+command:```bash exploit.sh```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ae3935a7-7a10-4f53-b516-25cf6b8779cc)
+
+It worked😎. We have successfully pwned this box.
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
