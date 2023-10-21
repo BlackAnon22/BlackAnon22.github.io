@@ -116,8 +116,102 @@ username:```root```         password:```password```
 
 nice nice, we are logged in
 
+Going through the webpage I found something interesting
+
+Click on Admin>Users>Select, you should see this when you do that
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/edccf158-2aa6-4683-9faf-b046d7006a78)
+
+So, we have a user ``` 	lnorgaard```. Click on that user, it should give you more information about the user
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/022ca505-eaa2-44db-86f1-248a8986baff)
+
+We got the password of the user. Lets use this to ssh into the server
+
+username:```lnorgaard```      password:```Welcome2023!```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4a39d96d-0d7c-45e2-9be0-c1682f7365dc)
+
+cool, we are in. Lets go ahead to escalate our privileges
 
 
+
+# Privilege Escalation
+
+Checking the user's directory, I found a zip file
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/58315266-27dd-436c-aa25-e0ac33c3c171)
+
+Send the file over to your machine
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7601a0e8-07c9-4917-9316-d900e0493635)
+
+Lets unzip this file
+
+```
+──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/keeper]
+└─$ unzip RT30000.zip 
+Archive:  RT30000.zip
+  inflating: KeePassDumpFull.dmp     
+ extracting: passcodes.kdbx          
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/keeper]
+└─$ ls -la           
+total 332828
+drwxr-xr-x  2 bl4ck4non bl4ck4non      4096 Oct 21 12:54 .
+drwxr-xr-x 14 bl4ck4non bl4ck4non      4096 Oct 20 18:16 ..
+-rwxr-x---  1 bl4ck4non bl4ck4non 253395188 May 24 11:51 KeePassDumpFull.dmp
+-rw-r--r--  1 bl4ck4non bl4ck4non  87391651 Oct 21 12:50 RT30000.zip
+-rw-r--r--  1 root      root            100 Oct 20 18:20 keeper
+-rwxr-x---  1 bl4ck4non bl4ck4non      3630 May 24 11:51 passcodes.kdbx
+```
+A ```.kdbx``` file is typically a KeePass database file, used by the KeePass password manager. To access and manage the contents of a .kdbx file, you'll need to use a compatible KeePass client. To install, just run the ```sudo apt install keepassx``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ad69e2d6-adbd-4d76-bf88-859eb800ca09)
+
+oops, this requires a password.
+
+John couldn't crack the password actually. 
+
+If you recall, when we extracted the zip file there was a dump file ```KeePassDumpFull.dmp```. When looking for a way to access it I found [this](https://github.com/CMEPW/keepass-dump-masterkey)
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/23d6882a-126c-40ac-8dd3-b5219ded4c93)
+
+You can download the python script from [here](https://github.com/CMEPW/keepass-dump-masterkey/blob/main/poc.py)
+
+After downloading, lets run the script
+
+command:```python3 poc.py -d KeePassDumpFull.dmp```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/546d6b16-dac7-481e-80d5-d2faebf7665f)
+
+We can see something like ```dgr●d med fl●de``` from the output
+
+putting this on google I found this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/37d66f25-8fff-46f0-891e-52089e5fecc9)
+
+Using ```rødgrød med fløde``` as the password, I was able to view the keepass file
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/21164a74-a88c-4a63-8239-0ab49fe7567f)
+
+Checking the network tab,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a36665dd-b6ac-49c1-940c-0ec2612b408e)
+
+Lets click on that
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/92bd2fd1-c1f0-4ebb-91dc-cada01114431)
+
+nice nice, we can see the password of the root user and also the PuTTY-User-Key-File. But the password wasn't working when I tried to ssh into the server. Lets try the PuTTY-User-Key-File
+
+Save the PuTTY-User-Key-File in a file say "bankai.ppk"
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ef211f2f-711d-4297-9dc6-11ac910e138c)
+
+We can use puttygen to create a .pem key file using the .ppk file.
+
+command:```
 
 
 
