@@ -216,10 +216,6 @@ command:```puttygen bankai.ppk -O public-openssh -o bankai.pem```
 ```
 ┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/keeper]
 └─$ puttygen bankai.ppk -O public-openssh -o bankai.pem
-                                                                                  
-┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/keeper]
-└─$ ls -la bankai.pem 
--rw-r--r-- 1 bl4ck4non bl4ck4non 398 Oct 21 18:36 bankai.pem
                                                                                                                                                                                                                                              
 ┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/keeper]
 └─$ ls -la bankai.pem    
