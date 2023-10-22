@@ -100,6 +100,8 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[October 20 2023]] [Analytics](https://Blackanon22.github.io/posts/hackthebox/analytics.html) `RCE` `Docker` `Kernel Exploit`
 - [[October 20 2023]] [Wifinetic](https://Blackanon22.github.io/posts/hackthebox/wifinetic.html) `Information Disclosure` `Wifi Hacking`
 - [[October 20 2023]] [CozyHosting](https://Blackanon22.github.io/posts/hackthebox/cozyhosting.html) `Command Injection` `PostgreSQL` `Misconfigured sudo permissions`
+- [[October 21 2023]] [Keeper](https://Blackanon22.github.io/posts/hackthebox/keeper.html) `Default Creds` `Information Disclosure` `Kepass`
+- [[October 22 2023]] [Driver](https://Blackanon22.github.io/posts/hackthebox/driver.html) `Default Credentials` `Outdated Software`
 
 * * *
 ### **CTF Competitions:~#**
