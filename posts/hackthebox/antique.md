@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fa7ebf15-4911-49f1-8327-fc465b74c61b)# Box: Antique
+# Box: Antique
 # Level: Easy
 # OS: Linux
 <hr>
