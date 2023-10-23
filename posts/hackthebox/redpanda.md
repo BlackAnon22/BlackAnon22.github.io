@@ -269,6 +269,13 @@ Lets go ahead to escalate our privileges
 
 # Privilege Escalation
 
+Reading the source code for the web application I found something interesting
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e9d32896-a1ff-4d1e-8d50-9e8294dce50e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/57440394-91e9-4a13-b562-5bcbb48f98ba)
+
+The java file contain the password for the user ```woodenk```. 
+
 
 
 
