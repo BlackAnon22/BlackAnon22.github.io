@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a878e280-fe8e-4949-beb2-3c0573d8139a)![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/45a4035b-881f-4198-8d00-4e8c9eee5824)# Box: NodeBlog
+# Box: NodeBlog
 # Level: Easy
 # OS: Linux
 <hr>
