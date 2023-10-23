@@ -102,6 +102,9 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[October 20 2023]] [CozyHosting](https://Blackanon22.github.io/posts/hackthebox/cozyhosting.html) `Command Injection` `PostgreSQL` `Misconfigured sudo permissions`
 - [[October 21 2023]] [Keeper](https://Blackanon22.github.io/posts/hackthebox/keeper.html) `Default Creds` `Information Disclosure` `Kepass`
 - [[October 22 2023]] [Driver](https://Blackanon22.github.io/posts/hackthebox/driver.html) `Default Credentials` `Outdated Software`
+- [[October 22 2023]] [Antique](https://Blackanon22.github.io/posts/hackthebox/antique.html) `SNMP` `Telnet` `Port Forwarding`
+- [[October 23 2023]] [NodeBlog](https://Blackanon22.github.io/posts/hackthebox/nodeblog.html) `NoSQL` `XXE` `Node-Deserialization` `Misconfigured sudo permissions`
+
 
 * * *
 ### **CTF Competitions:~#**
