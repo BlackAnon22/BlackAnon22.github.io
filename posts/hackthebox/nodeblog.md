@@ -231,7 +231,7 @@ nice nice, we can read the ```server.js``` file
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8c577984-7dd5-4d32-960f-a32d4d51567c)
 
-"Node-serialize" typically refers to a vulnerability or security risk related to the use of the ```serialization```
+"Node-serialize" typically refers to a vulnerability or security risk related to the use of the ```serialization```. This [blog](https://opsecx.com/index.php/2017/02/08/exploiting-node-js-deserialization-bug-for-remote-code-execution/) actually helped in understanding how to exploit this vulnerability
 
 Capture the request of the webpage again using burpsuite and take a look at the cookie that is being used
 
@@ -242,8 +242,6 @@ Url Decoding the cookie gives us this
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/64787708-c706-47b4-979e-b3cb1790c7c7)
 
 ```{"user":{"$gt":""},"sign":"4b7029c2a4ed7527255315fc356bf082"}``` this is the cookie that is being url encoded
-
-This [blog](https://opsecx.com/index.php/2017/02/08/exploiting-node-js-deserialization-bug-for-remote-code-execution/) actually helped in understanding how to exploit this.
 
 We'll be using the payload used in the blog
 
