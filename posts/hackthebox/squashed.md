@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7cb19272-18ff-4ef0-8477-9f5a23d1f7bf)# Box: Squashed
+# Box: Squashed
 # Level: Easy
 # OS: Linux
 <hr>
