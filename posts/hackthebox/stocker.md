@@ -166,7 +166,9 @@ We got the order id, lets view the purchase order here ```http://dev.stocker.htb
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f0ad5d97-c507-424a-9358-da82ba078f9e)
 
-nice nice, we were able to read the ```/etc/passwd``` file
+nice nice, we were able to read the ```/etc/passwd``` file. This is what we can ```iframe Injection```
+
+"Iframe injection" refers to a type of web security vulnerability or attack where an attacker inserts an ```<iframe>``` element into a web page to load and display content from an external source, often controlled by the attacker. 
 
 Earlier, when I was trying to bypass the login page, I caused a json error and it revealed the full path to the base folder where the Express application is on the file system
 
