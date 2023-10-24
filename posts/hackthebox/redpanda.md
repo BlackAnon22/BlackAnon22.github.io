@@ -276,6 +276,11 @@ Reading the source code for the web application I found something interesting
 
 The java file contain the password for the user ```woodenk```. 
 
+Running ```pspy``` I found a java program that runs as a cronjob as root
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c42b333b-a89e-457e-b020-3a77d6e9e481)
+
+
 
 
 
