@@ -297,7 +297,7 @@ As we can see that version is vulnerable to directory transversal. Lets go ahead
 
 # Exploitation
 
-Link to Exploit:https://www.exploit-db.com/exploits/39575
+You can download the exploit [here](https://www.exploit-db.com/exploits/39575)
 
 Reading the Poc of this exploi, I found this
 
