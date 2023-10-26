@@ -1,8 +1,15 @@
-<h2>Recon</h2>
+# Box: BackDoor
+# Level: Easy
+# OS: Linux
+<hr>
 
-<h3>PortScanning</h3>
+Lets get started
 
->command: sudo nmap -A -T4 -p- -v 10.10.11.125
+# Recon
+
+## PortScanning
+
+command:```sudo nmap -A -T4 -p- -v 10.10.11.125```
 
 ```
 [~] Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-06 00:39 WAT
@@ -83,7 +90,7 @@ We have 3 ports opened here, but our enumeration will be focused more on port 80
 
 
 
-<h2>Enumeration</h2>
+# Enumeration
 
 Going to the webpage should get you this
 
@@ -99,7 +106,7 @@ Cicking on the home button takes us here
 
 We got a "server not found" error. Lets go ahead and add this IP address to our ```/etc/hosts``` file
 
->command: sudo nano /etc/hosts
+command:```sudo nano /etc/hosts```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/backdoor]
@@ -122,7 +129,7 @@ Now, lets navigate to ```http://backdoor.htb``` , cicking on the home button tak
 
 Lets go ahead and fuzz for directories using ffuf 
 
->command: ffuf -u "http://backdoor.htb/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup
+command:```ffuf -u "http://backdoor.htb/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/backdoor]
@@ -170,7 +177,7 @@ xmlrpc.php              [Status: 405, Size: 42, Words: 6, Lines: 1, Duration: 50
 ```
 Since we know the webpage is running on wordpress, lets use the wpscan tool to enumerate the webpage for users, themes and plugins
 
->command: wpscan --url http://backdoor.htb/ --enumerate p --enumerate t --enumerate u 
+command:```wpscan --url http://backdoor.htb/ --enumerate p --enumerate t --enumerate u```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/backdoor]
@@ -288,7 +295,7 @@ As we can see that version is vulnerable to directory transversal. Lets go ahead
 
 
 
-<h2>Exploitation</h2>
+# Exploitation
 
 Link to Exploit:https://www.exploit-db.com/exploits/39575
 
