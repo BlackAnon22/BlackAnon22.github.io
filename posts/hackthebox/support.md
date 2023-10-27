@@ -147,9 +147,154 @@ Archive:  UserInfo.exe.zip
   inflating: System.Threading.Tasks.Extensions.dll  
   inflating: UserInfo.exe.config 
 ```
+We are interested in the ```UserInfo.exe``` file
 
+Running ```strings``` on the file, I found this
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/79b6760f-7e8f-4985-9457-3c1f348d16cb)
 
+This is a .NET binary. We can use a tool like ```dnSpy``` to  inspect and decompile .NET binaries.
+
+You can download the ```exe``` file from [here](https://github.com/dnSpy/dnSpy/releases)
+
+To run this on Linux, we'll use wine
+
+command;```wine dnSpy.exe```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/zip_files]
+└─$ ls -l dnSpy.exe 
+-rw-r--r-- 1 bl4ck4non bl4ck4non 211968 Dec  7  2020 dnSpy.exe
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/zip_files]
+└─$ sudo wine dnSpy.exe 
+it looks like wine32 is missing, you should install it.
+as root, please execute "apt-get install wine32:i386"
+```
+This opened a window for dnspy
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/526aae3d-1d45-43ff-a852-89cd928eb6ce)
+
+Now, lets import the ```UserInfo.exe``` file
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/304eac80-204d-4c60-8c55-1a78a2b430ca)
+
+Click on that drop down
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9e487330-c63d-4055-b7d4-3f481107065c)
+
+We are interested in those 2 files
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6a0b9da1-e1eb-4a4a-ac0b-29e952e31038)
+
+```c#
+using System;
+using System.Text;
+
+namespace UserInfo.Services
+{
+	// Token: 0x02000006 RID: 6
+	internal class Protected
+	{
+		// Token: 0x0600000F RID: 15 RVA: 0x00002118 File Offset: 0x00000318
+		public static string getPassword()
+		{
+			byte[] array = Convert.FromBase64String(Protected.enc_password);
+			byte[] array2 = array;
+			for (int i = 0; i < array.Length; i++)
+			{
+				array2[i] = (array[i] ^ Protected.key[i % Protected.key.Length] ^ 223);
+			}
+			return Encoding.Default.GetString(array2);
+		}
+
+		// Token: 0x04000005 RID: 5
+		private static string enc_password = "0Nv32PTwgYjzg9/8j5TbmvPd3e7WhtWWyuPsyO76/Y+U193E";
+
+		// Token: 0x04000006 RID: 6
+		private static byte[] key = Encoding.ASCII.GetBytes("armando");
+	}
+}
+```
+The code appears to be a C# class named Protected with a method getPassword that attempts to decrypt an encrypted password. Let me explain the logic in the getPassword method:
+
+```
+The getPassword method first decodes the base64-encoded string enc_password into a byte array.
+It then performs a bitwise XOR operation on each byte in the array with corresponding bytes from the key. The key is a byte array derived from the ASCII encoding of the string "armando."
+An additional XOR operation with 223 is applied to each byte during decryption.
+Finally, the decrypted byte array is converted back into a string using the Encoding.Default encoding, and the resulting string is returned as the plaintext password.
+```
+First, lets decode the base64-encoded string into a byte array, we'll be using a python script for this
+
+```python
+import base64
+
+encoded_string = "0Nv32PTwgYjzg9/8j5TbmvPd3e7WhtWWyuPsyO76/Y+U193E"
+byte_array = base64.b64decode(encoded_string)
+
+print(byte_array)
+```
+Running the script
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/support]
+└─$ nano byte.py 
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/support]
+└─$ python byte.py 
+b'\xd0\xdb\xf7\xd8\xf4\xf0\x81\x88\xf3\x83\xdf\xfc\x8f\x94\xdb\x9a\xf3\xdd\xdd\xee\xd6\x86\xd5\x96\xca\xe3\xec\xc8\xee\xfa\xfd\x8f\x94\xd7\xdd\xc4'
+```
+nice, now to perform a bitwise XOR operation on each byte in the given byte array with the corresponding bytes from the key "armando" and then apply an additional XOR operation with 223 during decryption, we can use the Python code
+
+```python
+# Define the encrypted byte array
+encrypted_bytes = b'\xd0\xdb\xf7\xd8\xf4\xf0\x81\x88\xf3\x83\xdf\xfc\x8f\x94\xdb\x9a\xf3\xdd\xdd\xee\xd6\x86\xd5\x96\xca\xe3\xec\xc8\xee\xfa\xfd\x8f\x94\xd7\xdd\xc4'
+
+# Define the key derived from the ASCII encoding of "armando"
+key = b'armando'
+
+# Initialize an empty byte array to store the decrypted result
+decrypted_bytes = bytearray()
+
+# Perform the decryption by XORing each byte with the key and applying an additional XOR with 223
+for i in range(len(encrypted_bytes)):
+    decrypted_byte = encrypted_bytes[i] ^ key[i % len(key)] ^ 223
+    decrypted_bytes.append(decrypted_byte)
+
+# Print the decrypted byte array
+print(decrypted_bytes)
+```
+Running the script
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/support]
+└─$ nano xor.py 
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/support]
+└─$ python xor.py 
+bytearray(b'nvEfEK16^1aM4$e7AclUf8x$tRWxPWO1%lmz')
+```
+Lastly, we can convert the given byte array back into a string using the ```sys.getdefaultencoding()``` to obtain the system's default encoding.
+
+```python
+import sys
+
+byte_array = bytearray(b'nvEfEK16^1aM4$e7AclUf8x$tRWxPWO1%lmz')
+default_encoding = sys.getdefaultencoding()
+result = byte_array.decode(default_encoding)
+print(result)
+```
+Running the script
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/support]
+└─$ nano decrypt.py 
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/support]
+└─$ python decrypt.py 
+nvEfEK16^1aM4$e7AclUf8x$tRWxPWO1%lmz
+```
+nice nice, we got the hardcoded password used for LDAP in the UserInfo.exe binary
 
 
 
