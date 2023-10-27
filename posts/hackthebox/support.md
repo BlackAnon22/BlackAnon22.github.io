@@ -294,7 +294,18 @@ Running the script
 └─$ python decrypt.py 
 nvEfEK16^1aM4$e7AclUf8x$tRWxPWO1%lmz
 ```
-nice nice, we got the hardcoded password used for LDAP in the UserInfo.exe binary
+nice nice, we got the hardcoded password used for LDAP in the UserInfo.exe binary. Now, lets enumerate other ports
+
+
+# Enumeration (Port 88)
+
+This port is running the kerberos service. Now that we have found the ldap password, lets find the user it belongs to using kerbrute. You can download kerbrute from [here](https://github.com/ropnop/kerbrute.git)
+
+command:```kerbrute userenum --dc 10.10.11.174 -d support.htb ~/tools/SecLists/Usernames/xato-net-10-million-usernames.txt```
+
+
+
+
 
 
 
