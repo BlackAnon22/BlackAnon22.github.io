@@ -9,4 +9,15 @@ Lets get started
 
 ## PortScanning
 
-command:```sudo nmap -A 10.129.72.97 -v -p- -T4```
+command:```sudo nmap -A 10.129.78.165 -v -p- -T4```
+
+```
+```
+From our nmap scan we have 2 open ports, port 22 which runs ssh and port 80 which runs http. Our enumeration today will be focused on port 80
+
+
+
+# Enumeration
+
+Navigate to the webpage
+
