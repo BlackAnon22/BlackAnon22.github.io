@@ -1,4 +1,4 @@
-# Box: Support
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a78842ee-0454-40c2-9c73-5f135adc9c81)# Box: Support
 # Level: Easy
 # OS: Windows
 <hr>
@@ -301,15 +301,69 @@ nice nice, we got the hardcoded password used for LDAP in the UserInfo.exe binar
 
 This port is running the kerberos service. Now that we have found the ldap password, lets find the user it belongs to using kerbrute. You can download kerbrute from [here](https://github.com/ropnop/kerbrute.git)
 
-command:```kerbrute userenum --dc 10.10.11.174 -d support.htb ~/tools/SecLists/Usernames/xato-net-10-million-usernames.txt```
+command:```kerbrute userenum --dc 10.129.78.32 -d support.htb ~/tools/SecLists/Usernames/xato-net-10-million-usernames.txt```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dcec3be8-4c13-4c54-82ee-fcecfa52dac7)
+
+nice nice, with the ldap user’s credentials, we can use ```ldapsearch``` to enumerate all domain objects with the ```objectClass=Person```.
+
+command:```ldapsearch -x -H ldap://10.129.78.32 -D "ldap@support.htb" -w 'nvEfEK16^1aM4$e7AclUf8x$tRWxPWO1%lmz' -b 'DC=support,DC=htb' '(objectClass=Person)'```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0f876f62-1b54-47d0-9bdf-d7271db304a9)
+
+Going through the output I found this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0f75c353-8803-4e7f-bf2e-b20396748799)
+
+That looks like a password, lets try to connect using ```evil-winrm```
+
+username:```support```			password:```Ironside47pleasure40Watchful```
+
+command:```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9c8a2dd7-6ff7-4629-9cc3-e958c9f41a13)
+
+we are in😎. Lets go ahead and escalate our privileges
 
 
 
 
+# Privilege Escalation
 
+Lets upload sharphound to the target machine. You can download it from [here](https://github.com/BloodHoundAD/BloodHound/blob/master/Collectors/SharpHound.exe)
 
+commnad:```upload SharpHound.exe```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0855eb89-253b-40c7-a5ff-d80d5fafd5f4)
 
+We can run it using the command ```.\SharpHound.exe```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cd80fee8-ed5e-4630-a8c4-0f5b23654682)
+
+What sharphound did was help us collect data from the machine
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/19d24d59-9097-4e11-be10-73e15a02b638)
+
+Lets download this using the command ```download 20231029102859_BloodHound.zip```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ee126085-f6ed-439b-bc58-b50e1f070d61)
+
+nice nice, we can use bloodhound to analyze this file
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/091ca68c-8391-4525-a5bb-3c788426b01e)
+
+Next thing is to drag and drop the zip file into bloodhound
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/40c6118f-aad0-4392-93f2-4806fce76aca)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/be578cfd-f496-4b6e-92ba-55bad7003f7e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1693f889-5776-4108-ad0b-7b8abfda839d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c2cc0e88-fdc4-48b3-bc09-da4ba4d66d6b)
+
+Since we are the support user, we are inside the ```SHARED SUPPORT ACCOUNT@support.htb```. We can confirm this by running the command ```Get-ADPrincipalGroupMembership support``` on powershell
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a12fa540-df7d-4702-bf66-4fa7c95d3ebf)
+
+Now from bloodhound we know that we got ```GenericAll``` permission to the ```dc.support.htb``` Domain Controller which means we have full rights to the ```dc.support.htb``` object.
 
 
 
