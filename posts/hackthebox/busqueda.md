@@ -127,6 +127,33 @@ Lets go ahead to escalate our privileges
 
 # Privilege Escalation
 
+The directory ```/var/www/app``` contains a .git folder
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a526bda4-35f2-42a2-8053-5ac6050a3a07)
+
+Inside the folder
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1786cfdc-f16c-450d-bf49-29948ad23b73)
+
+That url looks weird actually, there was nothing interesting there when I checked though.
+
+Looking at the way the url was structured, there was something like this ```cody:jh1usoih2bkjaspwe92@gitea.searcher.htb```. This part of the url ```cody:jh1usoih2bkjaspwe92``` actually looks like a username and password.
+
+Lets run the ```sudo -l``` command, then we try the password ```jh1usoih2bkjaspwe92``` for the ```svc``` user
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6f1f79d4-397d-4c82-bdec-12d15ffdc19b)
+
+nice nice, it worked. Also, you can see that we have sudo privileges to run the script ```/opt/scripts/system-checkup.py```. 
+
+Checking out the content of the script
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a42cab6e-bbfe-47ea-86d8-c16b1439ee9a)
+
+oops, we actually can't view the content of the script, we don't have enough privileges for that. One thing we can try to do is execute the script
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4792fec9-4b81-464f-a030-095693e05864)
+
+
 
 
 
