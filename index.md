@@ -105,6 +105,8 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[October 22 2023]] [Antique](https://Blackanon22.github.io/posts/hackthebox/antique.html) `SNMP` `Telnet` `Port Forwarding`
 - [[October 23 2023]] [NodeBlog](https://Blackanon22.github.io/posts/hackthebox/nodeblog.html) `NoSQL` `XXE` `Node-Deserialization` `Misconfigured sudo permissions`
 - [[October 24 2023]] [Stocker](https://Blackanon22.github.io/posts/hackthebox/stocker.html) `NoSQL` `Directory Traversal` `Misconfigured sudo permissions`
+- [[October 26 2023]] [Squashed](https://Blackanon22.github.io/posts/hackthebox/squashed.html) `NFS` `Arbitrary File Upload` 
+- [[October 30 2023]] [Busqueda](https://Blackanon22.github.io/posts/hackthebox/busqueda.html) `Outdated Software` `Code Injection` ` Hard-coded Credentials`
 
 
 * * *
