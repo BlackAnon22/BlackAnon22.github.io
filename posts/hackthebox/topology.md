@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9efa2935-ea00-4868-8836-85a31b4f9f7b)# Box: Topology
+# Box: Topology
 # Level: Easy
 # OS: Linux
 <hr>
