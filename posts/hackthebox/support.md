@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ca1b8279-a916-45d8-8b14-d50ef151babb)# Box: Support
+# Box: Support
 # Level: Easy
 # OS: Windows
 <hr>
