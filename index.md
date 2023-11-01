@@ -108,6 +108,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[October 26 2023]] [Squashed](https://Blackanon22.github.io/posts/hackthebox/squashed.html) `NFS` `Arbitrary File Upload` 
 - [[October 30 2023]] [Busqueda](https://Blackanon22.github.io/posts/hackthebox/busqueda.html) `Outdated Software` `Code Injection` `Hard-coded Credentials`
 - [[October 31 2023]] [Topology](https://Blackanon22.github.io/posts/hackthebox/topology.html) `Latex Injection` `Cronjob`
+- [[November 01 2023]] [Support](https://Blackanon22.github.io/posts/hackthebox/support.html) `Cryptography` `Information Disclosure` `LDAP` 
 
 
 * * *
