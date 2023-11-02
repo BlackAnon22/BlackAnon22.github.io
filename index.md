@@ -110,6 +110,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[October 31 2023]] [Topology](https://Blackanon22.github.io/posts/hackthebox/topology.html) `Latex Injection` `Cronjob`
 - [[November 01 2023]] [Support](https://Blackanon22.github.io/posts/hackthebox/support.html) `Cryptography` `Information Disclosure` `LDAP`
 - [[November 02 2023]] [SteamCloud](https://Blackanon22.github.io/posts/hackthebox/steamcloud.html) `Kubelet` `RCE`
+- [[November 02 2023]] [Precious](https://Blackanon22.github.io/posts/hackthebox/precious.html) `RCE` `Deserialization`
 
 
 * * *
