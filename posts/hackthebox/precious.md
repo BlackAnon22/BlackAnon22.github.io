@@ -207,6 +207,7 @@ What the script did was to set the "setuid" bit on the ```/bin/bash``` executabl
 
 To spawn a shell as the root user, we can use the command ```/bin/bash -p```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3a48fed6-e4ff-45e1-9dc1-bfa2cc0d1dd4)
 
 We have successfully pwned this box
 
