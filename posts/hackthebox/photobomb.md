@@ -1,4 +1,4 @@
-# Box: PhotoBomb
+# Box: Photobomb
 # Level: Easy
 # OS: Linux
 <hr>
