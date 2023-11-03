@@ -62,9 +62,26 @@ Navigate to the webpage again,
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fccaf5e2-9374-4900-b2f5-c8cedafbd0c8)
 
-We
+Checking the page source you should see a javascript file
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/61c96aef-26d7-42e6-9987-0ed626b87765)
 
+Yeah, lets view the content of this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dbc66313-f912-4af1-9284-65132e5079eb)
+
+Now, that looks like creds
+
+Something like
+
+username:```pH0t0```        password:```b0Mb!```
+
+Clicking on the "click here" directs you to the ```/printer``` directory which requires creds to login, we'll be using the creds we found in the javascript file
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a8b7b7db-a3d6-4b5f-b90f-0906920396b8)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/526cd9e9-a8c1-44e0-a73e-af746ee57b49)
+
+nice nice, we are logged in
 
 
 
