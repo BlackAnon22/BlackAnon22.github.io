@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c6cb38c5-2e6f-4db3-bf23-231b77aa3333)![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dab24944-a8dc-45b0-a3ef-b2807ca7e47e)# Box: Photobomb
+# Box: Photobomb
 # Level: Easy
 # OS: Linux
 <hr>
