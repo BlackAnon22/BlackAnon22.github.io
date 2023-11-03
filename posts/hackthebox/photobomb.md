@@ -136,6 +136,10 @@ We can go ahead now to escalate our privileges
 
 # Privilege Escalation
 
+Running the ```sudo -l``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/71d174e6-59dd-4509-9454-31593d9565df)
+
 
 
 
