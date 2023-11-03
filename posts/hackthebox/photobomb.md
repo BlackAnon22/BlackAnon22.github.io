@@ -56,7 +56,7 @@ Navigate to the webpage
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0fcf1328-eb02-4db2-bdec-2ee756a13210)
 
-Add this domain name to your ``/etc/hosts``` file
+Add this domain name to your ```/etc/hosts``` file
 
 Navigate to the webpage again,
 
