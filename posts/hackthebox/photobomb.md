@@ -140,6 +140,31 @@ Running the ```sudo -l``` command
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/71d174e6-59dd-4509-9454-31593d9565df)
 
+This user can run this script with sudo privileges.
+
+Lets view the content of the script
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/af898faf-5624-451d-bdf7-5371b59146fc)
+
+From the above screenshot we know where the photobomb.log files are stored. We can also see that the location is not using an ‘absolute path’. Therefore we can take the advantage of ```binaries``` or ```traverse path``` approaches.
+
+Navigate to the /tmp dir, lets see if we can find something interesting in those logs with the “find” binary.
+
+```
+echo bash > find
+chmod 777 find
+sudo PATH=$PWD:$PATH /opt/cleanup.sh
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e6ef16e9-f746-44a8-be33-8928b4b03507)
+
+We were able to spawn a root shell.
+
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
+
 
 
 
