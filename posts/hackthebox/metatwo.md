@@ -40,9 +40,24 @@ We'll add that domain name to our ```/etc/hosts``` file, then try to load the we
 
 This is a wordpress site
 
-lets fireup our wpscan tool to help scan this weboage. We'll enumerate users, themes and plugins
+lets fireup our wpscan tool to help us enumerate this webpage for plugins
 
-command:```
+command:```wpscan --url http://metapress.htb --plugins-detection aggressive -t 60```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6e2f9e52-ca78-4a75-bb88-c1fb1977f00b)
+
+We found 3 plugins, the version for the plugin ```bookingpress-appointment-booking``` actually has a public exploit
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/afdc3fc7-ae76-49fc-83ed-a1bc30ff52e1)
+
+Lets exploit this
+
+
+
+
+# Exploitation
+
+
 
 
 
