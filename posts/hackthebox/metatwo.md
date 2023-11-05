@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1e7bd42f-25cc-451d-a6c6-f401a0036609)# Box: MetaTwo
+# Box: MetaTwo
 # Level: Easy
 # OS: Linux
 <hr>
