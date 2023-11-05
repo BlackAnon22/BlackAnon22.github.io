@@ -111,6 +111,8 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[November 01 2023]] [Support](https://Blackanon22.github.io/posts/hackthebox/support.html) `Cryptography` `Information Disclosure` `LDAP`
 - [[November 02 2023]] [SteamCloud](https://Blackanon22.github.io/posts/hackthebox/steamcloud.html) `Kubelet` `RCE`
 - [[November 02 2023]] [Precious](https://Blackanon22.github.io/posts/hackthebox/precious.html) `RCE` `Deserialization`
+- [[November 03 2023]] [Photobomb](https://Blackanon22.github.io/posts/hackthebox/photobomb.html) `OS Command Injection` `Misconfigured sudo permissions`
+- [[November 05 2023]] [MetaTwo](https://Blackanon22.github.io/posts/hackthebox/metatwo.html) `SQLi` `XXE` `Weak Credentials`
 
 
 * * *
