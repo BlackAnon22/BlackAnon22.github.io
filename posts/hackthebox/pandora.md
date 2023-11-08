@@ -224,6 +224,45 @@ Running strings on the binary
 
 We can see from the above screenshot that ```tar``` is the command-line utility being used to generate a backup in the form of a ```tar.gz``` form.
 
+To exploit this, we'll hijack relative paths in this suid binary
+
+I used this [blog](https://medium.com/r3d-buck3t/hijacking-relative-paths-in-suid-programs-fed804694e6e), to exploit this
+
+So first
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
