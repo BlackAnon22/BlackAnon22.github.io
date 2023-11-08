@@ -218,6 +218,14 @@ To analyze this binary well, I'll send it to my machine
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/09121a08-0a53-47e4-a762-5a0bb76a2b35)
 
+Running strings on the binary
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fa35a26b-a266-43d5-9e73-07eb2eb38487)
+
+We can see from the above screenshot that ```tar``` is the command-line utility being used to generate a backup in the form of a ```tar.gz``` form.
+
+
+
 
 
 
