@@ -10,3 +10,11 @@ Lets get started
 ## Portscanning
 
 command:```
+
+From our scan we have quite a number of ports open. We'll start our enumeration from port 80.
+
+
+# Enumeration (Port 80)
+
+Navigate to the webpage
+
