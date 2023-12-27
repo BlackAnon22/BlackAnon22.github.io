@@ -113,6 +113,10 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[November 02 2023]] [Precious](https://Blackanon22.github.io/posts/hackthebox/precious.html) `RCE` `Deserialization`
 - [[November 03 2023]] [Photobomb](https://Blackanon22.github.io/posts/hackthebox/photobomb.html) `OS Command Injection` `Misconfigured sudo permissions`
 - [[November 05 2023]] [MetaTwo](https://Blackanon22.github.io/posts/hackthebox/metatwo.html) `SQLi` `XXE` `Weak Credentials`
+- [[November 05 2023]] [Pandora](https://Blackanon22.github.io/posts/hackthebox/pandora.html) `SQLi` `RCE` `Path Hijacking`
+- [[December 27 2023]] [Horizontall](https://Blackanon22.github.io/posts/hackthebox/horizontall.html) `Source Code Analysis` `RCE` `Misconfigured sudo permissions`
+- [[December 27 2023]] [Nibbles](https://Blackanon22.github.io/posts/hackthebox/nibbles.html) `Default Credentials` `RCE` `Misconfigured sudo permissions`
+- [[December 27 2023]] [Bashed](https://Blackanon22.github.io/posts/hackthebox/bashed.html) `OS Command Injection` `Code Execution`
 
 
 * * *
