@@ -272,7 +272,7 @@ cool, we got root shell😎.
 
 Well, that's not all
 
-Let's check out an unintended method to escalate privileges
+Let's check out an unintended method to escalate our privileges
 
 
 # Unintented Method to Privilege Escalation
