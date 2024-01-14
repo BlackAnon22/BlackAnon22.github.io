@@ -33,7 +33,7 @@ username:```natas1```            password:```g9D9cREhslqBKtcA2uocGHPfMZVzeFK6```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/722e7670-42e3-478f-be2d-35bae9a46d80)
 
-Rightclicking has been blocked, this means we can't rightclick on the webpage
+Right-clicking has been blocked, this means we can't right-click on the webpage
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9dbb3f81-a213-4381-a495-83092c4ba523)
 
