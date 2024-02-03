@@ -127,7 +127,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[October 09 2022]] [CyberTalents 2022](https://Blackanon22.github.io/posts/CTF Competitions/CyberTalents 2022.html)
 - [[April 01 2023]] [picoCTF 2023](https://Blackanon22.github.io/posts/CTF Competitions/picoCTF_2023.html)
 - [[May 01 2023]] [CyberStarters CTF 2023](https://Blackanon22.github.io/posts/CTF Competitions/CyberStarters_CTF.html)
-- [[February 03 2024]] [TechStaCon 2024](https://Blackanon22.github.io/posts/CTF Competitions/TechStarters.html)
+- [[February 03 2024]] [TechStaCon 2024](https://Blackanon22.github.io/posts/CTF Competitions/TechStarters_CTF.html)
 
 * * *
 ### **OverTheWire Labs:~#**
