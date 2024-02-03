@@ -214,6 +214,51 @@ FLAG:-```tscCTF{i_am_what_you_are_looking_for}```
 # Empty Folder
 <hr>
 
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/03 - empty.folder]
+└─$ ls -la
+total 12
+drwxr-xr-x  3 bl4ck4non bl4ck4non 4096 Feb  3 13:09 .
+drwxr-xr-x 12 bl4ck4non bl4ck4non 4096 Feb  3 13:31 ..
+drwxr-xr-x  2 bl4ck4non bl4ck4non 4096 Feb  3 12:53 empty.folder.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InRzY0NURntpX2FtX2hlcmV9IiwiaWF0IjoxNTE2MjM5MDIyfQ.5aW29xJgAVDxEfpPeERVqxJVKnJByJYN3tEXC2meIus
+```
+Well this folder has a long name😂. It has no file in it actually. 
+
+If you take a good look at the folder name you'll see something similar to a jwt token, yup ```eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InRzY0NURntpX2FtX2hlcmV9IiwiaWF0IjoxNTE2MjM5MDIyfQ.5aW29xJgAVDxEfpPeERVqxJVKnJByJYN3tEXC2meIus``` this looks like a jwt token. Lets crack this using an online tool. You can crack it [here](https://jwt.io/)
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d42b3278-0f52-4162-8dff-c52b53691e8c)
+
+There's our flag
+
+FLAG:-```tscCTF{i_am_here}```
+
+--------------------
+
+# Logic Test
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3e946285-c257-4808-9f08-0a7333064cd0)
+
+We get this long boring text when we view the content of the file in the folder. Well, this didn't make sense to me actually🥲
+
+Checked online for ```R@1n``` I got this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dfa89e75-09ad-4ef2-8b18-8d448259d1e4)
+
+ALso looked up those texts online and found this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/456ba045-52a3-4b01-9157-63220f089390)
+
+Same wordings, well it still didn't make sense to me tho. But then I made an assumption
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f2a8cbd7-8fd9-4714-b0e3-05e754956125)
+
+Yup, that's our flag hehe
+
+FLAG:-```tscCTF{3xampl3F14g}```
+
+----------------
+
 
 
 
