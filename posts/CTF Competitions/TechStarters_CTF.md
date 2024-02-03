@@ -299,7 +299,7 @@ Lets analyze with sonic visualiser. To install on kali you can use the command `
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9891a21f-e74b-422b-bbe8-d8a687acc61a)
 
-Good, now Pane > Add Spectogram > 06-who are we.mp3: Channel 1
+Good, now ```Pane > Add Spectogram > 06-who are we.mp3: Channel 1```
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c44bfa23-7bf4-458e-9c8e-5bf9e4605e84)
 
