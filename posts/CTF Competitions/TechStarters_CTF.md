@@ -259,6 +259,32 @@ FLAG:-```tscCTF{3xampl3F14g}```
 
 ----------------
 
+# Safenet
+<hr>
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/06 - Who are we _]
+└─$ ls    
+'06 - who are we.mp3'
+```
+We get this mp3 file.
+
+Lets analyze with sonic visualiser. To install on kali you can use the command ```sudo apt-get -y install sonic-visualiser```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9891a21f-e74b-422b-bbe8-d8a687acc61a)
+
+Good, now Pane > Add Spectogram > 06-who are we.mp3: Channel 1
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c44bfa23-7bf4-458e-9c8e-5bf9e4605e84)
+
+cool, we got our flag😎
+
+FLAG:-```tscCTF{W3_Ar3_Saf3N3t}```
+
+----------------------------
+
+# Who are we
+<hr>
 
 
 
