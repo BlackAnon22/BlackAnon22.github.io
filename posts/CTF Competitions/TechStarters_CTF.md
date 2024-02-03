@@ -224,7 +224,7 @@ drwxr-xr-x  2 bl4ck4non bl4ck4non 4096 Feb  3 12:53 empty.folder.eyJhbGciOiJIUzI
 ```
 Well this folder has a long name😂. It has no file in it actually. 
 
-If you take a good look at the folder name you'll see something similar to a jwt token, yup ```eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InRzY0NURntpX2FtX2hlcmV9IiwiaWF0IjoxNTE2MjM5MDIyfQ.5aW29xJgAVDxEfpPeERVqxJVKnJByJYN3tEXC2meIus``` this looks like a jwt token. Lets crack this using an online tool. You can crack it [here](https://jwt.io/)
+If you take a good look at the folder name you'll see something similar to a jwt token, yup ```eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InRzY0NURntpX2FtX2hlcmV9IiwiaWF0IjoxNTE2MjM5MDIyfQ.5aW29xJgAVDxEfpPeERVqxJVKnJByJYN3tEXC2meIus``` this looks like a jwt token. Lets decode this using an online tool. You can crack it [here](https://jwt.io/)
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d42b3278-0f52-4162-8dff-c52b53691e8c)
 
