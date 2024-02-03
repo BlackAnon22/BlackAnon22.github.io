@@ -263,6 +263,32 @@ FLAG:-```tscCTF{3xampl3F14g}```
 <hr>
 
 ```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/05 - safenet]
+└─$ cat follow\ safenet\ society.txt 
+follow safenet society on instagram https://www.instagram.com/wesafenetwork?igsh=MzRlODBiNWFlZA==
+```
+We are asked to follow safenet on instagram page. Lets locate their instagram page
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/77b908cc-084f-4387-a618-44d9d2cca953)
+
+But there's no flag here. Well look closely hehe
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/64b8d4a0-26e6-4163-8474-0f5cdf14b22c)
+
+Navigating to that webpage should get you the flag
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d20a6a5d-97cc-49ea-be1d-3686709864cc)
+
+Yup, that's the flag
+
+FLAG:-```tscCTF{XyZ_987_CTF}```
+
+---------------------------------------
+
+# Who are we
+<hr>
+
+```
 ┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/06 - Who are we _]
 └─$ ls    
 '06 - who are we.mp3'
@@ -283,11 +309,72 @@ FLAG:-```tscCTF{W3_Ar3_Saf3N3t}```
 
 ----------------------------
 
-# Who are we
+# Hide Data
 <hr>
 
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/07 - Hide Data]
+└─$ cat 07\ -\ Hide\ Data.txt       
+gur synt vf gfpPGS:{gur_znfgre_vf_urer} Vg vf cerggl rnfl gb frr gur synt ohg pna lbh frr vg v gbbx arneyl ab zvahgr gb rapbqr guvf jvgu {EBG13:} tbbq yhpx va fbyivat gung
+```
+We were given this cipher.
+
+First, lets identify the type of cipher this is, you can do that using this [webpage](https://www.dcode.fr/cipher-identifier)
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/da4d0074-27ce-4b5f-b6f2-79a054a9545a)
+
+It's a ROT13 cipher, cool. Now lets decode with [this](https://www.dcode.fr/rot-13-cipher)
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/59cccaa5-b275-4093-9e85-6d07c2b5fcb1)
+
+Got our flag hehe
+
+FLAG:-```tscCTF{the_master_is_here}```
+
+-------------------------------
+
+# Ascii Player_101
+<hr>
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/10 -ASCII Player_101]
+└─$ cat 10\ -\ ASCII.txt     
+[116, 115, 99, 67, 84, 70, 58, 123, 87, 104, 97, 116, 95, 105, 102, 95, 97, 108, 108, 95, 116, 104, 105, 115, 95, 119, 97, 115, 95, 97, 95, 106, 111, 107, 101, 125]
 
 
+#I might be the biggest snake_find me if you can
+```
+This is another cipher.
+
+The name of the challenge already gave us a hint though
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0cd180ad-3d21-4e5a-a92e-2b32f35dfcfd)
+
+Now lets decode using an online decoder. You can use [this](https://www.dcode.fr/ascii-code) to decode
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/afaef7a3-d027-4a2d-854a-4f2b86a32160)
+
+We got our flag
+
+FLAG:-```tscCTF{What_if_all_this_was_a_joke}```
+
+-----------------------
+
+# Finding Me
+<hr>
+
+I couldn't solve this particular challenge because it requires a windows box and I don't use windows. Once I find a solution I'll drop the link here
+
+--------------------
+
+
+Till Next Time :xD
+
+
+
+
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
