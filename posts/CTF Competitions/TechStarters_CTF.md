@@ -364,7 +364,21 @@ FLAG:-```tscCTF{What_if_all_this_was_a_joke}```
 # Finding Me
 <hr>
 
-I couldn't solve this particular challenge because it requires a windows box and I don't use windows. Once I find a solution I'll drop the link here
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/09  - Who am i]
+└─$ ls -la                     
+total 12
+drwxr-xr-x  2 bl4ck4non bl4ck4non 4096 Feb  4 09:33  .
+drwxr-xr-x 12 bl4ck4non bl4ck4non 4096 Feb  4 09:33  ..
+-rw-r--r--  1 bl4ck4non bl4ck4non   81 Feb  3 11:12 '09  - Who am i.bat'
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/09  - Who am i]
+└─$ file 09\ \ -\ Who\ am\ i.bat 
+09  - Who am i.bat: ASCII text, with CRLF line terminators
+```
+Well the file contains some ascii text so we can just cat it then
+
+command: ```cat 09\ \ -\ Who\ am\ i.bat```
 
 --------------------
 
