@@ -363,37 +363,6 @@ FLAG:-```tscCTF:{1_AM_here}```
 
 --------------------------------
 
-
-
--------------------------------
-
-# Ascii Player_101
-<hr>
-
-```
-┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/10 -ASCII Player_101]
-└─$ cat 10\ -\ ASCII.txt     
-[116, 115, 99, 67, 84, 70, 58, 123, 87, 104, 97, 116, 95, 105, 102, 95, 97, 108, 108, 95, 116, 104, 105, 115, 95, 119, 97, 115, 95, 97, 95, 106, 111, 107, 101, 125]
-
-
-#I might be the biggest snake_find me if you can
-```
-This is another cipher.
-
-The name of the challenge already gave us a hint though
-
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0cd180ad-3d21-4e5a-a92e-2b32f35dfcfd)
-
-Now lets decode using an online decoder. You can use [this](https://www.dcode.fr/ascii-code) to decode
-
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/afaef7a3-d027-4a2d-854a-4f2b86a32160)
-
-We got our flag
-
-FLAG:-```tscCTF{What_if_all_this_was_a_joke}```
-
------------------------
-
 # Who Am I
 <hr>
 
@@ -433,8 +402,34 @@ We got our flag hehe
 
 FLAG:-```tscCTF{i_am_the_master}```
 
---------------------
+-------------------------------
 
+# Ascii Player_101
+<hr>
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/10 -ASCII Player_101]
+└─$ cat 10\ -\ ASCII.txt     
+[116, 115, 99, 67, 84, 70, 58, 123, 87, 104, 97, 116, 95, 105, 102, 95, 97, 108, 108, 95, 116, 104, 105, 115, 95, 119, 97, 115, 95, 97, 95, 106, 111, 107, 101, 125]
+
+
+#I might be the biggest snake_find me if you can
+```
+This is another cipher.
+
+The name of the challenge already gave us a hint though
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0cd180ad-3d21-4e5a-a92e-2b32f35dfcfd)
+
+Now lets decode using an online decoder. You can use [this](https://www.dcode.fr/ascii-code) to decode
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/afaef7a3-d027-4a2d-854a-4f2b86a32160)
+
+We got our flag
+
+FLAG:-```tscCTF{What_if_all_this_was_a_joke}```
+
+-----------------------
 
 Till Next Time :xD
 
