@@ -389,7 +389,16 @@ REM "dHNjQ1RGOntpX2FtX3RoZV9tYXN0ZXJ9"
 ```
 We get a base64 string, well lets decode this
 
-command:```
+command:```echo "dHNjQ1RGOntpX2FtX3RoZV9tYXN0ZXJ9" | base64 -d```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/09  - Who am i]
+└─$ echo "dHNjQ1RGOntpX2FtX3RoZV9tYXN0ZXJ9" | base64 -d                            
+tscCTF:{i_am_the_master}
+```
+We got our flag hehe
+
+FLAG:-```tscCTF{i_am_the_master}```
 
 --------------------
 
