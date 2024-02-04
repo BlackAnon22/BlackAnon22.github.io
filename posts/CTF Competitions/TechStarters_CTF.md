@@ -380,6 +380,17 @@ Well the file contains some ascii text so we can just cat it then
 
 command: ```cat 09\ \ -\ Who\ am\ i.bat```
 
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/09  - Who am i]
+└─$ cat 09\ \ -\ Who\ am\ i.bat                       
+Rundll32.exe User32.dll,LockWorkStation
+
+REM "dHNjQ1RGOntpX2FtX3RoZV9tYXN0ZXJ9" 
+```
+We get a base64 string, well lets decode this
+
+command:```
+
 --------------------
 
 
