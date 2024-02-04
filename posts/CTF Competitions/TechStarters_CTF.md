@@ -332,6 +332,39 @@ Got our flag hehe
 
 FLAG:-```tscCTF{the_master_is_here}```
 
+-----------------------------------
+
+# Finding Me
+<hr>
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/08 - Finding Me _]
+└─$ ls -la                     
+total 64
+drwxr-xr-x  2 bl4ck4non bl4ck4non  4096 Feb  3 13:01  .
+drwxr-xr-x 12 bl4ck4non bl4ck4non  4096 Feb  4 09:33  ..
+-rw-r--r--  1 bl4ck4non bl4ck4non 54954 Feb  3 10:31 'Tech Starters.html'
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/techstacon/08 - Finding Me _]
+└─$ file Tech\ Starters.html    
+Tech Starters.html: HTML document, Unicode text, UTF-8 text, with very long lines (52711)
+```
+We can see that this is a html file with a very long line. Well, one way to open this is by using your browser and then checking the page source for your flag, well that's boring. Lets just grep it out hehe since we already know the flag format
+
+command:```grep "tscCTF:{" Tech\ Starters.html```
+
+After running that, just scroll up you should see this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/833d7ed8-7bb2-4da1-a8be-ebd4670979cc)
+
+There's our flag😎
+
+FLAG:-```tscCTF:{1_AM_here}```
+
+--------------------------------
+
+
+
 -------------------------------
 
 # Ascii Player_101
@@ -361,7 +394,7 @@ FLAG:-```tscCTF{What_if_all_this_was_a_joke}```
 
 -----------------------
 
-# Finding Me
+# Who Am I
 <hr>
 
 ```
