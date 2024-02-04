@@ -349,7 +349,7 @@ drwxr-xr-x 12 bl4ck4non bl4ck4non  4096 Feb  4 09:33  ..
 └─$ file Tech\ Starters.html    
 Tech Starters.html: HTML document, Unicode text, UTF-8 text, with very long lines (52711)
 ```
-We can see that this is a html file with a very long line. Well, one way to open this is by using your browser and then checking the page source for your flag, well that's boring. Lets just grep it out hehe since we already know the flag format
+We can see that this is a html file with a very long line. Well, one way to open this file is by using your browser and then checking the page source for your flag, well that's boring. Lets just grep it out hehe since we already know the flag format
 
 command:```grep "tscCTF:{" Tech\ Starters.html```
 
