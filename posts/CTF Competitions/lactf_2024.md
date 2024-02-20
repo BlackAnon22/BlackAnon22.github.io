@@ -220,7 +220,7 @@ Well, to solve this we'll be using one of the developer tools
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/58d7e857-d7af-468c-8cba-262ef55e210d)
 
-If you get a "NO CONSOLE ALLOWED" message, just refresh the tab when you get to `sources`, if you are using firefox as your browser, you'll have to go to `debugger` not `sources`. So, from the above screenshot we have the `analytics.js` script and also a file `index`. Checking out the `index` file and then scrolling all the way down you should see the Javascript code that sets up the event listeners. Also, you'll noticr that the `analytics.js` file is obfuscated. We can deobfuscate this using this [online tool](https://obf-io.deobfuscate.io/)
+If you get a "NO CONSOLE ALLOWED" message, just refresh the tab when you get to `sources`, if you are using firefox as your browser, you'll have to go to `debugger` not `sources`. So, from the above screenshot we have the `analytics.js` script and also a file `index`. Checking out the `index` file and then scrolling all the way down you should see the Javascript code that sets up the event listeners. Also, you'll notice that the `analytics.js` script is obfuscated. We can deobfuscate this using this [online tool](https://obf-io.deobfuscate.io/)
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b668804e-4d92-4595-84d7-5e8eb8d32f4f)
 
