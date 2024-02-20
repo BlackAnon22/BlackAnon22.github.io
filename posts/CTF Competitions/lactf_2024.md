@@ -103,7 +103,7 @@ Open the ```.wav``` file using sonic visualizer. You can download using the comm
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bb8a22a0-9063-4d3f-b926-07242922eada)
 
-We have this. Well, all you just need to do is listen to audio
+We have this. Well, all you just need to do is listen to the audio
 
 When you listen you should hear something like
 
@@ -216,9 +216,42 @@ There's another part to this code when you check the page source
 
 This interval function continuously monitors the window size (window.innerHeight and window.innerWidth). If the window is resized, it replaces the entire body content with a message "NO CONSOLE ALLOWED". This is an attempt to prevent the user from accessing the console.
 
-Well, to solve this we'll be using the debugger
+Well, to solve this we'll be using one of the developer tools
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/58d7e857-d7af-468c-8cba-262ef55e210d)
+
+If you get a "NO CONSOLE ALLOWED" message, just refresh the tab when you get to `sources`, if you are using firefox as your browser, you'll have to go to `debugger` not `sources`. So, from the above screenshot we have the `analytics.js` script and also a file `index`. Checking out the `index` file and then scrolling all the way down you should see the Javascript code that sets up the event listeners. Also, you'll noticr that the `analytics.js` file is obfuscated. We can deobfuscate this using this [online tool](https://obf-io.deobfuscate.io/)
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b668804e-4d92-4595-84d7-5e8eb8d32f4f)
+
+```js
+document.getElementById("accept").addEventListener("click", () => {
+  const _0x4eb4e0 = document.getElementById("mainscript");
+  if (!_0x4eb4e0 || _0x4eb4e0.innerText.length < 1000) {
+    alert("silly you... you don't get to disable javascript...");
+  } else {
+    alert("ob`wexwkbw\\avwwlm\\tbp\\gfejmjwfoz\\mlw\\lmf\\le\\wkf\\wfqnp~".split``.map(_0x286792 => String.fromCharCode(_0x286792.charCodeAt(0) ^ 3)).join``);
+  }
+});
+```
+What we can do is run that ```alert``` script into the console
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b5062129-54bd-43bb-b037-5a9f214d1057)
+
+We got our flag
+
+FLAG:```lactf{that_button_was_definitely_not_one_of_the_terms}```
+
+--------------------------------
 
 
+Till Next Time :xD
+
+
+
+
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
