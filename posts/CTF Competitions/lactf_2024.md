@@ -70,8 +70,143 @@ We get this google form, now when you try to fill this form you'll notice it's i
 
 As you can see it is more of an infinite loop thing.
 
-Lets capture this request on burpsuite and see what happens
+Lets capture this request on burpsuite so we can see what's happening
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dc70af16-588a-4f33-8636-20ed4601e6f0)
+
+We don't need this request actually so you can just forward
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6c87d0b4-983e-42a8-acd7-303e5b7ef37a)
+
+Yup, this is the request we are interested in. Send this over to burp repeater
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d1ec7166-ae0e-4802-b235-5b8ac4b4dc7c)
+
+Scrolling down to the end of the response should get you this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/afd85e15-c0fe-45b2-8a3d-adcd9bb32a2f)
+
+Yup, that's the flag
+
+FLAG:-```lactf{l34k1ng_4h3_f04mz_s3cr3tz}```
+
+----------------------------
+
+## mixed signals
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8e227870-bd06-43c5-8f1f-b5e615f1dd01)
+
+This one was quite easy though. I did a bit of overthinking though hehe
+
+Open the ```.wav``` file using sonic visualizer. You can download using the command ```sudo apt-get install sonic-visualiser```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bb8a22a0-9063-4d3f-b926-07242922eada)
+
+We have this. Well, all you just need to do is listen to audio
+
+When you listen you should hear something like
+
+```
+lemur
+alpha
+charlie
+tango
+foxtrap
+open brace
+charlie
+four
+november
+underscore
+yankee
+zero
+uniform
+underscore
+papa
+lemur
+zulu
+underscore
+uniform
+november
+mike
+one
+xray
+underscore
+mike
+yankee
+underscore
+sierra
+one
+golf
+november
+four
+lemur
+zulu
+end brace
+```
+Now what we'll do is since we know the ctf flag format to be ```lactf{}``` it should be obvious now😅. we'll treat the numers as numbers and also the symbols as symbols.
+So we have this
+
+```
+Lemur
+Alpha
+Charlie
+Tango
+Foxtrap
+{
+Charlie
+4
+November
+_
+Yankee
+0
+Uniform
+_
+Papa
+Lemur
+Zulu
+_
+Uniform
+November
+Mike
+1
+Xray
+_
+Mike
+Yankee
+_
+Sierra
+1
+Golf
+November
+4
+Lemur
+Zulu
+}
+```
+smooth, we've gotten our flag😎
+
+FLAG:-```lactf{c4n_y0u_plz_unm1x_my_s1gn4lz}```
+
+-----------------------------------
+
+# Web
+
+## terms and conditions
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3d490ad9-36ec-4f29-b4eb-d49babadb3d3)
+
+This also was a very easy web chall
+
+Navigate to the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1ae336d1-cd75-4fb2-8640-7f264d4f4ec0)
+
+You'll see from the webpage that whenever we try to click on the "I Accept" button, it moves the moment we move our cursor
+
+Checking the page source you'll see this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/75332002-5c87-4223-83cf-b8757f5cdfe8)
 
 
 
