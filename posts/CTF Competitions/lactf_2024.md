@@ -244,6 +244,8 @@ FLAG:```lactf{that_button_was_definitely_not_one_of_the_terms}```
 
 --------------------------------
 
+You can find Sensei's writeup to the challs he solved [here](https://github.com/SENSEIXENUS2/SENSEIXENUS2.github.io/blob/main/posts/ctf/LActf2024/lactf.md)
+
 
 Till Next Time :xD
 
