@@ -208,8 +208,15 @@ Checking the page source you'll see this
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/75332002-5c87-4223-83cf-b8757f5cdfe8)
 
+This JavaScript code sets up event listeners to handle touch and mouse events on the webpage and track the coordinates of these event
 
+There's another part to this code when you check the page source
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9f72bd22-d1ca-4d25-8135-088bbf4c033f)
+
+This interval function continuously monitors the window size (window.innerHeight and window.innerWidth). If the window is resized, it replaces the entire body content with a message "NO CONSOLE ALLOWED". This is an attempt to prevent the user from accessing the console.
+
+Well, to solve this we'll be using the debugger
 
 
 
