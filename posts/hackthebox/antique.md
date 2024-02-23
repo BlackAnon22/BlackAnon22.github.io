@@ -72,7 +72,7 @@ From our scan we can see a udp port that runs the snmp service. Les enumerate
 
 # Enumeraton (Port 161/udp)
 
-One tool we can use to enumerate snmp is ```snmpwalk```
+One tool we can use to enumerate the snmp service is ```snmpwalk```
 
 command:```snmpwalk -v 2c -c public 10.129.73.127```
 
