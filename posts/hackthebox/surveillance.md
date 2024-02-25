@@ -156,7 +156,7 @@ select id,username,fullname,email,password from users;
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2d44147d-b8da-4c00-8bd7-1a67565b222a)
 
-cool, we found a hashed password. But trust me I couldn't crack this just the same way I couldn't crack statics in school😅.
+cool, we found a hashed password. But trust me I couldn't crack this just the same way I couldn't crack Engineering Mechanics in school😅.
 
 Moving on, I also found this interesting file from the output I got from linpeas
 
