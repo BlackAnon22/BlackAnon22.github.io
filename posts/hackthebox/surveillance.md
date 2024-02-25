@@ -85,8 +85,8 @@ Cool, now lets go ahead to escalate our privileges
 
 Running linpeas, found these interesting stuffs
 
-![[Pasted image 20240220010617.png]]
-![[Pasted image 20240220010743.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d388166c-55cd-478b-b298-4e15fdad0c47)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5b2d9cef-110d-4ab4-a82d-bce5e0b8edf4)
 
 These are database passwords
 
@@ -96,7 +96,7 @@ command:`mysql -u craftuser -p`
 
 password:`CraftCMSPassword2023!`
 
-![[Pasted image 20240220020153.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a3ad53d6-c8a4-4b5a-b8b6-bbde9e4f68ee)
 
 Nice Nice, we are connected hehe. Now lets try to dump the user table
 
@@ -104,7 +104,7 @@ Nice Nice, we are connected hehe. Now lets try to dump the user table
 show databases;
 ```
 
-![[Pasted image 20240220020250.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0674fdb4-0ca0-4b31-aa6c-e2ac60ec11c7)
 
 Now we can use the below commands to dump the user table
 
@@ -114,38 +114,37 @@ show tables;
 select id,username,fullname,email,password from users; 
 ```
 
-![[Pasted image 20240220020606.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2d44147d-b8da-4c00-8bd7-1a67565b222a)
 
-cool, we found a hashed password. But trust me I couldn't crack this.
+cool, we found a hashed password. But trust me I couldn't crack this just the same way I couldn't crack statics in school😅.
 
 Moving on, I also found this interesting file from the output I got from linpeas
 
-![[Pasted image 20240220014627.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b499ca69-d237-412d-8104-f254d7751905)
 
 Lets download this to our machine
 
-![[Pasted image 20240220015202.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9a081648-99c6-4705-9c39-6f9ef9a32fdf)
 
 Now that we've downloaded it, lets unzip
 
-![[Pasted image 20240220015512.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a1fb8a02-e462-4894-82f0-8cced81cfdd3)
 
 Well we actually have `2293` lines in this file.
 
 If you recall when we dumped the database earlier we had a fullname `Matthew B`, this makes our search easier, so what we'll do is search for that name. Hopefully we get something juicy
 
-
-![[Pasted image 20240220021258.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/aeb516e0-160c-448e-98f9-5fbb17ba7cfd)
 
 So we found that hash, lets identify it
 
-![[Pasted image 20240220021418.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d3445cfc-6cec-425e-b96d-042ce54a8088)
 
 it is a `sha-256` hash, we can decrypt this using `john the ripper`
 
 command:`john hash --wordlist=/usr/share/wordlists/rockyou.txt --format=RAW-sha256`
 
-![[Pasted image 20240220021541.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/963408c8-bf2b-4651-ab5d-5f8af136d743)
 
 We got the password to be `starcraft122490`
 
@@ -153,7 +152,7 @@ We can use this password to switch user to `matthew`
 
 `username: matthew`            `password: starcraft122490`
 
-![[Pasted image 20240223065309.png]]
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a69a71b8-71af-4eec-9717-43e25815a2e0)
 
 Lets further escalate our privileges
 
