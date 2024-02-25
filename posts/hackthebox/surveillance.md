@@ -12,8 +12,48 @@ Lets get started
 
 command:`sudo nmap -A -p- -v -T4 10.129.192.53`
 
-![[Pasted image 20240220004724.png]]
+```
+Nmap scan report for 10.129.192.53
+Host is up (0.21s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 96:07:1c:c6:77:3e:07:a0:cc:6f:24:19:74:4d:57:0b (ECDSA)
+|_  256 0b:a4:c0:cf:e2:3b:95:ae:f6:f5:df:7d:0c:88:d6:ce (ED25519)
+80/tcp open  http    nginx 1.18.0 (Ubuntu)
+|_http-server-header: nginx/1.18.0 (Ubuntu)
+|_http-title: Did not follow redirect to http://surveillance.htb/
+| http-methods: 
+|_  Supported Methods: GET HEAD POST
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.94%E=4%D=2/20%OT=22%CT=1%CU=30022%PV=Y%DS=2%DC=T%G=Y%TM=65D3DDA
+OS:6%P=x86_64-pc-linux-gnu)SEQ(SP=102%GCD=1%ISR=10B%TI=Z%CI=Z%II=I%TS=A)SEQ
+OS:(SP=103%GCD=1%ISR=10A%TI=Z%CI=Z%TS=A)SEQ(SP=103%GCD=1%ISR=10A%TI=Z%CI=Z%
+OS:II=I%TS=A)OPS(O1=M53CST11NW7%O2=M53CST11NW7%O3=M53CNNT11NW7%O4=M53CST11N
+OS:W7%O5=M53CST11NW7%O6=M53CST11)WIN(W1=FE88%W2=FE88%W3=FE88%W4=FE88%W5=FE8
+OS:8%W6=FE88)ECN(R=Y%DF=Y%T=40%W=FAF0%O=M53CNNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40
+OS:%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=
+OS:%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%
+OS:W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=N)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%R
+OS:ID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
 
+Uptime guess: 32.163 days (since Thu Jan 18 20:05:38 2024)
+Network Distance: 2 hops
+TCP Sequence Prediction: Difficulty=259 (Good luck!)
+IP ID Sequence Generation: All zeros
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 3306/tcp)
+HOP RTT       ADDRESS
+1   181.42 ms 10.10.14.1
+2   182.52 ms 10.129.192.53
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Feb 20 00:00:54 2024 -- 1 IP address (1 host up) scanned in 1128.70 seconds
+```
 From our nmap scan we have 2 open ports, port 22 which runs the ssh service and port 80 which runs the http service. Our enumeration today will be focused on port 80.
 
 
@@ -263,4 +303,11 @@ We spawned a root shell hehe
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2dfb56b1-e3bd-46ab-841c-1aef00f0f722)
 
 Box pwned successfully😎
+
+
+Till Next Time :xD
+<br><br>
+[Back To Home](../../index.md)
+
+
 
