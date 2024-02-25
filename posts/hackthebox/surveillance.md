@@ -257,6 +257,8 @@ Now, all scripts related to application software can be run as sudo. So we need 
 
 command:`find . -type f -name 'zm[a-zA-Z]*.pl'`
 
+ This command searches the current directory and its subdirectories for files whose names start with "zm", followed by any sequence of alphabetical characters, and end with the ".pl" extension.
+
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a4554e86-1448-4123-8d37-4ab5161d97a1)
 
 After a little research I found out that `zmupdate.pl` has a vulnerability
