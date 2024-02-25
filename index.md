@@ -117,6 +117,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[December 27 2023]] [Horizontall](https://Blackanon22.github.io/posts/hackthebox/horizontall.html) `Source Code Analysis` `RCE` `Misconfigured sudo permissions`
 - [[December 27 2023]] [Nibbles](https://Blackanon22.github.io/posts/hackthebox/nibbles.html) `Default Credentials` `RCE` `Misconfigured sudo permissions`
 - [[December 27 2023]] [Bashed](https://Blackanon22.github.io/posts/hackthebox/bashed.html) `OS Command Injection` `Code Execution`
+- [[February 25 2023]] [Bashed](https://Blackanon22.github.io/posts/hackthebox/surveillance.html) `Outdated Software`  `Information Disclosure` `Misconfigured sudo permissions`
 
 
 * * *
