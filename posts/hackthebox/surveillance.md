@@ -65,7 +65,7 @@ Navigating to the webpage
 
 Add `surveillance.htb` to your `/etc/hosts` file
 
-Now lets navigate to the webpage again
+Now, lets navigate to the webpage again
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1b1f0f88-f6a5-447b-92c3-0b5669d36a1f)
 
