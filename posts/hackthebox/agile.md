@@ -114,7 +114,7 @@ cool, lets go ahead and create and account, then from there we login to the webs
 
 cool, we are logged in. Lets go ahead and fuzz for directories
 
->command: ffuf -u "http://superpass.htb/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup
+command:```ffuf -u "http://superpass.htb/FUZZ" -w /usr/share/wordlists/dirb/common.txt -e .zip,.sql,.php,.phtml,.bak,.backup```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Agile]
