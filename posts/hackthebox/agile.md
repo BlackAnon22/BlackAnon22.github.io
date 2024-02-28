@@ -2,7 +2,7 @@
 
 <h3>PortScanning</h3>
 
->command: sudo nmap -A 10.10.11.203 -p- -v -T4
+command:```sudo nmap -A 10.10.11.203 -p- -v -T4```
 
 ```
 [~] Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-11 10:51 WAT
