@@ -85,7 +85,7 @@ Going to the webpage, you should have this
 
 Lets go ahead and add ```superpass.htb``` to our ```/etc/hosts``` file
 
->command: sudo nano /etc/hosts
+command:```sudo nano /etc/hosts```
 
 ```
 ┌──(bl4ck4non㉿bl4ck4non)-[~/Downloads/HTB/Agile]
