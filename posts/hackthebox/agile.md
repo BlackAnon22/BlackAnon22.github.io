@@ -314,7 +314,7 @@ cool, now lets go ahead and run this toool.
 
 command:```chisel server -p 9001 --reverse (run this on your machine)```
 
->command: chisel client <ur ip>:9001 R:80:10.150.150.222:80 (run this on the target's machine)
+command:```chisel client <ur ip>:9001 R:80:10.150.150.222:80 (run this on the target's machine)```
 
 ![image](https://user-images.githubusercontent.com/67879936/224591076-c9446ace-b81c-4add-b619-d45e49c0600c.png)
 ![image](https://user-images.githubusercontent.com/67879936/224591053-8e73902d-3906-4677-ac7e-2b4710d37d2f.png)
