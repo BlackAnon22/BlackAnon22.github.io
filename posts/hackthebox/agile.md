@@ -312,7 +312,7 @@ During my enumeration I found out that port 5555 is running on a webpage similar
 
 cool, now lets go ahead and run this toool.
 
->command: chisel server -p 9001 --reverse (run this on your machine)
+command:```chisel server -p 9001 --reverse (run this on your machine)```
 
 >command: chisel client <ur ip>:9001 R:80:10.150.150.222:80 (run this on the target's machine)
 
