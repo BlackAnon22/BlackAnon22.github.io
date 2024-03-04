@@ -266,7 +266,7 @@ Link:http://superpass.htb/vault/row/4
 
 We found another credentials. At this point I knew we were dealing with a vulnerability called ``IDOR```
 
-> <font color="Green">IDOR, or Insecure Direct Object Reference, is a type of security vulnerability that arises when an application allows a user to access or manipulate resources by directly referencing them using an identifier, such as a file name, record ID, or user account number.If the application fails to properly authenticate and authorize user access to those resources, an attacker may be able to bypass those checks by manipulating the identifier, and gain unauthorized access to data or functionality that should be restricted.</font>
+<font color="Green">IDOR, or Insecure Direct Object Reference, is a type of security vulnerability that arises when an application allows a user to access or manipulate resources by directly referencing them using an identifier, such as a file name, record ID, or user account number.If the application fails to properly authenticate and authorize user access to those resources, an attacker may be able to bypass those checks by manipulating the identifier, and gain unauthorized access to data or functionality that should be restricted.</font>
 
 To exploit this we'll be using burp intruder to fuzz 
 
