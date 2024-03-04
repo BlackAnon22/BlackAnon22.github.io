@@ -399,7 +399,7 @@ Ensure this file is properly saved after adding your payload.
 
 Our payload will be executed if we try switching to the virtual environment, before we switch set up your netcat listener
 
->command: rlwrap nc -nvlp 1234
+command:```rlwrap nc -nvlp 1234```
 
 To switch to the virtual environment
 
