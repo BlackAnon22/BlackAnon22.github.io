@@ -1,6 +1,6 @@
 My teammates(LocalMen) and I participated in the picoCTF_2024 organized by Carnegie Mellon University, which took place between March 12, 2024 to March 26, 2024. It was a great learning experience and I really learnt a lot.
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/ab9c8a84-e954-4734-81bd-e6e4d7650109)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f184606e-ebd7-44f1-ae7c-3e84cb63a7f3)
 ![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/7ea096f1-898f-482f-ada4-e27c10639cbe)
 
 This is a writeup of the challenges I solved during the event 
