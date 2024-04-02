@@ -805,7 +805,7 @@ So we have the recipe and the elements array
 
 ![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/9a0bb245-ee60-4750-8191-81f65c534aee)
 
-This script defines a function called evaluate that takes any number of arguments and checks if they match a recipe in an array. If the first and second arguments match ing equal to 'XSS', the script evaluates the xssproperty of thestateobject as a JavaScript expression using theevalfunction. If theresultis not equal to'XSS', the function simply returns the result.
+This script defines a function called evaluate that takes any number of arguments and checks if they match a recipe in an array. If the first and second arguments match ing equal to 'XSS', the script evaluates the xssproperty of thestateobject as a JavaScript expression using the ```eval``` function. If the resultis not equal to'XSS', the function simply returns the result.
 
 Now that we've seen what the scripts are doing lets start the docker instance
 
@@ -827,7 +827,7 @@ So ```fire + water = steam```, how about air and water??
 
 ![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/89a75b29-ca70-42ac-9969-27e8ceb1fd17)
 
-So, ```air + water = mist```, now this means those 4 elements are the base recipes, so it's safe to say every other recipes are being formed from these base recipes. Now, if you check the index.js file you'll see that the ```xss = exploit + web design```
+So, ```air + water = mist```, now this means those 4 elements are the base recipes, so it's safe to say every other recipes are being formed from these base recipes. Now, if you check the index.js file you'll see that the recipe ```xss = exploit + web design```
 
 ![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/a299f4e4-86a6-4b8e-9ee5-39f7ee18afa5)
 
@@ -853,11 +853,11 @@ The moment we got the "visiting" message, another chromium instance popped up ex
 
 Now, the question is, how do we exfiltrate data with this??
 
-I mean this was the part where nyself and my teammates got stuck. We thought of webrtc, but then webrtc was disabled on the chromium browser so that wasn't possible. We could have used the ```fetch()``` function though but we can't because of the ```connect-src``` in the csp header which limits the domian we connect to or websockets. We were stuck here for days trying to bypass csp hehe
+I mean this was the part where myself and my teammates got stuck. We thought of webrtc, but then webrtc was disabled on the chromium browser so that wasn't possible. We could have used the ```fetch()``` function though but we can't because of the ```connect-src``` in the csp header which limits the domian we connect to or websockets. We were stuck here for days trying to bypass csp hehe
 
 But then we tried something else, how about instead of trying to exfiltrate all the data at once we kind of just check the server for each characters and then we try to make an event happen if the character is present. 
 
-If you are familiar with Blind SQL injection with conditional responses you'll understand what I'm trying to say, for Blind SQL injection you get a response when your query is true. We'll be using the same approach here.
+If you are familiar with Blind SQL injection with conditional responses you'll understand what I'm saying better, for Blind SQL injection you get a response when your query is true. We'll be using the same approach here.
 
 Lets craft a payload like this
 
@@ -870,7 +870,7 @@ Lets try this
 
 ![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/41301228-cf0d-4805-ae30-044bc1aeb50a)
 
-The alert statement got executed which means the character "p" is the first character, lets change the character to say "Q"
+The alert statement got executed which means the character "p" is the first character of the flag property, lets change the character to say "q"
 
 ```
 /remoteCraft?recipe={"recipe":[["Air","Water"],["Air","Earth"],["Earth","Water"],["Earth","Fire"],["Fire","Mist"],["Magma","Mud"],["Fire","Mud"],["Magma","Mist"],["Earth","Obsidian"],["Air","Rock"],["Fog","Mud"],["Brick","Fog"],["Obsidian","Water"],["Computer Chip","Hot Spring"],["Computer Chip","Fire"],["Hot Spring","Sludge"],["Internet","Smart Thermostat"],["Computer Chip","Steam Engine"],["Fire","Steam Engine"],["Hot Spring","Steam Engine"],["Artificial Intelligence","Data"],["Artificial Intelligence","Cloud"],["Computer Chip","Electricity"],["Dust","Heat Engine"],["Software","Encryption"],["Cloud Computing","Data"],["Fire","Sand"],["Electricity","Software"],["Internet","Program"],["Artificial Intelligence","Data Mining"],["Glass","Software"],["Cybersecurity","Vulnerability"],["Exploit","Web Design"]],"xss":"if (JSON.parse(atob(window.location.hash.slice(1))).flag[0] == 'q'){alert(1);}"}
@@ -878,7 +878,7 @@ The alert statement got executed which means the character "p" is the first char
 
 ![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/cf01e480-0f76-4c55-8486-9719f96befca)
 
-Well, the alert statement didn't get executed which means the character "q" isn't the first character of the flag propert
+Well, the alert statement didn't get executed which means the character "q" isn't the first character of the flag property
 
 It was easier to test this method here since we know  the fake flag to be ```picoCTF{test_flag}```, so you can confirm if these characters are in the flag property using that query. From the fake flag we know the 10th index in the flag property has the "s" character, lets confirm this with our query
 
