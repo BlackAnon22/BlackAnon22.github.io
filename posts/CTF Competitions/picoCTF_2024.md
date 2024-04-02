@@ -297,7 +297,7 @@ FLAG:- ```picoCTF{3ndi4n_sw4p_su33ess_25c5f083}```
 ## dont-you-love-banners (300 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c89ee0f3-fee9-4c61-8d62-9b8ae8eaebf7)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/41e77b18-50be-4f29-a723-69b33815620e)
 
 In this chall, we have 2 instances, in the first instance some crucial information was leaked while the second instance is to connect to the running application.
 
@@ -305,7 +305,7 @@ Well, lets connect first with the instance that has been leaking crucial informa
 
 command:```nc tethys.picoctf.net 54896```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/4481394a-f2aa-4e19-94b4-69c2a194daaa)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2355044a-1fdf-48cf-b1fc-ea32f1fe8e7e)
 
 We actually got a password from the server, well lets keep that somewhere.
 
@@ -313,35 +313,35 @@ Now, lets connect to the running application
 
 command:```nc tethys.picoctf.net 49671```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/7dad4803-9906-448b-9559-f77dc8e3d0c7)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/26de50f0-3997-41f8-9285-4066291510b3)
 
 We were asked for a password, using the password we got from the first instance
 
 password:```My_Passw@rd_@1234```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/1d21f354-5ece-4d02-8fcd-88d3a89d23ba)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5fd54f83-928c-46a7-ab4f-84985e3bb3ee)
 
 The answer to this question is ```Defcon```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/6ed010a3-e5e5-469e-8113-71b66d5decbc)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/031983fb-c676-4881-8df8-9ec57680507c)
 
 The answer to this last one is ```John Draper```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/4fcfea4e-b75a-47a1-8c59-8299d9a98226)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fb56ab37-e349-4321-898a-5b4da40f084f)
 
 Now that we are in, lets go ahead to escalate our privileges.
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/61990c80-72c7-4120-8941-b94241952111)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/67afa711-b84a-41f2-be6d-46dfc50fe797)
 
 smooth, we have the hash for the root user, well lets crack it using "brother john"😂
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c119f7e3-b819-4e8a-8bb7-e3570b5cf7c3)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/73df27a4-edf6-4427-a004-e81b5c074041)
 
 We got the password to be ```iloveyou```, with this password we can actually switch user
 
 command:```su root```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/ce2019ca-704b-463f-a687-b18e9f916550)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/218f6e6c-f13e-4386-956a-8bebcc1450cd)
 
 That's our flag right there
 
@@ -352,13 +352,13 @@ FLAG:- ```picoCTF{b4nn3r_gr4bb1n9_su((3sfu11y_f7608541}```
 ## SansAlpha (400 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/b16721ed-dde3-4b0f-9aa0-b742982243fc)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3da0aed9-3315-4d8e-923c-5a43266365cf)
 
 Alright so, in this task we have a bash shell but then we can't use alphabets, only numbers and (most) symbols are allowed. 
 
 Lets connect to the challenge instance
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/4aa6ccb5-83f4-426b-821d-c81bccccb09d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7ac831d7-be25-4102-ae60-a97212530aa8)
 
 Well, as you can see we can't use any character here hehe.
 
@@ -401,13 +401,13 @@ zsh: permission denied: /home/bl4ck4non/Documents
 ```
 Good, now lets test this on the challenge instance, lets see if it'll help us with the directory structures
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/e0355e04-4df3-45c0-a2cd-abab0a0b1537)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3a3485b4-e2fb-4543-b0b8-dd42fb725379)
 
 So there's a directory ```/home/ctf-player/blargh```
 
 Lets keep digging, lets check for sub-directories/files this time
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/1ec7c857-a3cc-4f06-a748-83fd2707aefc)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5b9a8878-99d7-4d63-8256-aa08761c1ea9)
 
 So inside the ```blargh``` directory we have ```flag.txt``` and some bunch of other files.
 
@@ -445,17 +445,17 @@ Now, lets confirm if we can use these binaries to read the ```flag.txt``` files 
 
 So to read with strings we can try something like this ```/usr/bin/strings ~/blargh/flag.txt```, using wildcards we have this ```/???/???/??????? ~/??????/????????```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/764f0d4a-b49c-4f9a-99c2-749c0cadbf3d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b3ada8d0-8ea9-424b-9690-99fc18d162a7)
 
 So we don't have ```strings``` available.
 
 Lets try the base64 binary, we can do something like this ```/usr/bin/base64 ~/blargh/flag.txt```, using wildcards we have this ```/???/???/????64 ~/??????/????????```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/13a26511-edea-4200-8fa3-6b8c040ac483)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ed23a575-c24b-40a5-90ab-d0c7d5bc6cc4)
 
 Also didn't work. Lets check out the last binary. We can try this ```/usr/bin/base32 ~/blargh/flag.txt```, using wildcards we have ```/???/???/????32 ~/??????/????????```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/f7e1c553-a08c-4ad4-96d7-d9e399377a07)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/713f1b61-995d-429f-809e-a2ca3ddee047)
 
 Lets decode this
 
@@ -477,11 +477,11 @@ FLAG:- ```picoCTF{7h15_mu171v3r53_15_m4dn355_4945630a}```
 ## Bookmarklet (100 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/fbb68337-39a7-4c5b-aab9-6fcf8d81886a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8fc83154-5c34-4e33-b3c0-03522f073b46)
 
 Navigate to the webpage
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/4410eb8b-d0f5-4d9b-bff9-ed0f4bac334d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4f8d2d39-0d09-4271-b254-9d74f68e5239)
 
 We get this javascript code
 
@@ -500,7 +500,7 @@ This javascript code is more like a simple encryption routine using a basic form
 
 We'll run this code using one of the developer tools which is the "console"
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/2736d1be-2306-47f7-a31d-076d03a05eba)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c5a70db7-5b7a-43f6-96dd-d50252f11dfd)
 
 Soft, we got our flag
 
@@ -511,27 +511,27 @@ FLAG:- ```picoCTF{p@g3_turn3r_1d1ba7e0}```
 ## WebDecode (50 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/23c27c30-b2ba-4b87-8b6a-73f020d93f4f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4cda5532-ae3b-4b67-94da-c88288807177)
 
 A question was aksed, Do you know how to use the web inspector??? Well, lets see
 
 Navigate to the webpage
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/d60f4871-5de9-40d9-9fff-898f5d56f8ba)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/50352705-a944-457b-8490-09ee3e7a538c)
 
 We have 3 pages here, the "home page", the "about page" and the "contact page"
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/bccbc69d-2fab-4138-b4f4-deed63fb218b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4ed243cc-5ddd-417e-872e-e7f4ea113f8d)
 
 This is what you get when you click on the "home page"
 
 Clicking on the "about page" you get this
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c310eca9-9f84-42cc-9ed5-21868385367d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cdc97d22-7e54-48a6-8447-3670275a590e)
 
 Now, lets inspect this page
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/b03637fb-9e3c-47f7-bbff-b56405691928)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/026ffb8b-26ef-4ca1-9486-45ded196d477)
 
 We can see the base64 encoded text, well lets decode this
 
@@ -551,24 +551,24 @@ FLAG:- ```picoCTF{web_succ3ssfully_d3c0ded_df0da727}```
 ## IntroToBurp (100 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c7b1ae80-0a9e-4ecb-b75f-9597a6a52385)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a48a554b-4e3b-4574-a810-25f872b94803)
 
 Navigate to the webpage
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/e132e1f9-ad05-44e5-a257-2ab72745d388)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fe0e857a-d075-4c7a-a5ae-0188d783dfa9)
 
 So we get this registration page. Lets try to register so we can see what happens next
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/16ce4fae-96ff-4cba-b279-910c9d6d5e2c)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/8786d0f8-c432-4a98-a202-7d3dba9e4f0a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9d593bd2-6cc4-4bdf-bc3f-0a94dcc95a82)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/04e7902c-ec22-4bbe-857e-1c1e1853cfe7)
 
 oops, we are being asked for an otp, but we don't have one lool.
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/9228710a-569c-4240-a674-613c2a32c209)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e82b52cb-d759-4104-9615-e738049efd5a)
 
 Lets intercept this request with burpsuite and send it over to burp repeater
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/15667a35-64cd-4686-a0f2-797e4fb98f41)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a6ea43b9-9255-4d3e-816e-72a416a0075f)
 
 Good. Now, have you ever heard of the mangling technique??
 
@@ -577,11 +577,11 @@ Mangling is a technique used to bypass security filters or controls by modifying
 ```
 So, we'll perform a mangling technique on the otp parameter by adding square brackets
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/16ca8fb7-243b-4f89-bee8-b8f70e407f1c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e54aa357-132f-4982-b1d6-3a96f137e28a)
 
 Sending the request, you'll get this
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/23462e5a-39e4-4857-b1ee-0f8baa28848f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f0b0d124-6d6b-4dcd-bf55-8d4d84b59b2e)
 
 cool, we got our flag
 
@@ -592,21 +592,21 @@ FLAG:- ```picoCTF{#0TP_Bypvss_SuCc3$S_2e80f1fd}```
 ## Unminify (100 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/0e772386-5cc9-45dd-bd0a-1a24bc6af6fe)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f3d45349-a012-40b0-939e-169f3dc44690)
 
 Navigate to the webpage
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/2531f589-1c3c-4ddf-83fc-5f7d98ced0a6)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/07f06d37-b144-41ad-88d6-6c9827a962d7)
 
 The webpage says it has distributed the flag but doesn't know how to read them.
 
 Lets view the page source
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/999b472a-17ed-46d3-8285-18b8fc1f17be)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/732d036c-ddcb-4369-ba97-ffa7b3fa570e)
 
 Yeah click on "Line wrap"
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/66e9031e-dbb6-4056-a9f9-8744cf2cb518)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8e651956-051e-47c8-b6a0-2fe18535417d)
 
 Yup, that's our flag. Easy right??😎
 
@@ -617,19 +617,19 @@ FLAG:- ```picoCTF{pr3tty_c0d3_622b2c88}```
 ## No Sql Injection (200 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/1f1285d5-eebd-4d91-acb9-293769006e64)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5a2e924a-6123-4d95-8816-cf8d0d68e770)
 
 From the name of the chall, it's quite obvious what the attack vector is.
 
 I've documented the way I exploited this vulnerability in one of my writeups
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/7e73b308-7ed2-459c-ad93-10edf852740a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/de7b148b-2de1-44ea-a219-a2e03b6df34f)
 
 We'll be using the same payloads but then the way we apply it will be different. Instead of interecepting the request with burpsuite and then editing the parameters to include the payload, we'll actually use the payload first before intercepting the request with burpsuite
 
 Navigate to the webpage
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/97da9d4c-a438-457f-95ce-2fb06825263c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a7f85db9-4e07-45bd-97a8-75c97483cf5d)
 
 We have this
 
@@ -639,15 +639,15 @@ Email: {"$gt":""}
 Password: {"$gt":""}
 ```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/935ab1df-dc9c-47c1-9574-ca1b7b554477)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/716d3b90-9d02-4133-b2be-663efa71c5e6)
 
 Lets intercept this request using burpsuite and then we send it over to burp repeater
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/9ce31b8c-e028-451b-b0b2-463f8aa80de9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c3830753-af39-4a00-ad5b-82fa850d1eae)
 
 Now, lets follow redirection
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/93f4bfa3-7f33-4142-b5ce-ca09c0259ab4)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/378d4f3f-2d69-4144-84de-d3c2bba095bb)
 
 The token is actually encoded in base64, lets decode this
 
@@ -667,38 +667,38 @@ FLAG:- ```picoCTF{jBhD2y7XoNzPv_1YxS9Ew5qL0uI6pasql_injection_53d90e28}```
 ## Trickster (300 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/7cc1dc32-fb71-48d3-a537-6dfc19002aea)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/217ead34-902b-44d5-a2b2-d0d99deecb25)
 
 A web app that only allows png images?? Well, this screams the file upload vulnerability attack vector hehe
 
 Navigate to the webpage
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/7d6a4a9b-d79a-42bc-948e-7325f761a60b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/20c41bea-d806-4bfc-ae3a-5896d51a6e8c)
 
 Lets try to upload a normal png image
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/85ade628-aa09-4017-a5af-0b316bdb5e50)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/ca206cde-3c4c-48c6-95d7-f8f8785e5c9a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2922a205-1928-41f5-b49c-f723070d908e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b78f2dfc-e6a9-4ac2-8a3c-7e2094cef2de)
 
 Our image got uploaded successfully. Now, the images are uploaded to the ```/uploads``` directory, but when you navigate there you get this
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/6ca5648a-e6b0-4c90-bba3-89fb3f717dc0)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c13234c3-9141-4b9a-83b2-3a58274a3235)
 
 This means the directory exists but then we don't have enough permission to view the directory. 
 
 To view the image we uploaded we can do this ```/uploads/bl4ck4non.png```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/ed05ae9e-dd3f-4816-a4cc-aff36199e160)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/046d5f43-8325-45c7-bac4-889e07f131d6)
 
 As you can see, it worked.
 
 Now, lets upload another png image, but then this time we'll intercept the request using burpsuite so we can do some modifications
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/f9cff1b9-e93c-4a97-8c65-bb3ef74e6836)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/16ef05f0-3339-468b-971e-b43fead98812)
 
 On burpsuite you have this,
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/f5d94568-fd97-40f2-9029-6be5d8febc1e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0e9022a5-6c39-4b5e-b6f0-d8ad266179e3)
 
 We'll delete the contents of the png image and add this payload
 
@@ -707,22 +707,22 @@ We'll delete the contents of the png image and add this payload
 ```
 We'll also edit the filename
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/da791f12-6796-44b9-adaf-44fc82396d61)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ab72a6db-3c4e-4f9f-8108-3501f572a1a8)
 
 Good, now forward the request
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/9996ff3b-ac9c-4bce-9165-9e9439b4f302)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/26f8b058-878b-4707-a31b-c77f732ac98b)
 
 Our file got uploaded successfully
 
 To view our file we'll navigate to ```/uploads/freakyFlags.png.php```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c55ef63e-9bc1-457c-9829-625c13a86ccf)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5e766499-955c-40ee-98a6-e955e85f5492)
 
 We get this, now to get command injection on this server we can add this ```?cmd=id```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/93694563-eb05-4791-9631-d583fb44a9f6)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/78d2863c-8421-4afc-9f32-71af8c6373eb)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/be15caf6-2a9c-4400-9af9-5ecb2f99f19a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/87fb5c96-1852-442f-8fdf-938ae7cdfff2)
 
 As you can see, we can execute linux commands.
 
@@ -730,11 +730,11 @@ Well, lets look for the flag, I'll be using burp repeater for this.
 
 We'll start with going back a directory and listing the contents of that directory, something like this ```cd .. && ls -la```, ensure you url encode this
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/8cf807df-5ea2-41dd-b410-820fc80247be)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/edf63944-0c6f-4827-b72e-0f8f5b06c3b3)
 
 That file looks interesting, lets cat it, we can achieve that using this ```cd .. && ls -la && cat GQ4DOOBVMMYGK.txt```, ensure it is url encoded before sending.
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/2ae6d6f0-84cd-4443-aadb-843a079fc623)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/35ef4fb7-1959-4428-97cd-b88a08376780)
 
 We got our flag😎
 
@@ -745,11 +745,10 @@ FLAG:- ```picoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_48785c0e}```
 ## Elements (500 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/3f36f5f8-5d53-4169-9bcf-8070f910756c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8934c7d6-fba1-446c-a64d-c089234945e3)
 
 We don't need to launch the instance yet, lets try to download the source code and analyze it.
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/adcdb8b9-4d43-4237-8a65-a7e993212b13)
 
 The ```flag.txt``` contains a fake flag so chill we haven't solved it yet😂
 
