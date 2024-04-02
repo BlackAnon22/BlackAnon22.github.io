@@ -118,11 +118,11 @@ FLAG:- ```picoCTF{t1m3m@ch1n3_e8c98b3a}```
 
 ![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/5eaae91a-3401-429f-b37e-3a8c8725ffea)
 
-Download the challenge files and unzip
+Download the challenge file and unzip
 
 ![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/b26fa3e5-71e1-4007-9b26-0cd38ce78735)
 
-unlike the previous challs the files for this chall are much, from the challenge description we are to look for the commit that's preventing the program from working. Well, ```git show``` won't work in this case actually. The guy we'll be needing in a situation like this is "grep", I called him already he's on his way hehe
+unlike the previous challs the files for this chall are much, from the challenge description we are to look for the commit that's preventing the program from working. Well, ```git show``` won't work in this case actually. The guy we'll be needing in a situation like this is the command ```grep```, I called him already he's on his way hehe
 
 command:```grep -ir "picoCTF{```
 
@@ -162,7 +162,7 @@ We have 4 folders here, checking each folder we have this
 
 ![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/1f7036b7-0751-4113-9fbc-1fad5671457b)
 
-The flag was scattered amongst the folder so all you have to do is rearrange i
+The flag was scattered amongst the folder so all you have to do is rearrange it
 
 FLAG:- ```picoCTF{t3@mw0rk_m@k3s_th3_dr3@m_w0rk_6c06cec1}```
 
@@ -299,7 +299,7 @@ FLAG:- ```picoCTF{3ndi4n_sw4p_su33ess_25c5f083}```
 
 ![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c89ee0f3-fee9-4c61-8d62-9b8ae8eaebf7)
 
-In this chall, we have 2 instances, in the first instance some crucial information has been leaking while the second instance is to connect to the running application.
+In this chall, we have 2 instances, in the first instance some crucial information was leaked while the second instance is to connect to the running application.
 
 Well, lets connect first with the instance that has been leaking crucial information
 
@@ -360,7 +360,7 @@ Lets connect to the challenge instance
 
 ![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/4aa6ccb5-83f4-426b-821d-c81bccccb09d)
 
-Well, as you can see we can't use any characters here hehe.
+Well, as you can see we can't use any character here hehe.
 
 What we'll make use of here is something known as wildcards
 
@@ -413,7 +413,7 @@ So inside the ```blargh``` directory we have ```flag.txt``` and some bunch of ot
 
 Now, how can we read the ```flag.txt``` file????
 
-Well, lets go back to my terminal. To check for available binaries, binaries like ```base32```,```base64```,```awk```,```cat```,```
+Well, lets go back to my terminal. To check for available binaries, binaries like ```base32```,```base64```,```awk```,```cat``` and ```strings```
 
 ```
                                                                                                                                                                                                                                              
@@ -570,7 +570,7 @@ Lets intercept this request with burpsuite and send it over to burp repeater
 
 ![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/15667a35-64cd-4686-a0f2-797e4fb98f41)
 
-Good. Now, have you ever heard of the mangling techniquw??
+Good. Now, have you ever heard of the mangling technique??
 
 ```
 Mangling is a technique used to bypass security filters or controls by modifying or obfuscating the input data. This can be achieved through various methods such as encoding, encrypting, or adding extra characters to the input. The main goal of mangling is to alter the input data in a way that it can bypass the security filters or controls, allowing the attacker to exploit the vulnerability.
