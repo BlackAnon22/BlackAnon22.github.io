@@ -749,7 +749,6 @@ FLAG:- ```picoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_48785c0e}```
 
 We don't need to launch the instance yet, lets try to download the source code and analyze it.
 
-
 The ```flag.txt``` contains a fake flag so chill we haven't solved it yet😂
 
 ```
