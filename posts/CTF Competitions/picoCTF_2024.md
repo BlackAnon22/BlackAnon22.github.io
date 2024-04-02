@@ -1086,7 +1086,7 @@ We've got a pdf file, lets view the content of this pdf file using a pdf viewer
 
 oops. we've only got half of the flag. Should we form the other half ourselves??😂
 
-Well, we don't need to do that. Try using the ```file``` command to check the kind of file that file is
+Well, we don't need to do that. Try using the ```file``` command to check the kind of file that challenge file is
 
 ```
 ┌──(bl4ck4non👽bl4ck4non-sec)-[~/…/CTF/picoCTF_2024/forensics/secret_of_the_polygot]
@@ -1294,7 +1294,7 @@ Good, now lets submit and check the modified jpg file
 
 Good, we've completed the first tag, the second tag requires us to modify ```DateTimeOriginal```
 
-Chotto matte, what if instead of editing the timestamps one by one we just edit all at once??
+Chotto matte (wait a moment), what if instead of editing the timestamps one by one we just edit all at once??
 
 Lets try it
 
@@ -1347,7 +1347,7 @@ Lets submit and view
 
 ![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/0d1ce5cb-5258-4695-95a7-59d3711b6660)
 
-Good, we are now on the 7th tag, well for this 7th tag exiftool didn't really help me out. So I uded a hexeditor "imex". To install you can just run ```sudo apt install imhex```. You actually can use any hexeditor of your choice
+Good, we are now on the 7th tag, well for this 7th tag exiftool didn't really help me out. So I used a hexeditor "imex". To install you can just run ```sudo apt install imhex```. You actually can use any hexeditor of your choice
 
 We'll edit the jpg file using this, you'll know why soon
 
