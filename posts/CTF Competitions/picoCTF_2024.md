@@ -1,7 +1,7 @@
 My teammates(LocalMen) and I participated in the picoCTF_2024 organized by Carnegie Mellon University, which took place between March 12, 2024 to March 26, 2024. It was a great learning experience and I really learnt a lot.
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f184606e-ebd7-44f1-ae7c-3e84cb63a7f3)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/7ea096f1-898f-482f-ada4-e27c10639cbe)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f60bf9f0-afb0-41c9-a26c-1d6dacfd3fae)
 
 This is a writeup of the challenges I solved during the event 
 
@@ -56,7 +56,7 @@ This is a writeup of the challenges I solved during the event
 ##  Super SSH (25 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/6fb1149c-36bd-48de-aa48-59608593e232)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a04f3bb8-9eea-4439-9a62-33f42fa98d70)
 
 For this task they provided us with the username, the port the ssh service is running on, the domain to connect to and then the password. So, we can use all this to connect to the remote instance via ssh
 
@@ -78,15 +78,15 @@ FLAG:- ```picoCTF{s3cur3_c0nn3ct10n_45a48857}```
 ## Commitment Issues (50 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/ad849b47-3413-4552-bd85-4f9b5ea3bb88)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5e8229a3-e435-4359-a1c9-630e958a9315)
 
 Download the challenge file and unzip
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/d937b226-792f-46cc-93f3-2e7df0f5cdcc)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7fec1abb-4d34-4ae9-a8cb-2ba6bb9c5c59)
 
 We actually have lots of files here and they all are git files, we were told from the challenge description that "he deleted the flag he accidentally wrote down". To view the changes made to this git files we can use the command ```git show```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/323e2132-15b1-460e-9344-912cc9351999)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5240f576-57b9-4d1b-8fe5-5775f0dc402c)
 
 Well, that's our flag there 
 
@@ -97,15 +97,15 @@ FLAG:- ```picoCTF{s@n1t1z3_c785c319}```
 ## Time Machine (50 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/2983efd3-7e87-40a3-b215-e275eb8a6e48)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/abd4eaad-2a0b-40da-800e-0aa13b228ea1)
 
 Download the challenge file and unzip
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/99c86e02-4157-4d1f-abd8-5f9fb750801b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/01acaf4c-3e94-4d4c-8d59-e0375555382f)
 
 We've got some git files here also, just like in the previous challenge the ```git show``` command helps us inspect files in the git repository
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/153eb578-6769-4cde-b7ee-3bc1ebd001ee)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/68688743-af2e-420a-8cd9-68fad2152248)
 
 We got our flag
 
@@ -116,11 +116,11 @@ FLAG:- ```picoCTF{t1m3m@ch1n3_e8c98b3a}```
 ## Blame Game (75 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/5eaae91a-3401-429f-b37e-3a8c8725ffea)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/673d9e48-fd1d-4ac0-a081-2caf54fdca62)
 
 Download the challenge file and unzip
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/b26fa3e5-71e1-4007-9b26-0cd38ce78735)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/89f0df2b-6bed-4431-af00-15e8d0a62933)
 
 unlike the previous challs the files for this chall are much, from the challenge description we are to look for the commit that's preventing the program from working. Well, ```git show``` won't work in this case actually. The guy we'll be needing in a situation like this is the command ```grep```, I called him already he's on his way hehe
 
@@ -144,11 +144,11 @@ FLAG:- ```picoCTF{@sk_th3_1nt3rn_2c6bf174}```
 ## Collaborative Development (75 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/216a43a5-97a7-4cf1-acfa-a44d6d17d256)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5829f222-5e72-4cb4-a200-06bfb703fd16)
 
 Download the challenge file and unzip
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/ba13d003-3c6a-4a70-8d45-bbc12bd69100)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dd9718f9-545b-4df4-bd1e-f6ea9f7e7d22)
 
 We'll be using the "Git Extractor" tool for this, you can download it [here](https://github.com/internetwache/GitTools/blob/master/Extractor/extractor.sh)
 
@@ -156,11 +156,11 @@ To run the tool
 
 command:```bash extractor.sh drop-in <folder you want the output to be stored at>```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c00c6ae9-9e9f-408d-8847-7f3bdfb41d5e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/357df383-858e-473f-a67b-5fc92f48e5d0)
 
 We have 4 folders here, checking each folder we have this
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/1f7036b7-0751-4113-9fbc-1fad5671457b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ad7bda51-71ad-4fab-a2d1-102dd312638e)
 
 The flag was scattered amongst the folder so all you have to do is rearrange it
 
@@ -171,26 +171,26 @@ FLAG:- ```picoCTF{t3@mw0rk_m@k3s_th3_dr3@m_w0rk_6c06cec1}```
 ## binhexa (100 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/ad3d7949-8845-4788-9f19-03dd2c1bd9d5)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7321e279-1776-4d4d-890c-2c09b0ba574b)
 
 They gave us the challenge instance to connect to 
 
 command:```nc titan.picoctf.net 49964```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/4be20ba1-a191-4942-b54f-ca6058777bd1)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/851d807a-b02d-4e17-bfe9-ab19da553e6b)
 
 So we are meant to search for the flag here, to get the flag we have to perform the unique operations. We can use this [website](https://www.rapidtables.com/calc/math/binary-calculator.html)
 
 Using that website should get you to the last task, lets solve for the first task
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/2a325e0f-c45b-4ffe-8a77-271efcd36ce3)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/42db7bca-c7dc-493d-8201-819af59011cf)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/757e6d55-9204-4036-b4bf-1093d741c1e7)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c24f0b8a-79d1-4c52-a3a2-067963c5c78d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2ac8078c-2a80-4f66-a44a-3fb285d04777)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7fd66c60-f917-4caf-a19f-3aacc16ace34)
 
 To enter the result of the last operation which is ```000100111110``` to hex, we can use this [website](https://www.rapidtables.com/convert/number/binary-to-hex.html)
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/1a0136b1-253a-42fb-bc73-6546090feefc)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/6446514f-1b48-4479-b106-0fe0b7c5dcbb)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1912aa4b-dd57-4972-a622-a86f74f037b5)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1817d644-5fb1-49fe-953f-a188b810c783)
 
 We got our flag
 
@@ -201,53 +201,53 @@ FLAG:- ```picoCTF{b1tw^3se_0p3eR@tI0n_su33essFuL_d6f8047e}```
 ## Binary Search (100 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/ac044467-2657-46f0-9e3a-e249761fde79)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cf92f91c-5791-4f4f-b403-03b6213d667f)
 
 When you launch the instance
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/4ff55a79-b2ac-4893-9637-055772c96a1e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/08f08895-bd7b-428b-9870-49a4bf184aef)
 
 Since we have the username and password we can connect to the challenge instance using ssh as stated there
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/f114f75e-4551-4c83-b847-bc182ee2b75d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e870de15-f335-4653-8755-6927888d0b97)
 
 This is a game where you guess numbers, well I've seen this chall before during the "cyberstarters CTF" last year so it was quite easy to figure out.
 
 First thing you do is basically start from the middle, so lets start with say ```500```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/ad0c4e07-5fc5-4397-b438-259ddb31a81b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dd0a0d90-5959-4dad-8b70-a66d62497dcf)
 
 We have to go lower, now lets use ```400```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/7ca24694-6e44-4e9e-99b3-f807790baa49)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6c3e88bb-c1f9-4881-b252-a4fb25f16d06)
 
 Now, we are meant to go higher, now lets use ```450```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/1a5071c3-b16d-4ce8-92c6-30eb7b7a66d7)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ba08d4da-1667-48fe-9a73-7c9920c98d74)
 
 We have to go higher, this means the number is between ```450``` and ```500```, lets use 470
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/2832e0e0-2ea5-48ee-a3b5-e5bf3b0d170f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/da9ec30f-dd29-45f0-aeff-f97aa2df4896)
 
 Higher again, lets use ```480```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/be301df5-954d-433c-8eb7-dcb236de884f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2eb55638-72b4-43e0-991e-de44b05b6900)
 
 Higher again, lets use ```490```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/284a719a-76f7-4c9d-bb76-a7d2f2b78fba)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3c7ffce2-c830-4c14-9733-bbdce5483549)
 
 Lower, so the right number is between ```480``` and  ```490```. Lets use ```485``` this time
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/ca59e739-4c69-48e7-bacb-9472a4fe4c99)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d8dcf358-e50f-450b-a7ba-592300a5df6c)
 
 Higher, nice, lets use ```489```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/3e0819a9-c4d4-4e5d-92a2-abf637ec931a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/68f7d39f-913f-4c2f-b2da-983750439f5b)
 
 Lower, we've narrowed the right number between ```485``` and ```489```. Now, we'll just try ```486```,```487``` and ```488```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/4515bde2-24de-470d-b589-2d4d316f21ff)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2383c95f-ca0f-4de2-b5cb-894b4786f1cb)
 
 ```486``` worked hehe.
 
@@ -258,11 +258,11 @@ FLAG:- ```picoCTF{g00d_gu355_1597707f}```
 ## endianness (200 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/e72dc0e7-e95f-459f-b1cf-5388acb16aa1)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d66ea3cf-d15f-4986-8284-449c8a4dbda0)
 
 Lets connect to the challenge instance
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/6282c3b7-ba21-43f7-94e0-05a64cc67b5d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/eac6268d-e545-4327-ba23-1d66ae76365b)
 
 So we are meant to find the little endian and big endian representations of a word
 
@@ -270,23 +270,23 @@ To do this you can use this [website](https://learnmeabitcoin.com/technical/gene
 
 First we have to convert the word ```wjsyg``` to hex. You can do that using [cyberchef](https://gchq.github.io/CyberChef/)
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/8375c753-892f-4b62-a7c7-e22c2370bbb5)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/67766e6d-3792-4560-ac3f-6e4f4da0a961)
 
 So we have this ```776a737967```, now we'll convert this to the Little Endian representation
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/504ac22b-3ece-48c5-ace1-c398bce9be9f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0aa45733-3424-4bed-92cf-52419f95e332)
 
 There you have it,
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c90dabc5-d9c5-4212-a2ca-22c1f3c507eb)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6221d294-7d73-450e-8ba4-7500f48f15e2)
 
 It worked, now for the Big Endian representation
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/ece19dcb-f472-4b4e-9a88-f430095e1498)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bec3b18f-6bc4-4656-bbd4-5cb14a4280af)
 
 Yup, that's it
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/769a6935-6ba3-4f5b-90e2-107c705dd8b5)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/51fb768c-96c6-4770-8379-598b25303128)
 
 We got our flag. You can read more about Little and Big Endians [here](https://www.techtarget.com/searchnetworking/definition/big-endian-and-little-endian)
 
