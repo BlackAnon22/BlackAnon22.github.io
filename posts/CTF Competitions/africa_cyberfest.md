@@ -242,7 +242,16 @@ Lets go back to autopsy and check the ``` /Africa Cyberfest/``` directory
 
 We can see that ```.DAT``` file
 
+```
+A .DAT file is a generic file extension that stores various types of data, such as configuration settings, game data, video/audio data, or log files, in a binary format specific to the creating application.
+```
+Lets export this file too
 
+If you run ```strings``` and ```grep``` you'll see this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5b3420a9-2e5e-4698-b031-522306d2c1a2)
+
+This means our password's there actually
 
 
 
