@@ -126,9 +126,73 @@ You see it's blank, viewing the page source
 
 Also blank
 
+Lets fuzz for directories using ffuf
 
+command:```ffuf -u "https://afr1cacyb3rfe5t-troll.chals.io/FUZZ" -w /usr/share/wordlists/dirb/common.txt  -e .zip,.sql,.php,.phtml,.bak,.backup```
 
+We have the ```/robots.txt``` directory, checking this directory
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/21fc78dc-5ab7-4ddd-a3ae-84e87daaa7f1)
+
+We have another directory here, lets navigate to this directory
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/38c71c85-a0ab-4662-8d87-632f94e92243)
+
+So navigating to that directory gives us a file to download
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/africa_cyberfest/web]
+└─$ ls -la
+total 444
+drwxr-xr-x 2 bl4ck4non bl4ck4non   4096 May 19 07:18 .
+drwxr-xr-x 7 bl4ck4non bl4ck4non   4096 May 19 03:43 ..
+-rw-r--r-- 1 bl4ck4non bl4ck4non 444640 May 19 07:17 robots.txt
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/africa_cyberfest/web]
+└─$ file robots.txt                                                                                                  
+robots.txt: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=35a237ca786dd7f433a5e3761cef1b76eb451a25, for GNU/Linux 3.2.0, not stripped
+```
+oops, that's a binary.
+
+Using the command ```strings robots.txt | grep "actf{"``` or the command ```strings robots.txt | grep "ACTF{"``` won't get you the flag actually😂. This is because the flag format actually changed (case-sesitive wise). So, running only the ```strings``` command on the binary gives you the flag
+
+command:```strings robots.txt```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1bc8b02e-f555-4c54-aac0-7b72975bde20)
+
+We got the flag
+
+FLAG:-```aCtF{robotTxt_and_strings_as_requested}```
+
+-----------------------------
+
+# Forensics
+
+## Invasion!
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/633b475d-9c04-4295-b3dd-ecc85e07e31d)
+
+This is actually a huge file just so you know😅, download this file to your machine and unzip, you should see this
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/africa_cyberfest/forensics]
+└─$ cd disk_image      
+                                                                                                                                                                                                                                             
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/…/CTF/africa_cyberfest/forensics/disk_image]
+└─$ ls -la
+total 18074244
+drwxr-xr-x 2 bl4ck4non bl4ck4non        4096 May 19 04:08  .
+drwxr-xr-x 3 bl4ck4non bl4ck4non        4096 May 19 07:11  ..
+-rw------- 1 bl4ck4non bl4ck4non  9346220032 Apr 25 04:09 'doh ctf.vmdk'
+```
+We have a "vmdk" image, well what I did was convert this to a raw image using qemu
+
+To install qemu you can use the command ```sudo apt-get install qemu-utils```
+
+To convert to raw image you can use the command ```qemu-img convert -f vmdk -O raw doh\ ctf.vmdk doh.raw```
+
+Now that we are done converting we can mount this using autopsy
 
 
 
