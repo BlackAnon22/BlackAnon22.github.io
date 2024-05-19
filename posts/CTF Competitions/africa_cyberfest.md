@@ -243,7 +243,7 @@ Lets go back to autopsy and check the ``` /Africa Cyberfest/``` directory
 We can see that ```.DAT``` file
 
 ```
-A .DAT file is a generic file extension that stores various types of data, such as configuration settings, game data, video/audio data, or log files, in a binary format specific to the creating application.
+NTUSER.DAT is a Windows file storing user-specific settings and configuration data, including preferences, application settings, and account information, personalizing the Windows experience for each user.
 ```
 Lets export this file too
 
@@ -252,6 +252,25 @@ If you run ```strings``` and ```grep``` you'll see this
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5b3420a9-2e5e-4698-b031-522306d2c1a2)
 
 This means our password's there actually
+
+To extract data from this windows registry file we can use a tool ```reglookup```, you can use the ```sudo apt-get install reglookup``` to install the tool
+
+command:```reglookup  NTUSER.DAT > abeg.txt```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/africa_cyberfest/forensics]
+└─$ reglookup  NTUSER.DAT > abeg.txt
+```
+Now we can grep out the password from this txt file
+
+command:```strings abeg.txt| grep "shadow_commander_password"```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/africa_cyberfest/forensics]
+└─$ strings abeg.txt| grep "shadow_commander_password"
+/Environment/shadow_commander_password,SZ,'5dUiSm*4*m$A$',
+```
+So the password is ```5dUiSm*4*m$A$```, lets use this to unzip the file we had earlier
 
 
 
