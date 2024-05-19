@@ -130,6 +130,8 @@ Lets fuzz for directories using ffuf
 
 command:```ffuf -u "https://afr1cacyb3rfe5t-troll.chals.io/FUZZ" -w /usr/share/wordlists/dirb/common.txt  -e .zip,.sql,.php,.phtml,.bak,.backup```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3caeb709-ff12-4ba0-9ad7-e86bc2397d34)
+
 We have the ```/robots.txt``` directory, checking this directory
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/21fc78dc-5ab7-4ddd-a3ae-84e87daaa7f1)
