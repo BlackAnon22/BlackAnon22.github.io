@@ -111,6 +111,21 @@ FLAG:-```ACTF{Th4t_w4s_5impl3_wasnt_it?}```
 
 # Web
 
+## Mystique 
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b1791b59-8e0a-4ea2-bd3b-ec4d83002583)
+
+Navigate to the webpage
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bed8d502-0468-470f-aebd-8bc6e6679770)
+
+We have this login page, yeah we can't signup because the signup button isn't working and yeah default creds ain't working hehe
+
+
+
+----------------------------------
+
 ## Troll
 <hr>
 
@@ -169,6 +184,16 @@ FLAG:-```aCtF{robotTxt_and_strings_as_requested}```
 -----------------------------
 
 # Forensics
+
+## Whispers in the Wires
+<hr>
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b76031c1-6181-4c65-91de-5de3f39fe2f0)
+
+Download the pcap file
+
+
+--------------------------------------
 
 ## Invasion!
 <hr>
