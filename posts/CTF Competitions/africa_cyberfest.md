@@ -192,7 +192,76 @@ To install qemu you can use the command ```sudo apt-get install qemu-utils```
 
 To convert to raw image you can use the command ```qemu-img convert -f vmdk -O raw doh\ ctf.vmdk doh.raw```
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d44c3002-3a68-4561-aa5d-0cd6dc84ce9b)
+
 Now that we are done converting we can mount this using autopsy
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/50ec0517-8878-437d-a500-5afb7aa93450)
+
+We'll be analyzing the ```C:\``` drive, that's where juicy stuff's at
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d12bf5d3-433d-48aa-b13d-6a890f6564e9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d64d19c9-c63e-463a-8fb0-689c861603ed)
+
+We'll do a file analysis
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ec9a1226-3bf0-4f24-a5e8-e8b78a90aee0)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5d6e8711-1940-4ca9-afd1-4655152d449b)
+
+This user actually has something juicy in his Desktop directory hehe
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a06667f3-4138-46c0-8de0-e222705f1d70)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4a29c4dc-48c5-436b-be7e-2ce1e33dfaa2)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/08f4cd20-9c3c-47b8-9035-3ecb53d450b7)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8b8284f2-a45d-4f78-ab6a-50c76fc16dd6)
+
+We have this docx file, but then when you view the hex display you'll see that it has a different header
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/560175c3-4a7c-468f-9f9b-cdfa39082f89)
+
+What's a PK header??
+
+```
+A PK header is a 4-byte sequence (50 4B 03 04) that identifies a file as a ZIP archive, serving as a file signature.
+```
+This means it's not really a docx file, rather it's a zip file.
+
+Now this is what we'll do, we'll export this file to our machine then we change the extension from ```.docx``` to ```.zip```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3864d736-9aae-42e7-8a4a-e26898c9ac5e)
+
+Nice, now lets try to unzip
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1d32ad7e-7292-4290-ba4e-a07ebf1ed81d)
+
+You can see that a password is required, zip2joh won't work because the password isn't in rockyou😂
+
+Lets go back to autopsy and check the ``` /Africa Cyberfest/``` directory
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d04e41de-324f-4248-be91-aadaa5d6eb3f)
+
+We can see that ```.DAT``` file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
