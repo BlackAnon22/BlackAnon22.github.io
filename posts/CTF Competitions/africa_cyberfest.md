@@ -354,13 +354,24 @@ We have this blank page, scrolling down we get this
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/51538213-5783-42fe-99fb-bd2aae013ac4)
 
+But then when you use ```ctrl + A``` you'll see something hehe
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e1d5490a-518e-4a14-a67f-7be71a29ddb0)
 
+Copy this and paste on sublime text, 
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6c8a12b8-0419-4934-8cf4-a38d13f3c86b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/53a8a994-a377-4588-90aa-cb68676e263d)
 
-Everything else from this point just shows how twisted and crazy the chall creator is😂
+Now, this has something to do with ```zero width joiner``` and we can decode this using this [website](https://330k.github.io/misc_tools/unicode_steganography.html)
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9cea189c-415e-45dd-966e-9f1af7402d74)
 
+We got our flag hehe
+
+FLAG:-```ACTF{Sh4d0w_3xc3ut3d-haqhaq!}```
+
+This chall just shows how messed up the brain of the creator is, bro's a maniac fr😂
 
 
 
