@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/51fa2956-cc69-4607-8654-98263b43537e)I participated in the LACTF competition with my friend Sensei and I was able to solve 5 challs. Yeah, welcome challs and discord challs inclusive, that's my specialty afterall😂. I wasn't available throughout the CTF though, this was because of exams hehe.
+I participated in the LACTF competition with my friend Sensei and I was able to solve 5 challs. Yeah, welcome challs and discord challs inclusive, that's my specialty afterall😂. I wasn't available throughout the CTF though, this was because of exams hehe.
 
 Lets take a look at the challs I solved
 
