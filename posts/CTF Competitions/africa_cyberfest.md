@@ -309,15 +309,24 @@ command:```strings abeg.txt| grep "shadow_commander_password"```
 ```
 ┌──(bl4ck4non👽bl4ck4non-sec)-[~/Downloads/CTF/africa_cyberfest/forensics]
 └─$ strings abeg.txt| grep "shadow_commander_password"
-/Environment/shadow_commander_password,SZ,'5dUiSm*4*m$A$',
+/Environment/shadow_commander_password,SZ,'%225dUiSm*4*m$A$',
 ```
-So the password is ```5dUiSm*4*m$A$```, lets use this to unzip the file we had earlier
+Now there's a bit of a twist here, ```%22``` is the url encoded form of ```"```, it was the tool I used that actually url encoded it
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0f406247-1677-4aa6-a2ad-845fa61676a3)
 
+So we can say the password is ```"5dUiSm*4*m$A$```. we'll use this password to extract the zip file
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/652f03bc-67f8-4869-83fc-9c377c6e7d76)
 
+Everything else from this point just shows how twisted and crazy the chall creator is😂
 
+We'll compress the folder ```shadow_document4``` and then change the extension from ```.docx``` to ```.zip``` 
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/06209d3a-c9cb-478e-a046-efd72eb8ccc6)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/42fe4ee3-7bfe-4bd3-b7c2-e45ea1a5c777)
+
+Opening the docx file should get you the flag
 
 
 
