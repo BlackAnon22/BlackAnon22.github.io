@@ -1,4 +1,4 @@
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a9cc7514-97f6-4469-939f-48cfc354a0eb)My teammates(LocalMen) and I participated in the picoCTF_2024 organized by Carnegie Mellon University, which took place between March 12, 2024 to March 26, 2024. It was a great learning experience and I really learnt a lot.
+My teammates(LocalMen) and I participated in the picoCTF_2024 organized by Carnegie Mellon University, which took place between March 12, 2024 to March 26, 2024. It was a great learning experience and I really learnt a lot.
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f184606e-ebd7-44f1-ae7c-3e84cb63a7f3)
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f60bf9f0-afb0-41c9-a26c-1d6dacfd3fae)
