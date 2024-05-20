@@ -324,6 +324,7 @@ Everything else from this point just shows how twisted and crazy the chall creat
 We'll compress the folder ```shadow_document4``` and then change the extension from ```.docx``` to ```.zip``` 
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/06209d3a-c9cb-478e-a046-efd72eb8ccc6)
+
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/42fe4ee3-7bfe-4bd3-b7c2-e45ea1a5c777)
 
 Opening the docx file should get you the flag
