@@ -1,4 +1,4 @@
-My teammates(LocalMen) and I participated in the picoCTF_2024 organized by Carnegie Mellon University, which took place between March 12, 2024 to March 26, 2024. It was a great learning experience and I really learnt a lot.
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a9cc7514-97f6-4469-939f-48cfc354a0eb)My teammates(LocalMen) and I participated in the picoCTF_2024 organized by Carnegie Mellon University, which took place between March 12, 2024 to March 26, 2024. It was a great learning experience and I really learnt a lot.
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f184606e-ebd7-44f1-ae7c-3e84cb63a7f3)
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f60bf9f0-afb0-41c9-a26c-1d6dacfd3fae)
@@ -749,7 +749,7 @@ FLAG:- ```picoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_48785c0e}```
 
 We don't need to launch the instance yet, lets try to download the source code and analyze it.
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/adcdb8b9-4d43-4237-8a65-a7e993212b13)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fb77c6ce-9a62-48f9-a66c-5c075ce9fadd)
 
 The ```flag.txt``` contains a fake flag so chill we haven't solved it yet😂
 
@@ -762,21 +762,21 @@ You see??😅
 
 Lets start by analyzing the ```index.mjs``` file
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/8a0e251b-1074-45d8-82dd-bb694ff93d53)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1456d082-cdc9-4661-a7a8-b9b9934160e5)
 
 Well, what this guy does is just spawn the chromium instance we were given, so we'll have to install it for experiment purposes.
 
 To install it just run the command ```sudo dpkg -i chrome.deb```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/78905be3-c9ea-43c0-ab2d-c8149232934a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0adb95ea-0e1d-47eb-92a6-63fbc0ffe858)
 
 Moving on, 
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/37921763-bd58-4c91-858f-4d9f2cd34c6e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/515a9d3e-64f4-40e0-8278-069b2c5755b8)
 
 So, when we run node on the ```index.mjs``` file we can navigate to the url ```http://127.0.0.1:8080``` to view the webpage. You can also see that we have the CSP header there, well that header is pain actually💀. You can read more about the csp header [here](https://content-security-policy.com/)
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/b5524ae3-8480-40e3-8784-bad688763f70)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c3a65b1d-338c-414d-b6f3-0f6f9afab93b)
 
 This is more of a conditional statement, if the pathname is ```/``` the ```content-type``` header is set to ```text/html```, if the pathname is ```/index.js``` the ```content-type``` is set to ```text/javascript```. Lastly, if the pathname is ```/remoteCraft```, the code parses a URL search parameter named recipe and extracting two variables, "recipe" and "xss". It then performs several assertions to validate the input:
 ```
@@ -795,15 +795,15 @@ Now, when all these conditions are met we get a message that says ```visiting```
 
 Well, the recipes are stored in the ```index.js``` file 
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/8251a784-bc9e-4b65-9351-b5c1960451cb)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/685f2c3f-1746-4b7e-8dc9-dcf9be43a138)
 
 Lets analyze this script
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c30850ce-ad0f-4450-a49e-0aad7e66099c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/726a2268-a2ec-4b3e-b530-b91cb5ef44e2)
 
 So we have the recipe and the elements array
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/9a0bb245-ee60-4750-8191-81f65c534aee)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/329d60ef-40e5-4897-9dba-a7dafe0ce2e0)
 
 This script defines a function called evaluate that takes any number of arguments and checks if they match a recipe in an array. If the first and second arguments match ing equal to 'XSS', the script evaluates the xssproperty of thestateobject as a JavaScript expression using theevalfunction. If theresultis not equal to'XSS', the function simply returns the result.
 
@@ -813,23 +813,23 @@ You can run the ```index.mjs``` script using node
 
 command:```node index.mjs```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/30309d42-f1d5-41a5-bc93-15375836c4b4)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/86ae901f-54c4-4ae3-a4ca-2880eabc9d4f)
 
 We can navigate to the url ```http://127.0.0.1:8080``` on the chromum browser
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/2652b957-b453-4970-b81f-ca7d76bdda1f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4dba8e71-201e-4e00-abd8-653daa7a1c85)
 
 We have 4 elements here, what happens when we mix fire and water??
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/088f27c1-9c90-48ee-b531-3a747ac81c16)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/21a5bc9d-3e3e-42da-bdce-3a92f4d6189e)
 
 So ```fire + water = steam```, how about air and water??
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/89a75b29-ca70-42ac-9969-27e8ceb1fd17)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/43c2f1c6-efae-4e7f-a78d-5cb3be21f6de)
 
 So, ```air + water = mist```, now this means those 4 elements are the base recipes, so it's safe to say every other recipes are being formed from these base recipes. Now, if you check the index.js file you'll see that the ```xss = exploit + web design```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/a299f4e4-86a6-4b8e-9ee5-39f7ee18afa5)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ddc39305-8f1f-4cc9-aff4-593ac4c2477f)
 
 But then then ```exploit``` also has recipes it's produced from. So, to get the right recipe we have to get the base recipes right.
 
@@ -847,7 +847,7 @@ So, if the recipes are right we get a message that says "visiting", also our xss
 
 Lets try this
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/64a909a6-3c4a-4c57-a081-011165f2244a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d22ca00c-91bf-493d-a15e-8594f3363c80)
 
 The moment we got the "visiting" message, another chromium instance popped up executing the xss query.
 
@@ -868,7 +868,7 @@ Now, what this does is that, if the recipes are correct it gives us the "visitin
 
 Lets try this
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/41301228-cf0d-4805-ae30-044bc1aeb50a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bda0e5e8-fe20-4b46-904e-e4d59940d3b3)
 
 The alert statement got executed which means the character "p" is the first character, lets change the character to say "Q"
 
@@ -876,7 +876,7 @@ The alert statement got executed which means the character "p" is the first char
 /remoteCraft?recipe={"recipe":[["Air","Water"],["Air","Earth"],["Earth","Water"],["Earth","Fire"],["Fire","Mist"],["Magma","Mud"],["Fire","Mud"],["Magma","Mist"],["Earth","Obsidian"],["Air","Rock"],["Fog","Mud"],["Brick","Fog"],["Obsidian","Water"],["Computer Chip","Hot Spring"],["Computer Chip","Fire"],["Hot Spring","Sludge"],["Internet","Smart Thermostat"],["Computer Chip","Steam Engine"],["Fire","Steam Engine"],["Hot Spring","Steam Engine"],["Artificial Intelligence","Data"],["Artificial Intelligence","Cloud"],["Computer Chip","Electricity"],["Dust","Heat Engine"],["Software","Encryption"],["Cloud Computing","Data"],["Fire","Sand"],["Electricity","Software"],["Internet","Program"],["Artificial Intelligence","Data Mining"],["Glass","Software"],["Cybersecurity","Vulnerability"],["Exploit","Web Design"]],"xss":"if (JSON.parse(atob(window.location.hash.slice(1))).flag[0] == 'q'){alert(1);}"}
 ```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/cf01e480-0f76-4c55-8486-9719f96befca)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/148f299b-a6ac-4cbf-a6ef-fd8f0fefb863)
 
 Well, the alert statement didn't get executed which means the character "q" isn't the first character of the flag propert
 
@@ -886,7 +886,7 @@ It was easier to test this method here since we know  the fake flag to be ```pic
 /remoteCraft?recipe={"recipe":[["Air","Water"],["Air","Earth"],["Earth","Water"],["Earth","Fire"],["Fire","Mist"],["Magma","Mud"],["Fire","Mud"],["Magma","Mist"],["Earth","Obsidian"],["Air","Rock"],["Fog","Mud"],["Brick","Fog"],["Obsidian","Water"],["Computer Chip","Hot Spring"],["Computer Chip","Fire"],["Hot Spring","Sludge"],["Internet","Smart Thermostat"],["Computer Chip","Steam Engine"],["Fire","Steam Engine"],["Hot Spring","Steam Engine"],["Artificial Intelligence","Data"],["Artificial Intelligence","Cloud"],["Computer Chip","Electricity"],["Dust","Heat Engine"],["Software","Encryption"],["Cloud Computing","Data"],["Fire","Sand"],["Electricity","Software"],["Internet","Program"],["Artificial Intelligence","Data Mining"],["Glass","Software"],["Cybersecurity","Vulnerability"],["Exploit","Web Design"]],"xss":"if (JSON.parse(atob(window.location.hash.slice(1))).flag[10] == 's'){alert(1);}"}
 ```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/79a40108-dbb5-43b4-b3c5-5ba3c423cfca)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/25f57128-b970-4550-a46a-6b435f3198f0)
 
 Yeah, the query works😎
 
@@ -955,21 +955,21 @@ PS: This script requires good internet connection to get accurate results
 
 command:```python bankai.py```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/2c00e7e2-8f50-4f15-a9a2-a72c7a9a2331)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7b6c6d8c-2f56-400c-8930-072a2ccfa8f9)
 
 You can see that the script crashed when it got to the character "l", this means the character "l" is indeed the 8th index of the flag. 
 
 To get the 9th index
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/6948b717-b7df-49a2-bdbe-bec2ced975a7)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/61cc7d4e-11e9-4c25-98bf-ee1fe50f83fb)
 
 Just edit those 2 variables and run the script again
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/497f0327-e211-40f3-a456-4f8342248641)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/724bb9f6-df25-431f-9542-56251bfd1b74)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/326b6a6d-077c-4b5b-899a-871f9cb526a7)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/6a2fa5ab-4d7f-4b2b-9d67-9da4e9081e61)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/486588d2-1f7f-4a60-80c2-698f90fb9370)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/38d8f004-b63f-4048-acf9-c71186e39fb1)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4524f648-14e2-4963-889f-c802d1c3ad56)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8db9944b-026a-4c4a-956c-e9fe77e06898)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b3a31214-3255-4c27-bc44-fa41d821cfb3)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0efa1478-16dc-4c97-981a-c91cc84bb6ec)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cb4dff43-bc5b-4ad2-96d5-dc9f71d7c19d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/85d21e76-ec28-41b0-b666-6a7b79aef4fa)
 
 You'll keep running this until you get to the last character, the flag length is quite long though
 
@@ -984,19 +984,19 @@ FLAG:- ```picoCTF{little_alchemy_was_the_0g_game_does_anyone_rememb3r_9889fd4a}`
 ## Scan Surprise (50 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/02e8b578-e29f-42da-b072-d81117c93104)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/617297c0-e5d8-4c8c-a2b1-0ab3b11c3c92)
 
 We actually don't need the challenge instance, just download the challenge file and unzip
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/87b27ff4-5079-46c9-b535-f3b86cedf844)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3e5e0fd5-fe69-42ec-863c-d0e80de7c814)
 
 We have a png image, lets check the content of this image
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/65a22f99-c35a-4fc2-8c1e-f9421148e91c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2b423eda-847f-4cad-88a9-e61c900e5cb0)
 
 We have this qr code, we can scan this using this [website](https://scanqr.org/)
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c26768eb-13da-463b-9b63-84772daaac98)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/18bb57c9-dbe4-4400-8543-065ef11c2979)
 
 We got our flag
 
@@ -1007,15 +1007,15 @@ FLAG:- ```picoCTF{p33k_@_b00_19eccd10}```
 ## Verify (50 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/675317f3-d328-4807-970d-c77c14c7e93b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/13c2a64e-b7cc-4583-a2e4-d067730e3ccc)
 
 Download the challenge file and unzip
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/d5ac4b25-1bc4-4071-abf5-d59b667459a9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/db6485bb-bec3-4e16-a5d2-f8629a28b8df)
 
 We have a ```checksum.txt``` file and also a ```decrypt.sh``` file. The ```files``` directory contains 100+ files, in these files we have different checksums
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/468997e2-6dbc-4205-ab3f-5cbe8b4a0133)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a5dc0a9a-ccc1-4abd-bff5-d6a678beedff)
 
 So we have that particular sha-256 hash, and then we have the openssl command in the "decrypt.sh" file.
 
@@ -1033,7 +1033,7 @@ The file ```2cdcb2de``` contains our sha-256 hash. Now, lets use openssl to decr
 
 command:```openssl enc -d -aes-256-cbc -pbkdf2 -iter 100000 -salt -in files/2cdcb2de -k picoCTF -out encrypted.data```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/f964f0e9-eee4-4192-949d-4ed947d8bd20)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b625622d-9f96-46ba-ab41-27e3c785eb6c)
 
 Yup, that's our flag
 
@@ -1044,17 +1044,17 @@ FLAG:- ```picoCTF{trust_but_verify_2cdcb2de}```
 ## CanYouSee (100 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/b78943e4-2731-413b-b157-b48e69f4e49e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ac7dc976-24df-478f-b506-e87b0b33cfbe)
 
 Download the challenge file and unzip
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/9e752d62-81fa-4f3d-928d-cb88e5a7eefa)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2c65ca58-e545-40b5-b111-f39ff14998d4)
 
 We've got a jpg image, lets run exiftool on this image
 
 command:```exiftool ukn_reality.jpg```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/528f8a0f-329f-48ab-bd0f-d2e13f2e8876)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4ead413c-09c5-4411-97b1-582f0556d28c)
 
 That's a base64 encoded text, lets decode hehe
 
@@ -1074,15 +1074,15 @@ FLAG:- ```picoCTF{ME74D47A_HIDD3N_6a9f5ac4}```
 ## Secret of the Polygot (100 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/8a8180c1-2800-4d2f-b929-fdd619d40218)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d0258ab3-dcc4-406f-9d80-ee0b17604e48)
 
 Download the challenge file
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/69d8cb34-bde8-4c7f-9261-46988219b81d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6ec15f97-02b0-4e05-9b11-8dc3acfc4929)
 
 We've got a pdf file, lets view the content of this pdf file using a pdf viewer
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/d1e21b27-1c5c-46fb-a41c-2e826fd0ce77)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2346536c-6a0e-4a7f-afba-def0a26e4eae)
 
 oops. we've only got half of the flag. Should we form the other half ourselves??😂
 
@@ -1095,7 +1095,7 @@ flag2of2-final.pdf: PNG image data, 50 x 50, 8-bit/color RGBA, non-interlaced
 ```
 As you can see it is a png image not even a pdf file. What we can do is change the file extension from ```.pdf``` to ```.png```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/4db0204c-2c28-4957-99bf-fe5b0b98f3af)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3477914f-b8a8-433e-9c93-71dd7eaed221)
 
 Yup that's the other half of the flag😎
 
@@ -1106,7 +1106,7 @@ FLAG:- ```picoCTF{f1u3n7_1n_pn9_&_pdf_1f991f77}```
 ## Mob Psycho (200 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/99d589d4-8858-4167-814d-82cfd38130c4)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/68dd00d8-b3e2-46f8-b19d-ab7d25dbdc18)
 
 Download the APK file
 
@@ -1154,11 +1154,11 @@ command:```find . -type f -name "*.txt"```
 ```
 We get that ciper, using [dcode.fr](https://www.dcode.fr/cipher-identifier) we can determine the kind of cipher this is
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/e8b7078c-4772-49a6-b73e-e56d63808dc0)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3ae9fc43-e906-44d8-bdf3-1c07a07673a3)
 
 Ascii code, nice. Lets decode
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/b07e8bf6-75de-40e2-b82e-dd9f707ff33c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/50bb346a-f0f2-464b-a94a-41600e333ccd)
 
 Successfully gotten the flag
 
@@ -1169,7 +1169,7 @@ FLAG:- ```picoCTF{ax8mC0RU6ve_NX85l4ax8mCl_746dfa39}```
 ## endianness-v2 (300 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/b6510f0b-69ac-4614-bbd4-df5b95614e58)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/cdf70bbb-4f60-4470-8caf-e77d148fd639)
 
 Download the challenge file
 
@@ -1187,7 +1187,7 @@ challengefile: data
 ```
 Lets view the hex of the challenge file 
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/8678bb3e-91ae-4468-ba10-7bd301345700)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9c7dab54-feb1-4dcd-b5b8-7793fd87cf8f)
 
 You'll see that the starting byte for this file resembls that of a jpg file, but then it's actually swapped. Normal starting byte for a jpeg file is ```FF D8 FF E0``` but then from the hex we have this ``` e0ff d8ff```
 
@@ -1234,11 +1234,11 @@ This script reads binary data from a file named 'challengefile', swaps the order
 
 Lets run this
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/0fc6483b-6406-41a1-bc3f-741751a062cf)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/524f5cb7-5ecc-4c66-ad08-dad105924f53)
 
 We got a jpeg file after running the script. Lets view this image using an image viewer
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/5a5db82e-9b53-4b33-8d19-35038a78420f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/88944030-a049-491f-bc65-7b1882d196bc)
 
 We got our flag
 
@@ -1249,7 +1249,7 @@ FLAG:- ```picoCTF{cert!f1Ed_iNd!4n_s0rrY_3nDian_94cc03f3}```
 ## Blast from the Past (300 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/5fc1f823-004f-48bf-87cb-e4c64d5aea61)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c92ba0c6-635f-4416-875d-4eb0065dd2b4)
 
 The task here is to set the timestamps on this jpeg to ```1970:01:01 00:00:00.001+00:00```
 
@@ -1265,7 +1265,7 @@ drwxr-xr-x 8 bl4ck4non bl4ck4non    4096 Mar 25 05:46 ..
 ```
 When you run ```exiftool``` on the image, you'll get this
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/2a2970a2-1c8d-4b44-8d2f-5f03f288379a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ecf9655c-1f61-4a9a-bc8b-b071afa88816)
 
 To know the timestamps to specifically edit, lets try to submit the original jpg file. We have 2 instances, one is for submitting the modified jpeg, while the other instance is used for checking the modified jpeg.
 
@@ -1277,7 +1277,7 @@ nc -w 2 mimas.picoctf.net 58576 < original.jpg (to submit)
 nc mimas.picoctf.net 54978 (to check) (notice how I didn't include the "-d", well it is not needed)
 ```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/a9580e96-f2eb-4423-b97b-02e0d262bfd5)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c4ad7bc5-8bd1-43ae-bc91-f9de5e4e3391)
 
 Lets edit the ```ModifyDate```
 
@@ -1290,7 +1290,7 @@ command:```exiftool -ModifyDate="1970:01:01 00:00:00" original.jpg```
 ```
 Good, now lets submit and check the modified jpg file
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/4dd4b3b9-d843-4a07-aac4-681da6c0b2db)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4bcd63da-e982-41a2-aac5-bdde70b1a09c)
 
 Good, we've completed the first tag, the second tag requires us to modify ```DateTimeOriginal```
 
@@ -1307,7 +1307,7 @@ command:```exiftool -AllDates="1970:01:01 00:00:00" original.jpg```
 ```
 Lets submit and check again
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/a63a4852-90ea-4470-a701-70bda8416b5c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9d76f3ff-5ac1-4e4b-acd4-f2b73139d42d)
 
 Good, we jumped right to the 4th tag, to edit the composite ```SubSecCreateDate```
 
@@ -1319,7 +1319,7 @@ command:```exiftool -SubSecCreateDate="1970:01:01 00:00:00.001" original.jpg```
     1 image files updated
 ```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c5103756-d18c-482d-89f1-2073ee3bcf46)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/aa54c99d-bf16-440e-8940-1ab2ea709890)
 
 Good, for the 5th tag we have to edit the composite ```SubSecDateTimeOriginal```
 
@@ -1332,7 +1332,7 @@ command:```exiftool -SubSecDateTimeOriginal="1970:01:01 00:00:00.001" original.j
 ```
 Lets submit and check the next timestamp to edit
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/5c3f594b-273b-4122-bb3b-a15bd2058bb2)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f77ce06e-f2b2-420e-bb54-32ddbaaacfce)
 
 For the 6th tag we have to edit the composite ```SubSecModifyDate```
 
@@ -1345,51 +1345,51 @@ command:```exiftool -SubSecModifyDate="1970:01:01 00:00:00.001" original.jpg```
 ```
 Lets submit and view
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/0d1ce5cb-5258-4695-95a7-59d3711b6660)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7869d0de-458b-4851-91cf-12253505f06e)
 
 Good, we are now on the 7th tag, well for this 7th tag exiftool didn't really help me out. So I uded a hexeditor "imex". To install you can just run ```sudo apt install imhex```. You actually can use any hexeditor of your choice
 
 We'll edit the jpg file using this, you'll know why soon
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/0415342c-b781-4909-b91a-75499136936b)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/dd0cc829-bc23-4e42-8f5f-7fddaea5886f)
 
 Now, scroll down to the bottom, you'll find something interesting hehe
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/aec7fd65-96df-4a0f-8a59-93e31ff70426)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/60a6ab13-d09b-4dcd-ba6d-235857b825a7)
 
 From the above screenshot you can see something like this ```Image_UTC_Data1700513181420``` and we know that the 7th tag which is the last one has to do with modifying the samsung timestamp.
 
 Well, the question should be, how does samsung store their timestamp
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/2327c2e2-ab95-4345-8719-bd1e1effa5b9)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4c5d782c-f48f-49ba-b49e-11f4757ef34a)
 
 As we can see samsung stores their timestamp more like in unix timestamps, lets try to convert the unix timestamp we found in the jpeg hex.
 
 unix timestamp:```1700513181420```
 
-We can [website](https://www.unixtimestamp.com/) to convert this to a proper date and time
+We can use this [website](https://www.unixtimestamp.com/) to convert this to a proper date and time
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c34509b5-eab6-413a-88e8-ba590f40b71a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1d7146e2-2f30-40d7-ab40-ab904e4339a6)
 
 That's the time and date we have on the samsung timestamp, so we have to edit this. Since we know the date we want to edit to which is ```1970:01:01 00:00:00.001+00:00``` we'll just convert this to unix timestamp
 
 Lets do that
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c54f1ad1-c121-488f-9adc-f6f7e9f31887)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c0dc51d7-5fed-4247-a52d-5fedcd668292)
 
 You can see that the unix timestamp for this date is ```0```, since well'll be using ```GMT+1``` (GMT+1 refers to Greenwich Mean Time plus one hour), we can say our unix timestamp for that given date is ```01``` which in hex is represented as ```30 31```.
 
 Now, this means we'll edit from this
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/49dda1d5-d7f9-415b-9ea2-8305c99b9d0d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/db4a41ee-fd82-460f-9cc9-5fa01b4cf50c)
 
 To this
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/9713130a-e0c7-4f0e-8f17-cf6988ee79bf)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/bab12d65-be84-4b33-9871-7cdfb293d6c4)
 
 Now lets submit this modified image and check it
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/f472155f-eeb6-44cb-b6b4-a5a0e6957a11)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4025b1d2-002a-4005-8542-447c6265e71a)
 
 We got our flag hehe😎
 
@@ -1400,7 +1400,7 @@ FLAG:- ```picoCTF{71m3_7r4v311ng_p1c7ur3_ed953b57}```
 ## Dear Diary (400 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/3d1fb30e-09df-452e-b443-cd668f530f5e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/244d460f-0504-493a-b8d1-7e1e1020da87)
 
 Pico has a culture of releasing disk images challs as as part of their forensics chall every year, well this was easier compared to last year's own. Took me less than 30 mins to figure out hehe😎
 
@@ -1408,49 +1408,49 @@ Lets jump right into it
 
 Dowload the challenge file and extract the disk image
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/0200d324-4181-4ae1-8db5-30b5be7906d8)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2ed2e676-84f0-4fde-859c-083c07cd8929)
 
 From the hint provided
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/23b817ef-795e-433f-9f5c-cf29235d1158)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5ccbe6bf-830e-4a31-ae3c-8d262f55760c)
 
 It's so obvious we can't mount the disk image using our terminal, so we'll mount this disk image using autopsy. Autopsy is a tool that comes preinstalled on kali
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/53d336e8-7b0d-46ec-96eb-3d5943b37a58)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/178c4aa4-4f97-4e20-80fa-31d60844ec95)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/2dc5d912-787b-4edf-aabc-9abd46d3953d)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/203fdaca-537f-42ce-a5d8-5edf3f85948f)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/06b2ecdc-02f2-4f26-a9e8-89a154c9e437)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/addf45a6-3428-4c4f-8b58-10050b9e3345)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/bd99bc7c-d694-4821-b9b4-510aff3bd1eb)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/4b91aa66-6b14-4ddf-91b4-60af7f936d14)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/de0ce342-aa2c-4025-9601-3d34ce5ae0bb)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/de5c8b19-af2e-4943-9a8d-0fe98ce9e286)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ed3eb2ed-f6f8-40b2-86f0-44ba927881a8)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/2ca8f783-a07e-45bb-a687-53a5600586ea)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/91083249-9c1a-4336-b75f-b9de2bfcba1f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6f3ff26e-2163-4d37-8851-f13e213d588f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/de25cfd8-abec-422d-b1ee-621690e124b0)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3ae42472-451c-4faa-9c7e-f07b95199276)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/b15974e4-079f-4aff-bb83-1c4fe2c6270e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c3864000-1855-4279-8992-4ba544ecbc16)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9bb944f1-bd07-4a40-8858-139ec0e8ae6a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/5323f364-df9f-4994-a7cd-a9a284f008ee)
 
 We have 2 extended file system, trust me there isn't anything in the first partition, just junks hehe. Lets analyze the 3rd partition
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/cc973af7-88ca-42d4-a827-414abed13667)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/687cfdd9-aaea-4ec9-bd7d-081fec15ae1d)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/101cbcf1-39ca-4881-aeeb-22b7d5b7c379)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/464a8588-5ea0-4410-82d3-992b23383156)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/4dafff74-a8eb-4632-a5da-0dc84cf4deef)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/45996b92-da3e-4c8d-9e0f-d9026f07e254)
 
 In the ```root/``` directory you'll find a ```.ash_history``` file and a ```secret-secrets/``` directory, in the ```secret-secrets/``` directory you'll see 2 empty files and then a bash script ```force-wait.sh```
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/b91503c3-7cfb-4861-81fe-196874e26cbc)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/9320a82d-ad8a-4440-b998-a64e05b9f337)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/104efdda-5212-4ac0-84a3-a13d1dc30b95)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fde73619-3e7f-4246-a84e-bfd54eda3156)
 
 We don't need the bash script, we are only interested in those 2 files ```innocuous-file.txt``` and ```its-all-in-the-name```, these files are empty actually or so you thought hehe.
 
 Look at the name of the second file ```its-all-in-the-name```, this means it's making reference to the first file ```innocuous-file.txt```, so instead of searching for ```flag.txt``` or ```picoCTF{```😂, I searched for ```innocuous``` instead
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/434c0fc3-2bb5-4088-a744-c6af6d7de52b)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/d6562b35-5c9d-4479-95aa-e65125eafc3a)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/28039c3b-3b8d-4fd7-ab71-fd829446a63f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3635015d-e11c-4b3f-96f3-adaabd91745a)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/440d827c-3505-4e17-9a8d-2dabe5a624ee)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ec9f0d72-7529-4c2a-9ffe-682f4fc96e55)
 
 We got 14 hits hehe, check the 4th, 5th and 6th fragment, you'll see something interesting
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/d2780b8d-668f-4ffd-aa0e-fc102cb765bc)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/6b19b690-a8a2-4a1c-8c20-c752fc120362)
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/b6a39af5-046e-41d7-b8f6-c051235380c4)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/335801fa-879a-4850-be1d-e492b02e1564)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/0f79aad4-fa1b-4b69-9020-f0d0d414671f)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6b76931c-71ca-451f-aa88-bf15fc6a6077)
 
 Putting together what we got from the 3 fragments, you should have something like this ```picoCTF{1```, this means the flag was distributed amongst the fragments.
 
@@ -1464,7 +1464,7 @@ FLAG:- ```picoCTF{1_533_n4m35_80d24b30}```
 ## interencdec (50 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/6aaf4d3c-38a6-4944-bffb-c20d4bd5436c)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/8e6b0549-a141-473c-98fc-ebf0eeb8dfa5)
  
 This was actually a very easy one
 
@@ -1502,7 +1502,7 @@ wpjvJAM{jhlzhy_k3jy9wa3k_86kl32k2}
 ```
 Now we've got a rot cipher, we can decode this using [dcode.fr](https://www.dcode.fr/rot-cipher)
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/ea922ef8-6f3a-4b15-80c1-53fe679db01d)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1b903caa-ed13-439b-a939-534647c846e6)
 
 We got our flag
 
@@ -1513,11 +1513,11 @@ FLAG:- ```picoCTF{caesar_d3cr9pt3d_86de32d2}```
 ## rsa_oracle (300 points)
 <hr>
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/97dcfbd7-47d1-457f-a703-864d748210fe)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ee1ded93-ea26-4370-9af3-b0d7288281ea)
 
 Download the challenge files
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/532eadf0-bbfa-46fd-a502-7bc90713d5ce)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c89ca294-cf49-4659-96a4-34a46a4df8d9)
 
 We basically are meant to use that password to decrypt the cipher text. They also provided us an instance of the oracle that was used to encrypt the password
 
@@ -1588,7 +1588,7 @@ The script establishes a connection to the remote server, sends encrypted messag
 
 Lets run the script
 
-![image](https://github.com/BlackAnon22/BlockChain_Hacking/assets/67879936/c56a7218-99fd-46a4-8827-1af1a3b50f4e)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9d08e277-0e5f-435c-9f4c-f213a54dc32a)
 
 You can see we got the AES password to be ```60f50```.
 
