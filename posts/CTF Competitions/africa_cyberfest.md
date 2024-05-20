@@ -215,6 +215,43 @@ FLAG:-```aCtF{robotTxt_and_strings_as_requested}```
 
 Download the pcap file
 
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/…/CTF/africa_cyberfest/forensics/whispers_in_the_wires]
+└─$ ls -la
+total 7828
+drwxr-xr-x 2 bl4ck4non bl4ck4non    4096 May 20 12:15 .
+drwxr-xr-x 7 bl4ck4non bl4ck4non    4096 May 20 17:39 ..
+-rw-r--r-- 1 bl4ck4non bl4ck4non 8006936 May 19 15:27 ctf.pcapng
+```
+Running the ```strings``` command I found the string ```shadowheadquaters.com``` pop up multiple times
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/39743062-eb33-447c-a4cc-f67432bf5c4a)
+
+So my teammate gave a one-liner command 
+
+command:```tshark -r ctf.pcapng | grep shadowheadquarters.com | grep -v response | cut -d "A" -f 2 | cut -d "." -f 1 | xxd -r -p > abeg```
+
+This command 
+
+```
+1. Extracts packets containing "shadowheadquarters.com"
+2. Filters out response packets
+3. Extracts the domain name
+4. Saves it to "abeg" in raw binary format
+```
+Lets run the command
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/be38b358-0e44-4ea1-a99f-7ad1ac3bd31a)
+
+Lets view that image
+
+command:```open abeg```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/35869008-2170-42ef-bc26-9b25b2d07020)
+
+Yup, thats our flag 
+
+FLAG:-```ACTF{our_secrets_are_in_plain_sight!!}```
 
 --------------------------------------
 
