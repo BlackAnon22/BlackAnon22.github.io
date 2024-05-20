@@ -1,4 +1,4 @@
-I participated in the LACTF competition with my friend Sensei and I was able to solve 5 challs. Yeah, welcome challs and discord challs inclusive, that's my specialty afterall😂. I wasn't available throughout the CTF though, this was because of exams hehe.
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/51fa2956-cc69-4607-8654-98263b43537e)I participated in the LACTF competition with my friend Sensei and I was able to solve 5 challs. Yeah, welcome challs and discord challs inclusive, that's my specialty afterall😂. I wasn't available throughout the CTF though, this was because of exams hehe.
 
 Lets take a look at the challs I solved
 
@@ -317,18 +317,48 @@ Now there's a bit of a twist here, ```%22``` is the url encoded form of ```"```,
 
 So we can say the password is ```"5dUiSm*4*m$A$```. we'll use this password to extract the zip file
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/652f03bc-67f8-4869-83fc-9c377c6e7d76)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/42d7bc8c-3fbe-4f13-af94-cbe4c754095e)
+
+This is what you get after you unzip the file, we have another zip file but then is this really a zip file??
+
+command:```file shadow_document4.5.zip```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/…/CTF/africa_cyberfest/forensics/shadow_document4.5]
+└─$ file shadow_document4.5.zip 
+shadow_document4.5.zip: CDFV2 Encrypted
+```
+Doing a little bit of research 
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e222f143-c27e-41ea-9028-8f09c5511b87)
+
+We can see that files like this do have the ```.docx``` extension, so we'll change the extension from ```.zip``` to ```.docx```
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/…/CTF/africa_cyberfest/forensics/shadow_document4.5]
+└─$ ls -la                   
+total 100
+drwxr-xr-x 2 bl4ck4non bl4ck4non  4096 May 20 17:45 .
+drwxr-xr-x 7 bl4ck4non bl4ck4non  4096 May 20 17:39 ..
+-rw-r--r-- 1 bl4ck4non bl4ck4non 94208 Apr 20 18:57 shadow_document4.5.docx
+```
+Nice, now lets try to open this file
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/9fa08c7d-f545-424a-a5c2-e621e14d21b3)
+
+oops, a password is required, we can reuse the password we got earlier
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ddc40706-73a6-4c2d-88ed-d70bc9e0de5b)
+
+We have this blank page, scrolling down we get this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/51538213-5783-42fe-99fb-bd2aae013ac4)
+
+
+
+
 
 Everything else from this point just shows how twisted and crazy the chall creator is😂
-
-We'll compress the folder ```shadow_document4``` and then change the extension from ```.zip``` to ```.docx``` 
-
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/06209d3a-c9cb-478e-a046-efd72eb8ccc6)
-
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/42fe4ee3-7bfe-4bd3-b7c2-e45ea1a5c777)
-
-Opening the docx file should get you the flag
-
 
 
 
