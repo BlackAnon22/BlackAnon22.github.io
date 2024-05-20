@@ -321,7 +321,7 @@ So we can say the password is ```"5dUiSm*4*m$A$```. we'll use this password to e
 
 Everything else from this point just shows how twisted and crazy the chall creator is😂
 
-We'll compress the folder ```shadow_document4``` and then change the extension from ```.docx``` to ```.zip``` 
+We'll compress the folder ```shadow_document4``` and then change the extension from ```.zip``` to ```.docx``` 
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/06209d3a-c9cb-478e-a046-efd72eb8ccc6)
 
