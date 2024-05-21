@@ -1,4 +1,4 @@
-I participated in the Africa Cyberfest CTF competition with my team (team !ethical), we came first during the qualifiers and came second after the final round
+I participated in the Africa CyberFest CTF competition with my team (team !ethical), we came first during the qualifiers and came second after the final round
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e0d8b8d5-6cbf-464c-a357-385f3f75dbc3)
 
