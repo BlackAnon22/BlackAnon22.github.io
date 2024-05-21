@@ -466,10 +466,21 @@ Download this file to your machine and unzip
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/fe33134d-0f8f-4324-853f-041fd8ce5327)
 
+I'll actually be needing volatility for this, but damnnn I've been finding it difficult to install
 
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1de3c98b-f648-43d9-b7c0-b9f2b2348fe0)
 
+I'll try to update this when I get volatility installed
 
 ---------------------------------------------
+
+Till Next Time :xD
+
+
+
+
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
