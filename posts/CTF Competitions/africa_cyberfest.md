@@ -177,7 +177,7 @@ onSubmit, the login() function is called which sets the following varaibles.
 
 ```var key = '-----BEGIN PUBLIC KEY-----\n MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0ziDyee9fICsEJ5ebGyv\n N1toEnOGBwYQrehsuOfkNXm4BKoBgiSXJGAeU/+4JeXrkaX7pejDF1loZvKXFIfA\n RaaNIqDbsZfIYPB0nMpaYrXreO6R+7jyWN6a0uPTOyaYYlCdhLRjciV8w7PBcO/e\n iVzCajZSp+uNqlVz3s83o+LOl0B/RLNNUPrUjwvj7s4dattJhtKLts1mC1V7aHcL\n JquS5E2OqAzps2DzVJ1sezHmvJGw9/8+58AMwqFTwixP37+FhuAbNGUN5DHRUjSK\n zscmDAgE+HN+GPwOx6ynpVmrubqWsZ0CL14mxtfVYNUBopI/BACZYdn2B/Eze1ay\n uQIDAQAB\n -----END PUBLIC KEY-----\n';var jsEncryptedKey = new JSEncrypt();jsEncryptedKey.setPublicKey(key);sendEncryptedData(jsEncryptedKey.encrypt("admin"+generateRandomText()))```
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/3abe6935-7b0e-4485-a5ec-2c231b96d601)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/51283c11-2596-4a51-9007-36b7cf553727)
 
 Yup, that's our flag
 
