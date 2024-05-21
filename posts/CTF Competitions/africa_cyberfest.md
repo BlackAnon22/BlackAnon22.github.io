@@ -120,7 +120,7 @@ When you inspect element you'll see this
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f2191df3-7cf1-4b18-885b-f19d923ed1f4)
 
-This actually has something to do with unicode steganography
+This actually has something to do with unicode steganography with zero-width characters
 
 So just copy the text and paste it [here](https://330k.github.io/misc_tools/unicode_steganography.html)
 
