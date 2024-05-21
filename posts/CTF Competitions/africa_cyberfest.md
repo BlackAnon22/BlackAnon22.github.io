@@ -230,7 +230,7 @@ robots.txt: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically
 ```
 oops, that's a binary.
 
-Using the command ```strings robots.txt | grep "actf{"``` or the command ```strings robots.txt | grep "ACTF{"``` won't get you the flag actually😂. This is because the flag format actually changed (case-sesitive wise). So, running only the ```strings``` command on the binary gives you the flag
+Using the command ```strings robots.txt | grep "actf{"``` or the command ```strings robots.txt | grep "ACTF{"``` won't get you the flag actually😂. This is because the flag format actually changed (case-sensitive wise). So, running only the ```strings``` command on the binary gives you the flag
 
 command:```strings robots.txt```
 
@@ -440,7 +440,11 @@ But then when you use ```ctrl + A``` you'll see something hehe
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/e1d5490a-518e-4a14-a67f-7be71a29ddb0)
 
-Copy this and paste on sublime text, 
+When you copy this and paste it into a normal text editor, you get this,
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1ec73248-779d-4266-bbbf-d06f9fd48808)
+
+But when you paste it into sublime text, you'll see that there's actually something there
 
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/6c8a12b8-0419-4934-8cf4-a38d13f3c86b)
 ![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/53a8a994-a377-4588-90aa-cb68676e263d)
