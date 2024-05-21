@@ -131,6 +131,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm BlackAnon. I Post Different Hacki
 - [[February 03 2024]] [TechStaCon 2024](https://Blackanon22.github.io/posts/CTF Competitions/TechStarters_CTF.html)
 - [[February 20 2024]] [LACTF 2024](https://Blackanon22.github.io/posts/CTF Competitions/lactf_2024.html)
 - [[April 02 2024]] [picoCTF 2024](https://Blackanon22.github.io/posts/CTF Competitions/picoCTF_2024.html)
+- [[May 21 2024]] [Africa CyberFest CTF](https://Blackanon22.github.io/posts/CTF Competitions/africa_cyberfest.html)
 
 * * *
 ### **OverTheWire Labs:~#**
