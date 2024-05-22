@@ -339,7 +339,7 @@ FLAG:-```ACTF{17'5_a11_1n_Th3_m3T4d473}```
 
 Now, this is actually not the way to go😂, what if it is not a guessable word??
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/a7d8dfbb-836c-4cf2-a98b-891b262d17ff)
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/d6e43cfe-f1d4-49c5-ac83-dcc5b6ba8d54)
 
 As you can see😂
 
