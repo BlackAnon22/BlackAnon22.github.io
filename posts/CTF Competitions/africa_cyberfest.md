@@ -333,6 +333,12 @@ We still have to translate this
 
 Now, this makes more sense but then it didn't work when I tried ```ACTF{flag=17>>5_a11_1n_Th3_m3T4d473}```, we could have guessed this though to say ```it's all in the metadata``` so that'll be ```ACTF{flag=17'5_a11_1n_Th3_m3T4d473}``` but then it still didn't work.
 
+Apparently I was meant to remove the ```flag=```
+
+FLAG:-```ACTF{17'5_a11_1n_Th3_m3T4d473}```
+
+------------------------------------
+
 
 
  
