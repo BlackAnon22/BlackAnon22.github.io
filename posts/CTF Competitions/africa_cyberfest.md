@@ -337,9 +337,20 @@ Apparently I was meant to remove the ```flag=```
 
 FLAG:-```ACTF{17'5_a11_1n_Th3_m3T4d473}```
 
+Now, this is actually not the way to go😂, what if it is not a guessable word??
+
+That's why I had to use another cyrillic decoder, you can see it [here](https://convertcyrillic.com/#/)
+
+After several tries, I got this
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/51d8a4a0-d011-46f7-9d58-a16d9754908d)
+
+Yup, that's the proper way of solving it
+
 ------------------------------------
 
-
+## Plane Sight 2
+<hr>
 
  
 -------------------------------
