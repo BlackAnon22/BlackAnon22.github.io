@@ -639,10 +639,64 @@ Now this is more detailed, the first time we checked the proccess running we fou
 
 One thing we can do here is try to dump the process, to do this I actually didn't use volatility3, I used volatility2 and this is because of the ```memdump``` plugin. You can get volatility2 [here](https://github.com/volatilityfoundation/volatility)
 
-command:```python3 vol.py -f ../../../../Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/challenge.vmem windows.dumpfiles.DumpFiles --pid 3044```
+To use volatility2 we'll need the memory profile, we can get this using the ```imageinfo``` plugin
 
+command:```python2 vol.py -f ../../../../Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/challenge.vmem imageinfo```
 
+```
+INFO    : volatility.debug    : Determining profile based on KDBG search...
+          Suggested Profile(s) : Win7SP1x64, Win7SP0x64, Win2008R2SP0x64, Win2008R2SP1x64_24000, Win2008R2SP1x64_23418, Win2008R2SP1x64, Win7SP1x64_24000, Win7SP1x64_23418
+                     AS Layer1 : WindowsAMD64PagedMemory (Kernel AS)
+                     AS Layer2 : FileAddressSpace (/home/bl4ck4non/Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme?/challenge.vmem)
+                      PAE type : No PAE
+                           DTB : 0x187000L
+                          KDBG : 0xf80002a510a0L
+          Number of Processors : 2
+     Image Type (Service Pack) : 1
+                KPCR for CPU 0 : 0xfffff80002a52d00L
+                KPCR for CPU 1 : 0xfffff880009ef000L
+             KUSER_SHARED_DATA : 0xfffff78000000000L
+           Image date and time : 2024-04-25 07:59:23 UTC+0000
+     Image local date and time : 2024-04-25 08:59:23 +0100
+```
+You should get that output, we have different profiles here, lets go with this profile ```Win7SP1x64```
 
+Now that we've goten the profile lets use the memdump plugin to help us dump the ```notepad.exe``` process
+
+command:```python2 vol.py -f ../../../../Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/challenge.vmem --profile=Win7SP1x64 memdump --dump-dir=/home/bl4ck4non/Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/ -p 3044```
+
+```--dump-dir```  specifies the directory where the dumped memory will be saved, in this case, a directory named "/home/bl4ck4non/Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/"
+```-p``` specifies the PID of the process for which to extract the memory dump
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/Documents/Tools/forensics/volatility]
+└─$ python2 vol.py -f ../../../../Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/challenge.vmem --profile=Win7SP1x64 memdump --dump-dir=/home/bl4ck4non/Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\? -p 3044  
+Volatility Foundation Volatility Framework 2.6.1
+************************************************************************
+Writing notepad.exe [  3044] to 3044.dmp
+```
+Nice, now lets get our flag
+
+```
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/…/CTF/africa_cyberfest/forensics/mem_mem_meme?]
+└─$ ls -la 3044.dmp          
+-rw-r--r-- 1 bl4ck4non bl4ck4non 209444864 May 25 17:18 3044.dmp
+                                                                                                                                                                                                                   
+┌──(bl4ck4non👽bl4ck4non-sec)-[~/…/CTF/africa_cyberfest/forensics/mem_mem_meme?]
+└─$ file 3044.dmp              
+3044.dmp: Windows Event Trace Log
+```
+All that's left is to grep the flag out
+
+command:```strings 3044.dmp | grep -i "actf"```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/ca1cc2df-3f29-4bd3-8bd6-da2d61c26805)
+
+Yup, that's our flag
+
+FLAG:-```ACTF{Sh4d0w_1nc1d3nt_C0mp1ic4t10n}```
+
+### Intended Method
 
 ---------------------------------------------
 
