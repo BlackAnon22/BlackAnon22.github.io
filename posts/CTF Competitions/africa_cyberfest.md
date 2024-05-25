@@ -666,6 +666,7 @@ Now that we've goten the profile lets use the memdump plugin to help us dump the
 command:```python2 vol.py -f ../../../../Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/challenge.vmem --profile=Win7SP1x64 memdump --dump-dir=/home/bl4ck4non/Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/ -p 3044```
 
 ```--dump-dir```  specifies the directory where the dumped memory will be saved, in this case, a directory named "/home/bl4ck4non/Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/"
+
 ```-p``` specifies the PID of the process for which to extract the memory dump
 
 ```
