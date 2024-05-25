@@ -637,7 +637,7 @@ command:```python3 vol.py -f ../../../../Downloads/CTF/africa_cyberfest/forensic
 
 Now this is more detailed, the first time we checked the proccess running we found a ```notepad.exe``` process with a pid of ```3064```, but then we can see from the above screenshot that this proccess has the args ```"C:\Windows\system32\NOTEPAD.EXE" \\172.16.56.1\share\ip.txt```. We can also see that there's another ```notepad.exe``` process with a pid of ```3044``` and that it has the arg ```"C:\Windows\system32\NOTEPAD.EXE" C:\Users\Crash Override again\Desktop\password.txt```. In summary we can say PID 3044 is a Notepad process that has opened the file "password.txt" located on the desktop of the user "Crash Override again".
 
-One thing we can do here is try to dump the process actually, and to do that we'll use the ```windows.dumpfiles.DumpFiles``` plugin
+One thing we can do here is try to dump the process, to do this I actually didn't use volatility3, I used volatility2 and this is because of the ```memdump``` plugin. You can get volatility2 [here](https://github.com/volatilityfoundation/volatility)
 
 command:```python3 vol.py -f ../../../../Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/challenge.vmem windows.dumpfiles.DumpFiles --pid 3044```
 
