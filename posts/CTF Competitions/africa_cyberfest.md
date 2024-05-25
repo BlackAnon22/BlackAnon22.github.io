@@ -28,7 +28,8 @@ Lets take a look at the challs I solved
 ## Forensics
 
 -     Whispers in the Wires
--     Invasion!
+-     InvasioIn!
+-     mem mem meme?
 
 
 # General
@@ -604,9 +605,44 @@ Download this file to your machine and unzip
 
 I'll actually be needing volatility for this, but damnnn I've been finding it difficult to install
 
-![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/1de3c98b-f648-43d9-b7c0-b9f2b2348fe0)
+Now that I've installed volatility, lets cook
 
-I'll try to update this when I get volatility installed
+To install volatility, you can get it [here](https://github.com/volatilityfoundation/volatility3)
+
+There'll be 2 ways to approach this, the intended method and the unintended method.
+
+### Unintended Method
+
+We'll start out by checking the OS and kernel details of the memory sample we want to analyze using the ```windows.info.Info``` plugin
+
+command:```python3 vol.py -f ../../../../Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/challenge.vmem windows.info.Info```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/f6f72884-ce10-4613-af0e-9c63c613f39d)
+
+From the above screenshot, we can see the kernel name and also the layer name
+
+Using the ```windows.pslist.PsList``` plugin, we can list the processes present in the windows memory image
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/7c71d257-4cd2-4064-a0e5-2f9d1abc3edd)
+
+command:```python3 vol.py -f ../../../../Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/challenge.vmem windows.pslist.PsList```
+
+We can see that there's a ```notepad.exe``` process running with a pid of ```3064```
+
+To get more details about these process we can use the ```windows.cmdline.CmdLine``` plugin to list the process command line arguments
+
+command:```python3 vol.py -f ../../../../Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/challenge.vmem windows.cmdline.CmdLine```
+
+![image](https://github.com/BlackAnon22/BlackAnon22.github.io/assets/67879936/c2088771-2bd0-46d0-8faa-34e05edc7b4a)
+
+Now this is more detailed, the first time we checked the proccess running we found a ```notepad.exe``` process with a pid of ```3064```, but then we can see from the above screenshot that this proccess has the args ```"C:\Windows\system32\NOTEPAD.EXE" \\172.16.56.1\share\ip.txt```. We can also see that there's another ```notepad.exe``` process with a pid of ```3044``` and that it has the arg ```"C:\Windows\system32\NOTEPAD.EXE" C:\Users\Crash Override again\Desktop\password.txt```. In summary we can say PID 3044 is a Notepad process that has opened the file "password.txt" located on the desktop of the user "Crash Override again".
+
+One thing we can do here is try to dump the process actually, and to do that we'll use the ```windows.dumpfiles.DumpFiles``` plugin
+
+command:```python3 vol.py -f ../../../../Downloads/CTF/africa_cyberfest/forensics/mem_mem_meme\?/challenge.vmem windows.dumpfiles.DumpFiles --pid 3044```
+
+
+
 
 ---------------------------------------------
 
