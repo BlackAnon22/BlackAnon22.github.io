@@ -29,3 +29,31 @@ Answer:-```2732```
 ----------------------
 
 ## Third Question
+
+What is the initial malicious executable that created this process?
+
+![image](https://github.com/user-attachments/assets/d2bb0a21-d00a-45f3-84df-20dbe67b340c)
+
+We can see from the above screenshot that the executable ```or4qtckT.exe``` has the said the PPID of ```@WanaDecryptor``` as its PID
+
+Answer:-```or4qtckT.exe```
+
+----------------------
+
+## Fourth Question
+
+If you drill down on the suspicious PID (vol.py -f infected.vmem --profile=Win7SP1x86 psscan | grep (PIDhere)), find the process used to delete files
+
+command:```python2 vol.py -f ../../../blue_team_labs/memory_forensics/BTLO\ Memory\ Analysis\ -\ Ransomware/infected.vmem --profile=Win7SP1x86 psscan | grep "2732"```
+
+![image](https://github.com/user-attachments/assets/adb3c6ba-6dd8-4d7c-81ee-c19f0be01d77)
+
+That's the process that's used to delete files
+
+Answer:-```taskdl.exe```
+
+-----------------------
+
+## Fifth Question
+
+
