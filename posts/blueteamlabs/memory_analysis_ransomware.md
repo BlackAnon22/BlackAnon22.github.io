@@ -97,7 +97,30 @@ Answer:-```WannaCry```
 What is the filename for the file with the ransomware public key that was used to encrypt the private key? (.eky extension)
 <hr>
 
+To solve this question we'll use the `filescan` module, since we know the extension we'll just grep it out hehe
 
+![image](https://github.com/user-attachments/assets/46278e0c-83b1-4ade-8009-f669e2d53264)
+
+We got our answer
+
+Answer:-```00000000.eky```
+
+----------------------------
+
+![image](https://github.com/user-attachments/assets/2ce787e9-2df1-4fda-b9f8-79341465392b)
+
+--------------------------------
+
+
+
+Till Next Time :xD
+
+
+
+
+
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
