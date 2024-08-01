@@ -71,6 +71,10 @@ command:```python2 vol.py -f ../../../blue_team_labs/memory_forensics/BTLO\ Memo
 
 Using volatility3 for this game a more accurate answer though
 
+![image](https://github.com/user-attachments/assets/ed7f812e-18f4-4b3f-9089-66dbcc7dd891)
+
+Answer:-```\Users\hacker\Desktop\or4qtckT.exe```
+
 ----------------------
 
 ## Sixth Question
