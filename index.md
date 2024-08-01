@@ -166,5 +166,5 @@ The writeups in this section are for the free exercises and courses available on
 Recently, I've developed an interest in forensics, sparked by participating in CTF (Capture The Flag) challenges. Now, I explore it for fun and plan to document some of the labs I solve here.
 * * *
 
-- [[August 01 2024]] [From SQL Injection to Shell: PostgreSQL Edition](https://Blackanon22.github.io/posts/PentesterLab_Labs/From_SQL_Injection_to_Shell_PostgreSQL_edition.html)
+- [[August 01 2024]] [Memory Analysis - Ransomware](https://Blackanon22.github.io/posts/blueteamlabs/memory_analysis_ransomware.html)
 
