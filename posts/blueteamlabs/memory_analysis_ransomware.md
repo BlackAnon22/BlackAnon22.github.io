@@ -1,9 +1,10 @@
-![image](https://github.com/user-attachments/assets/06835cbf-6700-498d-8a4c-6c54c3f9953b)
+![image](https://github.com/user-attachments/assets/a7a5ddcc-e8ab-4bd8-a7fc-40cd14f4f3d6)![image](https://github.com/user-attachments/assets/06835cbf-6700-498d-8a4c-6c54c3f9953b)
 
 
 ## First Question
 
-Run “vol.py -f infected.vmem --profile=Win7SP1x86 psscan” that will list all processes. What is the name of the suspicious process? 
+Run “vol.py -f infected.vmem --profile=Win7SP1x86 psscan” that will list all processes. What is the name of the suspicious process?
+<hr>
 
 command:```python3 vol.py -f ../../../blue_team_labs/memory_forensics/BTLO\ Memory\ Analysis\ -\ Ransomware/infected.vmem windows.psscan.PsScan```
 
@@ -19,6 +20,7 @@ Answer:-```@WanaDecryptor```
 ## Second Question
 
 What is the parent process ID for the suspicious process?
+<hr>
 
 We can tell from the output we got when we ran our command
 
@@ -31,6 +33,7 @@ Answer:-```2732```
 ## Third Question
 
 What is the initial malicious executable that created this process?
+<hr>
 
 ![image](https://github.com/user-attachments/assets/d2bb0a21-d00a-45f3-84df-20dbe67b340c)
 
@@ -43,6 +46,7 @@ Answer:-```or4qtckT.exe```
 ## Fourth Question
 
 If you drill down on the suspicious PID (vol.py -f infected.vmem --profile=Win7SP1x86 psscan | grep (PIDhere)), find the process used to delete files
+<hr>
 
 command:```python2 vol.py -f ../../../blue_team_labs/memory_forensics/BTLO\ Memory\ Analysis\ -\ Ransomware/infected.vmem --profile=Win7SP1x86 psscan | grep "2732"```
 
@@ -55,5 +59,63 @@ Answer:-```taskdl.exe```
 -----------------------
 
 ## Fifth Question
+
+Find the path where the malicious file was first executed
+<hr>
+
+Since we know the malicious executable to be ```or4qtckT.exe```, we can get the path using the ```filescan``` module
+
+command:```python2 vol.py -f ../../../blue_team_labs/memory_forensics/BTLO\ Memory\ Analysis\ -\ Ransomware/infected.vmem --profile=Win7SP1x86 filescan | grep "or4qtckT.exe"```
+
+![image](https://github.com/user-attachments/assets/7b1edb42-ae6f-4d5f-a395-4ac1878b2d8e)
+
+Using volatility3 for this game a more accurate answer though
+
+----------------------
+
+## Sixth Question
+
+Can you identify what ransomware it is? (Do your research!) 
+<hr>
+
+If you recall we found the process that's used to delete files ```taskdl.exe```, doing our research on this
+
+![image](https://github.com/user-attachments/assets/0e44f9d6-4af8-4f80-96df-a923cb397c83)
+
+Found the name of the ransomware
+
+Answer:-```WannaCry```
+
+------------------------
+
+## Seventh Question
+
+What is the filename for the file with the ransomware public key that was used to encrypt the private key? (.eky extension)
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
