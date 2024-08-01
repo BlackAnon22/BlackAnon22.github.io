@@ -107,7 +107,7 @@ Answer:-```00000000.eky```
 
 ----------------------------
 
-![image](https://github.com/user-attachments/assets/2ce787e9-2df1-4fda-b9f8-79341465392b)
+![image](https://github.com/user-attachments/assets/99281c60-05cb-4128-ac8c-1de825cc3e07)
 
 --------------------------------
 
