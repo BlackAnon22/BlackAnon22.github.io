@@ -1,3 +1,13 @@
+# What is Volatility??
+
+Volatility is an open-source memory forensics framework used for incident response and malware analysis. Developed in Python, it allows investigators to analyze RAM dumps to uncover details about running processes, network connections, and other system activities. Volatility supports various operating systems including Windows, macOS, and Linux, and works with multiple memory dump formats. Key functionalities include scanning for processes, detecting hidden services, and recovering deleted files using specialized plugins. The framework is widely utilized by digital forensic experts for its comprehensive analysis capabilities and flexibility.
+
+You can read more about it [here](https://volatilityfoundation.org/)
+
+To install volatility 2 and volatility 3 on Linux, you can use [this](https://seanthegeek.net/1172/how-to-install-volatility-2-and-volatility-3-on-debian-ubuntu-or-kali-linux/)
+
+Lets get started hehe
+
 ![image](https://github.com/user-attachments/assets/06835cbf-6700-498d-8a4c-6c54c3f9953b)
 
 
