@@ -16,7 +16,7 @@ Lets get started hehe
 Run “vol.py -f infected.vmem --profile=Win7SP1x86 psscan” that will list all processes. What is the name of the suspicious process?
 <hr>
 
-command:```python3 vol.py -f ../../../blue_team_labs/memory_forensics/BTLO\ Memory\ Analysis\ -\ Ransomware/infected.vmem windows.psscan.PsScan```
+command:```python2 vol.py -f ../../../blue_team_labs/memory_forensics/BTLO\ Memory\ Analysis\ -\ Ransomware/infected.vmem windows.psscan.PsScan```
 
 ![image](https://github.com/user-attachments/assets/53c76108-7172-4fc4-9233-828400537d28)
 
