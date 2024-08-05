@@ -697,7 +697,7 @@ Yup, that's our flag
 
 FLAG:-```ACTF{Sh4d0w_1nc1d3nt_C0mp1ic4t10n}```
 
-### Intended Method
+
 
 ---------------------------------------------
 
