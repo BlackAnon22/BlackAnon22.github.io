@@ -116,27 +116,35 @@ Yup, it has been messed with.
 
 Lets get the correct file signature
 
-I downloaded a wav sample online, then I checked the magic bytes using ```hexeditor```
+I downloaded a wav sample online 
+
+![image](https://github.com/user-attachments/assets/ed46eb6d-c424-4095-bd6d-f95c259b0e25)
+
+Then I checked the magic bytes using ```hexeditor```
 
 command:```hexeditor (filename)```
 
-![image](https://github.com/user-attachments/assets/f67a4133-b9dc-4ea0-932a-a11624c17f22)
+![image](https://github.com/user-attachments/assets/266dc846-b817-42b1-8403-6b5c379a2a34)
 
 Niceeeeeeeee, now lets correct our ```chall.wav`` file
 
-![image](https://github.com/user-attachments/assets/6a704a2d-ee21-4371-81f8-f52afe845b1b)
+![image](https://github.com/user-attachments/assets/032bb233-9ec2-4600-b27e-c49032c9b0cd)
 
 ```ctrl + x``` to save
 
 Runnng the ```file``` command again
 
-![image](https://github.com/user-attachments/assets/541b1172-a0fc-420d-9152-9907f960cf00)
+![image](https://github.com/user-attachments/assets/3032e4c0-72d3-4ca9-9ab2-4f781a584136)
 
 Niceeeeeeeeeee, playing the wav file I found it to be morse code, to solve the challenge we can use morse decoder
 
 Lets use [this](https://morsecode.world/international/decoder/audio-decoder-adaptive.html)
 
+![image](https://github.com/user-attachments/assets/0a6adc16-fcea-4ccc-b933-cf1132fad15c)
 
+We found our flag
+
+FLAG:-```n00bz{BEEPBOPMORSECODE}```
 
 -------------------------
 
