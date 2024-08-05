@@ -161,11 +161,27 @@ Now I can explain what this piece of code does
 2. Assertion Check: It checks if the product of 4919 and the amount of Ether sent (msg.value) does not equal 279012349008035. If this condition is false, the transaction reverts.
 3. Self-Destruct: If the assertion passes, the contract self-destructs and sends all its remaining Ether to the zero address (0), effectively burning the Ether.
 ```
+Let me break it down further, the contract stops if
+```
+279012349008035 == 4919 * msg.value
+```
+This is more a maths issue lool, to get the ```msg.value``` we can just do this
+```
+msg.value == 279012349008035/4919
+```
+Lets get the value
 
-This is more a maths issue lool, to get the value that we need to send to stop the contract from self-destructing we just need to divide ```279012349008035``` by ```4919```
+![image](https://github.com/user-attachments/assets/9fd033cc-b118-4de0-adf1-17a614811ddd)
 
+Niceeee, lets convert that to hex using [this](https://www.dcode.fr/hexadecimal-system)
 
+![image](https://github.com/user-attachments/assets/c78e4f44-4044-4eb4-bfbd-c3a4ffea5582)
 
+We found our flag already😎
+
+FLAG:-```n00bz{0xd34db33f5}```
+
+-----------------------------------
 
 
 
