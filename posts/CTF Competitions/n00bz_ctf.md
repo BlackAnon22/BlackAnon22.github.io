@@ -93,7 +93,28 @@ We got our flag
 
 FLAG:-```n00bz{13.37,-13.37}```
 
+------------------------
 
+## Wave
+<hr>
+
+![image](https://github.com/user-attachments/assets/df47bb94-8f54-4499-ac75-a073737b8318)
+
+Download the file to your machine
+
+![image](https://github.com/user-attachments/assets/db3df228-41e8-407e-8c9e-f33682c86ea1)
+
+We have a wav file but as you can see from the above screenshot, it's not showing that. This can only mean one thing (the file signature has been messed with)
+
+Lets use Hexeditor to check the file signature
+
+command:```hexeditor chall.wav```
+
+![image](https://github.com/user-attachments/assets/2d65abb3-2c1c-4241-8995-dacacfbc3424)
+
+Yup, it has been messed with.
+
+Lets get the correct file signature, I found one [here]
 
 -------------------------
 
