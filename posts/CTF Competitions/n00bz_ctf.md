@@ -1,5 +1,4 @@
-![image](https://github.com/user-attachments/assets/19e5fe6f-9afa-4778-b421-8df1226d34e6)
-
+<p align="center"><img src="![image](https://github.com/user-attachments/assets/19e5fe6f-9afa-4778-b421-8df1226d34e6)" alt="image_alt"></p>
 
 # Challenges Solved
 ## Misc
