@@ -114,7 +114,25 @@ command:```hexeditor chall.wav```
 
 Yup, it has been messed with.
 
-Lets get the correct file signature, I found one [here]
+Lets get the correct file signature, I found one [here](https://www.file-recovery.com/wav-signature-format.htm)
+
+![image](https://github.com/user-attachments/assets/66bf6159-0c51-47a8-83a1-523d76343e41)
+
+Now lets correct it
+
+![image](https://github.com/user-attachments/assets/81b3f329-46b2-40f5-8737-281015d428d5)
+
+```ctrl + x``` to save
+
+Running the ```file``` command
+
+![image](https://github.com/user-attachments/assets/3cc8d65e-d954-4151-a363-e7eb6899ac4c)
+
+Niceeeeeeeeeee, playing the wav file I found it to be morse code, to solve the challenge we can use morse decoder
+
+Lets use [this](https://morsecode.world/international/decoder/audio-decoder-adaptive.html)
+
+
 
 -------------------------
 
