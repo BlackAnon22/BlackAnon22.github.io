@@ -67,7 +67,52 @@ FLAG:-```n00bz{PPT}```
 ## Disk Golf
 <hr>
 
+![image](https://github.com/user-attachments/assets/991eac61-66b9-4482-a5fe-98a07ab13f3d)
 
+Download the file to your machine and extract
+
+![image](https://github.com/user-attachments/assets/78eb1dd2-c9b9-4cb1-a2d4-f32524b0a34e)
+
+I love disk challs hehe, this one was quite easy though (easier than sanity check hehe💀)
+
+For some unknown reasons I couldn't mount this using the mount command, so I used Autopsy instead
+
+![image](https://github.com/user-attachments/assets/e8e9d864-a0f7-404d-ab90-cb60d6696583)
+![image](https://github.com/user-attachments/assets/2b595494-5022-4fe9-8dbb-513c54886e6e)
+![image](https://github.com/user-attachments/assets/501a6592-bef9-4c24-a248-b8d6ac726a2a)
+![image](https://github.com/user-attachments/assets/c14d4aa6-e037-4370-976e-0b0593e7e57a)
+![image](https://github.com/user-attachments/assets/b97d9528-c476-4414-94cf-2954b54c4a85)
+![image](https://github.com/user-attachments/assets/f21fe897-1019-4c84-8915-f6ad710adc75)
+![image](https://github.com/user-attachments/assets/ff6ff031-265f-4e85-b3a5-8c39dced6deb)
+![image](https://github.com/user-attachments/assets/5e827a4f-c88f-43bf-abeb-7c7107a84b74)
+![image](https://github.com/user-attachments/assets/cdf5b580-0987-4513-9823-d8d42e6e7efe)
+![image](https://github.com/user-attachments/assets/3265031d-0111-4664-bdb2-cf0f006d2e38)
+![image](https://github.com/user-attachments/assets/c7004702-d0ed-40af-88e1-09054e169a77)
+![image](https://github.com/user-attachments/assets/507248e6-22bd-422e-8942-944261e27985)
+![image](https://github.com/user-attachments/assets/43f55253-604c-4729-882f-7cfe83e48e7f)
+
+We've successfully mounted the disk image
+
+Now, to get the flag just search for "flag.txt" (ezzzz right??)
+
+![image](https://github.com/user-attachments/assets/f947ff03-7d4d-4316-8a40-82daaad6a58f)
+
+Checking the content
+
+![image](https://github.com/user-attachments/assets/eb9f2cd2-c725-4296-a91a-1554a705cbb7)
+
+This looks like Ascii Code, lets decode
+
+![image](https://github.com/user-attachments/assets/858457f5-0d3d-4bda-aabf-eb5977524838)
+
+FLAG:-```	n00bz{7h3_l0ng_4w41t3d_d15k_f0r3ns1c5}```
+
+------------------------------------------------
+
+# Blockchain
+
+## EVM - The Basics
+<hr>
 
 
 
