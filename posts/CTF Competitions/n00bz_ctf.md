@@ -114,19 +114,23 @@ command:```hexeditor chall.wav```
 
 Yup, it has been messed with.
 
-Lets get the correct file signature, I found one [here](https://www.file-recovery.com/wav-signature-format.htm)
+Lets get the correct file signature
 
-![image](https://github.com/user-attachments/assets/66bf6159-0c51-47a8-83a1-523d76343e41)
+I downloaded a wav sample online, then I checked the magic bytes using ```hexeditor```
 
-Now lets correct it
+command:```hexeditor (filename)```
 
-![image](https://github.com/user-attachments/assets/81b3f329-46b2-40f5-8737-281015d428d5)
+![image](https://github.com/user-attachments/assets/f67a4133-b9dc-4ea0-932a-a11624c17f22)
+
+Niceeeeeeeee, now lets correct our ```chall.wav`` file
+
+![image](https://github.com/user-attachments/assets/6a704a2d-ee21-4371-81f8-f52afe845b1b)
 
 ```ctrl + x``` to save
 
-Running the ```file``` command
+Runnng the ```file``` command again
 
-![image](https://github.com/user-attachments/assets/3cc8d65e-d954-4151-a363-e7eb6899ac4c)
+![image](https://github.com/user-attachments/assets/541b1172-a0fc-420d-9152-9907f960cf00)
 
 Niceeeeeeeeeee, playing the wav file I found it to be morse code, to solve the challenge we can use morse decoder
 
