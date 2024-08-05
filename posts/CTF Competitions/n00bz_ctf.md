@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/9e7964a4-7645-4968-8e46-89d1d780e70b)
+![image](https://github.com/user-attachments/assets/a9ab4985-bc4b-4670-a2f9-a6fc14585caa)![image](https://github.com/user-attachments/assets/9e7964a4-7645-4968-8e46-89d1d780e70b)
 
 
 # Challenges Solved
@@ -158,7 +158,9 @@ Now I can explain what this piece of code does
 
 ```
 1. Receives Ether: The function can accept Ether when called due to the payable keyword.
+
 2. Assertion Check: It checks if the product of 4919 and the amount of Ether sent (msg.value) does not equal 279012349008035. If this condition is false, the transaction reverts.
+
 3. Self-Destruct: If the assertion passes, the contract self-destructs and sends all its remaining Ether to the zero address (0), effectively burning the Ether.
 ```
 Let me break it down further, the contract stops if
@@ -182,6 +184,80 @@ We found our flag already😎
 FLAG:-```n00bz{0xd34db33f5}```
 
 -----------------------------------
+
+## EVM - Conditions
+<hr>
+
+![image](https://github.com/user-attachments/assets/c07f248e-9c2a-4d04-9b27-75bd371397fc)
+
+A similar task, lets check the content of the txt file we were given
+
+![image](https://github.com/user-attachments/assets/6d2342c9-5bd4-406c-85be-140780faa43f)
+
+Lets decompile with [this](https://app.dedaub.com/decompile)
+
+![image](https://github.com/user-attachments/assets/725a67aa-d598-41ea-9f6c-2833ea726ee3)
+![image](https://github.com/user-attachments/assets/b7b6fe4d-a894-4b1d-9cc6-1939fa0d0df2)
+
+I'm not reading this😂
+
+![image](https://github.com/user-attachments/assets/e08cf989-4d0c-4f84-b54a-aa0fe12a4e4c)
+
+Yup, this is better
+
+```sol
+function function_selector() public payable { 
+    assert(6750 + msg.value != 0xdb15fe);
+    selfdestruct(0);
+}
+```
+Just as I did in the last challenge, I'll be converting the hex
+
+```sol
+function function_selector() public payable { 
+    assert(6750 + msg.value != 14358014);
+    selfdestruct(0);
+}
+```
+Now, let me explain what this piece of code does
+
+```
+1. Function: function_selector can receive Ether (payable) and is publicly accessible (public).
+
+2. Assertion Check: It checks if 6750 + msg.value is not equal to 14358014. If they are equal, the assertion fails, and the transaction reverts.
+
+3. Selfdestruct: If the assertion passes (meaning 6750 + msg.value is not equal to 14358014), the contract self-destructs and sends all its remaining Ether to the zero address (0), effectively burning the Ether.
+```
+Let me break it down further, the contract stops if
+```
+6750 + msg.value == 14358014
+```
+So, to get our ```msg.value``` we can do this
+```
+msg.value == 14358014 - 6750
+```
+Lets calculate this
+
+![image](https://github.com/user-attachments/assets/b8c1d4d2-097d-4568-aac9-efb4e61bba86)
+
+Now, we can convert ```14351264``` to hex using [this](https://www.dcode.fr/hexadecimal-system)
+
+![image](https://github.com/user-attachments/assets/660e42a0-0c92-4ec9-88c2-22bea6a06cf6)
+
+Yup, that's our flag
+
+FLAG:-```n00bz{0xdafba0}```
+
+-------------------
+
+Till Next Time :xD
+
+
+
+
+<br> <br>
+[Back To Home](../../index.md)
+
 
 
 
