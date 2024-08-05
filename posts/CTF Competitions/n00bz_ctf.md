@@ -9,6 +9,8 @@
 -     Tail
 
 ## Forensics
+-     Plane
+-     Wave
 -     Disk Golf
 
 ## Blockchain
@@ -63,6 +65,37 @@ FLAG:-```n00bz{PPT}```
 ---------------------------------------
 
 # Forensics
+
+## Plane
+<hr>
+
+![image](https://github.com/user-attachments/assets/f78aa717-f8d0-478a-83aa-9d5703856ce9)
+
+Download the file to your machine
+
+![image](https://github.com/user-attachments/assets/847bddb5-73a2-4867-a5c4-88b1b5c217bc)
+
+Checking the content of the image
+
+![image](https://github.com/user-attachments/assets/a98cc851-fa8b-4f29-98ab-9085c453f8d5)
+
+The task is to get the latitude, longitude of the place this picture is taken from, rounded upto two decimal places. 
+
+Lets use ```exiftool``` on this image
+
+![image](https://github.com/user-attachments/assets/73582024-6297-427c-8257-8416cb0e4f46)
+
+Using [this](https://latlongdata.com/lat-long-converter/) online calculator I was able to solve this challenge
+
+![image](https://github.com/user-attachments/assets/e21bcd57-176c-4202-acf4-6ac460e3a896)
+
+We got our flag
+
+FLAG:-```n00bz{13.37,-13.37}```
+
+
+
+-------------------------
 
 ## Disk Golf
 <hr>
