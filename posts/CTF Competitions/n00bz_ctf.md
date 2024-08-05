@@ -73,11 +73,11 @@ FLAG:-```n00bz{PPT}```
 
 Download the file to your machine
 
-![image](https://github.com/user-attachments/assets/847bddb5-73a2-4867-a5c4-88b1b5c217bc)
+![image](https://github.com/user-attachments/assets/cc138ba2-364b-4299-a5b5-c59c101bbd63)
 
 Checking the content of the image
 
-![image](https://github.com/user-attachments/assets/a98cc851-fa8b-4f29-98ab-9085c453f8d5)
+![image](https://github.com/user-attachments/assets/847bddb5-73a2-4867-a5c4-88b1b5c217bc)
 
 The task is to get the latitude, longitude of the place this picture is taken from, rounded upto two decimal places. 
 
