@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/9e7964a4-7645-4968-8e46-89d1d780e70b)
+![image](https://github.com/user-attachments/assets/19e5fe6f-9afa-4778-b421-8df1226d34e6)
 
 
 # Challenges Solved
