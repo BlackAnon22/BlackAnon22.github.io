@@ -114,8 +114,55 @@ FLAG:-```	n00bz{7h3_l0ng_4w41t3d_d15k_f0r3ns1c5}```
 ## EVM - The Basics
 <hr>
 
+![image](https://github.com/user-attachments/assets/b5f7e563-a3a1-48e2-9e06-68468283d2f1)
 
+The task is to find the value, in hex, that you need to send to make the contract STOP and not self destruct.
 
+We were given a txt file, checking the contents of the file
+
+![image](https://github.com/user-attachments/assets/9cfc1d36-f7e0-4ff2-9083-81d41446e8ed)
+
+This is an EVM ByteCode, so we can use an online bytecode decompiler to decompile
+
+Lets use [this](https://ethervm.io/decompile)
+
+![image](https://github.com/user-attachments/assets/5c15e67c-57d1-4f19-ace4-1a07d50211fe)
+![image](https://github.com/user-attachments/assets/ef0ddb37-0aa6-43b6-b5a4-2e0ce8039154)
+
+This is a code snippet written in EVM (Ethereum Virtual Machine) bytecode. Specifically, it appears to be a smart contract written in a low-level, assembly-like language used for Ethereum smart contracts.
+
+I actually can't read this so I had to look for another decompiler
+
+I found [this](https://app.dedaub.com/decompile)
+
+![image](https://github.com/user-attachments/assets/ab01f220-570a-4263-88f6-b4334a6cc1ad)
+![image](https://github.com/user-attachments/assets/73eaa1a1-4f2a-4fa4-9163-b0c798bd6618)
+
+Finally, a code I can read
+
+```sol
+function function_selector() public payable { 
+    assert(0xfdc29ff358a3 != 4919 * msg.value);
+    selfdestruct(0);
+}
+```
+Before I explain this, lets convert that hex value hehe
+
+```sol
+function function_selector() public payable { 
+    assert(279012349008035 != 4919 * msg.value);
+    selfdestruct(0);
+}
+```
+Now I can explain what this piece of code does
+
+```
+1. Receives Ether: The function can accept Ether when called due to the payable keyword.
+2. Assertion Check: It checks if the product of 4919 and the amount of Ether sent (msg.value) does not equal 279012349008035. If this condition is false, the transaction reverts.
+3. Self-Destruct: If the assertion passes, the contract self-destructs and sends all its remaining Ether to the zero address (0), effectively burning the Ether.
+```
+
+This is more a maths issue lool, to get the value that we need to send to stop the contract from self-destructing we just need to divide ```279012349008035``` by ```4919```
 
 
 
