@@ -146,7 +146,7 @@ function function_selector() public payable {
     selfdestruct(0);
 }
 ```
-Before I explain this, lets convert that hex value hehe
+Before I explain this, lets convert that hex value to decimal hehe
 
 ```sol
 function function_selector() public payable { 
@@ -211,7 +211,7 @@ function function_selector() public payable {
     selfdestruct(0);
 }
 ```
-Just as I did in the last challenge, I'll be converting the hex
+Just as I did in the last challenge, I'll be converting the hex to decimal
 
 ```sol
 function function_selector() public payable { 
