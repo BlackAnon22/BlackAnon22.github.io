@@ -250,6 +250,8 @@ FLAG:-```n00bz{0xdafba0}```
 
 -------------------
 
+You can check out sensei's writeup [here](https://senseixenus.github.io/posts/ctf/n00bzctf/writeup.html)
+
 Till Next Time :xD
 
 
