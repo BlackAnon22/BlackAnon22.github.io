@@ -13,7 +13,7 @@ First, lets navigate to the webpage
 
 Logging in with the creds we were given
 
-![image](https://github.com/user-attachments/assets/dddb5ee2-d518-41d7-9084-37d3f79098d6)
+![image](https://github.com/user-attachments/assets/df7b3b24-95fd-4c9d-a8ff-94e9e60abfd8)
 
 We are logged in
 
