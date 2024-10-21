@@ -63,6 +63,10 @@ Since we have login creds, lets login
 
 ![image](https://github.com/user-attachments/assets/fbe73353-9fd7-4597-acaa-b42cd83dbf22)
 
+Running a directory enumeration scan didn't show any api directory
+
+![image](https://github.com/user-attachments/assets/639e6a6e-3df9-4e12-badd-1efe03e69830)
+
 
 
 
