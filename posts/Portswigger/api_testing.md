@@ -67,6 +67,9 @@ Running a directory enumeration scan didn't show any api directory
 
 ![image](https://github.com/user-attachments/assets/3d3e5887-23da-4236-926c-4f891510394b)
 
+Checking the "target" on burpsuite I found this
+
+![image](https://github.com/user-attachments/assets/06eb7af5-c174-40b1-9fdf-de8fc951d47a)
 
 
 
