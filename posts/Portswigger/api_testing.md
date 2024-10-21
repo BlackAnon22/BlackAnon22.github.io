@@ -71,6 +71,9 @@ Checking the "target" on burpsuite I found this
 
 ![image](https://github.com/user-attachments/assets/06eb7af5-c174-40b1-9fdf-de8fc951d47a)
 
+Sent the request to burp repeater
+
+
 
 
 
