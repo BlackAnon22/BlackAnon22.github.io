@@ -33,10 +33,18 @@ Navigating to the directory you should see this
 
 We can that to complete the task which is to delete the user `carlos` since we've gotten the endpoint to use from the documentation.
 
-Sent the request to burp repeater, using burpsuite makes the exploitation easier
+I sent the request to burp repeater, 
 
 ![image](https://github.com/user-attachments/assets/e301d50d-dcc3-4f1a-bdd5-052d3c78b4df)
+![image](https://github.com/user-attachments/assets/334326e5-4b49-4af6-a758-8896ae49f2d6)
 
+Refreshing the webpage
+
+![image](https://github.com/user-attachments/assets/f3a7bc0b-1c6f-4bbd-9413-c89dba8ff9ca)
+
+We have successfully completed this lab
+
+----------------------------------------------
 
 
 
