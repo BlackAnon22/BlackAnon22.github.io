@@ -15,5 +15,7 @@ Logging in with the creds we were given
 
 ![image](https://github.com/user-attachments/assets/df7b3b24-95fd-4c9d-a8ff-94e9e60abfd8)
 
-We are logged in
+We are logged in, lets head back to the "Home" page
+
+![image](https://github.com/user-attachments/assets/ea5dffb3-765d-4c36-b82f-283e8a9735c5)
 
