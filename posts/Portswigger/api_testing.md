@@ -59,6 +59,10 @@ Navigate to the webpage
 
 ![image](https://github.com/user-attachments/assets/1d221d66-5ab1-48dc-880c-3d33c6900167)
 
+Since we have login creds, lets login
+
+![image](https://github.com/user-attachments/assets/fbe73353-9fd7-4597-acaa-b42cd83dbf22)
+
 
 
 
