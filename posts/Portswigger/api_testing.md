@@ -19,3 +19,7 @@ We are logged in, lets head back to the "Home" page
 
 ![image](https://github.com/user-attachments/assets/d0000145-db66-4681-b91f-ec94c2f90f61)
 
+Lets perform directory fuzzing using dirsearch
+
+command:```dirsearch -u https://0a0c004c037a9ea281dd253c00720078.web-security-academy.net/ -w /usr/share/wordlists/dirb/common.txt```
+
