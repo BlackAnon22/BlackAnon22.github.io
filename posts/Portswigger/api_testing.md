@@ -57,6 +57,7 @@ The task is to buy a `Lightweight l33t Leather Jacket` by exploiting a hidden ap
 
 Navigate to the webpage
 
+![image](https://github.com/user-attachments/assets/1d221d66-5ab1-48dc-880c-3d33c6900167)
 
 
 
