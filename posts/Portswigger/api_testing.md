@@ -46,6 +46,17 @@ We have successfully completed this lab
 
 ----------------------------------------------
 
+# Lab: Finding and exploiting an unused API endpoint
+<hr>
+
+## Task
+
+![image](https://github.com/user-attachments/assets/ca64c13b-05f6-4605-a73d-76cab59e8e2a)
+
+The task is to buy a `Lightweight l33t Leather Jacket` by exploiting a hidden api endpoint
+
+Navigate to the webpage
+
 
 
 
