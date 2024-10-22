@@ -1,4 +1,4 @@
-# Lab: Exploiting an API endpoint using documentation
+![image](https://github.com/user-attachments/assets/b294e9bc-1586-4fa3-8b69-005cd15bdf66)# Lab: Exploiting an API endpoint using documentation
 <hr>
 
 ## Task
@@ -170,6 +170,9 @@ We have successfully completed this lab
 
 The task is to login as the adminsitrator and delete the user "carlos"
 
+Navigate to the webpage
+
+![image](https://github.com/user-attachments/assets/223f9721-7258-46e8-8adb-49778884efd8)
 
 
 
