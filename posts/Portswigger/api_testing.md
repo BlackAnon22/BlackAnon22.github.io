@@ -131,7 +131,10 @@ Navigating to the `/api` directory
 
 ![image](https://github.com/user-attachments/assets/ea00fe7e-b57c-486b-a05a-5c591f49cd07)
 
-We found an endpoint `/checkpoint`
+We found an endpoint `/checkout`
+
+First, lets add the leather jacket to our cart, then we'll capture a fresh request and navigate to the `/checkout` endpoint
+
 
 
 
