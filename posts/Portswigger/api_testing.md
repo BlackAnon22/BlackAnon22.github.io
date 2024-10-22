@@ -121,6 +121,17 @@ Login with the given credentials
 
 ![image](https://github.com/user-attachments/assets/f760ccbb-a371-4123-8844-ccbffaab9557)
 
+Lets do a bit of directory fuzzing using dirsearch
+
+command:```dirsearch -u https://0ac30071046b997e82cb8d7300fd0059.web-security-academy.net/ -w /usr/share/wordlists/dirb/common.txt```
+
+![image](https://github.com/user-attachments/assets/ff6e4ce9-8efa-4d7c-b0a2-eec60d01e64c)
+
+Navigating to the `/api` directory
+
+![image](https://github.com/user-attachments/assets/ea00fe7e-b57c-486b-a05a-5c591f49cd07)
+
+We found an endpoint `/checkpoint`
 
 
 
