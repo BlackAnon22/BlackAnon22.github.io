@@ -91,6 +91,12 @@ To change the content-type to application/json I used the BApp extension `conten
 
 Now lets add the parameter
 
+![image](https://github.com/user-attachments/assets/6b2d0ae3-ce72-463a-a87d-680f42ead657)
+
+We've successfully updated the price
+
+Showing this response in browser,
+
 
 
 
