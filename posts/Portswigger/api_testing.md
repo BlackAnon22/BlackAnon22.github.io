@@ -226,6 +226,14 @@ Start the attack,
 
 From the screenshot above we can see that the payload "email" and "username" are valid values for the `field` parameter because they return the `200` status code
 
+Lets resend the request, this time we'll be using `email` as our value for the `field` parameter
+
+![image](https://github.com/user-attachments/assets/207a0c70-72d5-4af8-861c-9e62a6d198f9)
+
+This returned the original output.
+
+What next??
+
 
 
 
