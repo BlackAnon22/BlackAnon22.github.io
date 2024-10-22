@@ -161,6 +161,16 @@ We have successfully completed this lab
 
 --------------------------------------------------------
 
+# Lab: Exploiting server-side parameter pollution in a query string
+<hr>
+
+## Task
+
+![image](https://github.com/user-attachments/assets/09bbe349-e5f0-485e-8d38-f360728897da)
+
+The task is to login as the adminsitrator and delete the user "carlos"
+
+
 
 
 
