@@ -104,6 +104,17 @@ We have successfully completed this lab
 
 -------------------------------------------
 
+# Lab: Exploiting a mass assignment vulnerability
+<hr>
+
+## Task
+
+![image](https://github.com/user-attachments/assets/dfd4a52d-365a-41df-af92-b6efb5f551e7)
+
+So the task is to exploit the mass assignment vulnerability
+
+Navigate to the webpage
+
 
 
 
