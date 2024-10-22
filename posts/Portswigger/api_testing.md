@@ -218,6 +218,14 @@ Send the request to burp intruder
 
 You can get the server-side variable names [here](https://github.com/antichown/burp-payloads/blob/master/Server-side%20variable%20names.pay)
 
+![image](https://github.com/user-attachments/assets/7a86c5f3-b65a-4d59-9f64-33e8991d4ba8)
+
+Start the attack,
+
+![image](https://github.com/user-attachments/assets/41382d11-4017-436d-acc0-c37460b8cfc0)
+
+From the screenshot above we can see that the payload "email" and "username" are valid values for the `field` parameter because they return the `200` status code
+
 
 
 
