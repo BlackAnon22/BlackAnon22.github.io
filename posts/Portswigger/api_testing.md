@@ -208,6 +208,13 @@ We still get the "invalid username", lets change the username from "BlackAnon" t
 
 "Invalid field" error message, this means the server-side application may recognize the injected field parameter
 
+How do we get the correct value for the field parameter?? 
+
+We'll bruteforce hell out of it💀
+
+Send the request to burp intruder
+
+![image](https://github.com/user-attachments/assets/d699ba69-273c-457f-a85a-ed2f597c4ec0)
 
 
 
