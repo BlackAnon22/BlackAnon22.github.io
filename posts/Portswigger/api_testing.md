@@ -95,7 +95,14 @@ Now lets add the parameter
 
 We've successfully updated the price
 
-Showing this response in browser,
+Now we can add the leather jacket to our cart,
+
+![image](https://github.com/user-attachments/assets/2ecfc908-6ce3-4f2b-b701-cf0bb470e64c)
+![image](https://github.com/user-attachments/assets/0761480b-8617-4e84-bcff-d33efaa0f1cf)
+
+We have successfully completed this lab
+
+-------------------------------------------
 
 
 
