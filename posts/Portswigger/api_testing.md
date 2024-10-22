@@ -237,6 +237,12 @@ What next??
 Earlier when I crawled the webpage using burpsuite I found this
 
 ![image](https://github.com/user-attachments/assets/aa4324c3-dc1d-4f38-8af7-6682be2e0dec)
+![image](https://github.com/user-attachments/assets/610e3471-d034-4572-ae3b-07076d91704b)
+
+Lets check if `reset-token` is a valid value for the `field` parameter
+
+
+
 
 
 
