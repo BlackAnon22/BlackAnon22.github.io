@@ -75,7 +75,21 @@ Send the request to repeater,
 
 ![image](https://github.com/user-attachments/assets/3f166ca9-3649-4705-a934-f64c57bddb22)
 
+Lets try to change the HTTP method from `GET` to say `PATCH`
 
+![image](https://github.com/user-attachments/assets/3a10a8bb-438d-47ec-9154-3f9cdf69a253)
+
+We got an unauthorized error, what I did was go to the browser, login with the creds I was given then captured a fresh request
+
+![image](https://github.com/user-attachments/assets/7e6166cc-6eb3-4268-a5a0-6ef140d81257)
+
+From the error message we can see that our `content-type` is meant to be `application/json`. 
+
+To change the content-type to application/json I used the BApp extension `content type converter`
+
+![image](https://github.com/user-attachments/assets/0431829e-a6a7-45e3-97bd-edcb3ddb979b)
+
+Now lets add the parameter
 
 
 
