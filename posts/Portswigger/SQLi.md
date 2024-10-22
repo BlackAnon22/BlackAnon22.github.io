@@ -1349,8 +1349,12 @@ username:```administrator```        password:```hhkovl3d48vch2ix840b```
 
 We have successfully completed this lab😎
 
+---------------------------------
 
+Till Next Time :xD
 
+<br><br>
+[Back To Home](../../index.md)
 
 
 
