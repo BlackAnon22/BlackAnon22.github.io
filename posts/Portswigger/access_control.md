@@ -672,7 +672,12 @@ Checking the webpage
 
 We have successfully solved this lab😎
 
+------------------------------------------
 
+Till Next Time :xD
+
+<br><br>
+[Back To Home](../../index.md)
 
 
 
