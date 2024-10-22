@@ -115,6 +115,12 @@ So the task is to exploit the mass assignment vulnerability
 
 Navigate to the webpage
 
+![image](https://github.com/user-attachments/assets/5b9344e5-6a86-4720-8f4d-386e91cbb881)
+
+Login with the given credentials
+
+![image](https://github.com/user-attachments/assets/f760ccbb-a371-4123-8844-ccbffaab9557)
+
 
 
 
