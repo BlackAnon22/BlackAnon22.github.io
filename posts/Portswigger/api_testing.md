@@ -71,7 +71,9 @@ I did a bit of crawling with burpsuite and I got this
 
 ![image](https://github.com/user-attachments/assets/4a53e5ef-c629-43c4-8ec2-81d1769b0326)
 
+Send the request to repeater,
 
+![image](https://github.com/user-attachments/assets/3f166ca9-3649-4705-a934-f64c57bddb22)
 
 
 
