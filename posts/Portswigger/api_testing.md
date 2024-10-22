@@ -216,6 +216,8 @@ Send the request to burp intruder
 
 ![image](https://github.com/user-attachments/assets/d699ba69-273c-457f-a85a-ed2f597c4ec0)
 
+You can get the server-side variable names [here](https://github.com/antichown/burp-payloads/blob/master/Server-side%20variable%20names.pay)
+
 
 
 
