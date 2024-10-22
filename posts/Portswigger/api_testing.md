@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/b294e9bc-1586-4fa3-8b69-005cd15bdf66)# Lab: Exploiting an API endpoint using documentation
+# Lab: Exploiting an API endpoint using documentation
 <hr>
 
 ## Task
