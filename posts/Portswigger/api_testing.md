@@ -136,7 +136,30 @@ We found an endpoint `/checkout`
 First, lets add the leather jacket to our cart, then we'll capture a fresh request and navigate to the `/checkout` endpoint
 
 ![image](https://github.com/user-attachments/assets/4e09e571-f064-44b1-8fcd-1482a6861332)
+![image](https://github.com/user-attachments/assets/840cde0a-0a89-4a3e-bcb2-3142b1936e1f)
 
+Niceee, now we'll change the `content-type` of our request to `application/json`
+
+![image](https://github.com/user-attachments/assets/75021da1-1bbd-4496-9e64-6bef1f2722b8)
+
+```json
+{"chosen_discount":{"percentage":0},"chosen_products":[{"product_id":"1","name":"Lightweight \"l33t\" Leather Jacket","quantity":1,"item_price":133700}]}
+```
+From the json output above we have the "chosen_discount" parameter, this means we can specify the percentage discount that applies to the product. As at this point the percentage discount is 0%, this means the price of the leather jacket is still `133700`.
+
+Next thing to do is to add the parameter we got from our `GET` request output
+
+![image](https://github.com/user-attachments/assets/7538856c-a16e-4195-a9f4-9f99f32a2ae5)
+
+We set the percntage discount to "100" which means we can get the Leather Jacket for free
+
+Checking the webpage
+
+![image](https://github.com/user-attachments/assets/883f8008-dc2e-4f87-8e30-da2f70208800)
+
+We have successfully completed this lab
+
+--------------------------------------------------------
 
 
 
