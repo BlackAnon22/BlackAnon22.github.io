@@ -170,9 +170,15 @@ We have successfully completed this lab
 
 The task is to login as the adminsitrator and delete the user "carlos"
 
-Navigate to the webpage
+Navigate to the webpage,
 
 ![image](https://github.com/user-attachments/assets/223f9721-7258-46e8-8adb-49778884efd8)
+
+Lets do a bit of directory fuzzing using dirsearch
+
+command:```dirsearch -u https://0a51000f039fe20b81de9d3700ec00a6.web-security-academy.net/ -w /usr/share/wordlists/dirb/common.txt```
+
+![image](https://github.com/user-attachments/assets/24bced5c-45d7-448f-aa02-dd97469267d2)
 
 
 
