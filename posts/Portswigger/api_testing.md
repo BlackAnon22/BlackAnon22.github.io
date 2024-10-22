@@ -239,9 +239,25 @@ Earlier when I crawled the webpage using burpsuite I found this
 ![image](https://github.com/user-attachments/assets/aa4324c3-dc1d-4f38-8af7-6682be2e0dec)
 ![image](https://github.com/user-attachments/assets/610e3471-d034-4572-ae3b-07076d91704b)
 
-Lets check if `reset-token` is a valid value for the `field` parameter
+Lets check if `reset_token` is a valid value for the `field` parameter
 
+![image](https://github.com/user-attachments/assets/70d92d1b-af57-4543-93a2-8ec50d2143a4)
 
+We got the the token value, so in our browser we can do something like this ```/forgot-password?reset_token=${resetToken}```
+
+In my case ```/forgot-password?reset_token=w6vidhv1kr6x8mhkeddi2zg14qtlbeyc```
+
+![image](https://github.com/user-attachments/assets/db1770da-612b-402d-abef-94308e0cfd1f)
+
+Set a new passoword, login to the administrator account with the password then delete the user `carlos`
+
+![image](https://github.com/user-attachments/assets/ace9d0db-6a56-43cd-b5bd-e93fe898f2ec)
+![image](https://github.com/user-attachments/assets/621f54fd-1ac7-4ac2-972a-1db8d7c7dd2b)
+![image](https://github.com/user-attachments/assets/7651f46e-2df0-4ba1-b908-1a509d88bb56)
+
+We have successfully completed this lab
+
+---------------------------------------------------------
 
 
 
