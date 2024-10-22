@@ -192,6 +192,22 @@ Lets attempt to add another parameter `foo` with a value `bankai`
 
 ![image](https://github.com/user-attachments/assets/01ff45ce-676a-40c2-95ec-779394a2866c)
 
+We got a "parameter not supported" error, this means the the internal API may have interpreted our parameter `&foo=banaki` as a separate parameter.
+
+Lets try to truncate the query string by using the character `#` (ensure it is url encoded)
+
+![image](https://github.com/user-attachments/assets/39fbdd4f-e13a-4a7c-a948-15b82a8e0e76)
+
+We got a "field not specified" error which indicates that there's a field parameter. We'll use the parameter `field` and the value `bankai`
+
+![image](https://github.com/user-attachments/assets/675d5ac6-1d1e-48c0-9877-6677d1ec0214)
+
+We still get the "invalid username", lets change the username from "BlackAnon" to "administrator" since "administrator" is a valid username
+
+![image](https://github.com/user-attachments/assets/7e8a48af-70bd-425c-9c3d-fe3dbfa16d2a)
+
+"Invalid field" error message, this means the server-side application may recognize the injected field parameter
+
 
 
 
