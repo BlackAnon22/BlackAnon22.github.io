@@ -135,6 +135,8 @@ We found an endpoint `/checkout`
 
 First, lets add the leather jacket to our cart, then we'll capture a fresh request and navigate to the `/checkout` endpoint
 
+![image](https://github.com/user-attachments/assets/4e09e571-f064-44b1-8fcd-1482a6861332)
+
 
 
 
