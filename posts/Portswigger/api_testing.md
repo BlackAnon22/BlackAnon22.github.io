@@ -67,11 +67,10 @@ Running a directory enumeration scan didn't show any api directory
 
 ![image](https://github.com/user-attachments/assets/3d3e5887-23da-4236-926c-4f891510394b)
 
-Checking the "target" on burpsuite I found this
+I did a bit of crawling with burpsuite and I got this
 
-![image](https://github.com/user-attachments/assets/06eb7af5-c174-40b1-9fdf-de8fc951d47a)
+![image](https://github.com/user-attachments/assets/4a53e5ef-c629-43c4-8ec2-81d1769b0326)
 
-Sent the request to burp repeater
 
 
 
