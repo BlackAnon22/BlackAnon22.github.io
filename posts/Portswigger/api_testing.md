@@ -234,6 +234,10 @@ This returned the original output.
 
 What next??
 
+Earlier when I crawled the webpage using burpsuite I found this
+
+![image](https://github.com/user-attachments/assets/aa4324c3-dc1d-4f38-8af7-6682be2e0dec)
+
 
 
 
