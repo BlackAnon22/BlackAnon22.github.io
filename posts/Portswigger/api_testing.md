@@ -180,6 +180,20 @@ command:```dirsearch -u https://0a51000f039fe20b81de9d3700ec00a6.web-security-ac
 
 ![image](https://github.com/user-attachments/assets/24bced5c-45d7-448f-aa02-dd97469267d2)
 
+We have a `/forgot-password` directory
+
+Navigating to that directory,
+
+![image](https://github.com/user-attachments/assets/d4aec894-0e38-4054-adf8-87798312c7b6)
+![image](https://github.com/user-attachments/assets/77bc690f-b673-47b8-857a-1301b872cf9a)
+![image](https://github.com/user-attachments/assets/1b0e98a9-ceff-4d67-a06c-f7d37cbd0120)
+
+Lets attempt to add another parameter `foo` with a value `bankai`
+
+![image](https://github.com/user-attachments/assets/01ff45ce-676a-40c2-95ec-779394a2866c)
+
+
+
 
 
 
