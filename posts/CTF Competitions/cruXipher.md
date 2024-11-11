@@ -203,8 +203,25 @@ Checking the `.bash_history` file
 
 ![image](https://github.com/user-attachments/assets/8f55b0ba-3708-478e-9903-cefd04835d21)
 
+The user navigated to the `/etc/vim` directory
 
+Why??? Well, lets find out
 
+I also found this weird, so I went ahead to check the directory
+
+![image](https://github.com/user-attachments/assets/98aff3c3-0eec-4d34-8dd8-786471d5fc87)
+
+That's a deleted file, when I checked the content I saw the reason why I couldn't search the flag out😂
+
+![image](https://github.com/user-attachments/assets/5095c8e1-0a05-48d4-81f3-26413cc4211b)
+
+That's a base64 encoded text, but then when I tried to decode it I only got one-third of the flag
+
+![image](https://github.com/user-attachments/assets/d48cc7b5-83cb-4e8d-8e97-ae269e2c1142)
+
+Why did this happen??
+
+It's because of the `#` in the encoded text
 
 
 
