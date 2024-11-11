@@ -172,10 +172,36 @@ Checking the chall description again
 
 ![image](https://github.com/user-attachments/assets/db4d660c-8949-4832-baf0-8884cc0063c5)
 
-FLAG:-```cruXipher{1ck_15_n3v3r_60nn4_61v3_y0u_7h3_f146```
+FLAG:-```cruXipher{1ck_15_n3v3r_60nn4_61v3_y0u_7h3_f146}```
 
 ------------------------------------------------
 
 ## xQcOw
 
 ![image](https://github.com/user-attachments/assets/57fdbe74-0f93-4956-9183-70cd169c2d62)
+
+Upon downloading, I got a compressed file, which, after extracting, gave me a QEMU image.
+
+I converted this image to a raw disk file using the `qemu-img` tool
+
+![image](https://github.com/user-attachments/assets/954c2411-70a4-4b7b-8302-a98c06760a42)
+
+Then I mounted this using autopsy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
