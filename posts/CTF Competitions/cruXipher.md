@@ -221,9 +221,9 @@ That's a base64 encoded text, but then when I tried to decode I only got one-thi
 
 Why did this happen??
 
-It's because of the `#` in the encoded text
+Well, it's because of the `#` in the base64 encoded text
 
-I found this weird actually, but then I wanted to find the reason why it was that way so I continued with my digging
+I found this weird actually, but then I wanted to find the reason why it was that way so I continued digging
 
 Checking the `/root` dir, I found a `.bash_history` file, just the same way I found one in the `/home` dir
 
