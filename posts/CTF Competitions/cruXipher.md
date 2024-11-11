@@ -52,6 +52,36 @@ oleid is a script to analyze OLE files such as MS Office documents (e.g. Word, E
 
 Nothing out of the ordinary
 
+I used the next oletool `oleobj`
+
+![image](https://github.com/user-attachments/assets/e4ebaef3-1164-424d-9874-a350358964e9)
+
+It extracted a png image from the docx file
+
+Checking out the image,
+
+![image](https://github.com/user-attachments/assets/a244f37d-633d-497c-8abf-6dff8f7867be)
+
+I found this base64 encoded text
+
+Decoding the text gave me the flag
+
+```
+┌──(bl4ck4non💀bl4ck4non-sec)-[~/Downloads/CTF/cruxipher/forensics]
+└─$ echo "Y3J1WGlwaGVye24wd195MHVfNWUzX20zX04wd195MFVfRDBuVH0=" | base64 -d
+cruXipher{n0w_y0u_5e3_m3_N0w_y0U_D0nT}
+```
+
+FLAG:-```cruXipher{n0w_y0u_5e3_m3_N0w_y0U_D0nT}```
+
+---------------------------------------------
+
+## Rick's Diary
+<hr>
+
+![image](https://github.com/user-attachments/assets/75edf473-9f51-44e1-93b3-251ea78e5174)
+
+
 
 
 
