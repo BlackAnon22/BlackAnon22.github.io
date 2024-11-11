@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/cf5774df-f410-4aac-ab2d-8545bbf2a296)
+![image](https://github.com/user-attachments/assets/37d8f5f3-e585-4cf8-9ad8-1af435dd007b)![image](https://github.com/user-attachments/assets/cf5774df-f410-4aac-ab2d-8545bbf2a296)
 
 I participated in the cruXipher CTF, I joined late though (5hrs before it ended). I was in search of forensics chall and yeah I found some interesting ones here.
 
@@ -83,7 +83,44 @@ FLAG:-```cruXipher{n0w_y0u_5e3_m3_N0w_y0U_D0nT}```
 
 After downloading the text file, I checked the content and saw this
 
+![image](https://github.com/user-attachments/assets/f570fff5-7baf-4ed6-85dc-bb2cf1cc893d)
 
+Can you see that?? 
+
+The first time I saw a null width chall was during the Africa Cyberfest CTF, yeah yeah Nerdy set it😂. He's a maniac trust me
+
+Opening the txt file in either vscode or sublime text shows you its true color
+
+![image](https://github.com/user-attachments/assets/4206a2a1-c331-4023-865e-813a8ebc199c)
+
+Yup, that's the file
+
+I extracted the hidden file here using this [webpage](https://330k.github.io/misc_tools/unicode_steganography.html)
+
+![image](https://github.com/user-attachments/assets/85238d8b-9841-41be-b7bd-ad5484d17aaf)
+
+Checking the content of the hidden data
+
+```
+┌──(bl4ck4non💀bl4ck4non-sec)-[~/…/CTF/cruxipher/forensics/Ricks_diary]
+└─$ ls -la hidden_data 
+-rw-r--r-- 1 bl4ck4non bl4ck4non 1717 Nov 11 04:03 hidden_data
+                                                                                                                                                                                              
+┌──(bl4ck4non💀bl4ck4non-sec)-[~/…/CTF/cruxipher/forensics/Ricks_diary]
+└─$ cat hidden_data       
+getattr(globals()[''.join([(lambda x: chr(ord(x) + 1))(x) for x in '^^athkshmr^^'])],(dir(globals()[''.join([(lambda x: chr(ord(x) + 1))(x) for x in '^^athkshmr^^'])])[107]))(getattr(__import__("bkacsee3624"[::2]),''.join([(lambda x: chr(ord(x) + 1))(x) for x in 'cdbncdaxsdr']))(b'QSA9IFsxNTYyNiwgMjkxNywgMjcwNSwgMjQwMiwgMTA0MDUsIDkwMjYsIDY1NjIsIDI2MDIsIDk4MDIsIDEwODE3LCA3NzQ1LCAzMDI2LCAxMDYxMCwgOTAyNiwgNzU3MCwgMTM2OTAsIDMyNTAsIDIzMDUsIDE0MTYyLCAxNDY0MiwgMjcwNSwgOTAyNiwgMTQxNjIsIDI2MDIsIDY1NjIsIDEzOTI1LCAxMDAwMSwgMjQwMiwgMzcyMiwgMjkxNywgMTM5MjUsIDkwMjYsIDM5NzAsIDI3MDUsIDEwODE3LCAxMjEwMSwgOTgwMiwgMTIxMDEsIDEzNDU3LCAyMzA1LCA5NDEwLCAyOTE3LCAxNDE2MiwgOTAyNiwgMjIxMCwgMTI5OTcsIDExODgyLCAyNjAyLCAxMjMyMiwgMTM5MjUsIDk4MDIsIDI2MDIsIDIxMTcsIDEyMTAxLCAxMDIwMiwgOTAyNiwgOTYwNSwgMjgxMCwgMTM2OTAsIDI0MDIsIDEzNDU3LCA5MDI2LCAxMzY5MCwgMTE0NTAsIDEyMzIyLCA5ODAyLCAxNDY0MiwgMjQwMiwgMjExNywgMTI5OTcsIDE0MTYyLCAxNTEzMCwgMTI5OTcsIDE0MTYyLCAxMjk5NywgMTAyMDIsIDE0MTYyLCAxMDIwMiwgMTMyMjYsIDIyMTAsIDEwODE3LCAxNDE2MiwgMjIxMCwgMTI1NDUsIDEyMzIyLCAzMzY1LCAxMTAyNiwgMTI5OTcsIDEzMjI2LCA3NzQ1LCA5NjA1LCAxMjU0NSwgMTM2OTAsIDk2MDUsIDEzNDU3LCAxMjk5NywgMTAyMDIsIDEzNDU3LCA5ODAyLCAxNDE2MiwgMTA4MTddCkMgPSBbMTAxLCA3OCwgMTAxLCAxMzYsIGdldGF0dHIsIGRpciwgZXZhbCwgMTAxXQpZID0gJycuam9pbihbW2NocihpbnQoKGktMSkqKjAuNSkpIGZvciBpIGluIEFdWzo6LTFdW2ldIGZvciBpIGluIHJhbmdlKDEsIENbMF0gLy8gMyAtIDIsIDMpXSkKWiA9ICcnLmpvaW4oW1tjaHIoaW50KChpLTEpKiowLjUpKSBmb3IgaSBpbiBBXVs6Oi0xXVtpXSBmb3IgaSBpbiByYW5nZSgwLCBDWzJdIC8vIDMgLSAyLCAzKV0pICsgJycuam9pbihbW2NocihpbnQoKGktMSkqKjAuNSkpIGZvciBpIGluIEFdWzo6LTFdW2ldIGZvciBpIGluIHJhbmdlKDEwMSAvLyAzIC0gMSwgQ1stMV0gLSA1LCAyKV0pCkNbLTRdKENbLTJdKENbLTNdKF9fYnVpbHRpbnNfXylbQ1sxXV0pKFkpLCBDWzVdKF9fYnVpbHRpbnNfXylbQ1szXV0pKFop'))
+```
+Decoding the encoded text using Cyberchef
+
+![image](https://github.com/user-attachments/assets/81899029-2fa7-4d5e-8c52-7493825bd213)
+
+```
+A = [15626, 2917, 2705, 2402, 10405, 9026, 6562, 2602, 9802, 10817, 7745, 3026, 10610, 9026, 7570, 13690, 3250, 2305, 14162, 14642, 2705, 9026, 14162, 2602, 6562, 13925, 10001, 2402, 3722, 2917, 13925, 9026, 3970, 2705, 10817, 12101, 9802, 12101, 13457, 2305, 9410, 2917, 14162, 9026, 2210, 12997, 11882, 2602, 12322, 13925, 9802, 2602, 2117, 12101, 10202, 9026, 9605, 2810, 13690, 2402, 13457, 9026, 13690, 11450, 12322, 9802, 14642, 2402, 2117, 12997, 14162, 15130, 12997, 14162, 12997, 10202, 14162, 10202, 13226, 2210, 10817, 14162, 2210, 12545, 12322, 3365, 11026, 12997, 13226, 7745, 9605, 12545, 13690, 9605, 13457, 12997, 10202, 13457, 9802, 14162, 10817]
+C = [101, 78, 101, 136, getattr, dir, eval, 101]
+Y = ''.join([[chr(int((i-1)**0.5)) for i in A][::-1][i] for i in range(1, C[0] // 3 - 2, 3)])
+Z = ''.join([[chr(int((i-1)**0.5)) for i in A][::-1][i] for i in range(0, C[2] // 3 - 2, 3)]) + ''.join([[chr(int((i-1)**0.5)) for i in A][::-1][i] for i in range(101 // 3 - 1, C[-1] - 5, 2)])
+C[-4](C[-2](C[-3](__builtins__)[C[1]])(Y), C[5](__builtins__)[C[3]])(Z)
+```
 
 
 
