@@ -34,6 +34,33 @@ When I opened the docx file with Libre Office I got this
 
 Nothing out of the ordinary
 
+Ever heard of `oletools`??
+
+Well, that's what I used
+
+![image](https://github.com/user-attachments/assets/c4d48b5f-9d9d-4e53-9efd-04b80d8b9441)
+
+Yup, that's it
+
+You can install with pip `sudo -H pip install -U oletools`
+
+I started out by using `oleid`
+
+oleid is a script to analyze OLE files such as MS Office documents (e.g. Word, Excel), to detect specific characteristics usually found in malicious files (e.g. malware). For example it can detect VBA macros and embedded Flash objects.​
+
+![image](https://github.com/user-attachments/assets/6b2385fe-6f68-4cd8-8e1b-4b703b70dd2d)
+
+Nothing out of the ordinary
+
+
+
+
+
+
+
+
+
+
 
 
 # xQcOw
