@@ -184,11 +184,24 @@ Upon downloading, I got a compressed file, which, after extracting, gave me a QE
 
 I converted this image to a raw disk file using the `qemu-img` tool
 
-![image](https://github.com/user-attachments/assets/954c2411-70a4-4b7b-8302-a98c06760a42)
+![image](https://github.com/user-attachments/assets/dc10779e-3123-4c16-8eda-c819901036a8)
 
 Then I mounted this using autopsy
 
 I won't be explaining how I imported the image though, I've done that in previous writeups. You can check [this](https://github.com/BlackAnon22/BlackAnon22.github.io/blob/main/posts/CTF%20Competitions/n00bz_ctf.md), [this](https://github.com/BlackAnon22/BlackAnon22.github.io/blob/main/posts/CTF%20Competitions/picoCTF_2023.md) or [this](https://github.com/BlackAnon22/BlackAnon22.github.io/blob/main/posts/CTF%20Competitions/picoCTF_2024.md)
+
+![image](https://github.com/user-attachments/assets/324a7380-e5f2-44bb-96bf-3ef52eb6f9c2)
+
+This is what I got after mounting, It's so obvious it's a Linux Image
+
+The first place I checked was the `home` dir
+
+![image](https://github.com/user-attachments/assets/bad62ab0-a1da-467a-9fd7-e37657a26b17)
+![image](https://github.com/user-attachments/assets/4afdd400-f588-48b2-80cd-c970a786050e)
+
+Checking the `.bash_history` file
+
+![image](https://github.com/user-attachments/assets/8f55b0ba-3708-478e-9903-cefd04835d21)
 
 
 
