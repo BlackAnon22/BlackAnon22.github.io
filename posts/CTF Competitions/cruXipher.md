@@ -157,7 +157,7 @@ print("Z:", Z)
 Running the script
 
 ```
-──(bl4ck4non💀bl4ck4non-sec)-[~/…/CTF/cruxipher/forensics/Ricks_diary]
+┌──(bl4ck4non💀bl4ck4non-sec)-[~/…/CTF/cruxipher/forensics/Ricks_diary]
 └─$ nano bankai.py
                                                                                                                                                                                               
 ┌──(bl4ck4non💀bl4ck4non-sec)-[~/…/CTF/cruxipher/forensics/Ricks_diary]
@@ -166,18 +166,16 @@ Running the script
 Y: cruXipher{
 Z: cruXipher{1ck_15_n3v3r_60nn4_61v3_y0u_7h3_
 ```
-This got me 
+This got me 80% of the flag, this is bsically where the guess work started from
 
+Checking the chall description again
 
+![image](https://github.com/user-attachments/assets/db4d660c-8949-4832-baf0-8884cc0063c5)
 
+FLAG:-```cruXipher{1ck_15_n3v3r_60nn4_61v3_y0u_7h3_f146```
 
+------------------------------------------------
 
-
-
-
-
-
-
-# xQcOw
+## xQcOw
 
 ![image](https://github.com/user-attachments/assets/57fdbe74-0f93-4956-9183-70cd169c2d62)
