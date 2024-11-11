@@ -81,6 +81,8 @@ FLAG:-```cruXipher{n0w_y0u_5e3_m3_N0w_y0U_D0nT}```
 
 ![image](https://github.com/user-attachments/assets/75edf473-9f51-44e1-93b3-251ea78e5174)
 
+After downloading the text file, I checked the content and saw this
+
 
 
 
