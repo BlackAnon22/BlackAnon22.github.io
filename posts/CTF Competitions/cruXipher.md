@@ -194,7 +194,7 @@ I won't be explaining how I imported the image though, I've done that in previou
 
 This is what I got after mounting, It's so obvious it's a Linux Image
 
-The first place I checked was the `home` dir
+The first place I checked was the `/home` dir
 
 ![image](https://github.com/user-attachments/assets/bad62ab0-a1da-467a-9fd7-e37657a26b17)
 ![image](https://github.com/user-attachments/assets/4afdd400-f588-48b2-80cd-c970a786050e)
@@ -223,8 +223,19 @@ Why did this happen??
 
 It's because of the `#` in the encoded text
 
+I found this weird actually, but then I wanted to find the reason why it was that way so I continued with my digging
 
+Checking the `/root` dir, I found a `.bash_history` file, just the same way I found one in the `/home` dir
 
+![image](https://github.com/user-attachments/assets/ab8d8e5a-5b64-4193-8611-40d9096d89b6)
+
+Checking the content of the file made me laugh to be honest😅
+
+![image](https://github.com/user-attachments/assets/85b459e2-483b-4f84-b181-cf21189361c7)
+
+This answers the question on why there's a `#` in the encoded text
+
+What does that `sed` command do??
 
 
 
