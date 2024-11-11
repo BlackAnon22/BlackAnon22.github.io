@@ -229,13 +229,35 @@ Checking the `/root` dir, I found a `.bash_history` file, just the same way I fo
 
 ![image](https://github.com/user-attachments/assets/ab8d8e5a-5b64-4193-8611-40d9096d89b6)
 
-Checking the content of the file made me laugh to be honest😅
+Checking the content of the file made me laugh out to be honest, I actually said a blessing to the creator of the chall😅
 
 ![image](https://github.com/user-attachments/assets/85b459e2-483b-4f84-b181-cf21189361c7)
 
 This answers the question on why there's a `#` in the encoded text
 
 What does that `sed` command do??
+
+The command replaces every occurrence of the number `2` with `#` in the file vimrc, making the changes directly in the file without creating a backup.
+
+This means what I'll have to do to get the proper base64 encoded format is to replace the `#` with `2`
+
+Decoding again,
+
+![image](https://github.com/user-attachments/assets/cdc2abf1-7fe0-45bf-ba38-34bf653068cd)
+
+This got me the flag
+
+FLAG:-```cruXipher{ph751kal_acC35s_t0_m4h_d1sk5}```
+
+-------------------------------
+
+Till Next Time :xD
+
+
+
+
+<br> <br>
+[Back To Home](../../index.md)
 
 
 
