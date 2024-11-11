@@ -215,7 +215,7 @@ That's a deleted file, when I checked the content I saw the reason why I couldn'
 
 ![image](https://github.com/user-attachments/assets/5095c8e1-0a05-48d4-81f3-26413cc4211b)
 
-That's a base64 encoded text, but then when I tried to decode it I only got one-third of the flag
+That's a base64 encoded text, but then when I tried to decode I only got one-third of the flag
 
 ![image](https://github.com/user-attachments/assets/d48cc7b5-83cb-4e8d-8e97-ae269e2c1142)
 
