@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/37d8f5f3-e585-4cf8-9ad8-1af435dd007b)![image](https://github.com/user-attachments/assets/cf5774df-f410-4aac-ab2d-8545bbf2a296)
+![image](https://github.com/user-attachments/assets/cf5774df-f410-4aac-ab2d-8545bbf2a296)
 
 I participated in the cruXipher CTF, I joined late though (5hrs before it ended). I was in search of forensics chall and yeah I found some interesting ones here.
 
