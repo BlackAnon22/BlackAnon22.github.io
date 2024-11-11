@@ -188,6 +188,9 @@ I converted this image to a raw disk file using the `qemu-img` tool
 
 Then I mounted this using autopsy
 
+I won't be explaining how I imported the image though, I've done that in previous writeups. You can check [this](https://github.com/BlackAnon22/BlackAnon22.github.io/blob/main/posts/CTF%20Competitions/n00bz_ctf.md), [this](https://github.com/BlackAnon22/BlackAnon22.github.io/blob/main/posts/CTF%20Competitions/picoCTF_2023.md) or [this](https://github.com/BlackAnon22/BlackAnon22.github.io/blob/main/posts/CTF%20Competitions/picoCTF_2024.md)
+
+
 
 
 
