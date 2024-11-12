@@ -6,7 +6,7 @@ I solved 3 forensics challs, submitted 2 flags before the ctf ended, I just comp
 
 # Challenges Solved
 
-## Forensics 
+## Forensics  
 -     objects in the mirror
 -     Rick's Diary
 -     xQcOw
