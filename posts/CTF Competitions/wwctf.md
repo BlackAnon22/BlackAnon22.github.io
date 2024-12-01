@@ -21,3 +21,5 @@ This didn't bother me actually because I saw something similar when I played `pi
 ![image](https://github.com/user-attachments/assets/1ee40418-34f7-43b5-8bb4-fa3cf7ef9842)
 
 This should work actually
+
+Now, instead of using the `cd ../../ && ls` command, I did this instead `echo "$(cd ../../../ && ls)"`
