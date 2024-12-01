@@ -13,3 +13,7 @@ Running the `ls` command, I got this
 There's an `index.php` file
 
 But then this command `cd ../../ && ls` gets flagged
+
+![image](https://github.com/user-attachments/assets/8ae8addb-373d-4572-8a90-ec67fc8735f6)
+
+This didn't bother me actually because I saw something similar when I played `picoctf 2023`, you can read the writeup [here]
