@@ -53,6 +53,9 @@ FLAG:-```wwf{th3_os_c0mm4nd_1nj3ct10n!}```
 
 --------------------------
 
+## Simpler RSA
+
+![image](https://github.com/user-attachments/assets/904878c0-2606-45bb-a1f7-dc4f6bc53395)
 
 
 
