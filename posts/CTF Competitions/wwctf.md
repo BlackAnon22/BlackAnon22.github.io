@@ -80,6 +80,10 @@ Upon solving this the way I know how, I got some gibberish stuff
 
 Apparently, I wasn't the only one😂
 
+I actually noticed my mistake after solving this chall, when I solved initally I calculated the value for `n`, also I assumed `e` to be `65537`, all these wasn't needed actually.
+
+Now, determining e is unnecessary, as `d` can be directly computed using the private key. Specifically, `d` is obtained as the modular multiplicative inverse of `p modulo q−1 (mod q - 1)`.
+
 
 
 
