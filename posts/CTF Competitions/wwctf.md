@@ -5,7 +5,7 @@
 -      Secure Shell
 -      Simpler RSA
 
-## Beginner
+## Forensics
 -      Forgot Password
 -      Black meets Wukong
 
@@ -119,6 +119,29 @@ FLAG:-```wwf{ju57_u53_l1br4r135}```
 
 -------------------------
 
+# Forensics
+<hr>
+
+```
+┌──(bl4ck4non💀bl4ck4non-sec)-[~/…/CTF/wwctf/forensics/black_meets_wukong]
+└─$ file Evidence.ad1
+Evidence.ad1: data
+```
+
+The writeup for this will be added later, later means when I either get wine installed or when I get a windows box to run the `.ad1` file on.
+
+Bruhh, I had to wait till midnight to download the 1.8gb file, only to find out that I can only solve it with a windows box💀
+
+
+
+--------------------------------------
+
+Till Next Time :xD
+
+
+
+
+[Back To Home](../../index.md)
 
 
 
