@@ -8,11 +8,11 @@ I got this, now from the looks of things here I knew immediately that it has som
 
 Running the `ls` command, I got this
 
-![image](https://github.com/user-attachments/assets/105c10af-e6dd-4b9b-8ad4-e41e6669f0df)
+![image](https://github.com/user-attachments/assets/a7688e55-0511-4591-a304-7ce67bd598a2)
 
 There's an `index.php` file
 
-But then this command `cd ../../ && ls` gets flagged
+But then this command `cd ../../../ && ls -la` gets flagged
 
 ![image](https://github.com/user-attachments/assets/8ae8addb-373d-4572-8a90-ec67fc8735f6)
 
@@ -22,4 +22,8 @@ This didn't bother me actually because I saw something similar when I played `pi
 
 This should work actually
 
-Now, instead of using the `cd ../../ && ls` command, I did this instead `echo "$(cd ../../../ && ls)"`
+Now, instead of using the `cd ../../../ && ls -la` command, I did this instead `echo "$(cd ../../../ && ls -la)"`
+
+![image](https://github.com/user-attachments/assets/fb51142f-94cf-44c7-b1c9-5d1cfdb3ea6b)
+
+All that's left now is to read the flag, this command should do it `echo "$(cd ../../../ && cat flag)"`
