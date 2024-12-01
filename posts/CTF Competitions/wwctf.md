@@ -86,7 +86,7 @@ Apparently, I wasn't the only one😂
 
 I actually noticed my mistake after solving this chall, when I solved initally I calculated the value for `n`, also I assumed `e` to be `65537`, all these wasn't needed actually.
 
-Now, determining e is unnecessary, as `d` can be directly computed using the private key. Specifically, `d` is obtained as the modular multiplicative inverse of `p modulo q−1 (mod q - 1)`.
+Now, determining `e `is unnecessary, as `d` can be directly computed using the private key. Specifically, `d` is obtained as the modular multiplicative inverse of `p modulo q−1 (mod q - 1)`.
 
 ![image](https://github.com/user-attachments/assets/e0dcdc3e-ea53-4556-8ad2-c95b88095006)
 
