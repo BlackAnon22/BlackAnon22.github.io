@@ -130,7 +130,7 @@ Evidence.ad1: data
 
 The writeup for this will be added later 
 
-![image](https://github.com/user-attachments/assets/ed42cc4d-c903-4dd8-9143-3a8d52641dbe)
+![image](https://github.com/user-attachments/assets/17f08dec-18dc-44de-9730-524756ac972e)
 
 Later means either when I get wine fixed or when I get a windows box to run the ftkimager on.
 
