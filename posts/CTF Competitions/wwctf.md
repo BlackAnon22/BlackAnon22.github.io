@@ -8,6 +8,8 @@ I got this, now from the looks of things here I knew immediately that it has som
 
 Running the `ls` command, I got this
 
-![image](https://github.com/user-attachments/assets/076e55c1-9025-457b-8742-fd88b514eeca)
+![image](https://github.com/user-attachments/assets/105c10af-e6dd-4b9b-8ad4-e41e6669f0df)
 
-But then trying this command `cd ../../ && ls` gets flagged
+There's an `index.php` file
+
+But then this command `cd ../../ && ls` gets flagged
