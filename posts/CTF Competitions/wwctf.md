@@ -16,4 +16,8 @@ But then this command `cd ../../ && ls` gets flagged
 
 ![image](https://github.com/user-attachments/assets/8ae8addb-373d-4572-8a90-ec67fc8735f6)
 
-This didn't bother me actually because I saw something similar when I played `picoctf 2023`, you can read the writeup [here]
+This didn't bother me actually because I saw something similar when I played `picoctf 2023`, you can read the writeup [here](https://github.com/BlackAnon22/BlackAnon22.github.io/blob/main/posts/CTF%20Competitions/picoCTF_2023.md)
+
+![image](https://github.com/user-attachments/assets/1ee40418-34f7-43b5-8bb4-fa3cf7ef9842)
+
+This should work actually
