@@ -99,6 +99,21 @@ d = inverse(p, q-1)
 pt  = long_to_bytes(pow(c, d, q))
 print(pt)
 ```
+The script decrypts a ciphertext c using modular arithmetic. It calculates `d`, the modular inverse of `p modulo q−1`, then computes `c d mod q` to derive the plaintext. The plaintext is converted to a readable byte string using `long_to_bytes`.
+
+Running the script,
+
+```
+┌──(bl4ck4non💀bl4ck4non-sec)-[~/…/CTF/wwctf/beginners/simpler_rsa]
+└─$ python solve.py
+b'wwf{ju57_u53_l1br4r135}'
+```
+
+I got the flag
+
+FLAG:-```wwf{ju57_u53_l1br4r135}```
+
+-------------------------
 
 
 
