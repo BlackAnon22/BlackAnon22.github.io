@@ -27,3 +27,31 @@ Now, instead of using the `cd ../../../ && ls -la` command, I did this instead `
 ![image](https://github.com/user-attachments/assets/fb51142f-94cf-44c7-b1c9-5d1cfdb3ea6b)
 
 All that's left now is to read the flag, this command should do it `echo "$(cd ../../../ && cat flag)"`
+
+It is evident from the above screenshot that the `flag` file most likely contains the flag but then it has read-only access, while the `readflag` is an executable that likely allows me to read the `flag` file.
+
+So, to get the flag I just ran the `readflag` executable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
