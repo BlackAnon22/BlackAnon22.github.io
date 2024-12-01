@@ -134,7 +134,7 @@ The writeup for this will be added later
 
 Later means either when I get wine fixed or when I get a windows box to run the ftkimager on.
 
-Bruhh, I had to wait till midnight to download the 1.8gb file, only to find out that I can only solve it with a windows box just because I can't get wine installed💀
+Bruhh, I had to wait till midnight to download the 1.8gb file, only to find out that I can only solve it with a windows box just because I can't get wine to work💀
 
 
 --------------------------------------
