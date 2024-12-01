@@ -73,7 +73,7 @@ The file contains 3 large integers `p, q and c`.
 
 So the task basically is to decrypt the ciphertext.
 
-Upon solving this the way I know how, I got some non-printable ascii characters
+Upon solving this the way I know how, I got some gibberish stuff
 
 ![image](https://github.com/user-attachments/assets/646d7bc9-783b-423b-afc9-4e5d57f35548)
 ![image](https://github.com/user-attachments/assets/85715bc0-3b1b-4c3d-b3f7-e09354e04a52)
