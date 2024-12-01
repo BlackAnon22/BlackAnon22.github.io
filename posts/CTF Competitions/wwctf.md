@@ -5,6 +5,10 @@
 -      Secure Shell
 -      Simpler RSA
 
+## Beginner
+-      Forgot Password
+-      Black meets Wukong
+
 
 # Beginner
 <hr>
