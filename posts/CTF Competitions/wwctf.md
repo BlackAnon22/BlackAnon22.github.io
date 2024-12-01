@@ -30,7 +30,17 @@ All that's left now is to read the flag, this command should do it `echo "$(cd .
 
 It is evident from the above screenshot that the `flag` file most likely contains the flag but then it has read-only access, while the `readflag` is an executable that likely allows me to read the `flag` file.
 
-So, to get the flag I just ran the `readflag` executable
+All I did to get the flag was to run `readflag` executable using the command `echo "$(cd ../../../ && ./readflag)"`
+
+![image](https://github.com/user-attachments/assets/5bb269f8-9f28-488a-b7f7-13e6a0b6b735)
+
+Got the flag
+
+FLAG:-```wwf{th3_os_c0mm4nd_1nj3ct10n!}```
+
+--------------------------
+
+
 
 
 
