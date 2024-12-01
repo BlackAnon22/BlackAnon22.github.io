@@ -1,3 +1,16 @@
+![image](https://github.com/user-attachments/assets/fdb27919-3ef8-4661-82ac-368ea73d0e41)
+
+# Challenges Solved
+## Beginner
+-      Secure Shell
+-      Simpler RSA
+
+
+# Beginner
+<hr>
+
+## Secure Shell
+
 ![image](https://github.com/user-attachments/assets/d4d99342-4666-4db5-bee8-bc4f1c2828cc)
 
 Navigating to the webpage
